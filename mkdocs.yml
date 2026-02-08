@@ -1,0 +1,10 @@
+site_name: Hot100 算法笔记
+
+theme:
+  name: material
+  language: zh
+
+nav:
+  - 首页: index.md
+  - 双指针:
+      - 11.盛最多水的容器: 双指针/11.盛最多水的容器.md
