@@ -1,17 +1,59 @@
 site_name: Hot100 算法笔记
+site_description: LeetCode Hot100 算法题 Notebook 系统整理
+site_author: GlenTT
+site_url: https://GRITJW.github.io/hot100/
 
+# =====================
+# 主题配置（核心美观来源）
+# =====================
 theme:
   name: material
   language: zh
+  features:
+    - navigation.tabs          # 顶部导航
+    - navigation.sections     # 左侧分组
+    - navigation.expand       # 默认展开
+    - navigation.top          # 返回顶部按钮
+    - content.code.copy       # 代码一键复制
+    - content.code.annotate   # 代码注释增强
 
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+
+# =====================
+# 插件（Notebook 渲染关键）
+# =====================
 plugins:
   - search
-  - mkdocs-jupyter
+  - mkdocs-jupyter:
+      execute: false           # 不重新执行 Notebook（非常重要）
+      include_source: true     # 可查看原始 ipynb
 
-nav:
+# =====================
+# Markdown 扩展（代码 & 数学公式）
+# =====================
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+
+# =====================
+# 数学公式支持（LaTeX）
+# =====================
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# =====================
+# 导航结构（你的网站结构）
+# =====================
 nav:
   - 首页: index.md
-  - Notebooks:
+  - hot100:
       - 哈希表: notebooks/哈希表.ipynb
       - 链表: notebooks/链表.ipynb
       - 排序: notebooks/排序.ipynb
