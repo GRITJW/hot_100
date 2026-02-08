@@ -4,7 +4,16 @@ theme:
   name: material
   language: zh
 
+plugins:
+  - search
+  - mkdocs-jupyter
+
+nav:
 nav:
   - 首页: index.md
-  - 双指针:
-      - 11.盛最多水的容器: 双指针/11.盛最多水的容器.md
+  - Notebooks:
+      - 哈希表: notebooks/哈希表.ipynb
+      - 链表: notebooks/链表.ipynb
+      - 排序: notebooks/排序.ipynb
+      - 数组: notebooks/数组.ipynb
+      - 双指针: notebooks/双指针.ipynb
