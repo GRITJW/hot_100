@@ -29,7 +29,7 @@
     
     
       
-        <title>1两数之和 - Hot100 算法笔记</title>
+        <title>哈希表 - Hot100 算法笔记</title>
       
     
     
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1两数之和
+              哈希表
             
           </span>
         </div>
@@ -364,6 +364,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -372,7 +374,7 @@
   <span class="md-ellipsis">
     
   
-    1两数之和
+    哈希表
   
 
     
@@ -390,7 +392,7 @@
   <span class="md-ellipsis">
     
   
-    1两数之和
+    哈希表
   
 
     
@@ -406,6 +408,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -414,7 +418,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         哈希表的核心“超能力”
@@ -425,7 +429,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         模式一：空间换时间 —— “以存代查，建立备忘录”
@@ -436,7 +440,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         模式二：分组与归类 —— “找到共同特征，进行映射”
@@ -447,7 +451,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         模式三：快速判断存在性 —— “利用集合优化起点判断”
@@ -458,7 +462,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         总结：你的哈希表工具箱
@@ -580,7 +584,7 @@
   <span class="md-ellipsis">
     
   
-    数组的 3 句话核心
+    数组
   
 
     
@@ -646,6 +650,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -654,7 +660,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         哈希表的核心“超能力”
@@ -665,7 +671,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         模式一：空间换时间 —— “以存代查，建立备忘录”
@@ -676,7 +682,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         模式二：分组与归类 —— “找到共同特征，进行映射”
@@ -687,7 +693,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         模式三：快速判断存在性 —— “利用集合优化起点判断”
@@ -698,7 +704,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         总结：你的哈希表工具箱
@@ -1200,7 +1206,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="">哈希表的核心“超能力”<a class="anchor-link" href="#">¶</a></h3><ul>
+<h1 id="">哈希表<a class="anchor-link" href="#">¶</a></h1><h3 id="">哈希表的核心“超能力”<a class="anchor-link" href="#">¶</a></h3><ul>
 <li><strong>核心能力</strong>：在平均情况下，以 <strong>O(1)</strong> 的时间复杂度完成<strong>插入、删除、查找</strong>操作。</li>
 <li><strong>本质</strong>：它提供了一种近乎即时的方式来回答“<strong>我见过这个东西吗？</strong>”或者“<strong>与这个东西关联的信息是什么？</strong>”</li>
 </ul>
@@ -1304,7 +1310,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1">1两数之和<a class="anchor-link" href="#1">¶</a></h1><p>给定一个数组找出两个数和为目标值target的数组下标</p>
+<h2 id="1">1两数之和<a class="anchor-link" href="#1">¶</a></h2><p>给定一个数组找出两个数和为目标值target的数组下标</p>
 </div>
 </div>
 </div>
@@ -1314,7 +1320,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1387,7 +1393,7 @@ print(a)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="49">49字母异或位分组<a class="anchor-link" href="#49">¶</a></h1><p>给定一个数组，将字母异位词组合在一起输出</p>
+<h2 id="49">49字母异或位分组<a class="anchor-link" href="#49">¶</a></h2><p>给定一个数组，将字母异位词组合在一起输出</p>
 </div>
 </div>
 </div>
@@ -1397,7 +1403,7 @@ print(a)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1538,7 +1544,7 @@ print(f"输出 (Output): {result}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -1603,7 +1609,7 @@ print(a)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="128">128最长连续序列<a class="anchor-link" href="#128">¶</a></h1><p>给定一个数组，找到连续的最长序列长度</p>
+<h2 id="128">128最长连续序列<a class="anchor-link" href="#128">¶</a></h2><p>给定一个数组，找到连续的最长序列长度</p>
 <p>核心思路</p>
 <p>凡是可以查找的，都用哈希表</p>
 <p>1.确定起点(通过-1在哈希表查找确定起点)</p>
@@ -1617,7 +1623,7 @@ print(a)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1712,7 +1718,7 @@ print(f"输入: {test_nums_with_duplicates}, 最长连续序列长度: {solver.l
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -1773,7 +1779,7 @@ max_len</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>3</pre>
 </div>
