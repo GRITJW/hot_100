@@ -418,65 +418,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        哈希表的核心“超能力”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        模式一：空间换时间 —— “以存代查，建立备忘录”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        模式二：分组与归类 —— “找到共同特征，进行映射”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        模式三：快速判断存在性 —— “利用集合优化起点判断”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        总结：你的哈希表工具箱
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1两数之和
+        1.两数之和
       
     </span>
   </a>
@@ -487,7 +432,7 @@
   <a href="#49" class="md-nav__link">
     <span class="md-ellipsis">
       
-        49字母异或位分组
+        49.字母异或位分组
       
     </span>
   </a>
@@ -498,7 +443,7 @@
   <a href="#128" class="md-nav__link">
     <span class="md-ellipsis">
       
-        128最长连续序列
+        128.最长连续序列
       
     </span>
   </a>
@@ -660,65 +605,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        哈希表的核心“超能力”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        模式一：空间换时间 —— “以存代查，建立备忘录”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        模式二：分组与归类 —— “找到共同特征，进行映射”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        模式三：快速判断存在性 —— “利用集合优化起点判断”
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        总结：你的哈希表工具箱
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1两数之和
+        1.两数之和
       
     </span>
   </a>
@@ -729,7 +619,7 @@
   <a href="#49" class="md-nav__link">
     <span class="md-ellipsis">
       
-        49字母异或位分组
+        49.字母异或位分组
       
     </span>
   </a>
@@ -740,7 +630,7 @@
   <a href="#128" class="md-nav__link">
     <span class="md-ellipsis">
       
-        128最长连续序列
+        128.最长连续序列
       
     </span>
   </a>
@@ -1206,12 +1096,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="">哈希表<a class="anchor-link" href="#">¶</a></h1><h3 id="">哈希表的核心“超能力”<a class="anchor-link" href="#">¶</a></h3><ul>
+<h1 id="">哈希表<a class="anchor-link" href="#">¶</a></h1><p>哈希表的核心“超能力”</p>
+<ul>
 <li><strong>核心能力</strong>：在平均情况下，以 <strong>O(1)</strong> 的时间复杂度完成<strong>插入、删除、查找</strong>操作。</li>
 <li><strong>本质</strong>：它提供了一种近乎即时的方式来回答“<strong>我见过这个东西吗？</strong>”或者“<strong>与这个东西关联的信息是什么？</strong>”</li>
 </ul>
 <p>基于这个超能力，我们发展出了以下几种核心的算法思维模式：</p>
-<h3 id="">模式一：空间换时间 —— “以存代查，建立备忘录”<a class="anchor-link" href="#">¶</a></h3><p>这是哈希表最经典、最直接的应用。当你的算法中出现了<strong>嵌套循环</strong>，尤其是内层循环是在<strong>寻找一个“配对”或“补数”</strong>时，你就要立刻想到：<strong>我可以用哈希表替代内层循环吗？</strong></p>
+<p>模式一：空间换时间 —— “以存代查，建立备忘录”</p>
+<p>这是哈希表最经典、最直接的应用。当你的算法中出现了<strong>嵌套循环</strong>，尤其是内层循环是在<strong>寻找一个“配对”或“补数”</strong>时，你就要立刻想到：<strong>我可以用哈希表替代内层循环吗？</strong></p>
 <ul>
 <li><p><strong>核心思想</strong>：将一个O(n)的线性查找，降维成一个O(1)的哈希查找。</p>
 </li>
@@ -1230,7 +1122,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><p><strong>思维触发点</strong>：当你需要为一个元素 <code>x</code> 快速找到它的“另一半” <code>y</code> 时，就用哈希表。</p>
 </li>
 </ul>
-<h3 id="">模式二：分组与归类 —— “找到共同特征，进行映射”<a class="anchor-link" href="#">¶</a></h3><p>当问题需要你将一系列元素按照某种“内在特征”进行分组时，哈希表是完美的工具。</p>
+<p>模式二：分组与归类 —— “找到共同特征，进行映射”</p>
+<p>当问题需要你将一系列元素按照某种“内在特征”进行分组时，哈希表是完美的工具。</p>
 <ul>
 <li><p><strong>核心思想</strong>：为具有相同特征的一类元素，计算出一个<strong>独一无二的、规范化的“签名”（Canonical Key）</strong>，然后将这个签名作为键，将元素本身存入值（通常是一个列表）。</p>
 </li>
@@ -1249,7 +1142,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><p><strong>思维触发点</strong>：当你需要将“看起来不同，但本质相同”的东西归为一类时，思考如何为它们定义一个统一的“身份证”（签名），并用哈希表进行归类。</p>
 </li>
 </ul>
-<h3 id="">模式三：快速判断存在性 —— “利用集合优化起点判断”<a class="anchor-link" href="#">¶</a></h3><p>这个模式是“空间换时间”的延伸，但更侧重于利用哈希集合（Set，可以看作只有键的哈希表）来优化逻辑，避免重复计算。</p>
+<p>模式三：快速判断存在性 —— “利用集合优化起点判断”</p>
+<p>这个模式是“空间换时间”的延伸，但更侧重于利用哈希集合（Set，可以看作只有键的哈希表）来优化逻辑，避免重复计算。</p>
 <ul>
 <li><p><strong>核心思想</strong>：先将所有元素放入一个哈希集合，然后利用其O(1)的查询特性，来判断一个元素是否满足某种“特殊条件”（例如，是否是序列的起点），从而避免大量不必要的计算。</p>
 </li>
@@ -1268,7 +1162,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><p><strong>思维触发点</strong>：当你的算法需要处理连续、相邻的元素关系，并且可能存在大量重复计算时，思考能否用哈希集合来快速判断“前驱”或“后继”是否存在，从而找到一个唯一的“起点”来开始计算。</p>
 </li>
 </ul>
-<h3 id="">总结：你的哈希表工具箱<a class="anchor-link" href="#">¶</a></h3><p>下次遇到算法题，尤其是关于数组或字符串的，可以从以下几个角度思考哈希表能否帮你优化：</p>
+<p>总结：你的哈希表工具箱</p>
+<p>下次遇到算法题，尤其是关于数组或字符串的，可以从以下几个角度思考哈希表能否帮你优化：</p>
 <table>
 <thead>
 <tr>
@@ -1310,7 +1205,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1">1两数之和<a class="anchor-link" href="#1">¶</a></h2><p>给定一个数组找出两个数和为目标值target的数组下标</p>
+<h2 id="1">1.两数之和<a class="anchor-link" href="#1">¶</a></h2><p>给定一个数组找出两个数和为目标值target的数组下标</p>
 </div>
 </div>
 </div>
@@ -1320,7 +1215,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1393,7 +1288,7 @@ print(a)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="49">49字母异或位分组<a class="anchor-link" href="#49">¶</a></h2><p>给定一个数组，将字母异位词组合在一起输出</p>
+<h2 id="49">49.字母异或位分组<a class="anchor-link" href="#49">¶</a></h2><p>给定一个数组，将字母异位词组合在一起输出</p>
 </div>
 </div>
 </div>
@@ -1403,7 +1298,7 @@ print(a)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1544,7 +1439,7 @@ print(f"输出 (Output): {result}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -1609,7 +1504,7 @@ print(a)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="128">128最长连续序列<a class="anchor-link" href="#128">¶</a></h2><p>给定一个数组，找到连续的最长序列长度</p>
+<h2 id="128">128.最长连续序列<a class="anchor-link" href="#128">¶</a></h2><p>给定一个数组，找到连续的最长序列长度</p>
 <p>核心思路</p>
 <p>凡是可以查找的，都用哈希表</p>
 <p>1.确定起点(通过-1在哈希表查找确定起点)</p>
@@ -1623,7 +1518,7 @@ print(a)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1718,7 +1613,7 @@ print(f"输入: {test_nums_with_duplicates}, 最长连续序列长度: {solver.l
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -1779,7 +1674,7 @@ max_len</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>3</pre>
 </div>
