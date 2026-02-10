@@ -54,10 +54,11 @@ extra_javascript:
 nav:
   - 首页: index.md
   - hot100:
-      - 1.哈希表: notebooks/哈希表.ipynb
-      - 2.数组: notebooks/数组.ipynb
-      - 3.双指针: notebooks/双指针.ipynb
-      - 4.字串: notebooks/字串.ipynb、
-      - 5.滑动窗口: notebooks/滑动窗口.ipynb
+      - 1.哈希表: notebooks/1.哈希表.ipynb
+      - 2.数组: notebooks/2.数组.ipynb
+      - 3.双指针: notebooks/3.双指针.ipynb
+      - 4.字串: notebooks/4.字串.ipynb
+      - 5.滑动窗口: notebooks/5.滑动窗口.ipynb
+      - 6.动态规划: notebooks/6.动态规划.ipynb
       - 排序: notebooks/排序.ipynb
       - 链表: notebooks/链表.ipynb
