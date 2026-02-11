@@ -60,5 +60,14 @@ nav:
       - 4.字串: notebooks/4.字串.ipynb
       - 5.滑动窗口: notebooks/5.滑动窗口.ipynb
       - 6.动态规划: notebooks/6.动态规划.ipynb
+      - 6.1.多维动态规划: notebooks/6.1.多维动态规划.ipynb
+      - 7.矩阵: notebooks/7.矩阵.ipynb
+      - 8.栈: notebooks/8.栈.ipynb
+      - 9.堆: notebooks/9.堆.ipynb
+      - 10.二叉树: notebooks/10.二叉树.ipynb
+      - 11.回溯: notebooks/11.回溯.ipynb
+      - 12.贪心算法: notebooks/12.贪心算法.ipynb
+      - 13.图论: notebooks/13.图论.ipynb
+      - 14.二分查找: notebooks/14.二分查找.ipynb
       - 排序: notebooks/排序.ipynb
       - 链表: notebooks/链表.ipynb
