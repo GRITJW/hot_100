@@ -1601,6 +1601,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 <p>注意：</p>
 <p>切片会创建新数组，空间 O(k)</p>
+<p>拼接</p>
+<div class="highlight"><pre><span></span><span class="n">nums_copy</span> <span class="o">=</span> <span class="n">nums_1</span> <span class="o">+</span><span class="n">nums_2</span>
+</pre></div>
+<p>时间复杂度：O(n + k)</p>
+<p>会新建列表并复制全部元素。</p>
 <p>5️⃣ 排序</p>
 <div class="highlight"><pre><span></span><span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>               <span class="c1"># 原地</span>
 <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
