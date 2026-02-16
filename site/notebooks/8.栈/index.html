@@ -703,6 +703,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        栈的总结
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1027,6 +1038,17 @@
     <span class="md-ellipsis">
       
         84. 柱状图中最大的矩形
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        栈的总结
       
     </span>
   </a>
@@ -1664,7 +1686,7 @@ Python 中用 list + append() + pop() 实现即可。</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1829,7 +1851,7 @@ O(n)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1986,7 +2008,7 @@ push(2) → (2,2)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -2167,7 +2189,7 @@ print(min_stack.getMin())  # 返回 -2</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -2340,7 +2362,7 @@ print(Solution().decodeString(s))  # 输出 "accaccacc"</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -2518,7 +2540,7 @@ O(n)</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -2660,6 +2682,91 @@ print(Solution().largestRectangleArea(heights))  # 输出 10</div>
 <p>空间复杂度：</p>
 <p>O(n)</p>
 <hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=99ac0ae7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="">栈的总结<a class="anchor-link" href="#">¶</a></h2><p>栈的本质只有一句话：</p>
+<p><strong>处理“最近未解决的问题”。</strong></p>
+<p>一、什么时候用栈</p>
+<p>1）匹配结构
+括号、成对符号。</p>
+<p>2）最近关系
+最近更大、最近更小、最近匹配。</p>
+<p>3）需要回头处理之前的元素
+当前元素出现，会影响前面元素。</p>
+<p>如果满足其中之一，优先考虑栈。</p>
+<p>二、栈题统一解题框架</p>
+<p>第一步：栈里存什么</p>
+<ul>
+<li>存值</li>
+<li>存下标（更常见）</li>
+<li>存状态</li>
+</ul>
+<p>第二步：什么时候入栈</p>
+<ul>
+<li>当前元素暂时无法确定答案</li>
+</ul>
+<p>第三步：什么时候出栈</p>
+<ul>
+<li>当前元素能解决栈顶元素的问题</li>
+</ul>
+<p>第四步：出栈时做什么</p>
+<ul>
+<li>计算答案</li>
+<li>更新区间</li>
+<li>消除元素</li>
+</ul>
+<p>所有栈题都可以用这四个问题拆解。</p>
+<p>三、三种核心模型（记住即可）</p>
+<p>1）匹配型栈
+左入栈，右匹配。</p>
+<p>典型：
+Valid Parentheses</p>
+<p>本质：栈存未闭合结构。</p>
+<p>2）单调栈（最重要）</p>
+<p>用途：</p>
+<ul>
+<li>最近更大元素</li>
+<li>最近更小元素</li>
+<li>区间贡献</li>
+<li>柱状图面积</li>
+</ul>
+<p>典型：
+Daily Temperatures
+Largest Rectangle in Histogram</p>
+<p>核心循环：</p>
+<p>for 每个元素:
+while 栈不空 且 当前元素破坏单调:
+弹出
+计算答案
+入栈</p>
+<p>本质：
+栈里存“还没找到答案的元素”。</p>
+<p>3）消除型栈</p>
+<p>当前元素和栈顶比较，相同就弹出，否则入栈。</p>
+<p>典型：
+Remove All Adjacent Duplicates In String</p>
+<p>本质：栈模拟连续结构。</p>
+<p>四、单调栈一句话记忆</p>
+<p>栈里存的是：</p>
+<p>“等一个比我更大（或更小）的人出现”。</p>
+<p>当前元素就是触发器。</p>
+<p>五、最高频技巧</p>
+<p>1）优先存下标
+因为通常需要算距离。</p>
+<p>2）想清楚：
+是找右边第一个更大？
+还是左边第一个更大？
+方向不同，遍历顺序不同。</p>
+<p>栈 = 延迟处理机制</p>
+<p>当前元素出现 → 解决之前未解决的问题。</p>
 </div>
 </div>
 </div>
