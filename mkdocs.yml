@@ -71,3 +71,10 @@ nav:
       - 14.二分查找: notebooks/14.二分查找.ipynb
       - 排序: notebooks/排序.ipynb
       - 链表: notebooks/链表.ipynb
+  - 搜广推面试手撕题:
+      - 常见面试题: notebooks/常见面试手撕题目.ipynb
+  - Pytorch常见语法总结: 
+      - 1.数学运算: notebooks/pytorch-1.数学运算.ipynb
+      - 2.张量操作: notebooks/pytorch-2.张量操作.ipynb
+      - 3.网络层和损失函数: notebooks/pytorch-3.网络层.ipynb
+      - 4.数据加载和梯度管理: notebooks/pytorch-4.数据加载和梯度管理.ipynb
