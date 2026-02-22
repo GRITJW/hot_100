@@ -1080,15 +1080,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        损失函数
+        3.损失函数
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="损失函数">
+    <nav class="md-nav" aria-label="3.损失函数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1454,15 +1454,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        损失函数
+        3.损失函数
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="损失函数">
+    <nav class="md-nav" aria-label="3.损失函数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1997,7 +1997,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="mha">MHA<a class="anchor-link" href="#mha">¶</a></h3>
+<h3 id="mha">MHA<a class="anchor-link" href="#mha">¶</a></h3><p>multiheadattention(torch.nn.Module):</p>
+<p>这表示定义一个名为 multiheadattention 的类，并且它继承自 nn.Module。nn.Module 是 PyTorch 中所有神经网络模块的基类，提供参数管理、子模块注册、前向传播接口、模型保存加载、.to(device)、.eval() 等核心功能。继承它的本质含义是：让 multiheadattention 成为一个“可训练的神经网络模块”，内部定义的层（如 nn.Linear）会自动被注册为可学习参数，从而能被优化器管理并参与反向传播。没有继承 nn.Module，这个类就只是普通 Python 类，不具备深度学习框架的功能。</p>
+<p>super().init():</p>
+<p>这行代码调用父类 nn.Module 的构造函数。作用是完成基类的初始化，包括建立参数容器、子模块字典、缓冲区结构等内部机制。如果不调用它，虽然类语法上可以运行，但模块中的参数不会被正确注册，model.parameters() 可能为空，优化器无法更新参数，模型状态也无法正确保存。简言之，它确保当前类真正成为一个“完整初始化的 PyTorch 模块”。</p>
 </div>
 </div>
 </div>
@@ -2007,7 +2010,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -2043,7 +2046,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">attention_score</span> <span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">attention_score</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">attention_score</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">value</span><span class="o">=-</span><span class="mf">1e9</span><span class="p">)</span>
+            <span class="n">attention_score</span> <span class="o">=</span> <span class="n">attention_score</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">value</span><span class="o">=-</span><span class="mf">1e9</span><span class="p">)</span>
         <span class="n">attention_weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">attention_score</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">context</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">attention_weight</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
         <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wo</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
@@ -2087,7 +2090,7 @@ class multiheadattention(torch.nn.Module):
 
         attention_score =torch.matmul(q, k.transpose(-1,-2)) / math.sqrt(self.k)
         if mask is not None:
-            attention_score = torch.masked_fill(attention_score, mask=mask, value=-1e9)
+            attention_score = attention_score.masked_fill(mask=mask, value=-1e9)
         attention_weight = torch.softmax(attention_score, dim=-1)
         context = torch.matmul(attention_weight, v).transpose(1, 2).contiguous().view(B, L, D)
         output = self.wo(context)
@@ -2134,17 +2137,23 @@ print("注意力权重的形状:", attention.shape)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="mqa">MQA<a class="anchor-link" href="#mqa">¶</a></h3>
+<h3 id="mqa">MQA<a class="anchor-link" href="#mqa">¶</a></h3><p>多查询注意力：所有查询头共用单一的键值头</p>
+<p>与原 MultiHeadAttention 的差异：</p>
+<ul>
+<li>Q: 维持与 MHA 相同，shape -&gt; [B, h, L, d_k]</li>
+<li>K/V: 仅产生 1 组共享头，shape -&gt; [B, 1, L, d_k]
+这样在推理时 KV cache 只需缓存 1 份（而非 h 份）。</li>
+</ul>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c42a71c8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c42a71c8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -2163,12 +2172,7 @@ print("注意力权重的形状:", attention.shape)</div>
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MultiQueryAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    与原 MultiHeadAttention 的差异：</span>
-<span class="sd">    - Q: 维持与 MHA 相同，shape -&gt; [B, h, L, d_k]</span>
-<span class="sd">    - K/V: 仅产生 1 组共享头，shape -&gt; [B, 1, L, d_k]</span>
-<span class="sd">    这样在推理时 KV cache 只需缓存 1 份（而非 h 份）。</span>
-<span class="sd">    """</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_head</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MultiQueryAttention</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">d_model</span> <span class="o">%</span> <span class="n">num_head</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"d_model 必须能被 num_head 整除"</span>
@@ -2181,7 +2185,6 @@ print("注意力权重的形状:", attention.shape)</div>
         <span class="c1">#   - K/V 只映射到 d_k（单头维度），且各 1 份</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wq</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>      <span class="c1"># 生成多头的 Q</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wkv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>  <span class="c1"># 生成共享的 K、V（仅 1 头的维度）</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">wo</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -2197,7 +2200,7 @@ print("注意力权重的形状:", attention.shape)</div>
         <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># [B, h, L, d_k]</span>
 
         <span class="c1"># 共享 K/V：加一个“伪 head 维”=1，方便广播到 h</span>
-        <span class="c1"># K/V: [B, L, d_k] -&gt; [B, 1, L, d_k]</span>
+        <span class="c1"># K/V: [B, L, d_k] -&gt; [B, 1, L, d_k]，unsqueeze(dim) = 在 dim 这个位置插入一个长度为1的轴</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [B, 1, L, d_k]</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [B, 1, L, d_k]</span>
 
@@ -2244,12 +2247,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class MultiQueryAttention(nn.Module):
-    """
-    与原 MultiHeadAttention 的差异：
-    - Q: 维持与 MHA 相同，shape -&gt; [B, h, L, d_k]
-    - K/V: 仅产生 1 组共享头，shape -&gt; [B, 1, L, d_k]
-    这样在推理时 KV cache 只需缓存 1 份（而非 h 份）。
-    """
+
     def __init__(self, d_model, num_head):
         super(MultiQueryAttention, self).__init__()
         assert d_model % num_head == 0, "d_model 必须能被 num_head 整除"
@@ -2262,7 +2260,6 @@ class MultiQueryAttention(nn.Module):
         #   - K/V 只映射到 d_k（单头维度），且各 1 份
         self.wq = nn.Linear(d_model, d_model)      # 生成多头的 Q
         self.wkv = nn.Linear(d_model, 2 * self.d_k)  # 生成共享的 K、V（仅 1 头的维度）
-
         self.wo = nn.Linear(d_model, d_model)
 
     def forward(self, x, mask=None):
@@ -2278,7 +2275,7 @@ class MultiQueryAttention(nn.Module):
         q = q.view(B, L, self.num_head, self.d_k).transpose(1, 2)  # [B, h, L, d_k]
 
         # 共享 K/V：加一个“伪 head 维”=1，方便广播到 h
-        # K/V: [B, L, d_k] -&gt; [B, 1, L, d_k]
+        # K/V: [B, L, d_k] -&gt; [B, 1, L, d_k]，unsqueeze(dim) = 在 dim 这个位置插入一个长度为1的轴
         k = k.unsqueeze(1)  # [B, 1, L, d_k]
         v = v.unsqueeze(1)  # [B, 1, L, d_k]
 
@@ -2323,6 +2320,21 @@ if __name__ == "__main__":
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>代码运行成功！（MQA）
+输出张量的形状: torch.Size([2, 5, 10])
+注意力权重的形状: torch.Size([2, 2, 5, 5])
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4e5ea8c8">
@@ -2331,7 +2343,17 @@ if __name__ == "__main__":
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="gqa">GQA<a class="anchor-link" href="#gqa">¶</a></h3>
+<h3 id="gqa">GQA<a class="anchor-link" href="#gqa">¶</a></h3><p>分组查询注意力：采用折中策略，将h个查询头分为g组</p>
+<p>GQA: 把 h 个 Query 头分成 g 组；组内共享 1 套 K/V</p>
+<ul>
+<li>num_head = h</li>
+<li>num_kv_head = g (1 &lt; g &lt;= h, 且 h % g == 0)</li>
+<li>形状约定：
+Q: [B, h, L, d_k]
+K,V(分组): [B, g, L, d_k]</li>
+</ul>
+<p>计算时把 Q reshape 成 [B, g, h_per_group, L, d_k]，</p>
+<p>与同组的 K,V 做注意力；最后再还原回 [B, h, L, d_k]。</p>
 </div>
 </div>
 </div>
@@ -2341,7 +2363,7 @@ if __name__ == "__main__":
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -2360,16 +2382,7 @@ if __name__ == "__main__":
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">GroupedQueryAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    GQA: 把 h 个 Query 头分成 g 组；组内共享 1 套 K/V</span>
-<span class="sd">    - num_head = h</span>
-<span class="sd">    - num_kv_head = g (1 &lt; g &lt;= h, 且 h % g == 0)</span>
-<span class="sd">    形状约定：</span>
-<span class="sd">      Q: [B, h, L, d_k]</span>
-<span class="sd">      K,V(分组): [B, g, L, d_k]</span>
-<span class="sd">    计算时把 Q reshape 成 [B, g, h_per_group, L, d_k]，</span>
-<span class="sd">    与同组的 K,V 做注意力；最后再还原回 [B, h, L, d_k]。</span>
-<span class="sd">    """</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_head</span><span class="p">,</span> <span class="n">num_kv_head</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">GroupedQueryAttention</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="k">assert</span> <span class="n">d_model</span> <span class="o">%</span> <span class="n">num_head</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"d_model 必须能被 num_head 整除"</span>
@@ -2423,7 +2436,7 @@ if __name__ == "__main__":
         <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># 要求 mask 能广播到 [B, 1 或 g, 1 或 h_per_group, L, L] 或最终 [B, h, L, L]</span>
             <span class="c1"># 最常见做法：提供 [B, 1, 1, L, L]（或 [B, 1, 1, 1, L] 的causal/pad组合）</span>
-            <span class="n">scores_g</span> <span class="o">=</span> <span class="n">scores_g</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span>
+            <span class="n">scores_g</span> <span class="o">=</span> <span class="n">scores_g</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span>
 
         <span class="n">attn_g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scores_g</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># [B, g, h_per_group, L, L]</span>
 
@@ -2431,9 +2444,10 @@ if __name__ == "__main__":
         <span class="n">context_g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">attn_g</span><span class="p">,</span> <span class="n">Vg</span><span class="p">)</span>
 
         <span class="c1"># 5) 还原回所有头：先合并 g 与 h_per_group -&gt; h</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">context_g</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>  <span class="c1"># [B, h, L, d_k]</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>              <span class="c1"># [B, L, h, d_k]</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span><span class="p">)</span>                  <span class="c1"># [B, L, d_model]</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="n">context_g</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span><span class="p">)</span>
+        <span class="c1"># context = context_g.reshape(B, self.num_head, L, self.d_k)  # [B, h, L, d_k]</span>
+        <span class="c1"># context = context.transpose(1, 2).contiguous()              # [B, L, h, d_k]</span>
+        <span class="c1"># context = context.view(B, L, self.d_model)                  # [B, L, d_model]</span>
         <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wo</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
         <span class="c1"># 同样给出注意力权重（按头展平回 [B, h, L, L]，便于对齐可视化）</span>
@@ -2464,16 +2478,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class GroupedQueryAttention(nn.Module):
-    """
-    GQA: 把 h 个 Query 头分成 g 组；组内共享 1 套 K/V
-    - num_head = h
-    - num_kv_head = g (1 &lt; g &lt;= h, 且 h % g == 0)
-    形状约定：
-      Q: [B, h, L, d_k]
-      K,V(分组): [B, g, L, d_k]
-    计算时把 Q reshape 成 [B, g, h_per_group, L, d_k]，
-    与同组的 K,V 做注意力；最后再还原回 [B, h, L, d_k]。
-    """
+
     def __init__(self, d_model, num_head, num_kv_head):
         super(GroupedQueryAttention, self).__init__()
         assert d_model % num_head == 0, "d_model 必须能被 num_head 整除"
@@ -2527,7 +2532,7 @@ class GroupedQueryAttention(nn.Module):
         if mask is not None:
             # 要求 mask 能广播到 [B, 1 或 g, 1 或 h_per_group, L, L] 或最终 [B, h, L, L]
             # 最常见做法：提供 [B, 1, 1, L, L]（或 [B, 1, 1, 1, L] 的causal/pad组合）
-            scores_g = scores_g.masked_fill(mask == 0, -1e9)
+            scores_g = scores_g.masked_fill(mask, -1e9)
 
         attn_g = torch.softmax(scores_g, dim=-1)               # [B, g, h_per_group, L, L]
 
@@ -2535,9 +2540,10 @@ class GroupedQueryAttention(nn.Module):
         context_g = torch.matmul(attn_g, Vg)
 
         # 5) 还原回所有头：先合并 g 与 h_per_group -&gt; h
-        context = context_g.reshape(B, self.num_head, L, self.d_k)  # [B, h, L, d_k]
-        context = context.transpose(1, 2).contiguous()              # [B, L, h, d_k]
-        context = context.view(B, L, self.d_model)                  # [B, L, d_model]
+        context = context_g.reshape(B, self.num_head, L, self.d_k).transpose(1, 2).reshape(B, L, self.d_model)
+        # context = context_g.reshape(B, self.num_head, L, self.d_k)  # [B, h, L, d_k]
+        # context = context.transpose(1, 2).contiguous()              # [B, L, h, d_k]
+        # context = context.view(B, L, self.d_model)                  # [B, L, d_model]
         output = self.wo(context)
 
         # 同样给出注意力权重（按头展平回 [B, h, L, L]，便于对齐可视化）
@@ -2583,6 +2589,151 @@ if __name__ == "__main__":
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=398d544f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>练习</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0b6ed202">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GQA</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">q_head</span><span class="p">,</span> <span class="n">kv_head</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_head</span> <span class="o">=</span> <span class="n">q_head</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_head</span> <span class="o">=</span> <span class="n">kv_head</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">=</span> <span class="n">dim</span> <span class="o">//</span> <span class="n">q_head</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h_per_kv</span> <span class="o">=</span> <span class="n">q_head</span> <span class="o">//</span> <span class="n">kv_head</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">wq</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wkv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">kv_head</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wo</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wq</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">kv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wkv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">kv</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kv_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kv_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">qg</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kv_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h_per_kv</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
+        <span class="n">kg</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">vg</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">qg</span><span class="p">,</span> <span class="n">kg</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">attention_scores</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span>
+        <span class="n">attention_weight</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">attention_scores</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">context</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">attention_weight</span><span class="p">,</span> <span class="n">vg</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_head</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wo</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">attention_weight</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">q_head</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">kv_head</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+<span class="n">GQA_model</span> <span class="o">=</span> <span class="n">GQA</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">q_head</span><span class="p">,</span> <span class="n">kv_head</span><span class="p">)</span>
+<span class="n">output</span><span class="p">,</span> <span class="n">attn</span> <span class="o">=</span> <span class="n">GQA_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">attn</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-4">import torch
+import torch.nn as nn
+import math
+
+class GQA(nn.Module):
+    def __init__(self, dim, q_head, kv_head):
+        super().__init__()
+        self.d = dim
+        self.q_head = q_head
+        self.kv_head = kv_head
+        self.d_k = dim // q_head
+        self.h_per_kv = q_head // kv_head
+
+        self.wq = nn.Linear(dim, dim)
+        self.wkv = nn.Linear(dim, 2*kv_head*self.d_k)
+        self.wo = nn.Linear(dim, dim)
+
+    def forward(self, x, mask = None):
+        B, L, D = x.shape
+        q = self.wq(x)
+        kv = self.wkv(x)
+        k, v = torch.chunk(kv, 2, -1)
+        q = q.view(B, L, self.q_head, self.d_k).transpose(1, 2)
+        k = k.view(B, L, self.kv_head, self.d_k).transpose(1, 2)
+        v = v.view(B, L, self.kv_head, self.d_k).transpose(1, 2)
+        qg = q.view(B, self.kv_head, self.h_per_kv, L, self.d_k)
+        kg = k.unsqueeze(2)
+        vg = v.unsqueeze(2)
+        attention_scores = torch.matmul(qg, kg.transpose(-1, -2)) / math.sqrt(self.d_k)
+        if mask is not None:
+            attention_scores = attention_scores.masked_fill(mask, -1e9)
+        attention_weight = nn.functional.softmax(attention_scores, dim = -1)
+
+        context = torch.matmul(attention_weight, vg).reshape(B, self.q_head, L, self.d_k).transpose(1, 2).reshape(B, L, self.d)
+        output = self.wo(context)
+        return output, attention_weight
+
+B = 10
+L = 25
+D = 64
+q_head = 8
+kv_head = 4
+x = torch.randn(B, L, D)
+GQA_model = GQA(D, q_head, kv_head)
+output, attn = GQA_model(x)
+print(output.shape)
+print(attn.shape)
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>torch.Size([10, 25, 64])
+torch.Size([10, 4, 2, 25, 25])
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d18dcedd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -2613,7 +2764,7 @@ if __name__ == "__main__":
 <li>auc: float
 AUC 值，取值范围 [0, 1]</li>
 </ul>
-<p>核心思想：</p>
+<p>核心思想：对标签进行排序</p>
 <ol>
 <li>按预测分数从小到大排序</li>
 <li>扫描排序后的样本序列</li>
@@ -2623,8 +2774,8 @@ AUC 值，取值范围 [0, 1]</li>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e6cdd950">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e6cdd950">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2632,7 +2783,7 @@ AUC 值，取值范围 [0, 1]</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2693,7 +2844,7 @@ AUC 值，取值范围 [0, 1]</li>
 <span class="n">auc</span>  <span class="o">=</span> <span class="n">auc_rank</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"auc:</span><span class="si">{</span><span class="n">auc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">import numpy as np
+<div class="clipboard-copy-txt" id="cell-5">import numpy as np
  
 def auc_rank(labels, scores):
  
@@ -2747,6 +2898,116 @@ print(f"auc:{auc}")</div>
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>labels:[0 1 0 0 1 0 0 1]
+scores:[0.1 0.9 0.2 0.8 1.  0.2 0.3 0.8]
+order:[0 2 5 6 3 7 1 4]
+labels_sorted:[0 0 0 0 0 1 1 1]
+n_pos:3
+n_neg:5
+auc:1.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0aed20f7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>练习</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3a0b0511">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">auc_rank</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+    <span class="n">labels_ordered</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+    <span class="n">pos_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">labels_ordered</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">neg_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">labels_ordered</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">negative</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">positive</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">labels_ordered</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">negative</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">positive</span> <span class="o">+=</span> <span class="n">negative</span>
+    <span class="n">auc</span> <span class="o">=</span> <span class="n">positive</span> <span class="o">/</span> <span class="p">(</span><span class="n">pos_sample</span> <span class="o">*</span> <span class="n">neg_sample</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">auc</span>
+<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+<span class="n">auc</span>  <span class="o">=</span> <span class="n">auc_rank</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"auc:</span><span class="si">{</span><span class="n">auc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-6">import numpy as np
+def auc_rank(labels, scores):
+    labels = np.array(labels)
+    scores = np.array(scores)
+    order = np.argsort(scores)
+    labels_ordered = labels[order]
+    pos_sample = np.sum(labels_ordered == 1)
+    neg_sample = np.sum(labels_ordered == 0)
+    negative = 0
+    positive = 0
+    for i in labels_ordered:
+        if i == 0:
+            negative += 1
+        else:
+            positive += negative
+    auc = positive / (pos_sample * neg_sample)
+    return auc
+label = [0, 1, 0, 0, 1, 0, 0, 1]
+q = [0.1, 0.9, 0.2, 0.8, 1, 0.2, 0.3, 0.8]
+auc  = auc_rank(label, q)
+print(f"auc:{auc}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>auc:1.0
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=70c6e291">
@@ -2795,10 +3056,10 @@ print(f"auc:{auc}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2892,7 +3153,7 @@ print(f"auc:{auc}")</div>
 <span class="n">user_id</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gauc_rank</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">weight_type</span><span class="o">=</span><span class="s1">'impression'</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">import numpy as np
+<div class="clipboard-copy-txt" id="cell-7">import numpy as np
 from collections import defaultdict
  
 def gauc_rank(user_ids, labels, scores, weight_type='impression'):
@@ -2996,261 +3257,18 @@ user_auc_dict:{1: 1.0, 2: 1.0, 3: 0.5}
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=98a88cc9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=69b0e056">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="">损失函数<a class="anchor-link" href="#">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=795ef5df">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="bce">BCE二类交叉熵实现<a class="anchor-link" href="#bce">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=88560854">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
- 
-<span class="k">class</span><span class="w"> </span><span class="nc">BCE_Logits_Loss</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    一个数值稳定的、基于 Logits 的二元交叉熵损失函数实现。</span>
-<span class="sd">    """</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reduction</span> <span class="o">=</span> <span class="s1">'mean'</span><span class="p">):</span>
-
-        <span class="k">if</span> <span class="n">reduction</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'sum'</span><span class="p">,</span> <span class="s1">'none'</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"reduction 必须是 'mean', 'sum', 或 'none'"</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">=</span> <span class="n">reduction</span>
-    
-    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_pred_logits</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">y_pred_logits</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">y_true</span>
- 
-        <span class="c1"># 直接套用数值稳定的BCE公式</span>
-        <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
- 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"mean"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"sum"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># self.reduction == 'none'</span>
-            <span class="k">return</span> <span class="n">per_sample_loss</span>
-        
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="n">mse_loss</span> <span class="o">=</span> <span class="n">BCE_Logits_Loss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s1">'mean'</span><span class="p">)</span>
-<span class="n">loss</span> <span class="o">=</span> <span class="n">mse_loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-6">import numpy as np
- 
-class BCE_Logits_Loss:
-    """
-    一个数值稳定的、基于 Logits 的二元交叉熵损失函数实现。
-    """
-    def __init__(self, reduction = 'mean'):
-
-        if reduction not in ['mean', 'sum', 'none']:
-            raise ValueError("reduction 必须是 'mean', 'sum', 或 'none'")
-        self.reduction = reduction
-    
-    def __call__(self, y_pred_logits: np.ndarray, y_true: np.ndarray):
-        x = y_pred_logits
-        y = y_true
- 
-        # 直接套用数值稳定的BCE公式
-        per_sample_loss = np.maximum(x, 0) - x * y + np.log(1 + np.exp(-np.abs(x)))
- 
-        if self.reduction == "mean":
-            return np.mean(per_sample_loss)
-        elif self.reduction == "sum":
-            return np.sum(per_sample_loss)
-        else: # self.reduction == 'none'
-            return per_sample_loss
-        
-x = np.array([5,-4,5,-6])
-y = np.array([1,0,1,0])
-
-mse_loss = BCE_Logits_Loss(reduction='mean')
-loss = mse_loss(x,y)
-
-print(f"bce损失为{loss}")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>bce损失为0.008514077508444018
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f7221bec">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="mse">MSE<a class="anchor-link" href="#mse">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b6788a7c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
- 
-<span class="k">class</span><span class="w"> </span><span class="nc">MSE_Loss</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    一个数值稳定的、基于 Logits 的二元交叉熵损失函数实现。</span>
-<span class="sd">    """</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reduction</span> <span class="o">=</span> <span class="s1">'mean'</span><span class="p">):</span>
-
-        <span class="k">if</span> <span class="n">reduction</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'sum'</span><span class="p">,</span> <span class="s1">'none'</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"reduction 必须是 'mean', 'sum', 或 'none'"</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">=</span> <span class="n">reduction</span>
-    
-    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_pred_logits</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-        
-        <span class="n">x</span> <span class="o">=</span> <span class="n">y_pred_logits</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">y_true</span>
- 
-        <span class="c1"># 直接套用数值稳定的BCE公式</span>
-        <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
- 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"mean"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"sum"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># self.reduction == 'none'</span>
-            <span class="k">return</span> <span class="n">per_sample_loss</span>
-        
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-
-<span class="n">mse_loss</span> <span class="o">=</span> <span class="n">MSE_Loss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s1">'mean'</span><span class="p">)</span>
-<span class="n">loss</span> <span class="o">=</span> <span class="n">mse_loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"mse损失为</span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-7">import numpy as np
- 
-class MSE_Loss:
-    """
-    一个数值稳定的、基于 Logits 的二元交叉熵损失函数实现。
-    """
-    def __init__(self, reduction = 'mean'):
-
-        if reduction not in ['mean', 'sum', 'none']:
-            raise ValueError("reduction 必须是 'mean', 'sum', 或 'none'")
-        self.reduction = reduction
-    
-    def __call__(self, y_pred_logits: np.ndarray, y_true: np.ndarray):
-        
-        x = y_pred_logits
-        y = y_true
- 
-        # 直接套用数值稳定的BCE公式
-        per_sample_loss = (y-x)**2
- 
-        if self.reduction == "mean":
-            return np.mean(per_sample_loss)
-        elif self.reduction == "sum":
-            return np.sum(per_sample_loss)
-        else: # self.reduction == 'none'
-            return per_sample_loss
-        
-x = np.array([1,2,3,4])
-y = np.array([1,2,4,4])
-
-mse_loss = MSE_Loss(reduction='mean')
-loss = mse_loss(x,y)
-
-print(f"mse损失为{loss}")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>mse损失为0.25
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=854d9858">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="focal_loss">focal_Loss<a class="anchor-link" href="#focal_loss">¶</a></h3>
+<p>练习</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d36c7061">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4d40bfba">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -3269,118 +3287,437 @@ print(f"mse损失为{loss}")</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">FocalLoss</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    一个简洁且高效的 Focal Loss 实现，用于处理类别不平衡问题。</span>
-<span class="sd">    </span>
-<span class="sd">    该实现接收模型输出的概率 (经过 Sigmoid 激活后) 作为输入。</span>
-<span class="sd">    """</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> 
-                 <span class="n">reduction</span> <span class="o">=</span> <span class="s1">'mean'</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        初始化 Focal Loss。</span>
-
-<span class="sd">        参数:</span>
-<span class="sd">            alpha (float): 平衡参数，用于调节正负样本的权重。论文推荐 0.25。</span>
-<span class="sd">            gamma (float): 聚焦参数，用于动态调整样本权重，使模型聚焦于难分样本。论文推荐 2.0。</span>
-<span class="sd">            reduction (str): 指定损失的聚合方式 ('mean', 'sum', 'none')。</span>
-<span class="sd">            eps (float): 一个极小的数值，用于避免 log(0) 导致的计算溢出。</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="n">reduction</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'mean'</span><span class="p">,</span> <span class="s1">'sum'</span><span class="p">,</span> <span class="s1">'none'</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"reduction 必须是 'mean', 'sum', 或 'none'"</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">=</span> <span class="n">reduction</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+ 
+<span class="k">def</span><span class="w"> </span><span class="nf">gauc_rank</span><span class="p">(</span><span class="n">user_ids</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">weight_type</span><span class="o">=</span><span class="s1">'impression'</span><span class="p">):</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_pred_prob</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
-
-        <span class="c1"># 1. 裁剪概率值以保证数值稳定性</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">y_pred_prob</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
-
-        <span class="c1"># 2. 计算正负样本的损失项，并用 y_true 和 (1-y_true) 作为掩码</span>
-        <span class="c1"># 正样本 (y_true=1) 的损失部分</span>
-        <span class="n">loss_pos</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">y_true</span>
+    <span class="n">user_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">user_ids</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+    <span class="n">user_sample_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">user_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">user_ids</span><span class="p">):</span>
+        <span class="n">user_sample_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+    <span class="n">user_auc_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">total_weighted_auc</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">total_weight</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">sample_indices</span> <span class="ow">in</span> <span class="n">user_sample_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">user_labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">sample_indices</span><span class="p">]</span>
+        <span class="n">user_scores</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="n">sample_indices</span><span class="p">]</span>
+        <span class="n">n_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">user_labels</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">n_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">user_labels</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_pos</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n_neg</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">user_scores</span><span class="p">)</span>
+        <span class="n">sorted_labels</span> <span class="o">=</span> <span class="n">user_labels</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+        <span class="n">neg_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">correct_pairs</span> <span class="o">=</span> <span class="mf">0.0</span>
         
-        <span class="c1"># 负样本 (y_true=0) 的损失部分</span>
-        <span class="n">loss_neg</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">sorted_labels</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">correct_pairs</span> <span class="o">+=</span> <span class="n">neg_count</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">neg_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">user_auc</span> <span class="o">=</span> <span class="n">correct_pairs</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_pos</span> <span class="o">*</span> <span class="n">n_neg</span><span class="p">)</span>
+        <span class="n">user_auc_dict</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_auc</span>
+        <span class="k">if</span> <span class="n">weight_type</span> <span class="o">==</span> <span class="s1">'impression'</span><span class="p">:</span>
+            <span class="n">weight</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample_indices</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">weight_type</span> <span class="o">==</span> <span class="s1">'uniform'</span><span class="p">:</span>
+            <span class="n">weight</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown weight_type: </span><span class="si">{</span><span class="n">weight_type</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">total_weighted_auc</span> <span class="o">+=</span> <span class="n">user_auc</span> <span class="o">*</span> <span class="n">weight</span>
+        <span class="n">total_weight</span> <span class="o">+=</span> <span class="n">weight</span>
+    <span class="k">if</span> <span class="n">total_weight</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">user_auc_dict</span>
+    <span class="n">gauc</span> <span class="o">=</span> <span class="n">total_weighted_auc</span> <span class="o">/</span> <span class="n">total_weight</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"gauc:</span><span class="si">{</span><span class="n">gauc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"user_auc_dict:</span><span class="si">{</span><span class="n">user_auc_dict</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gauc</span><span class="p">,</span> <span class="n">user_auc_dict</span>
 
-        <span class="c1"># 3. 将两部分损失相加得到每个样本的最终损失</span>
-        <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="n">loss_pos</span> <span class="o">+</span> <span class="n">loss_neg</span>
+<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]</span>
+<span class="n">user_id</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gauc_rank</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">weight_type</span><span class="o">=</span><span class="s1">'impression'</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-8">import numpy as np
+from collections import defaultdict
+ 
+def gauc_rank(user_ids, labels, scores, weight_type='impression'):
+    
+    user_ids = np.asarray(user_ids)
+    labels = np.asarray(labels)
+    scores = np.asarray(scores)
+    user_sample_dict = defaultdict(list)
+    for idx, user_id in enumerate(user_ids):
+        user_sample_dict[user_id].append(idx)
+    user_auc_dict = {}
+    total_weighted_auc = 0.0
+    total_weight = 0.0
+    for user_id, sample_indices in user_sample_dict.items():
+        user_labels = labels[sample_indices]
+        user_scores = scores[sample_indices]
+        n_pos = np.sum(user_labels == 1)
+        n_neg = np.sum(user_labels == 0)
+        if n_pos == 0 or n_neg == 0:
+            continue
+        order = np.argsort(user_scores)
+        sorted_labels = user_labels[order]
+        neg_count = 0
+        correct_pairs = 0.0
+        
+        for label in sorted_labels:
+            if label == 1:
+                correct_pairs += neg_count
+            else:
+                neg_count += 1
+        user_auc = correct_pairs / (n_pos * n_neg)
+        user_auc_dict[user_id] = user_auc
+        if weight_type == 'impression':
+            weight = len(sample_indices)
+        elif weight_type == 'uniform':
+            weight = 1.0
+        else:
+            raise ValueError(f"Unknown weight_type: {weight_type}")
+        total_weighted_auc += user_auc * weight
+        total_weight += weight
+    if total_weight == 0:
+        return 0.5, user_auc_dict
+    gauc = total_weighted_auc / total_weight
+    print(f"gauc:{gauc}")
+    print(f"user_auc_dict:{user_auc_dict}")
+    return gauc, user_auc_dict
 
-        <span class="c1"># 4. 根据指定的 reduction 策略聚合损失</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"mean"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"sum"</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># self.reduction == 'none'</span>
-            <span class="k">return</span> <span class="n">per_sample_loss</span>
+label = [0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0]
+q = [0.1, 0.9, 0.2, 0.8, 1, 0.2, 0.3, 0.9, 0.7, 0.9, 0.7]
+user_id = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3]
+_, _ = gauc_rank(user_id, label, q, weight_type='impression')
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=98a88cc9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="3">3.损失函数<a class="anchor-link" href="#3">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=795ef5df">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="bce">BCE二类交叉熵实现<a class="anchor-link" href="#bce">¶</a></h3><p>1. 基础 BCE 公式</p>
+<p>BCE 的标准形式是基于概率定义的。假设 $y$ 为真实标签 (0 或 1)，$p$ 为模型预测为 1 的概率（即 Sigmoid 的输出），则损失 $L$ 为：</p>
+<p>$$L = -[y \cdot \log(p) + (1-y) \cdot \log(1-p)]$$</p>
+<p>这个公式非常直观，但存在一个致命缺陷：当 $p$ 趋近于 0 或 1 时，$\\log(p)$ 或 $\\log(1-p)$ 会导致 <code>log(0)</code>，产生负无穷大的结果，这在计算上是灾难性的。</p>
+<p>2. 数值稳定的 BCE 公式</p>
+<p>为了解决这个问题，我们不应该使用模型输出的概率 $p$，而应直接使用未经 Sigmoid 激活的原始输出——<strong>Logits</strong>，我们记为 $x$。</p>
+<p>通过将 $p = \\text{sigmoid}(x)$ 代入原始公式并进行数学推导与化简，我们可以得到一个等价且高度数值稳定的形式：</p>
+<p>$$L = \max(x, 0) - x \cdot y + \log(1 + e^{-|x|})$$</p>
+<p>这个公式的核心优势在于，指数项中的 $-|x|$ 永远是非正数，这使得 $e^{-|x|}$ 的结果被限制在 $(0, 1]$ 区间内，从根本上避免了浮点数上溢的风险。它不依赖任何 <code>epsilon</code> 裁剪之类的技巧，是数值计算上的最优解。</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bae18f09">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">BCE_logits_Loss</span><span class="p">(</span><span class="n">lables</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">):</span>
+    <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_predict</span> <span class="o">*</span> <span class="n">lables</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_predict</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCE_logits_Loss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">bce_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-9">import numpy as np
+def BCE_logits_Loss(lables, y_predict):
+    per_sample_loss = np.maximum(y_predict, 0) - y_predict * lables + np.log(1 + np.exp(-np.abs(y_predict)))
+    return np.mean(per_sample_loss)
+
+x = np.array([5,-4,5,-6])
+y = np.array([1,0,1,0])
+
+bce_loss = BCE_logits_Loss(y,x)
+
+print(f"bce损失为{bce_loss}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>bce损失为0.008514077508444018
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c2c53b0f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">BCE_logits_Loss</span><span class="p">(</span><span class="n">lables</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y_predict</span><span class="p">))</span>
+    <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">lables</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">lables</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCE_logits_Loss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">bce_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-10">import numpy as np
+def BCE_logits_Loss(lables, y_predict):
+    p = 1 / (1 + np.exp(-y_predict))
+    per_sample_loss = -(lables * np.log(p) + (1 - lables) * np.log(1 - p))
+    return np.mean(per_sample_loss)
+
+x = np.array([5,-4,5,-6])
+y = np.array([1,0,1,0])
+
+bce_loss = BCE_logits_Loss(y,x)
+
+print(f"bce损失为{bce_loss}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>bce损失为0.008514077508444016
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f7221bec">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="mse">MSE<a class="anchor-link" href="#mse">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=22827680">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">MSE_Loss</span><span class="p">(</span><span class="n">lables</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">):</span>
+    <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">lables</span><span class="o">-</span><span class="n">y_predict</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="n">mes_loss</span> <span class="o">=</span> <span class="n">MSE_Loss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">mes_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-11">import numpy as np
+def MSE_Loss(lables, y_predict):
+    per_sample_loss = (lables-y_predict)**2
+    return np.mean(per_sample_loss)
+
+x = np.array([1,2,3,4])
+y = np.array([1,2,4,4])
+
+mes_loss = MSE_Loss(y,x)
+
+print(f"bce损失为{mes_loss}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>bce损失为0.25
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=854d9858">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="focal_loss">focal_Loss<a class="anchor-link" href="#focal_loss">¶</a></h3><p>当面临类别极度不平衡的数据时，标准的交叉熵损失会因大量易分样本的主导而失效。Focal Loss 通过引入动态调制因子，强制模型聚焦于训练过程中的“硬核”样本，是解决此类问题的关键技术。</p>
+<p>核心公式回顾</p>
+<p>Focal Loss 在标准交叉熵的基础上，增加了权重因子 $\\alpha$ 和调制因子 $(1-p\_t)^\gamma$。其统一形式简洁而强大：</p>
+<p>$$L_{\text{focal}} = -\alpha_t (1-p_t)^\gamma \log(p_t)$$</p>
+<p>其中：</p>
+<ul>
+<li>$p\_t$ 定义为：当真实标签 $y=1$ 时，$p\_t=p$；当 $y=0$ 时，$p\_t=1-p$。这里的 $p$ 是模型预测为正类的概率。</li>
+<li>$\\alpha\_t$ 是类别平衡参数，$\\gamma$ 是聚焦参数，用于抑制易分样本的损失贡献。</li>
+</ul>
+<p>类别平衡参数 α 用于调节正负类别的整体权重比例：当正样本稀少时应增大 α（如 0.5→0.75 甚至更高），提高正样本在总损失中的占比；若负样本更重要或误报代价更高，则减小 α。本质是对“类别频率不平衡”进行线性重加权。聚焦参数 γ 用于控制对易分样本的抑制强度：γ=0 时退化为普通交叉熵；γ 越大（常用 1~3，默认 2），对高置信度样本的损失衰减越强，模型越专注于难样本；但过大可能导致训练不稳定或收敛变慢。实践中通常先根据类别比例确定 α，再在 γ∈[1,3] 内调节，以验证集表现为准微调。</p>
+<p>该实现接收模型输出的概率 (经过 Sigmoid 激活后) 作为输入。</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d36c7061">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">focal_loss_prob</span><span class="p">(</span><span class="n">y_pred_prob</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">"mean"</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">y_pred_prob</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">eps</span><span class="p">)</span>
+
+    <span class="n">pt</span> <span class="o">=</span> <span class="n">y_true</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">alpha_t</span> <span class="o">=</span> <span class="n">y_true</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span>
+
+    <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">alpha_t</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pt</span><span class="p">)</span> <span class="o">**</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s2">"mean"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s2">"sum"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">loss</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.7</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">focal_loss损失为</span> <span class="o">=</span> <span class="n">focal_loss_prob</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
-<span class="n">mse_loss</span> <span class="o">=</span> <span class="n">FocalLoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s1">'mean'</span><span class="p">)</span>
-<span class="n">loss</span> <span class="o">=</span> <span class="n">mse_loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"focal_bce损失为</span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"focal_loss损失为</span><span class="si">{</span><span class="n">focal_loss损失为</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8">import numpy as np
+<div class="clipboard-copy-txt" id="cell-12">import numpy as np
 
-class FocalLoss:
-    """
-    一个简洁且高效的 Focal Loss 实现，用于处理类别不平衡问题。
-    
-    该实现接收模型输出的概率 (经过 Sigmoid 激活后) 作为输入。
-    """
-    def __init__(self, alpha: float = 0.25, gamma: float = 2.0, 
-                 reduction = 'mean', eps: float = 1e-9):
-        """
-        初始化 Focal Loss。
+def focal_loss_prob(y_pred_prob, y_true, alpha=0.25, gamma=2.0, reduction="mean", eps=1e-9):
+    p = np.clip(y_pred_prob, eps, 1 - eps)
 
-        参数:
-            alpha (float): 平衡参数，用于调节正负样本的权重。论文推荐 0.25。
-            gamma (float): 聚焦参数，用于动态调整样本权重，使模型聚焦于难分样本。论文推荐 2.0。
-            reduction (str): 指定损失的聚合方式 ('mean', 'sum', 'none')。
-            eps (float): 一个极小的数值，用于避免 log(0) 导致的计算溢出。
-        """
-        if reduction not in ['mean', 'sum', 'none']:
-            raise ValueError("reduction 必须是 'mean', 'sum', 或 'none'")
-        self.alpha = alpha
-        self.gamma = gamma
-        self.reduction = reduction
-        self.eps = eps
-    
-    def __call__(self, y_pred_prob: np.ndarray, y_true: np.ndarray) -&gt; np.ndarray | float:
+    pt = y_true * p + (1 - y_true) * (1 - p)
+    alpha_t = y_true * alpha + (1 - y_true) * (1 - alpha)
 
-        # 1. 裁剪概率值以保证数值稳定性
-        p = np.clip(y_pred_prob, self.eps, 1.0 - self.eps)
+    loss = -alpha_t * (1 - pt) ** gamma * np.log(pt)
 
-        # 2. 计算正负样本的损失项，并用 y_true 和 (1-y_true) 作为掩码
-        # 正样本 (y_true=1) 的损失部分
-        loss_pos = -self.alpha * ((1 - p) ** self.gamma) * np.log(p) * y_true
-        
-        # 负样本 (y_true=0) 的损失部分
-        loss_neg = -(1 - self.alpha) * (p ** self.gamma) * np.log(1 - p) * (1 - y_true)
-
-        # 3. 将两部分损失相加得到每个样本的最终损失
-        per_sample_loss = loss_pos + loss_neg
-
-        # 4. 根据指定的 reduction 策略聚合损失
-        if self.reduction == "mean":
-            return np.mean(per_sample_loss)
-        elif self.reduction == "sum":
-            return np.sum(per_sample_loss)
-        else: # self.reduction == 'none'
-            return per_sample_loss
+    if reduction == "mean":
+        return np.mean(loss)
+    elif reduction == "sum":
+        return np.sum(loss)
+    else:
+        return loss
 
 x = np.array([0.9,0.1,0.9,0.7])
 y = np.array([1,0,1,0])
+focal_loss损失为 = focal_loss_prob(x,y)
 
-mse_loss = FocalLoss(reduction='mean')
-loss = mse_loss(x,y)
-
-print(f"focal_bce损失为{loss}")</div>
+print(f"focal_loss损失为{focal_loss损失为}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>focal_loss损失为0.11094425300887605
+</pre>
 </div>
 </div>
 </div>
@@ -3406,7 +3743,7 @@ print(f"focal_bce损失为{loss}")</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3431,8 +3768,7 @@ print(f"focal_bce损失为{loss}")</div>
 <span class="sd">        batch_norm (bool): 是否使用批归一化</span>
 <span class="sd">    """</span>
     
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dims</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> 
-                 <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">batch_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dims</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">batch_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MLP</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_dim</span>
@@ -3454,9 +3790,9 @@ print(f"focal_bce损失为{loss}")</div>
             
             <span class="c1"># 如果不是最后一层，添加激活函数、批归一化和dropout</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">layer_dims</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="c1"># 批归一化（在激活函数之前）</span>
+                <span class="c1"># 批归一化</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_norm</span><span class="p">:</span>
-                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">layer_dims</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>
+                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">layer_dims</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>
                 
                 <span class="c1"># 激活函数</span>
                 <span class="k">if</span> <span class="n">activation</span> <span class="o">==</span> <span class="s1">'relu'</span><span class="p">:</span>
@@ -3492,18 +3828,9 @@ print(f"focal_bce损失为{loss}")</div>
                     <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        前向传播过程</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            x (torch.Tensor): 输入张量，形状为 (batch_size, input_dim)</span>
-<span class="sd">        </span>
-<span class="sd">        Returns:</span>
-<span class="sd">            torch.Tensor: 输出张量，形状为 (batch_size, output_dim)</span>
-<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9">import torch
+<div class="clipboard-copy-txt" id="cell-13">import torch
 import torch.nn as nn
 
 class MLP(nn.Module):
@@ -3518,8 +3845,7 @@ class MLP(nn.Module):
         batch_norm (bool): 是否使用批归一化
     """
     
-    def __init__(self, input_dim, hidden_dims, output_dim, 
-                 activation='relu', dropout_rate=0.0, batch_norm=False):
+    def __init__(self, input_dim, hidden_dims, output_dim, activation='relu', dropout_rate=0.0, batch_norm=False):
         super(MLP, self).__init__()
         
         self.input_dim = input_dim
@@ -3541,9 +3867,9 @@ class MLP(nn.Module):
             
             # 如果不是最后一层，添加激活函数、批归一化和dropout
             if i &lt; len(layer_dims) - 2:
-                # 批归一化（在激活函数之前）
+                # 批归一化
                 if self.batch_norm:
-                    layers.append(nn.BatchNorm1d(layer_dims[i + 1]))
+                    layers.append(nn.LayerNorm(layer_dims[i + 1]))
                 
                 # 激活函数
                 if activation == 'relu':
@@ -3579,31 +3905,22 @@ class MLP(nn.Module):
                     nn.init.constant_(module.bias, 0)
     
     def forward(self, x):
-        """
-        前向传播过程
-        
-        Args:
-            x (torch.Tensor): 输入张量，形状为 (batch_size, input_dim)
-        
-        Returns:
-            torch.Tensor: 输出张量，形状为 (batch_size, output_dim)
-        """
         return self.network(x)</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=96dfec23">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=96dfec23">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3661,7 +3978,7 @@ class MLP(nn.Module):
 <span class="n">y</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10">import torch
+<div class="clipboard-copy-txt" id="cell-14">import torch
 import torch.nn as nn
 # 常见顺序是：Linear -&gt; LayerNorm -&gt; Activation -&gt; Dropout
 class MLP(nn.Module):
@@ -3713,30 +4030,6 @@ print(y)
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor([[[ 2.0681,  1.5619,  0.0909, -0.9272, -0.8474, -1.1844,  0.3646,
-          -0.8629, -1.4969,  0.1424, -0.8461,  0.8752, -0.1210,  1.0228,
-          -0.0918, -1.0681,  2.0352,  0.7658,  0.7031,  0.6318,  1.5409,
-          -0.9169,  0.3927, -1.3012,  0.5303, -1.2943, -1.3301, -0.8466,
-           2.1570,  0.6033,  0.2530,  1.4443],
-         [ 0.4359,  0.5136,  1.7633, -1.3619,  0.7331,  0.5869, -0.7370,
-          -0.1460,  0.8217,  0.5016, -0.6113,  1.1776,  0.4734,  1.2617,
-          -0.3058,  0.2861, -1.4580, -0.0126, -0.3054,  1.1936,  1.0763,
-           1.4527,  0.2317,  0.1980, -0.0380, -0.1888,  0.3183, -0.8052,
-          -1.8534,  0.8622, -0.7915, -1.5688]]])
-tensor([[[-0.8437],
-         [-0.1871]]], grad_fn=&lt;ViewBackward0&gt;)
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=660a23e7">
@@ -3755,10 +4048,10 @@ tensor([[[-0.8437],
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3839,7 +4132,7 @@ tensor([[[-0.8437],
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">import torch 
+<div class="clipboard-copy-txt" id="cell-15">import torch 
 from torch import nn, optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
@@ -3921,30 +4214,30 @@ if __name__ == '__main__':
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>epoch[1], step[0], loss:2.30328369140625
-epoch[1], step[10], loss:2.25201416015625
-epoch[1], step[20], loss:2.155517578125
-epoch[1], step[30], loss:1.97998046875
-epoch[1], step[40], loss:1.7359619140625
-epoch[1], step[50], loss:1.3389091491699219
-epoch[1], step[60], loss:0.8904438018798828
-epoch[1], step[70], loss:0.7717809677124023
-epoch[1], step[80], loss:0.7068207263946533
-epoch[1], step[90], loss:0.5415992736816406
-epoch[1], step[100], loss:0.4719715714454651
-epoch[1], step[110], loss:0.47473612427711487
-epoch[1], step[120], loss:0.37358441948890686
-epoch[1], step[130], loss:0.4280766248703003
-epoch[1], step[140], loss:0.42194801568984985
-epoch[1], step[150], loss:0.3845781683921814
-epoch[1], step[160], loss:0.29847246408462524
-epoch[1], step[170], loss:0.41989171504974365
-epoch[1], step[180], loss:0.36476024985313416
-epoch[1], step[190], loss:0.32573196291923523
-epoch[1], step[200], loss:0.3932267427444458
-epoch[1], step[210], loss:0.3183577060699463
-epoch[1], step[220], loss:0.2995343804359436
-epoch[1], step[230], loss:0.293863445520401
+<pre>epoch[1], step[0], loss:2.30487060546875
+epoch[1], step[10], loss:2.2474365234375
+epoch[1], step[20], loss:2.1429443359375
+epoch[1], step[30], loss:1.953338623046875
+epoch[1], step[40], loss:1.589691162109375
+epoch[1], step[50], loss:1.1607837677001953
+epoch[1], step[60], loss:0.8270969390869141
+epoch[1], step[70], loss:0.7493977546691895
+epoch[1], step[80], loss:0.6877131462097168
+epoch[1], step[90], loss:0.5060857534408569
+epoch[1], step[100], loss:0.49372947216033936
+epoch[1], step[110], loss:0.503061830997467
+epoch[1], step[120], loss:0.4905708432197571
+epoch[1], step[130], loss:0.32233864068984985
+epoch[1], step[140], loss:0.44921380281448364
+epoch[1], step[150], loss:0.46268683671951294
+epoch[1], step[160], loss:0.36531856656074524
+epoch[1], step[170], loss:0.29948681592941284
+epoch[1], step[180], loss:0.33051609992980957
+epoch[1], step[190], loss:0.34873807430267334
+epoch[1], step[200], loss:0.36760321259498596
+epoch[1], step[210], loss:0.31475210189819336
+epoch[1], step[220], loss:0.3854420781135559
+epoch[1], step[230], loss:0.36614060401916504
 </pre>
 </div>
 </div>
