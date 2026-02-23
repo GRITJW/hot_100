@@ -12,8 +12,10 @@
         <meta name="author" content="GlenTT">
       
       
-        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD/">
+        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/">
       
+      
+        <link rel="prev" href="../pytorch-3.%E7%BD%91%E7%BB%9C%E5%B1%82/">
       
       
       
@@ -25,7 +27,7 @@
     
     
       
-        <title>Pytorch 4.数据加载 - Hot100 算法笔记</title>
+        <title>4.数据加载和梯度管理 - Hot100 算法笔记</title>
       
     
     
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pytorch 4.数据加载
+              4.数据加载和梯度管理
             
           </span>
         </div>
@@ -252,10 +254,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../pytorch-1.%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/" class="md-tabs__link">
           
   
@@ -958,28 +962,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -997,7 +1004,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1096,10 +1103,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../pytorch-4.数据加载和梯度管理.ipynb" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.数据加载和梯度管理
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1115,6 +1147,118 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据加载
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据加载">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#torchutilsdatadataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        torch.utils.data.Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torchutilsdatatensordataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        torch.utils.data.TensorDataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torchutilsdatasubset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        torch.utils.data.Subset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torchutilsdatadataloader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        torch.utils.data.DataLoader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torchutilsdataiterabledataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        torch.utils.data.IterableDataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sampler 体系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度管理
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1262,7 +1406,7 @@
 
 
 
-  <h1>Pytorch 4.数据加载</h1>
+  <h1>4.数据加载和梯度管理</h1>
 
 <script>
 (function (global, factory) {

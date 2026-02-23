@@ -1162,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pytorch-4.数据加载和梯度管理.ipynb" class="md-nav__link">
+      <a href="../pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/" class="md-nav__link">
         
   
   
@@ -1690,13 +1690,84 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>方法（method）</strong> 和 <strong>属性（attribute）</strong>。</p>
+<p>是否带 <code>()</code>，取决于它是“需要执行的函数”，还是“已经存在的数据”。</p>
+<p>一、什么时候要用 <code>()</code>？</p>
+<p>当它是一个“方法”时，需要用括号。</p>
+<p>方法的本质是：</p>
+<p><strong>需要执行一次计算或操作，才能得到结果。</strong></p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">bool</span><span class="p">()</span>
+<span class="n">y</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+<span class="n">y</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+<p>这些都在做“动作”：</p>
+<ul>
+<li>类型转换</li>
+<li>形状变换</li>
+<li>计算求和</li>
+<li>生成新张量</li>
+</ul>
+<p>它们必须被调用，因此需要 <code>()</code>。</p>
+<p>可以这样记忆：</p>
+<p>如果它“动起来了”，就要加括号。</p>
+<p>二、什么时候不用 <code>()</code>？</p>
+<p>当它是一个“属性”时，不用括号。</p>
+<p>属性的本质是：</p>
+<p><strong>对象已经拥有的描述信息。</strong></p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">y</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">y</span><span class="o">.</span><span class="n">device</span>
+<span class="n">y</span><span class="o">.</span><span class="n">ndim</span>
+<span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+<p>注意：</p>
+<ul>
+<li><code>shape</code> 是属性 → 不加括号</li>
+<li><code>dtype</code> 是属性</li>
+<li><code>device</code> 是属性</li>
+</ul>
+<p>它们只是读取元信息，不做计算。</p>
+<p>可以理解为：</p>
+<p>它只是“查看标签”，不是“执行操作”。</p>
+<p>三、一个判断技巧（非常实用）</p>
+<p>如果它需要参数，几乎一定是方法。</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+<p>如果你看到有参数，就必然要加 <code>()</code>。</p>
+<p>四、为什么 <code>size()</code> 要加括号，但 <code>shape</code> 不用？</p>
+<p>这是 PyTorch 的接口设计问题。</p>
+<ul>
+<li><code>shape</code> 是属性（返回 tuple）</li>
+<li><code>size()</code> 是方法（功能类似）</li>
+</ul>
+<p>本质一样，但实现方式不同。</p>
+<p>因此：</p>
+<div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+<p>都可以获得尺寸。</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1723,6 +1794,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="c1"># torch.mul: 对两个张量逐元素相乘（Hadamard积），等价于 a * b</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>          <span class="c1"># tensor([ 4., 10., 18.])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> 
 
 
 <span class="c1"># torch.div: 对两个张量逐元素相除，等价于 a / b</span>
@@ -1742,6 +1814,7 @@ print(torch.sub(a, b))          # tensor([-3., -3., -3.])
 
 # torch.mul: 对两个张量逐元素相乘（Hadamard积），等价于 a * b
 print(torch.mul(a, b))          # tensor([ 4., 10., 18.])
+print(a*b) 
 
 
 # torch.div: 对两个张量逐元素相除，等价于 a / b
@@ -1760,6 +1833,7 @@ print(torch.div(a, b))          # tensor([0.2500, 0.4000, 0.5000])</div>
 <pre>tensor([5., 7., 9.])
 tensor([-3., -3., -3.])
 tensor([ 4., 10., 18.])
+tensor([ 4., 10., 18.])
 tensor([0.2500, 0.4000, 0.5000])
 </pre>
 </div>
@@ -1773,7 +1847,7 @@ tensor([0.2500, 0.4000, 0.5000])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1828,7 +1902,7 @@ tensor(32.)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -1893,7 +1967,7 @@ tensor([[19., 22.],
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1907,6 +1981,7 @@ tensor([[19., 22.],
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.pow: 对张量逐元素求幂，即 x^n</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>          <span class="c1"># tensor([ 4.,  9., 16.])</span>
 
@@ -1917,10 +1992,10 @@ tensor([[19., 22.],
 
 
 <span class="c1"># torch.sqrt: 对张量逐元素计算平方根，即 √x</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">])))</span>
-<span class="c1"># tensor([1., 2., 3.])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">])))</span><span class="c1"># tensor([1., 2., 3.])</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-4"># torch.pow: 对张量逐元素求幂，即 x^n
+import numpy as np
 x = torch.tensor([2.0, 3.0, 4.0])
 print(torch.pow(x, 2))          # tensor([ 4.,  9., 16.])
 
@@ -1931,8 +2006,7 @@ print(torch.exp(torch.tensor([0.0, 1.0, 2.0])))
 
 
 # torch.sqrt: 对张量逐元素计算平方根，即 √x
-print(torch.sqrt(torch.tensor([1.0, 4.0, 9.0])))
-# tensor([1., 2., 3.])</div>
+print(torch.sqrt(torch.tensor([1.0, 4.0, 9.0])))# tensor([1., 2., 3.])</div>
 </div>
 </div>
 </div>
@@ -1959,7 +2033,7 @@ tensor([1., 2., 3.])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -1972,7 +2046,7 @@ tensor([1., 2., 3.])
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.sum: 计算张量所有元素（或指定维度）的求和</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.sum: 计算张量所有元素（或指定维度）的求和,dim = k → 沿着第 k 个轴进行运算，把这个轴“消掉”。</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>             <span class="c1"># tensor(10.)  全局求和</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>      <span class="c1"># tensor([4., 6.])  按列求和</span>
@@ -1986,7 +2060,7 @@ tensor([1., 2., 3.])
 <span class="c1"># torch.std: 计算张量所有元素（或指定维度）的标准差（默认无偏估计）</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>             <span class="c1"># tensor(1.2910)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5"># torch.sum: 计算张量所有元素（或指定维度）的求和
+<div class="clipboard-copy-txt" id="cell-5"># torch.sum: 计算张量所有元素（或指定维度）的求和,dim = k → 沿着第 k 个轴进行运算，把这个轴“消掉”。
 x = torch.tensor([[1.0, 2.0], [3.0, 4.0]])
 print(torch.sum(x))             # tensor(10.)  全局求和
 print(torch.sum(x, dim=0))      # tensor([4., 6.])  按列求和
@@ -2027,7 +2101,7 @@ tensor(1.2910)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -2045,7 +2119,6 @@ tensor(1.2910)
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>             <span class="c1"># tensor(5.)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>      <span class="c1"># torch.return_types.max(values=tensor(5.), indices=tensor(4))</span>
 
-
 <span class="c1"># torch.min: 返回张量的最小值；若指定 dim，则同时返回最小值和对应索引</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>             <span class="c1"># tensor(1.)</span>
 </pre></div>
@@ -2053,7 +2126,6 @@ tensor(1.2910)
 x = torch.tensor([3.0, 1.0, 4.0, 1.0, 5.0])
 print(torch.max(x))             # tensor(5.)
 print(torch.max(x, dim=0))      # torch.return_types.max(values=tensor(5.), indices=tensor(4))
-
 
 # torch.min: 返回张量的最小值；若指定 dim，则同时返回最小值和对应索引
 print(torch.min(x))             # tensor(1.)</div>
@@ -2085,7 +2157,7 @@ tensor(1.)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -2138,7 +2210,7 @@ tensor([ 1.,  2.,  6., 24.])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -2184,7 +2256,7 @@ print(torch.clamp(x, min=0.0, max=1.0))
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
@@ -2202,28 +2274,34 @@ print(torch.clamp(x, min=0.0, max=1.0))
 <span class="n">B</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># 等价于矩阵乘法 A @ B</span>
+<span class="c1"># 此处：A 的第 0 维叫 i，第 1 维叫 j；B 的第 0 维叫 j，B 的第 1 维叫 k</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'ij,jk-&gt;ik'</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                  <span class="c1"># torch.Size([3, 5])</span>
 
 <span class="c1"># 逐元素相乘后求和（批量点积）</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">dot</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'ij,ij-&gt;i'</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dot</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                <span class="c1"># torch.Size([3])</span>
+<span class="n">dot1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'ij,ij-&gt;i'</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">dot2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'ij,ij-&gt;j'</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dot1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                <span class="c1"># torch.Size([3])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dot2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                <span class="c1"># torch.Size([4])</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-9"># torch.einsum: 使用爱因斯坦求和约定，以简洁的字符串表达式描述并计算任意多线性代数运算
 A = torch.randn(3, 4)
 B = torch.randn(4, 5)
 
 # 等价于矩阵乘法 A @ B
+# 此处：A 的第 0 维叫 i，第 1 维叫 j；B 的第 0 维叫 j，B 的第 1 维叫 k
 C = torch.einsum('ij,jk-&gt;ik', A, B)
 print(C.shape)                  # torch.Size([3, 5])
 
 # 逐元素相乘后求和（批量点积）
 a = torch.randn(3, 4)
 b = torch.randn(3, 4)
-dot = torch.einsum('ij,ij-&gt;i', a, b)
-print(dot.shape)                # torch.Size([3])</div>
+dot1 = torch.einsum('ij,ij-&gt;i', a, b)
+dot2 = torch.einsum('ij,ij-&gt;j', a, b)
+print(dot1.shape)                # torch.Size([3])
+print(dot2.shape)                # torch.Size([4])</div>
 </div>
 </div>
 </div>
@@ -2237,6 +2315,7 @@ print(dot.shape)                # torch.Size([3])</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>torch.Size([3, 5])
 torch.Size([3])
+torch.Size([4])
 </pre>
 </div>
 </div>
@@ -2249,7 +2328,7 @@ torch.Size([3])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -2306,7 +2385,7 @@ torch.Size([10, 3, 5])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -2320,6 +2399,7 @@ torch.Size([10, 3, 5])
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.scatter: 将源张量的值沿指定轴散布到目标张量的指定索引处（out-of-place 写入）</span>
+<span class="c1"># 给定“写入位置索引index”，把 src 中的值写到 dst 的指定位置。</span>
 <span class="n">src</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]])</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="n">dst</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -2334,6 +2414,7 @@ torch.Size([10, 3, 5])
 <span class="nb">print</span><span class="p">(</span><span class="n">dst2</span><span class="p">)</span>  <span class="c1"># tensor([[0., 3., 3., 0., 0.]])  index=2 处累加了 1+2=3</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-11"># torch.scatter: 将源张量的值沿指定轴散布到目标张量的指定索引处（out-of-place 写入）
+# 给定“写入位置索引index”，把 src 中的值写到 dst 的指定位置。
 src = torch.tensor([[1.0, 2.0, 3.0]])
 index = torch.tensor([[2, 0, 1]])
 dst = torch.zeros(1, 5)
@@ -2371,7 +2452,7 @@ tensor([[0., 3., 3., 0., 0.]])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
@@ -2387,20 +2468,18 @@ tensor([[0., 3., 3., 0., 0.]])
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.gather: 根据索引张量，从输入张量沿指定维度取值（scatter 的逆操作）</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
                    <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">]])</span>
-<span class="n">index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">))</span>
-<span class="c1"># tensor([[30, 10],</span>
-<span class="c1">#         [50, 60]])</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-12"># torch.gather: 根据索引张量，从输入张量沿指定维度取值（scatter 的逆操作）
 x = torch.tensor([[10, 20, 30],
                    [40, 50, 60]])
-index = torch.tensor([[2, 0],
-                       [1, 2]])
-print(torch.gather(x, dim=1, index=index))
-# tensor([[30, 10],
-#         [50, 60]])</div>
+index = torch.tensor([[1, 0],
+                       [0, 1]])
+print(torch.gather(x, dim=0, index=index))
+print(torch.gather(x, dim=1, index=index))</div>
 </div>
 </div>
 </div>
@@ -2412,8 +2491,10 @@ print(torch.gather(x, dim=1, index=index))
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor([[30, 10],
-        [50, 60]])
+<pre>tensor([[40, 20],
+        [10, 50]])
+tensor([[20, 10],
+        [40, 50]])
 </pre>
 </div>
 </div>
@@ -2426,7 +2507,7 @@ print(torch.gather(x, dim=1, index=index))
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
@@ -2481,7 +2562,7 @@ print(torch.index_select(x, dim=0, index=idx))
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [44]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
@@ -2497,12 +2578,14 @@ print(torch.index_select(x, dim=0, index=idx))
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.masked_select: 根据布尔掩码（BoolTensor）从输入张量中选取为 True 的元素，返回一维张量</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">masked_select</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span>
 <span class="c1"># tensor([1., 3., 5.])</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-14"># torch.masked_select: 根据布尔掩码（BoolTensor）从输入张量中选取为 True 的元素，返回一维张量
 x = torch.tensor([1.0, -2.0, 3.0, -4.0, 5.0])
 mask = x &gt; 0
+print(mask)
 print(torch.masked_select(x, mask))
 # tensor([1., 3., 5.])</div>
 </div>
@@ -2516,7 +2599,8 @@ print(torch.masked_select(x, mask))
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor([1., 3., 5.])
+<pre>tensor([ True, False,  True, False,  True])
+tensor([1., 3., 5.])
 </pre>
 </div>
 </div>
@@ -2529,7 +2613,7 @@ print(torch.masked_select(x, mask))
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
@@ -2599,7 +2683,7 @@ tensor([8., 9.])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
@@ -2662,7 +2746,7 @@ tensor([5, 4, 2])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
@@ -2724,7 +2808,7 @@ tensor([1.+2.j, 3.+4.j])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
@@ -2792,7 +2876,7 @@ torch.Size([2, 2]) torch.Size([2, 2])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
@@ -2847,7 +2931,7 @@ tensor([[1., 0.],
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-20">

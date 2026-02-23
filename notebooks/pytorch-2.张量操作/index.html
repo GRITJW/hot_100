@@ -1162,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pytorch-4.数据加载和梯度管理.ipynb" class="md-nav__link">
+      <a href="../pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/" class="md-nav__link">
         
   
   
@@ -1751,7 +1751,7 @@ print(x)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1782,7 +1782,8 @@ print(t1)           # tensor([1., 2., 3.], dtype=torch.float64)
 
 # torch.as_tensor: 与 from_numpy 类似，但更通用，支持任意可转换对象；若输入已是张量且 dtype/device 匹配则不拷贝
 t2 = torch.as_tensor(arr)
-print(t2)           # tensor([1., 2., 3.], dtype=torch.float64)</div>
+print(t2)           # tensor([1., 2., 3.], dtype=torch.float64)
+</div>
 </div>
 </div>
 </div>
@@ -2263,7 +2264,7 @@ tensor([   1.,   10.,  100., 1000.])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -2294,7 +2295,7 @@ print(torch.randperm(8))
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor([6, 2, 0, 4, 3, 7, 5, 1])
+<pre>tensor([1, 5, 6, 2, 3, 4, 0, 7])
 </pre>
 </div>
 </div>
@@ -2356,7 +2357,7 @@ torch.Size([2, 6])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
@@ -2375,7 +2376,7 @@ torch.Size([2, 6])
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>   <span class="c1"># shape: (2, 3)，dim=0 处新增维度</span>
 <span class="c1"># tensor([[1., 2., 3.],</span>
 <span class="c1">#         [4., 5., 6.]])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>   <span class="c1"># shape: (3, 2)，dim=1 处新增维度</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>   <span class="c1"># shape: (3, 2)，dim=1 处新增维度, 从（3，）变为（3，2）</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-13"># torch.stack: 在新增维度上堆叠一组形状相同的张量，结果比输入多一个维度
 a = torch.tensor([1.0, 2.0, 3.0])
@@ -2383,7 +2384,7 @@ b = torch.tensor([4.0, 5.0, 6.0])
 print(torch.stack([a, b], dim=0))   # shape: (2, 3)，dim=0 处新增维度
 # tensor([[1., 2., 3.],
 #         [4., 5., 6.]])
-print(torch.stack([a, b], dim=1))   # shape: (3, 2)，dim=1 处新增维度</div>
+print(torch.stack([a, b], dim=1))   # shape: (3, 2)，dim=1 处新增维度, 从（3，）变为（3，2）</div>
 </div>
 </div>
 </div>
@@ -2535,7 +2536,7 @@ torch.Size([3, 1])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
@@ -2550,12 +2551,18 @@ torch.Size([3, 1])
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># tensor.permute: 按指定顺序重新排列张量的所有维度（是 transpose 的推广，可一次交换多个维度）</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>           <span class="c1"># (batch, height, width)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>    <span class="c1"># torch.Size([2, 4, 3])  交换 dim1 和 dim2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>    <span class="c1"># torch.Size([4, 2, 3])  将 dim2 移至最前</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-16"># tensor.permute: 按指定顺序重新排列张量的所有维度（是 transpose 的推广，可一次交换多个维度）
 x = torch.randn(2, 3, 4)           # (batch, height, width)
+print(x)
+print(x.permute(0, 2, 1))
 print(x.permute(0, 2, 1).shape)    # torch.Size([2, 4, 3])  交换 dim1 和 dim2
+print(x.permute(2, 0, 1)) 
 print(x.permute(2, 0, 1).shape)    # torch.Size([4, 2, 3])  将 dim2 移至最前</div>
 </div>
 </div>
@@ -2568,7 +2575,34 @@ print(x.permute(2, 0, 1).shape)    # torch.Size([4, 2, 3])  将 dim2 移至最�
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>torch.Size([2, 4, 3])
+<pre>tensor([[[-0.6740,  0.4821, -1.1511,  1.0163],
+         [ 0.2780,  0.0963, -0.7990,  0.1237],
+         [-0.5416, -1.1541,  1.6195, -0.9684]],
+
+        [[-1.2399,  0.1513, -0.8133, -0.7371],
+         [-2.3666,  2.0146,  0.2083, -0.6683],
+         [-0.6912, -1.0779,  1.4455, -0.2064]]])
+tensor([[[-0.6740,  0.2780, -0.5416],
+         [ 0.4821,  0.0963, -1.1541],
+         [-1.1511, -0.7990,  1.6195],
+         [ 1.0163,  0.1237, -0.9684]],
+
+        [[-1.2399, -2.3666, -0.6912],
+         [ 0.1513,  2.0146, -1.0779],
+         [-0.8133,  0.2083,  1.4455],
+         [-0.7371, -0.6683, -0.2064]]])
+torch.Size([2, 4, 3])
+tensor([[[-0.6740,  0.2780, -0.5416],
+         [-1.2399, -2.3666, -0.6912]],
+
+        [[ 0.4821,  0.0963, -1.1541],
+         [ 0.1513,  2.0146, -1.0779]],
+
+        [[-1.1511, -0.7990,  1.6195],
+         [-0.8133,  0.2083,  1.4455]],
+
+        [[ 1.0163,  0.1237, -0.9684],
+         [-0.7371, -0.6683, -0.2064]]])
 torch.Size([4, 2, 3])
 </pre>
 </div>
@@ -2582,7 +2616,7 @@ torch.Size([4, 2, 3])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
@@ -2602,14 +2636,14 @@ torch.Size([4, 2, 3])
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">expand_as</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>             <span class="c1"># torch.Size([3, 4])</span>
 
 
-<span class="c1"># tensor.repeat: 沿每个维度将张量重复指定次数（真实拷贝数据，产生新张量）</span>
+<span class="c1"># tensor.repeat: 沿每个维度将张量重复指定次数（真实拷贝数据，产生新张量）,第 k 个参数 → 第 k 个维度的重复倍数。</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>                        <span class="c1"># tensor([1, 2, 3, 1, 2, 3, 1, 2, 3])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>               <span class="c1"># torch.Size([2, 3])</span>
 
 
 <span class="c1"># torch.tile: 与 tensor.repeat 等价的函数式接口，NumPy 风格，沿各维度平铺张量</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># torch.Size([2, 9])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>   <span class="c1"># torch.Size([2, 6])</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-17"># tensor.expand_as: 将张量沿大小为 1 的维度扩展到与目标张量相同的形状（不拷贝数据，共享内存）
 a = torch.tensor([[1.0], [2.0], [3.0]])   # shape: (3, 1)
@@ -2618,14 +2652,14 @@ print(a.expand_as(ref))
 print(a.expand_as(ref).shape)             # torch.Size([3, 4])
 
 
-# tensor.repeat: 沿每个维度将张量重复指定次数（真实拷贝数据，产生新张量）
+# tensor.repeat: 沿每个维度将张量重复指定次数（真实拷贝数据，产生新张量）,第 k 个参数 → 第 k 个维度的重复倍数。
 x = torch.tensor([[1, 2],[3, 4]])
 print(x.repeat(1, 3))                        # tensor([1, 2, 3, 1, 2, 3, 1, 2, 3])
 print(x.repeat(2, 1))               # torch.Size([2, 3])
 
 
 # torch.tile: 与 tensor.repeat 等价的函数式接口，NumPy 风格，沿各维度平铺张量
-print(torch.tile(x, dims=(2, 3)).shape)   # torch.Size([2, 9])</div>
+print(torch.tile(x, dims=(2, 3)))   # torch.Size([2, 6])</div>
 </div>
 </div>
 </div>
@@ -2647,7 +2681,10 @@ tensor([[1, 2],
         [3, 4],
         [1, 2],
         [3, 4]])
-torch.Size([4, 6])
+tensor([[1, 2, 1, 2, 1, 2],
+        [3, 4, 3, 4, 3, 4],
+        [1, 2, 1, 2, 1, 2],
+        [3, 4, 3, 4, 3, 4]])
 </pre>
 </div>
 </div>
@@ -2660,7 +2697,7 @@ torch.Size([4, 6])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
@@ -2677,13 +2714,13 @@ torch.Size([4, 6])
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.0</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-<span class="c1"># tensor([1., 0., 3., 0.])  —— 相当于 ReLU 操作</span>
+<span class="c1"># tensor([1., 0., 3., 0.])  —— 相当于 ReLU 操作 = max(x, 0)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-18"># torch.where: 条件选择操作，逐元素地从 x 或 y 中选取值：condition 为 True 取 x，否则取 y
 x = torch.tensor([1.0, -2.0, 3.0, -4.0])
 y = torch.zeros_like(x)
 print(torch.where(x &gt; 0, x, y))
-# tensor([1., 0., 3., 0.])  —— 相当于 ReLU 操作</div>
+# tensor([1., 0., 3., 0.])  —— 相当于 ReLU 操作 = max(x, 0)</div>
 </div>
 </div>
 </div>
@@ -2708,7 +2745,7 @@ print(torch.where(x &gt; 0, x, y))
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
@@ -2832,7 +2869,7 @@ tensor([0, 1, 1]) tensor([1, 0, 2])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-21">
@@ -2850,15 +2887,15 @@ tensor([0, 1, 1]) tensor([1, 0, 2])
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">bernoulli</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>          <span class="c1"># tensor([0., 1., 1., 1.])  随机结果</span>
 
 
-<span class="c1"># torch.multinomial: 从多项分布中按权重（不要求归一化）抽取指定数量的样本索引，可选有放回/无放回</span>
+<span class="c1"># torch.multinomial: 从多项分布中按权重（不要求归一化）抽取指定数量的样本索引，可选有放回/无放回,</span>
 <span class="n">weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">replacement</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="c1"># 高权重索引被选中概率更高，如 tensor([3, 2, 1])</span>
+<span class="c1"># 高权重索引被选中概率更高，如 tensor([3, 2, 1]),根据权重随机选索引,输出的为索引</span>
 
 
 <span class="c1"># torch.normal: 从指定均值和标准差的正态分布中抽取样本（均值和标准差可以是张量，逐元素独立采样）</span>
 <span class="n">mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">])</span>
-<span class="n">std</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span>  <span class="mf">3.0</span><span class="p">])</span>
+<span class="n">std</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mf">3.0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">))</span>
 
 
@@ -2871,15 +2908,15 @@ p = torch.tensor([0.2, 0.5, 0.8, 0.9])
 print(torch.bernoulli(p))          # tensor([0., 1., 1., 1.])  随机结果
 
 
-# torch.multinomial: 从多项分布中按权重（不要求归一化）抽取指定数量的样本索引，可选有放回/无放回
+# torch.multinomial: 从多项分布中按权重（不要求归一化）抽取指定数量的样本索引，可选有放回/无放回,
 weights = torch.tensor([1.0, 2.0, 3.0, 4.0])
 print(torch.multinomial(weights, num_samples=3, replacement=False))
-# 高权重索引被选中概率更高，如 tensor([3, 2, 1])
+# 高权重索引被选中概率更高，如 tensor([3, 2, 1]),根据权重随机选索引,输出的为索引
 
 
 # torch.normal: 从指定均值和标准差的正态分布中抽取样本（均值和标准差可以是张量，逐元素独立采样）
 mean = torch.tensor([0.0, 5.0, 10.0])
-std  = torch.tensor([1.0, 2.0,  3.0])
+std  = torch.tensor([1.0, 0,  3.0])
 print(torch.normal(mean, std))
 
 
@@ -2897,10 +2934,10 @@ print(torch.poisson(lam))          # tensor([ 2.,  4., 11.])  随机结果</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor([0., 1., 1., 1.])
-tensor([2, 1, 3])
-tensor([-1.2629,  3.1870,  8.8229])
-tensor([2., 5., 8.])
+<pre>tensor([0., 1., 0., 1.])
+tensor([0, 2, 1])
+tensor([-0.4914,  5.0000,  7.4823])
+tensor([ 3.,  2., 15.])
 </pre>
 </div>
 </div>

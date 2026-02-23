@@ -18,6 +18,8 @@
         <link rel="prev" href="../pytorch-2.%E5%BC%A0%E9%87%8F%E6%93%8D%E4%BD%9C/">
       
       
+        <link rel="next" href="../pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/">
+      
       
         
       
@@ -1171,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pytorch-4.数据加载和梯度管理.ipynb" class="md-nav__link">
+      <a href="../pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/" class="md-nav__link">
         
   
   
@@ -1716,7 +1718,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1745,7 +1747,7 @@ import torch.nn as nn</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1807,7 +1809,7 @@ print(model(x).shape)   # torch.Size([3, 2])</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -1859,7 +1861,7 @@ torch.Size([4])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1896,10 +1898,10 @@ print(emb.weight.shape)        # torch.Size([10, 4])  整张 embedding 表</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor([[ 0.2921, -0.9721,  1.4376,  0.2225],
-        [-2.0049,  0.7560, -0.5912, -0.7228],
-        [-0.2031, -2.3174,  0.3512,  0.0733],
-        [-2.0049,  0.7560, -0.5912, -0.7228]], grad_fn=&lt;EmbeddingBackward0&gt;)
+<pre>tensor([[ 0.2682, -0.4815,  0.2506, -0.1872],
+        [-0.4115, -1.5965, -0.8434, -1.3801],
+        [-1.2828, -0.8709,  0.4438,  1.0211],
+        [-0.4115, -1.5965, -0.8434, -1.3801]], grad_fn=&lt;EmbeddingBackward0&gt;)
 torch.Size([4, 4])
 torch.Size([10, 4])
 </pre>
@@ -1914,7 +1916,7 @@ torch.Size([10, 4])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -1930,11 +1932,15 @@ torch.Size([10, 4])
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.nn.Identity: 占位层，输出与输入完全相同，常用于条件性跳过某层或作为消融实验的替换层</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>   <span class="c1"># True</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-5"># torch.nn.Identity: 占位层，输出与输入完全相同，常用于条件性跳过某层或作为消融实验的替换层
 layer = nn.Identity()
 x = torch.randn(3, 5)
+print(x)
+print(layer(x))
 print(torch.equal(layer(x), x))   # True</div>
 </div>
 </div>
@@ -1947,7 +1953,13 @@ print(torch.equal(layer(x), x))   # True</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>True
+<pre>tensor([[ 0.1399,  0.0206, -0.7069, -1.1237,  0.7433],
+        [-0.9603, -0.6889,  0.6085,  0.3973,  2.3722],
+        [ 0.9137, -1.8052,  1.0280, -1.2020, -2.0843]])
+tensor([[ 0.1399,  0.0206, -0.7069, -1.1237,  0.7433],
+        [-0.9603, -0.6889,  0.6085,  0.3973,  2.3722],
+        [ 0.9137, -1.8052,  1.0280, -1.2020, -2.0843]])
+True
 </pre>
 </div>
 </div>
@@ -1960,7 +1972,7 @@ print(torch.equal(layer(x), x))   # True</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -2032,7 +2044,7 @@ torch.Size([1, 8, 8, 16, 16])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -2074,13 +2086,29 @@ print(up(x).shape)                # torch.Size([2, 32, 32, 32])  空间分辨率
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>BatchNorm：
+→ 对每个通道，跨 batch 维度统计后进行归一化</p>
+<p>LayerNorm：
+→ 对每个样本，在指定特征维度上整体归一化</p>
+<p>GroupNorm：
+→ 对每个样本，将通道划分为若干组，在组内归一化</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -2152,7 +2180,7 @@ torch.Size([2, 8, 4, 4, 4])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
@@ -2170,7 +2198,6 @@ torch.Size([2, 8, 4, 4, 4])
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>     <span class="c1"># (N, C, H, W)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                <span class="c1"># torch.Size([2, 16, 8, 8])</span>
 
-
 <span class="c1"># torch.nn.LayerNorm: 层归一化，对每个样本独立地在指定维度上归一化，Transformer 的标配</span>
 <span class="n">ln</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">normalized_shape</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>        <span class="c1"># (batch, seq_len, d_model)</span>
@@ -2180,7 +2207,6 @@ torch.Size([2, 8, 4, 4, 4])
 gn = nn.GroupNorm(num_groups=4, num_channels=16)
 x = torch.randn(2, 16, 8, 8)     # (N, C, H, W)
 print(gn(x).shape)                # torch.Size([2, 16, 8, 8])
-
 
 # torch.nn.LayerNorm: 层归一化，对每个样本独立地在指定维度上归一化，Transformer 的标配
 ln = nn.LayerNorm(normalized_shape=16)
@@ -2211,7 +2237,7 @@ torch.Size([4, 10, 16])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -2274,7 +2300,7 @@ torch.Size([2, 16, 8, 8])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -2342,7 +2368,7 @@ tensor([-0.9640, -0.7616,  0.0000,  0.7616,  0.9640])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
@@ -2399,7 +2425,7 @@ torch.Size([2, 64, 16, 16])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
@@ -2456,7 +2482,7 @@ torch.Size([2, 64, 1, 1])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
@@ -2513,13 +2539,80 @@ print(dropout3d(x).shape)         # torch.Size([2, 8, 4, 4, 4])</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor([[0., 0., 2., 2., 2., 2., 2., 2., 0., 0.],
-        [2., 0., 0., 2., 0., 0., 2., 0., 0., 0.]])
+<pre>tensor([[2., 2., 0., 0., 0., 0., 2., 0., 0., 0.],
+        [2., 2., 2., 2., 0., 2., 2., 0., 2., 0.]])
 tensor(True)
 torch.Size([2, 8, 4, 4, 4])
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>一、为什么普通 Tensor 不行？</p>
+<p>看下面两种写法的区别：</p>
+<p>错误写法：</p>
+<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+<p>虽然它能算梯度，但：</p>
+<p>它不会出现在 <code>model.parameters()</code> 里。</p>
+<p>优化器看不到它。</p>
+<p>因此不会被更新。</p>
+<p>————————————
+二、Parameter 做了什么？</p>
+<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">dim</span><span class="p">))</span>
+</pre></div>
+<p>它做了两件事：</p>
+<p>1）自动设置 <code>requires_grad=True</code>
+2）注册到模块内部参数列表中</p>
+<p>所以：</p>
+<ul>
+<li>会出现在 <code>model.parameters()</code></li>
+<li>会被 optimizer 更新</li>
+<li>会被 state_dict 保存</li>
+</ul>
+<p>三、实践中为什么“感觉没用到”？</p>
+<p>因为你一直在用。</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span>
+<span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span>
+<span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span>
+</pre></div>
+<p>它们内部的 weight 和 bias，都是 <code>nn.Parameter</code>。</p>
+<p>只是你没有手动写。</p>
+<p>四、什么时候需要手动使用？</p>
+<p>当你想定义“自定义可学习变量”时。</p>
+<p>例如：</p>
+<p>1）自定义缩放因子
+2）可学习温度参数
+3）自定义 attention 权重
+4）门控参数</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+</pre></div>
+<p>否则它只是普通张量，不会更新。</p>
+<p>五、和梯度机制的关系</p>
+<p>是否计算梯度，取决于：</p>
+<p><code>requires_grad=True</code></p>
+<p>是否参与优化器更新，取决于：</p>
+<p>是否在 <code>model.parameters()</code> 中。</p>
+<p>Parameter 解决的是第二个问题。</p>
+<p>六、本质总结</p>
+<p>Parameter 不是“开启梯度”。</p>
+<p>而是：</p>
+<p><strong>告诉 PyTorch：这是模型的组成部分，应当被训练。</strong></p>
+<p>————————————
+七、一句话精确总结</p>
+<p><code>nn.Parameter</code> 的作用是：</p>
+<p>“将一个张量声明为模型的可学习权重，使其被自动注册、保存和优化。”</p>
+<p>它是模型结构管理工具，而不仅仅是梯度工具。</p>
 </div>
 </div>
 </div>
@@ -2529,7 +2622,7 @@ torch.Size([2, 8, 4, 4, 4])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
@@ -2577,7 +2670,7 @@ print(list(layer.parameters()))   # [Parameter containing: tensor([...], require
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>[Parameter containing:
-tensor([ 0.2052, -0.4694, -0.2883,  2.5144], requires_grad=True)]
+tensor([ 0.4569,  1.1525, -0.4448, -0.8808], requires_grad=True)]
 </pre>
 </div>
 </div>
@@ -2590,7 +2683,7 @@ tensor([ 0.2052, -0.4694, -0.2883,  2.5144], requires_grad=True)]
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
@@ -2675,7 +2768,7 @@ torch.Size([8])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
@@ -2736,7 +2829,7 @@ torch.Size([1, 3, 8, 8])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
@@ -2786,13 +2879,24 @@ print(model(x).shape)             # torch.Size([4, 10])</div>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>nn.Parameter</code> 解决的是“一个张量是否作为模型可训练权重被注册和更新”的问题；<code>ParameterList/ParameterDict</code> 是在此基础上，用列表或字典的形式管理多个独立参数，适用于你需要手动定义一组可学习矩阵或向量（例如多头独立权重、可学习温度、门控系数）的场景。而 <code>ModuleList/ModuleDict</code> 管理的不是张量，而是“完整子网络结构”（如 Linear、Conv、Attention 等模块），用于构建可动态遍历或按名称选择的网络结构，例如多层堆叠网络、MoE 专家网络、多分支条件计算图等。前者解决“权重注册问题”，后者解决“子结构注册与管理问题”；本质都是为了让模型结构被 PyTorch 正确追踪、保存、迁移和优化，但管理层级不同——Parameter 管权重，Module 管结构。</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
@@ -2861,7 +2965,7 @@ torch.Size([2, 4])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-20">
@@ -2935,7 +3039,7 @@ torch.Size([4, 10, 16])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-21">
@@ -3002,7 +3106,7 @@ torch.Size([4, 16])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-22">
@@ -3089,7 +3193,7 @@ torch.Size([4, 6, 64])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-23">
@@ -3154,7 +3258,7 @@ print(nll(log_probs, labels))</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>tensor(0.1667)
 tensor(0.3695)
-tensor(1.6748)
+tensor(2.3808)
 </pre>
 </div>
 </div>
@@ -3167,7 +3271,7 @@ tensor(1.6748)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-24">
@@ -3228,7 +3332,7 @@ tensor(0.0833)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-25">
@@ -3275,16 +3379,16 @@ print(ce_weighted(logits, labels))</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor(1.6419)
-tensor(1.5229)
+<pre>tensor(1.3970)
+tensor(1.4000)
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -3302,50 +3406,13 @@ tensor(1.5229)
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.nn.GaussianNLLoss: 高斯负对数似然损失，同时预测均值和方差，用于不确定性估计的回归任务</span>
-<span class="n">gauss_nll</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GaussianNLLoss</span><span class="p">()</span>
-<span class="n">mean_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>   <span class="c1"># 预测均值</span>
-<span class="n">var_pred</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>   <span class="c1"># 预测方差（须为正）</span>
-<span class="n">target</span>    <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">gauss_nll</span><span class="p">(</span><span class="n">mean_pred</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">var_pred</span><span class="p">))</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-26"># torch.nn.GaussianNLLoss: 高斯负对数似然损失，同时预测均值和方差，用于不确定性估计的回归任务
-gauss_nll = nn.GaussianNLLoss()
-mean_pred = torch.tensor([1.0, 2.0, 3.0])   # 预测均值
-var_pred  = torch.tensor([0.5, 1.0, 2.0])   # 预测方差（须为正）
-target    = torch.tensor([1.2, 1.8, 3.5])
-print(gauss_nll(mean_pred, target, var_pred))</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-27">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># torch.nn.PoissonNLLLoss: 泊松负对数似然损失，用于目标值为计数或事件率的回归任务（如推荐系统 CTR 预测）</span>
 <span class="n">poisson_nll</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">PoissonNLLLoss</span><span class="p">(</span><span class="n">log_input</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># log_input=True 表示输入已取 log</span>
 <span class="n">log_rate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>         <span class="c1"># log(λ) 预测值</span>
 <span class="n">target</span>   <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>         <span class="c1"># 实际计数</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">poisson_nll</span><span class="p">(</span><span class="n">log_rate</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-27"># torch.nn.PoissonNLLLoss: 泊松负对数似然损失，用于目标值为计数或事件率的回归任务（如推荐系统 CTR 预测）
+<div class="clipboard-copy-txt" id="cell-26"># torch.nn.PoissonNLLLoss: 泊松负对数似然损失，用于目标值为计数或事件率的回归任务（如推荐系统 CTR 预测）
 poisson_nll = nn.PoissonNLLLoss(log_input=True)  # log_input=True 表示输入已取 log
 log_rate = torch.tensor([0.5, 1.0, 2.0])         # log(λ) 预测值
 target   = torch.tensor([1.0, 2.0, 5.0])         # 实际计数
@@ -3374,10 +3441,10 @@ print(poisson_nll(log_rate, target))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-28">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-27">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3394,7 +3461,7 @@ print(poisson_nll(log_rate, target))</div>
 <span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bce_logits</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-28"># torch.nn.BCEWithLogitsLoss: 将 Sigmoid 层与 BCELoss 合并，数值更稳定（利用 log-sum-exp 技巧），
+<div class="clipboard-copy-txt" id="cell-27"># torch.nn.BCEWithLogitsLoss: 将 Sigmoid 层与 BCELoss 合并，数值更稳定（利用 log-sum-exp 技巧），
 # 推荐优先使用此函数替代手动 Sigmoid + BCELoss
 bce_logits = nn.BCEWithLogitsLoss()
 logits = torch.tensor([2.0, -1.0, 0.5, -3.0])   # 原始 logits，无需提前 sigmoid
@@ -3424,10 +3491,10 @@ print(bce_logits(logits, target))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-29">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-28">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3444,7 +3511,7 @@ print(bce_logits(logits, target))</div>
 <span class="n">target_dist</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># 教师模型概率分布</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">kl</span><span class="p">(</span><span class="n">log_pred</span><span class="p">,</span> <span class="n">target_dist</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-29"># torch.nn.KLDivLoss: KL 散度损失，衡量预测概率分布与目标概率分布之间的 Kullback-Leibler 散度，
+<div class="clipboard-copy-txt" id="cell-28"># torch.nn.KLDivLoss: KL 散度损失，衡量预测概率分布与目标概率分布之间的 Kullback-Leibler 散度，
 # 要求输入为 log 概率，目标为概率，常用于知识蒸馏和变分自编码器（VAE）
 kl = nn.KLDivLoss(reduction='batchmean')
 log_pred = torch.log_softmax(torch.randn(4, 5), dim=1)  # 学生模型 log 概率
@@ -3474,10 +3541,10 @@ print(kl(log_pred, target_dist))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-30">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-29">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3495,7 +3562,7 @@ print(kl(log_pred, target_dist))</div>
 <span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 1 表示正样本对，-1 表示负样本对</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cos_emb</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-30"># torch.nn.CosineEmbeddingLoss: 余弦相似度嵌入损失，label=1 时使两向量相似，label=-1 时推远，
+<div class="clipboard-copy-txt" id="cell-29"># torch.nn.CosineEmbeddingLoss: 余弦相似度嵌入损失，label=1 时使两向量相似，label=-1 时推远，
 # 常用于学习度量表示（如双塔召回模型、句子相似度）
 cos_emb = nn.CosineEmbeddingLoss(margin=0.0)
 x1 = torch.randn(4, 8)           # 用户/query 向量
@@ -3526,10 +3593,10 @@ print(cos_emb(x1, x2, label))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-31">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-30">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3546,7 +3613,7 @@ print(cos_emb(x1, x2, label))</div>
 <span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>     <span class="c1"># 1 表示相似，-1 表示不相似</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">hinge_emb</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-31"># torch.nn.HingeEmbeddingLoss: 合页嵌入损失，label=1 时直接取输入值，label=-1 时取 max(0, margin-x)，
+<div class="clipboard-copy-txt" id="cell-30"># torch.nn.HingeEmbeddingLoss: 合页嵌入损失，label=1 时直接取输入值，label=-1 时取 max(0, margin-x)，
 # 用于学习基于距离的嵌入（如 SVM 风格的度量学习）
 hinge_emb = nn.HingeEmbeddingLoss(margin=1.0)
 x = torch.tensor([0.8, 1.5, 0.3, 2.0])  # 距离值
@@ -3576,10 +3643,10 @@ print(hinge_emb(x, label))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-32">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-31">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3597,7 +3664,7 @@ print(hinge_emb(x, label))</div>
 <span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                  <span class="c1"># 1 表示希望 x1 &gt; x2</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">margin_rank</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-32"># torch.nn.MarginRankingLoss: 间隔排序损失，使正样本得分高于负样本至少 margin，
+<div class="clipboard-copy-txt" id="cell-31"># torch.nn.MarginRankingLoss: 间隔排序损失，使正样本得分高于负样本至少 margin，
 # 常用于 Learning to Rank 排序任务和推荐系统 Pairwise 训练
 margin_rank = nn.MarginRankingLoss(margin=0.3)
 x1 = torch.tensor([0.9, 0.6, 0.8])   # 正样本得分
@@ -3628,10 +3695,10 @@ print(margin_rank(x1, x2, label))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-33">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-32">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3649,7 +3716,7 @@ print(margin_rank(x1, x2, label))</div>
 <span class="n">negative</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>    <span class="c1"># 与 anchor 不同类的样本</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">triplet</span><span class="p">(</span><span class="n">anchor</span><span class="p">,</span> <span class="n">positive</span><span class="p">,</span> <span class="n">negative</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-33"># torch.nn.TripletMarginLoss: 三元组间隔损失，目标是使 d(anchor, positive) + margin &lt; d(anchor, negative)，
+<div class="clipboard-copy-txt" id="cell-32"># torch.nn.TripletMarginLoss: 三元组间隔损失，目标是使 d(anchor, positive) + margin &lt; d(anchor, negative)，
 # 用于度量学习（人脸识别、图文匹配），使相似样本距离更近、不相似样本距离更远
 triplet = nn.TripletMarginLoss(margin=1.0)
 anchor   = torch.randn(4, 8)
@@ -3680,10 +3747,10 @@ print(triplet(anchor, positive, negative))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-34">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-33">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3703,7 +3770,7 @@ print(triplet(anchor, positive, negative))</div>
 <span class="n">target_lengths</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>  <span class="c1"># 每个样本的目标长度</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ctc</span><span class="p">(</span><span class="n">log_probs</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">input_lengths</span><span class="p">,</span> <span class="n">target_lengths</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-34"># torch.nn.CTCLoss: 连续时间分类损失（Connectionist Temporal Classification），
+<div class="clipboard-copy-txt" id="cell-33"># torch.nn.CTCLoss: 连续时间分类损失（Connectionist Temporal Classification），
 # 用于序列到序列的学习任务（如语音识别、手写识别），无需输入与标签的精确对齐
 ctc = nn.CTCLoss(blank=0, reduction='mean')
 # log_probs: (T=序列长度, N=batch, C=类别数)
@@ -3736,10 +3803,10 @@ print(ctc(log_probs, targets, input_lengths, target_lengths))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-35">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-34">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3765,7 +3832,7 @@ print(ctc(log_probs, targets, input_lengths, target_lengths))</div>
                          <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ml_margin</span><span class="p">(</span><span class="n">logits2</span><span class="p">,</span> <span class="n">target2</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-35"># torch.nn.MultiLabelSoftMarginLoss: 多标签分类损失，基于 Sigmoid 对每个类别独立计算交叉熵，
+<div class="clipboard-copy-txt" id="cell-34"># torch.nn.MultiLabelSoftMarginLoss: 多标签分类损失，基于 Sigmoid 对每个类别独立计算交叉熵，
 # 允许一个样本同时属于多个类别
 ml_soft = nn.MultiLabelSoftMarginLoss()
 logits = torch.randn(4, 5)        # (batch=4, num_classes=5)
@@ -3805,10 +3872,10 @@ tensor(1.7488)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-36">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-35">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3833,7 +3900,7 @@ tensor(1.7488)
 <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">multi_margin</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-36"># torch.nn.SoftMarginLoss: 二分类合页损失的软化版本，使用 log(1+exp(-y*x)) 替代硬 hinge，
+<div class="clipboard-copy-txt" id="cell-35"># torch.nn.SoftMarginLoss: 二分类合页损失的软化版本，使用 log(1+exp(-y*x)) 替代硬 hinge，
 # 标签须为 +1 或 -1
 soft_margin = nn.SoftMarginLoss()
 logits = torch.tensor([1.5, -0.5, 2.0, -1.0])
