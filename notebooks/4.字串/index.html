@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#560-k" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -536,6 +536,17 @@
       目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        队列的数据结构
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#560-k" class="md-nav__link">
@@ -1237,6 +1248,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        队列的数据结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#560-k" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1724,6 +1746,103 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </style>
 <!-- End of mermaid configuration --><div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=59f29bf4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="">队列的数据结构<a class="anchor-link" href="#">¶</a></h2><p>队列（Queue）是一种<strong>先进先出（FIFO）</strong>的数据结构。
+核心特征：先进入的元素，先被移除。</p>
+<p>在 Python 中，常用实现方式有三种：</p>
+<p>1）<code>collections.deque</code>（最推荐）
+2）<code>list</code>（不推荐做队列头部操作）
+3）<code>queue.Queue</code>（多线程安全）</p>
+<p>这里只介绍<code>collections.deque</code></p>
+<p>一、collections.deque（首选）</p>
+<p><code>deque</code>（double-ended queue）是双端队列，支持两端 O(1) 操作。</p>
+<p>创建：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+</pre></div>
+<p>常见操作</p>
+<p>1）入队（尾部添加）</p>
+<div class="highlight"><pre><span></span><span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+<p>2）出队（头部弹出）</p>
+<div class="highlight"><pre><span></span><span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+</pre></div>
+<p>3）查看队首</p>
+<div class="highlight"><pre><span></span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+<p>4）查看队尾</p>
+<div class="highlight"><pre><span></span><span class="n">q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+<p>5）判断是否为空</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">q</span><span class="p">:</span>
+</pre></div>
+<p>6）获取长度</p>
+<div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</pre></div>
+<p>时间复杂度</p>
+<ul>
+<li>append：O(1)</li>
+<li>popleft：O(1)</li>
+<li>appendleft：O(1)</li>
+<li>pop：O(1)</li>
+</ul>
+<p>这是 deque 相比 list 的核心优势。</p>
+<p>四、双端队列的扩展用法</p>
+<p>1）双端操作</p>
+<div class="highlight"><pre><span></span><span class="n">q</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+<p>2）限制长度（固定窗口）</p>
+<div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+<p>超过容量会自动从另一端删除。</p>
+<p>常用于滑动窗口问题。</p>
+<p>五、典型算法应用</p>
+<p>1）BFS（广度优先搜索）</p>
+<div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">start</span><span class="p">])</span>
+<span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">nei</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nei</span><span class="p">)</span>
+</pre></div>
+<p>2）滑动窗口最大值（单调队列）</p>
+<p>3）层序遍历二叉树</p>
+<p>4）拓扑排序</p>
+<p>六、复杂度总结</p>
+<p>以 deque 为标准：</p>
+<ul>
+<li>入队：O(1)</li>
+<li>出队：O(1)</li>
+<li>空间：O(n)</li>
+</ul>
+<p>七、本质理解</p>
+<p>队列解决的是：</p>
+<p>“按时间顺序处理元素”</p>
+<p>栈解决的是：</p>
+<p>“按最近优先处理元素”</p>
+<p>在算法中：</p>
+<ul>
+<li>BFS 用队列</li>
+<li>DFS 用栈（或递归）</li>
+</ul>
+<p>八、面试使用建议</p>
+<p>算法题默认：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
+</pre></div>
+<p>并使用：</p>
+<div class="highlight"><pre><span></span><span class="n">append</span><span class="p">()</span>
+<span class="n">popleft</span><span class="p">()</span>
+</pre></div>
+<hr/>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5e7acf73">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -1869,7 +1988,7 @@ print(Solution().subarraySum(nums, k))
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1898,8 +2017,8 @@ print(Solution().subarraySum(nums, k))
 
             <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
-            <span class="c1"># 2. 移除窗口外的元素</span>
-            <span class="k">if</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">k</span><span class="p">:</span>
+            <span class="c1"># 2. 移除窗口外的元素，此时遍历到元素索引i，则该窗口最左侧值索引为i-k+1，所以需要排除掉小于等于i-k的元素</span>
+            <span class="k">if</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">-</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
 
             <span class="c1"># 3. 窗口形成后，记录最大值</span>
@@ -1929,8 +2048,8 @@ class Solution:
 
             q.append(i)
 
-            # 2. 移除窗口外的元素
-            if q[0] &lt;= i - k:
+            # 2. 移除窗口外的元素，此时遍历到元素索引i，则该窗口最左侧值索引为i-k+1，所以需要排除掉小于等于i-k的元素
+            if q[0] &lt; i - k + 1:
                 q.popleft()
 
             # 3. 窗口形成后，记录最大值
@@ -2001,7 +2120,7 @@ print(s.maxSlidingWindow(nums, k))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -2018,36 +2137,75 @@ print(s.maxSlidingWindow(nums, k))</div>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">minWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="c1"># --- 边界情况 ---</span>
+        <span class="c1"># 若任一字符串为空，不可能存在覆盖子串</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">t</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">""</span>
 
+        <span class="c1"># need: 记录目标字符串 t 中每个字符需要的次数</span>
+        <span class="c1"># 例如 t = "AABC" -&gt; {'A':2, 'B':1, 'C':1}</span>
         <span class="n">need</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+        <span class="c1"># window: 当前滑动窗口中各字符出现次数</span>
         <span class="n">window</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># valid: 当前窗口中“满足次数要求的字符种类数”</span>
+        <span class="c1"># 注意：统计的是“种类”，不是总字符数</span>
         <span class="n">valid</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># left: 滑动窗口左边界</span>
         <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># start: 记录最小覆盖子串的起始位置</span>
         <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># min_len: 记录当前找到的最小覆盖子串长度</span>
         <span class="n">min_len</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
 
+        <span class="c1"># --- 扩张窗口 ---</span>
+        <span class="c1"># right 指针不断右移</span>
         <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+
+            <span class="c1"># 只有当当前字符是目标字符时才需要处理</span>
             <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
+                <span class="c1"># 更新窗口内字符频次</span>
                 <span class="n">window</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+                <span class="c1"># 若该字符频次“刚好达到”需求次数</span>
+                <span class="c1"># 说明该字符种类已经满足要求</span>
                 <span class="k">if</span> <span class="n">window</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">==</span> <span class="n">need</span><span class="p">[</span><span class="n">ch</span><span class="p">]:</span>
                     <span class="n">valid</span> <span class="o">+=</span> <span class="mi">1</span>
 
-            <span class="c1"># 当窗口已经满足所有字符需求，开始收缩</span>
+            <span class="c1"># --- 收缩窗口 ---</span>
+            <span class="c1"># 当窗口已经满足所有字符种类需求时</span>
+            <span class="c1"># valid == len(need) 表示所有字符都满足</span>
             <span class="k">while</span> <span class="n">valid</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">need</span><span class="p">):</span>
+
+                <span class="c1"># 更新最小覆盖子串</span>
                 <span class="k">if</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">min_len</span><span class="p">:</span>
                     <span class="n">min_len</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span>
                     <span class="n">start</span> <span class="o">=</span> <span class="n">left</span>
 
+                <span class="c1"># 准备移除左侧字符</span>
                 <span class="n">d</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
                 <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="c1"># 如果移除的是目标字符，才会影响窗口合法性</span>
                 <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
+
+                    <span class="c1"># 如果当前字符数量“刚好等于需求”</span>
+                    <span class="c1"># 那么移除后将变成不满足</span>
                     <span class="k">if</span> <span class="n">window</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">==</span> <span class="n">need</span><span class="p">[</span><span class="n">d</span><span class="p">]:</span>
                         <span class="n">valid</span> <span class="o">-=</span> <span class="mi">1</span>
+
+                    <span class="c1"># 更新窗口字符数量</span>
                     <span class="n">window</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
 
+        <span class="c1"># 若 min_len 未更新，说明不存在覆盖子串</span>
         <span class="k">return</span> <span class="s2">""</span> <span class="k">if</span> <span class="n">min_len</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span> <span class="k">else</span> <span class="n">s</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span> <span class="o">+</span> <span class="n">min_len</span><span class="p">]</span>
+
+
+<span class="c1"># 示例</span>
 <span class="n">s</span> <span class="o">=</span> <span class="s2">"ADOBECODEBANC"</span>
 <span class="n">t</span> <span class="o">=</span> <span class="s2">"ABC"</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">minWindow</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
@@ -2056,36 +2214,75 @@ print(s.maxSlidingWindow(nums, k))</div>
 
 class Solution:
     def minWindow(self, s: str, t: str) -&gt; str:
+        # --- 边界情况 ---
+        # 若任一字符串为空，不可能存在覆盖子串
         if not s or not t:
             return ""
 
+        # need: 记录目标字符串 t 中每个字符需要的次数
+        # 例如 t = "AABC" -&gt; {'A':2, 'B':1, 'C':1}
         need = Counter(t)
+
+        # window: 当前滑动窗口中各字符出现次数
         window = {}
+
+        # valid: 当前窗口中“满足次数要求的字符种类数”
+        # 注意：统计的是“种类”，不是总字符数
         valid = 0
+
+        # left: 滑动窗口左边界
         left = 0
+
+        # start: 记录最小覆盖子串的起始位置
         start = 0
+
+        # min_len: 记录当前找到的最小覆盖子串长度
         min_len = float('inf')
 
+        # --- 扩张窗口 ---
+        # right 指针不断右移
         for right, ch in enumerate(s):
+
+            # 只有当当前字符是目标字符时才需要处理
             if ch in need:
+                # 更新窗口内字符频次
                 window[ch] = window.get(ch, 0) + 1
+
+                # 若该字符频次“刚好达到”需求次数
+                # 说明该字符种类已经满足要求
                 if window[ch] == need[ch]:
                     valid += 1
 
-            # 当窗口已经满足所有字符需求，开始收缩
+            # --- 收缩窗口 ---
+            # 当窗口已经满足所有字符种类需求时
+            # valid == len(need) 表示所有字符都满足
             while valid == len(need):
+
+                # 更新最小覆盖子串
                 if right - left + 1 &lt; min_len:
                     min_len = right - left + 1
                     start = left
 
+                # 准备移除左侧字符
                 d = s[left]
                 left += 1
+
+                # 如果移除的是目标字符，才会影响窗口合法性
                 if d in need:
+
+                    # 如果当前字符数量“刚好等于需求”
+                    # 那么移除后将变成不满足
                     if window[d] == need[d]:
                         valid -= 1
+
+                    # 更新窗口字符数量
                     window[d] -= 1
 
+        # 若 min_len 未更新，说明不存在覆盖子串
         return "" if min_len == float('inf') else s[start:start + min_len]
+
+
+# 示例
 s = "ADOBECODEBANC"
 t = "ABC"
 print(Solution().minWindow(s, t))</div>
@@ -2120,6 +2317,101 @@ print(Solution().minWindow(s, t))</div>
 <p>空间复杂度：O(n)
 主要来自 need 和 window 两个计数哈希表，其大小与字符串 t 中不同字符数成正比。</p>
 <hr/>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fb0e060a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">solution</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">need</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">valid</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">min_len</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"inf"</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
+                <span class="n">window</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">window</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">==</span> <span class="n">need</span><span class="p">[</span><span class="n">ch</span><span class="p">]:</span>
+                    <span class="n">valid</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">valid</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">need</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">min_len</span><span class="p">:</span>
+                    <span class="n">min_len</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span>
+                    <span class="n">start</span> <span class="o">=</span> <span class="n">left</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
+                <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">window</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">==</span> <span class="n">need</span><span class="p">[</span><span class="n">d</span><span class="p">]:</span>
+                        <span class="n">valid</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="n">window</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="s2">""</span> <span class="k">if</span> <span class="n">min_len</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"inf"</span><span class="p">)</span> <span class="k">else</span> <span class="n">s</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">start</span> <span class="o">+</span> <span class="n">min_len</span><span class="p">]</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">"ADOBECODEBANC"</span>
+<span class="n">t</span> <span class="o">=</span> <span class="s2">"ABC"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="p">()</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-4">class solution:
+    def test(self, s, t):
+        need = Counter(t)
+        window = {}
+        valid = 0
+        left = 0
+        start = 0
+        min_len = float("inf")
+        for right, ch in enumerate(s):
+            if ch in need:
+                window[ch] = window.get(ch, 0) + 1
+                if window[ch] == need[ch]:
+                    valid += 1
+            while valid == len(need):
+                if right - left + 1 &lt; min_len:
+                    min_len = right - left + 1
+                    start = left
+                d = s[left]
+                left += 1
+                if d in need:
+                    if window[d] == need[d]:
+                        valid -= 1
+                    window[d] -= 1
+        return "" if min_len == float("inf") else s[start: start + min_len]
+
+s = "ADOBECODEBANC"
+t = "ABC"
+print(solution().test(s, t))
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>BANC
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
