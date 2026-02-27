@@ -242,7 +242,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98%E7%9B%AE/" class="md-tabs__link">
+        <a href="../常见面试手撕题目.ipynb" class="md-tabs__link">
           
   
   
@@ -1033,7 +1033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98%E7%9B%AE/" class="md-nav__link">
+      <a href="../常见面试手撕题目.ipynb" class="md-nav__link">
         
   
   
@@ -2349,13 +2349,13 @@ dp[i][0] = 0</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a7e08826">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a7e08826">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -2385,7 +2385,10 @@ dp[i][0] = 0</p>
                     <span class="c1"># 不相同，取删除其中一个字符后的最大值</span>
                     <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
         
-        <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">text1</span> <span class="o">=</span> <span class="s2">"abcde"</span>
+<span class="n">text2</span> <span class="o">=</span> <span class="s2">"ace"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">))</span>   
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-5">class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -&gt; int:
@@ -2404,7 +2407,23 @@ dp[i][0] = 0</p>
                     # 不相同，取删除其中一个字符后的最大值
                     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
         
-        return dp[m][n]</div>
+        return dp[-1][-1]
+text1 = "abcde"
+text2 = "ace"
+print(Solution().longestCommonSubsequence(text1, text2))   </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>3
+</pre>
 </div>
 </div>
 </div>
@@ -2561,8 +2580,8 @@ dp[i-1][j-1] + cost
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=656dbaaf">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=656dbaaf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2608,6 +2627,9 @@ dp[i-1][j-1] + cost
                     <span class="p">)</span>
         
         <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+<span class="n">word1</span> <span class="o">=</span> <span class="s2">"horse"</span>
+<span class="n">word2</span> <span class="o">=</span> <span class="s2">"ros"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">minDistance</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">))</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-7">class Solution:
     def minDistance(self, word1: str, word2: str) -&gt; int:
@@ -2636,7 +2658,23 @@ dp[i-1][j-1] + cost
                         dp[i - 1][j - 1] + 1  # 替换
                     )
         
-        return dp[m][n]</div>
+        return dp[m][n]
+word1 = "horse"
+word2 = "ros"
+print(Solution().minDistance(word1, word2))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>3
+</pre>
 </div>
 </div>
 </div>
