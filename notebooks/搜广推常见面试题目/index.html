@@ -1264,6 +1264,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#multi-class-cross-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多类交叉熵（Multi-Class Cross Entropy）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#mse" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1279,6 +1290,17 @@
     <span class="md-ellipsis">
       
         focal_Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infonce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        infoNCE
       
     </span>
   </a>
@@ -3220,7 +3242,7 @@ _, _ = gauc_rank(user_id, label, q, weight_type='impression')
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
@@ -3234,26 +3256,26 @@ _, _ = gauc_rank(user_id, label, q, weight_type='impression')
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">BCE_logits_Loss</span><span class="p">(</span><span class="n">lables</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">BCE_logits_Loss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">lables</span><span class="p">):</span>
     <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_predict</span> <span class="o">*</span> <span class="n">lables</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_predict</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">lables</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCE_logits_Loss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCE_logits_Loss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span><span class="n">lables</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">bce_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-9">import numpy as np
-def BCE_logits_Loss(lables, y_predict):
+def BCE_logits_Loss(y_predict, lables):
     per_sample_loss = np.maximum(y_predict, 0) - y_predict * lables + np.log(1 + np.exp(-np.abs(y_predict)))
     return np.mean(per_sample_loss)
 
-x = np.array([5,-4,5,-6])
-y = np.array([1,0,1,0])
+y_predict = np.array([5,-4,5,-6])
+lables = np.array([1,0,1,0])
 
-bce_loss = BCE_logits_Loss(y,x)
+bce_loss = BCE_logits_Loss(y_predict,lables)
 
 print(f"bce损失为{bce_loss}")</div>
 </div>
@@ -3280,7 +3302,7 @@ print(f"bce损失为{bce_loss}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -3294,28 +3316,28 @@ print(f"bce损失为{bce_loss}")</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">BCE_logits_Loss</span><span class="p">(</span><span class="n">lables</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">BCE_logits_Loss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">lables</span><span class="p">):</span>
     <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y_predict</span><span class="p">))</span>
     <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">lables</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">lables</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCE_logits_Loss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCE_logits_Loss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">bce_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-10">import numpy as np
-def BCE_logits_Loss(lables, y_predict):
+def BCE_logits_Loss(y_predict, lables):
     p = 1 / (1 + np.exp(-y_predict))
     per_sample_loss = -(lables * np.log(p) + (1 - lables) * np.log(1 - p))
     return np.mean(per_sample_loss)
 
-x = np.array([5,-4,5,-6])
-y = np.array([1,0,1,0])
+y_predict = np.array([5,-4,5,-6])
+labels = np.array([1,0,1,0])
 
-bce_loss = BCE_logits_Loss(y,x)
+bce_loss = BCE_logits_Loss(y_predict,labels)
 
 print(f"bce损失为{bce_loss}")</div>
 </div>
@@ -3330,6 +3352,329 @@ print(f"bce损失为{bce_loss}")</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>bce损失为0.008514077508444016
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fd635f28">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">BCEloss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">y_predict</span><span class="p">)</span>
+    <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">label</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">label</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">per_sample_loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.</span><span class="p">])</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCEloss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">bce_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-11">import torch
+def BCEloss(y_predict, label):
+    p = torch.sigmoid(y_predict)
+    per_sample_loss = -(label * torch.log(p) + (1 - label) * torch.log(1 - p))
+    return per_sample_loss.mean()
+y_predict = torch.tensor([5., -4., 5., -6.])
+label = torch.tensor([1., 0., 1., 0.])
+bce_loss = BCEloss(y_predict,label)
+
+print(f"bce损失为{bce_loss}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>bce损失为0.008514076471328735
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba01b078">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="multi-class-cross-entropy">多类交叉熵（Multi-Class Cross Entropy）<a class="anchor-link" href="#multi-class-cross-entropy">¶</a></h3><p>在二分类中，我们建模的是一个 Bernoulli 分布；而在多分类问题中，本质上是在建模一个 <strong>Categorical 分布</strong>。假设类别数为 $C$，模型输出 logits 向量：</p>
+<p>$$
+\mathbf{x} = (x_1, x_2, ..., x_C)
+$$</p>
+<p>真实标签为 one-hot 向量 $\mathbf{y}$，其中：</p>
+<p>$$
+y_k = 1 \text{ 表示真实类别为 } k
+$$</p>
+<ol>
+<li>基础形式：Softmax + Cross Entropy</li>
+</ol>
+<p>首先通过 Softmax 将 logits 转换为概率分布：</p>
+<p>$$
+p_i = \frac{e^{x_i}}{\sum_{j=1}^{C} e^{x_j}}
+$$</p>
+<p>交叉熵定义为：</p>
+<p>$$
+L = -\sum_{i=1}^{C} y_i \log p_i
+$$</p>
+<p>由于 $y$ 是 one-hot，只有正确类别 $k$ 处为 1，因此损失可简化为：</p>
+<p>$$
+L = -\log p_k
+$$</p>
+<p>代入 Softmax：</p>
+<p>$$
+L = -\log \left(\frac{e^{x_k}}{\sum_{j=1}^{C} e^{x_j}}\right)
+$$</p>
+<p>进一步化简：</p>
+<p>$$
+L = -x_k + \log\left(\sum_{j=1}^{C} e^{x_j}\right)
+$$</p>
+<ol start="2">
+<li>数学本质：极大似然估计</li>
+</ol>
+<p>多类交叉熵本质是对 Categorical 分布进行极大似然估计：</p>
+<p>$$
+\mathcal{L} = \prod_{i=1}^{N} p_{y_i}
+$$</p>
+<p>取负对数得到：</p>
+<p>$$
+L = -\sum_{i=1}^{N} \log p_{y_i}
+$$</p>
+<p>因此：</p>
+<blockquote>
+<p>多类交叉熵 = Softmax（负对数似然（NLL））</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6fa11948">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>实现方式一：显式 Softmax 后 log</p>
+<ul>
+<li><p>逻辑直观</p>
+</li>
+<li><p>但多做了一步除法（Softmax）</p>
+</li>
+<li><p>精度略差于化简形式</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f8ce9b70">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">corss_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">B</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">shape</span>
+    <span class="c1"># 0. 值稳定：减去每行最大值</span>
+    <span class="n">max_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">logits_stable</span> <span class="o">=</span> <span class="n">logits</span> <span class="o">-</span> <span class="n">max_logits</span>
+    <span class="c1"># 1. 取指数</span>
+    <span class="n">exp_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logits_stable</span><span class="p">)</span>  <span class="c1"># B, D</span>
+    <span class="c1"># 2. 每一行求和</span>
+    <span class="n">exp_sum_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">exp_logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># 3. 计算 softmax 概率</span>
+    <span class="n">softmax_logits</span> <span class="o">=</span> <span class="n">exp_logits</span> <span class="o">/</span> <span class="n">exp_sum_logits</span>
+    <span class="c1"># 4. 取正样本概率</span>
+    <span class="n">pos_logits</span> <span class="o">=</span> <span class="n">softmax_logits</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="n">target</span><span class="p">]</span>
+    <span class="c1"># 5. 取负对数</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pos_logits</span><span class="p">)</span>
+    <span class="c1"># 6. 平均</span>
+    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.4985</span><span class="p">,</span> <span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.2533</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.4985</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.2533</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">]])</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corss_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-12">import torch
+def corss_entropy(logits, target):
+    B, D = logits.shape
+    # 0. 值稳定：减去每行最大值
+    max_logits = torch.max(logits, dim=1, keepdim=True)[0]
+    logits_stable = logits - max_logits
+    # 1. 取指数
+    exp_logits = torch.exp(logits_stable)  # B, D
+    # 2. 每一行求和
+    exp_sum_logits = torch.sum(exp_logits, dim=-1).unsqueeze(1)
+    # 3. 计算 softmax 概率
+    softmax_logits = exp_logits / exp_sum_logits
+    # 4. 取正样本概率
+    pos_logits = softmax_logits[torch.arange(B),target]
+    # 5. 取负对数
+    loss = -torch.log(pos_logits)
+    # 6. 平均
+    return loss.mean()
+logits = torch.tensor([[1.0000, 0.4985, 0.6664, 0.2533],
+                    [0.4985, 1.0000, 0.8408, 0.5431],
+                    [0.6664, 0.8408, 1.0000, 0.8372],
+                    [0.2533, 0.5431, 0.8372, 1.0000]])
+target = torch.tensor([0, 1, 2, 3])
+print(corss_entropy(logits, target))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>tensor(1.1176)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8df738ae">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>实现方式二：化简形式
+$$
+L = -x_k + \log\left(\sum_{j=1}^{C} e^{x_j}\right)
+$$</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e74845d4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    logits: (N, C)</span>
+<span class="sd">    target: (N,)</span>
+<span class="sd">    """</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">shape</span>
+    
+    <span class="c1"># 1. 数值稳定：减去每行最大值，防止exp爆炸</span>
+    <span class="n">max_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">logits_stable</span> <span class="o">=</span> <span class="n">logits</span> <span class="o">-</span> <span class="n">max_logits</span>
+    <span class="c1"># 2. 计算 log(sum(exp()))</span>
+    <span class="n">log_sum_exp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logits_stable</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="c1"># 3. 取正确类别的 logit</span>
+    <span class="n">correct_logits</span> <span class="o">=</span> <span class="n">logits_stable</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">target</span><span class="p">]</span>
+    <span class="c1"># 4. 负对数似然</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">correct_logits</span> <span class="o">+</span> <span class="n">log_sum_exp</span>
+    
+    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.4985</span><span class="p">,</span> <span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.2533</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.4985</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.2533</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">]])</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corss_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-13">import torch
+
+def cross_entropy(logits, target):
+    """
+    logits: (N, C)
+    target: (N,)
+    """
+    N, C = logits.shape
+    
+    # 1. 数值稳定：减去每行最大值，防止exp爆炸
+    max_logits = torch.max(logits, dim=1, keepdim=True)[0]
+    logits_stable = logits - max_logits
+    # 2. 计算 log(sum(exp()))
+    log_sum_exp = torch.log(torch.sum(torch.exp(logits_stable), dim=1))
+    # 3. 取正确类别的 logit
+    correct_logits = logits_stable[torch.arange(N), target]
+    # 4. 负对数似然
+    loss = -correct_logits + log_sum_exp
+    
+    return loss.mean()
+logits = torch.tensor([[1.0000, 0.4985, 0.6664, 0.2533],
+                    [0.4985, 1.0000, 0.8408, 0.5431],
+                    [0.6664, 0.8408, 1.0000, 0.8372],
+                    [0.2533, 0.5431, 0.8372, 1.0000]])
+target = torch.tensor([0, 1, 2, 3])
+print(corss_entropy(logits, target))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>tensor(1.1176)
 </pre>
 </div>
 </div>
@@ -3356,7 +3701,7 @@ print(f"bce损失为{bce_loss}")</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3378,7 +3723,7 @@ print(f"bce损失为{bce_loss}")</div>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">mes_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">import numpy as np
+<div class="clipboard-copy-txt" id="cell-14">import numpy as np
 def MSE_Loss(lables, y_predict):
     per_sample_loss = (lables-y_predict)**2
     return np.mean(per_sample_loss)
@@ -3437,7 +3782,7 @@ print(f"bce损失为{mes_loss}")</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3470,7 +3815,7 @@ print(f"bce损失为{mes_loss}")</div>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"focal_loss损失为</span><span class="si">{</span><span class="n">focal_loss损失为</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-12">import numpy as np
+<div class="clipboard-copy-txt" id="cell-15">import numpy as np
 
 def focal_loss_prob(y_pred_prob, y_true, alpha=0.25, gamma=2.0, reduction="mean", eps=1e-9):
     p = np.clip(y_pred_prob, eps, 1 - eps)
@@ -3511,6 +3856,143 @@ print(f"focal_loss损失为{focal_loss损失为}")</div>
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=01727922">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="infonce">infoNCE<a class="anchor-link" href="#infonce">¶</a></h3><p>一、问题建模：对比预测任务</p>
+<p>设：</p>
+<ul>
+<li>给定一个 anchor 表示 $q $</li>
+<li>一个正样本 $k^+$（与 q 匹配）</li>
+<li>K 个负样本 ${k_1^-, \dots, k_K^-}$</li>
+</ul>
+<p>构造候选集合：</p>
+<p>$$
+\mathcal{K} = {k^+, k_1^-, \dots, k_K^-}
+$$</p>
+<p>目标：</p>
+<blockquote>
+<p>在这 (K+1) 个候选中，正确识别出与 q 匹配的那个样本。</p>
+</blockquote>
+<p>这本质是一个 <strong>(K+1) 分类问题</strong>。</p>
+<p>二、用 softmax 建模条件概率</p>
+<p>定义打分函数（相似度）：</p>
+<p>$$
+s(q, k) = \frac{f(q)^\top f(k)}{\tau}
+$$</p>
+<p>其中：</p>
+<ul>
+<li>$ f(\cdot) $ 为编码器</li>
+<li>$ \tau $ 为 temperature</li>
+</ul>
+<p>定义条件概率：</p>
+<p>$$
+p(k_i \mid q)
+=
+
+\frac{\exp(s(q,k_i))}
+{\sum_{k_j \in \mathcal{K}} \exp(s(q,k_j))}
+$$</p>
+<p>这就是 softmax 形式。</p>
+<p>三、最大似然估计</p>
+<p>希望模型最大化“正样本被选中的概率”：</p>
+<p>$$
+\max \log p(k^+ \mid q)
+$$</p>
+<p>展开：</p>
+<p>$$
+\log
+\frac{\exp(s(q,k^+))}
+{\sum_{k_j \in \mathcal{K}} \exp(s(q,k_j))}
+$$</p>
+<p>取负号得到损失：</p>
+<p>$$
+\mathcal{L}_{InfoNCE}
+=
+-
+\log
+\frac{\exp(s(q,k^+))}
+{\exp(s(q,k^+)) + \sum_{j=1}^{K} \exp(s(q,k_j^-))}
+$$</p>
+<p>这就是 InfoNCE 的基本形式。</p>
+<p>四、与交叉熵的等价性</p>
+<p>设：</p>
+<ul>
+<li>logits 为 $ s(q, k_i) $</li>
+<li>正样本 index = 0</li>
+</ul>
+<p>则</p>
+<p>$$
+\mathcal{L} = \text{CrossEntropy}(\text{logits}, \text{label}=0)
+$$</p>
+<p>因此：</p>
+<blockquote>
+<p>InfoNCE 本质就是一个带温度的 softmax 交叉熵。</p>
+</blockquote>
+<p>五、从密度比估计角度理解（更深层本质）</p>
+<p>假设数据来自联合分布 ( p(q,k) )，负样本来自边缘分布 ( p(k) )。</p>
+<p>理论上有：</p>
+<p>$$
+\frac{p(q,k)}{p(q)p(k)} \propto \exp(s(q,k))
+$$</p>
+<p>InfoNCE 实际是在学习这个密度比。</p>
+<p>Oord 等人在 CPC 论文中证明：</p>
+<p>$$
+I(q;k) \ge
+\log(K+1) - \mathcal{L}_{InfoNCE}
+$$</p>
+<p>即：</p>
+<blockquote>
+<p>最小化 InfoNCE 等价于最大化互信息下界。</p>
+</blockquote>
+<p>六、最终标准表达式</p>
+<p>单样本形式：</p>
+<p>$$
+\boxed{
+\mathcal{L}
+=
+
+-
+
+\log
+\frac{\exp(f(q)^\top f(k^+)/\tau)}
+{\sum_{k \in \mathcal{K}} \exp(f(q)^\top f(k)/\tau)}
+}
+$$</p>
+<p>Batch 形式（以 batch 作为负样本）：</p>
+<p>$$
+\mathcal{L}
+=
+
+-
+
+\frac{1}{N}
+\sum_{i=1}^{N}
+\log
+\frac{\exp(z_i^\top z_i^+/\tau)}
+{\sum_{j=1}^{N} \exp(z_i^\top z_j/\tau)}
+$$</p>
+<p>七、本质总结</p>
+<p>InfoNCE 的核心思想是：</p>
+<ol>
+<li>将“匹配问题”转化为分类问题</li>
+<li>用 softmax 建模概率</li>
+<li>用交叉熵优化</li>
+<li>等价于学习密度比</li>
+<li>等价于最大化互信息下界</li>
+</ol>
+<p>从工程角度：</p>
+<blockquote>
+<p>它只是一个带温度的 softmax 交叉熵。
+从理论角度：它是互信息估计器。</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=284137e4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -3530,7 +4012,7 @@ print(f"focal_loss损失为{focal_loss损失为}")</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3617,7 +4099,7 @@ print(f"focal_loss损失为{focal_loss损失为}")</div>
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-13">import torch
+<div class="clipboard-copy-txt" id="cell-16">import torch
 import torch.nn as nn
 
 class MLP(nn.Module):
@@ -3707,7 +4189,7 @@ class MLP(nn.Module):
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3765,7 +4247,7 @@ class MLP(nn.Module):
 <span class="n">y</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-14">import torch
+<div class="clipboard-copy-txt" id="cell-17">import torch
 import torch.nn as nn
 # 常见顺序是：Linear -&gt; LayerNorm -&gt; Activation -&gt; Dropout
 class MLP(nn.Module):
@@ -3838,7 +4320,7 @@ print(y)
 <div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3919,7 +4401,7 @@ print(y)
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-15">import torch 
+<div class="clipboard-copy-txt" id="cell-18">import torch 
 from torch import nn, optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
