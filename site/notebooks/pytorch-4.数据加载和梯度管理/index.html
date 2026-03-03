@@ -18,6 +18,8 @@
         <link rel="prev" href="../pytorch-3.%E7%BD%91%E7%BB%9C%E5%B1%82/">
       
       
+        <link rel="next" href="../pytorch-5.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+      
       
         
       
@@ -238,7 +240,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98%E7%9B%AE/" class="md-tabs__link">
+        <a href="../%E6%90%9C%E5%B9%BF%E6%8E%A8%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/" class="md-tabs__link">
           
   
   
@@ -930,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98%E7%9B%AE/" class="md-nav__link">
+      <a href="../%E6%90%9C%E5%B9%BF%E6%8E%A8%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/" class="md-nav__link">
         
   
   
@@ -938,6 +940,34 @@
     
   
     常见面试题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主播实际手撕题
   
 
     
@@ -1259,6 +1289,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch-5.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.基础知识总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1862,7 +1920,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1920,7 +1978,7 @@ import numpy as np</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -2012,7 +2070,7 @@ print(f"第0条样本: {dataset[0]}")</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>数据集大小: 1000
-第0条样本: {'user_id': tensor(35), 'item_id': tensor(156), 'label': tensor(0.)}
+第0条样本: {'user_id': tensor(70), 'item_id': tensor(257), 'label': tensor(0.)}
 </pre>
 </div>
 </div>
@@ -2038,7 +2096,7 @@ print(f"第0条样本: {dataset[0]}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -2092,7 +2150,7 @@ print(f"批量特征形状: {feats_batch.shape}")</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>数据集大小: 1000
-特征形状: torch.Size([16]), 标签: 0
+特征形状: torch.Size([16]), 标签: 2
 批量特征形状: torch.Size([4, 16])
 </pre>
 </div>
