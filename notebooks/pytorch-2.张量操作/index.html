@@ -953,6 +953,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主播实际手撕题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1170,6 +1198,34 @@
     
   
     4.数据加载和梯度管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch-5.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.基础知识总结
   
 
     
@@ -2404,6 +2460,60 @@ tensor([[1., 4.],
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>torch.stack(expert_outputs, dim=1)</code></p>
+<p>前提：输入是什么</p>
+<div class="highlight"><pre><span></span><span class="n">expert_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">expert</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">expert</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experts</span><span class="p">]</span>
+<span class="c1"># 每个 expert(x) 的形状：(B, expert_output_dim) = (10, 72)</span>
+<span class="c1"># expert_outputs 是一个 list，长度 = num_experts = 3</span>
+</pre></div>
+<p><code>torch.stack</code> 的作用</p>
+<blockquote>
+<p><code>stack</code> = <strong>在新维度上拼接</strong>，要求所有张量形状完全相同。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="c1"># 3 个 (10, 72) → 沿 dim=1 新建维度 → (10, 3, 72)</span>
+<span class="n">expert_outputs_stacked</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">expert_outputs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>直观理解：</p>
+<pre><code>expert_outputs[0]: (10, 72)  ─┐
+expert_outputs[1]: (10, 72)  ─┼─ stack(dim=1) ──→ (10, 3, 72)
+expert_outputs[2]: (10, 72)  ─┘
+                                    ↑
+                               新插入的维度，
+                               代表 num_experts
+</code></pre>
+<p>与 <code>torch.cat</code> 的区别</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>行为</th>
+<th>结果形状（3个(10,72)）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>torch.stack(expert_outputs, dim=1)</code></td>
+<td><strong>新建</strong>维度再拼接</td>
+<td><code>(10, 3, 72)</code></td>
+</tr>
+<tr>
+<td><code>torch.cat(expert_outputs, dim=1)</code></td>
+<td>在<strong>已有</strong>维度上拼接</td>
+<td><code>(10, 216)</code></td>
+</tr>
+</tbody>
+</table>
+<hr/>
 </div>
 </div>
 </div>
