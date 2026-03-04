@@ -1,5 +1,5 @@
-site_name: Hot100 算法笔记
-site_description: LeetCode Hot100 算法题 Notebook 系统整理
+site_name: 推荐算法学习笔记
+site_description: 《推荐算法学习笔记》系统整理
 site_author: GlenTT
 site_url: https://GRITJW.github.io/hot100/
 
@@ -69,8 +69,8 @@ nav:
       - 12.贪心算法: notebooks/12.贪心算法.ipynb
       - 13.图论: notebooks/13.图论.ipynb
       - 14.二分查找: notebooks/14.二分查找.ipynb
-      - 排序: notebooks/排序.ipynb
-      - 链表: notebooks/链表.ipynb
+      - 15.链表: notebooks/15.链表.ipynb
+      - 16.排序: notebooks/16.排序.ipynb
   - 搜广推面试手撕题:
       - 常见面试题: notebooks/搜广推常见面试题目.ipynb
       - 主播实际手撕题: notebooks/面试手撕题.ipynb
