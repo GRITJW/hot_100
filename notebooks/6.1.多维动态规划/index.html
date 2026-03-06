@@ -2411,7 +2411,7 @@ dp[i][0] = 0</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -2442,8 +2442,8 @@ dp[i][0] = 0</p>
                     <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
         
         <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">text1</span> <span class="o">=</span> <span class="s2">"abcde"</span>
-<span class="n">text2</span> <span class="o">=</span> <span class="s2">"ace"</span>
+<span class="n">text1</span> <span class="o">=</span> <span class="s2">"macedf"</span>
+<span class="n">text2</span> <span class="o">=</span> <span class="s2">"mdface"</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">))</span>   
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-5">class Solution:
@@ -2464,8 +2464,8 @@ dp[i][0] = 0</p>
                     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
         
         return dp[-1][-1]
-text1 = "abcde"
-text2 = "ace"
+text1 = "macedf"
+text2 = "mdface"
 print(Solution().longestCommonSubsequence(text1, text2))   </div>
 </div>
 </div>
@@ -2478,7 +2478,7 @@ print(Solution().longestCommonSubsequence(text1, text2))   </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>3
+<pre>4
 </pre>
 </div>
 </div>
