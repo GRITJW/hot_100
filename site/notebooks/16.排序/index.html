@@ -12,10 +12,10 @@
         <meta name="author" content="GlenTT">
       
       
-        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/%E6%8E%92%E5%BA%8F/">
+        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/16.%E6%8E%92%E5%BA%8F/">
       
       
-        <link rel="prev" href="../14.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+        <link rel="prev" href="../15.%E9%93%BE%E8%A1%A8/">
       
       
         <link rel="next" href="../%E6%90%9C%E5%B9%BF%E6%8E%A8%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/">
@@ -29,7 +29,7 @@
     
     
       
-        <title>排序 - 推荐算法学习笔记</title>
+        <title>16.排序 - 推荐算法学习笔记</title>
       
     
     
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              排序
+              16.排序
             
           </span>
         </div>
@@ -818,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../链表.ipynb" class="md-nav__link">
+      <a href="../15.%E9%93%BE%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -860,7 +860,7 @@
   <span class="md-ellipsis">
     
   
-    排序
+    16.排序
   
 
     
@@ -878,7 +878,7 @@
   <span class="md-ellipsis">
     
   
-    排序
+    16.排序
   
 
     
@@ -1364,7 +1364,7 @@
 
 
 
-  <h1>排序</h1>
+  <h1>16.排序</h1>
 
 <script>
 (function (global, factory) {
@@ -2008,6 +2008,71 @@ print(f"排序后数组: {sorted_arr}")</div>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">quick_sort</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nums</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">]</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">]</span>
+    <span class="n">middle</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">pivot</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">quick_sort</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">quick_sort</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">sorted_arr</span> <span class="o">=</span> <span class="n">quick_sort</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"原始数组: </span><span class="si">{</span><span class="n">arr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"排序后数组: </span><span class="si">{</span><span class="n">sorted_arr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-2">import random
+def quick_sort(nums):
+    if len(nums) &lt;= 1:
+        return nums
+    pivot = random.choice(nums)
+    left = [x for x in nums if x &lt; pivot]
+    right = [x for x in nums if x &gt; pivot]
+    middle = [x for x in nums if x == pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+arr = [10, 7, 8, 9, 1, 20]
+sorted_arr = quick_sort(arr)
+print(f"原始数组: {arr}")
+print(f"排序后数组: {sorted_arr}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>原始数组: [10, 7, 8, 9, 1, 20]
+排序后数组: [1, 7, 8, 9, 10, 20]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -2015,11 +2080,95 @@ print(f"排序后数组: {sorted_arr}")</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>时间复杂度：</p>
-<p>该实现属于<strong>非原地快速排序</strong>。在每一层递归中，需要遍历当前数组一次完成三路划分，并在返回时进行列表拼接，因此单层时间复杂度为 O(n)。当随机选取的 pivot 使得划分较为均衡时，递归深度约为 log n，整体<strong>平均时间复杂度为 O(n log n)</strong>；在极端情况下（每次 pivot 都落在边界），递归深度退化为 n，整体<strong>最坏时间复杂度为 O(n²)</strong>。</p>
-<p>空间复杂度：</p>
-<p>由于每一层递归都会新建 <code>left / middle / right</code> 三个列表，额外数组空间在任意时刻为 O(n)；
-递归调用栈空间：平均情况：递归深度为 O(log n)，最坏情况：递归深度为 O(n)。因此<strong>空间复杂度为 O(n)</strong>。</p>
+<p>快速排序复杂度分析</p>
+<p>一、每层的代价：O(n)</p>
+<div class="highlight"><pre><span></span><span class="n">left</span>   <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">]</span>
+<span class="n">right</span>  <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">]</span>
+<span class="n">middle</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">pivot</span><span class="p">]</span>
+<span class="k">return</span> <span class="n">quick_sort_basic</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="n">middle</span> <span class="o">+</span> <span class="n">quick_sort_basic</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+</pre></div>
+<p>每次调用做两件事：三次列表推导式遍历 O(n)，以及列表拼接（Python <code>+</code> 会申请新内存逐元素复制）O(n)，合计单次调用代价为 <strong>O(n)</strong>。</p>
+<hr/>
+<p>二、时间复杂度：O(n log n)</p>
+<p>时间复杂度的分析使用<strong>递归树横向分层</strong>模型，这是一种统计总工作量的思维工具，与实际执行顺序无关。</p>
+<p>将递归树按层切割，观察<strong>每一层所有子问题处理的元素总数</strong>：</p>
+<pre><code>第 1 层：[10, 7, 8, 9, 1, 5]              → 处理 6 个元素
+第 2 层：[1, 5, 7]        [9, 10]          → 合计 6 个
+第 3 层：[1]  [5]  [7]    [9]  [10]        → 合计 6 个
+</code></pre>
+<p>每一层所有子问题的元素总数始终为 n，每层代价为 <strong>O(n)</strong>。pivot 随机选取时，平均每次将数组折半，递归树共 <strong>O(log n)</strong> 层。</p>
+<p>$$T(n) = O(n) \times O(\log n) = O(n \log n)$$</p>
+<p>最坏情况下（每次 pivot 取到边界值），树退化为一条链，深度变为 O(n)，总时间退化为 <strong>O(n²)</strong>。</p>
+<hr/>
+<p>三、空间复杂度：O(n)</p>
+<p>这里需要区分<strong>分析模型</strong>与<strong>实际执行</strong>，两者回答的是不同问题。</p>
+<p>实际执行：深度优先</p>
+<p>Python 递归是深度优先执行的，并非同时处理某一整层：</p>
+<pre><code>quick_sort_basic([10,7,8,9,1,5])
+  └─ quick_sort_basic(left)        ← 一路递归到底
+       └─ quick_sort_basic(left)
+            └─ ... 到 len&lt;=1 返回
+  ← 左边全部完成，才开始
+  └─ quick_sort_basic(right)
+</code></pre>
+<p>因此，任意时刻内存中存活的，只有<strong>从根到当前节点这一条路径</strong>上的临时列表，而非某一整层的所有列表。</p>
+<p>内存峰值计算</p>
+<p>这条路径上每层的列表大小平均折半：</p>
+<p>$$n + \frac{n}{2} + \frac{n}{4} + \cdots + 1 = 2n = O(n)$$</p>
+<p>因此内存峰值为 <strong>O(n)</strong>。</p>
+<p>两种视角的对比</p>
+<table>
+<thead>
+<tr>
+<th>分析视角</th>
+<th>回答的问题</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>递归树横向分层</td>
+<td>总计算量是多少？</td>
+<td>O(n log n)</td>
+</tr>
+<tr>
+<td>实际深度优先执行</td>
+<td>内存峰值是多少？</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>与原地快排对比：</strong> 原地快排不创建临时列表，空间仅来自调用栈本身，为 O(log n)。本实现额外创建了 left/middle/right 列表，使峰值从 O(log n) 升至 O(n)，是此实现相对于原地排序的主要代价。</p>
+</blockquote>
+<hr/>
+<p>四、汇总</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>平均情况</th>
+<th>最坏情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>时间复杂度</strong></td>
+<td>O(n log n)</td>
+<td>O(n²)</td>
+</tr>
+<tr>
+<td><strong>空间复杂度（峰值）</strong></td>
+<td>O(n)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td><strong>递归深度</strong></td>
+<td>O(log n)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
 <hr/>
 </div>
 </div>
@@ -2044,7 +2193,7 @@ print(f"排序后数组: {sorted_arr}")</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2140,7 +2289,7 @@ print(f"排序后数组: {sorted_arr}")</div>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"原始数组: </span><span class="si">{</span><span class="n">arr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"排序后数组: </span><span class="si">{</span><span class="n">quick_sort_inplace</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">import random
+<div class="clipboard-copy-txt" id="cell-3">import random
 
 def quick_sort_inplace(arr, low=0, high=None):
     """
@@ -2339,7 +2488,7 @@ print(f"排序后数组: {quick_sort_inplace(arr)}")</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2420,7 +2569,7 @@ print(f"排序后数组: {quick_sort_inplace(arr)}")</div>
     <span class="c1"># 验证原数组没有被修改（因为这不是原地排序）</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"原数组是否改变: </span><span class="si">{</span><span class="n">my_array</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">from typing import List
+<div class="clipboard-copy-txt" id="cell-4">from typing import List
 
 def _merge(left_sorted: List[int], right_sorted: List[int]) -&gt; List[int]:
     """
@@ -2519,7 +2668,7 @@ if __name__ == "__main__":
 <div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2574,7 +2723,7 @@ if __name__ == "__main__":
     <span class="c1"># 验证原数组没有被修改（因为这不是原地排序）</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"原数组是否改变: </span><span class="si">{</span><span class="n">my_array</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">def sort_merge(nums):
+<div class="clipboard-copy-txt" id="cell-5">def sort_merge(nums):
     
     n = len(nums)
     if n &lt;= 1:
