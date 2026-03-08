@@ -71,6 +71,7 @@ nav:
       - 14.二分查找: notebooks/14.二分查找.ipynb
       - 15.链表: notebooks/15.链表.ipynb
       - 16.排序: notebooks/16.排序.ipynb
+      - 17.归纳总结: notebooks/17.Hot100归纳与题型对比.ipynb
   - 搜广推面试手撕题:
       - 常见面试题: notebooks/搜广推常见面试题目.ipynb
       - 主播实际手撕题: notebooks/面试手撕题.ipynb
