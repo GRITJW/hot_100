@@ -965,6 +965,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.Hot100%E5%BD%92%E7%BA%B3%E4%B8%8E%E9%A2%98%E5%9E%8B%E5%AF%B9%E6%AF%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.归纳总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2317,13 +2345,189 @@ output</div>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>sorted()</code> 是 Python 中最常用的排序函数之一。在算法题、数据处理和工程代码中都非常常见。核心理解只有两点：<strong>排序对象</strong>与<strong>排序依据（key）</strong>。</p>
+<ol>
+<li>基本用法</li>
+</ol>
+<p>语法：</p>
+<pre><code>sorted(iterable, key=None, reverse=False)
+</code></pre>
+<p>含义：</p>
+<ul>
+<li><code>iterable</code>：要排序的可迭代对象（list、str、tuple等）</li>
+<li><code>key</code>：指定排序依据</li>
+<li><code>reverse=True</code>：降序排序</li>
+</ul>
+<p>示例：</p>
+<pre><code>nums = [3,1,4,2]
+print(sorted(nums))
+</code></pre>
+<p>结果：</p>
+<pre><code>[1,2,3,4]
+</code></pre>
+<p>特点：</p>
+<ul>
+<li>返回 <strong>新的排序结果</strong></li>
+<li><strong>不会改变原数据</strong></li>
+</ul>
+<ol start="2">
+<li>字符串排序（算法题最常见）</li>
+</ol>
+<p>字符串会被当作 <strong>字符序列</strong> 进行排序。</p>
+<pre><code>s = "eat"
+print(sorted(s))
+</code></pre>
+<p>结果：</p>
+<pre><code>['a','e','t']
+</code></pre>
+<p>如果需要字符串：</p>
+<pre><code>key = "".join(sorted(s))
+</code></pre>
+<p>在 <strong>LeetCode 49 Group Anagrams</strong> 中就是这样生成 key。</p>
+<ol start="3">
+<li><code>key</code> 的本质</li>
+</ol>
+<p><code>key</code> 表示 <strong>排序依据函数</strong>。</p>
+<p>排序过程可以理解为：</p>
+<pre><code>元素  → key函数  → 得到排序依据 → 按依据排序
+</code></pre>
+<p>形式：</p>
+<pre><code>sorted(data, key=lambda x: 排序依据)
+</code></pre>
+<p><code>lambda x</code> 表示每次取一个元素 <code>x</code>。</p>
+<ol start="4">
+<li><code>key=lambda x:</code> 常见用法</li>
+</ol>
+<p>① 按元素本身排序（基本不用写）</p>
+<pre><code>sorted(nums, key=lambda x: x)
+</code></pre>
+<p>等价于</p>
+<pre><code>sorted(nums)
+</code></pre>
+<p>② 按某个位置排序（最常见）</p>
+<p>例如：</p>
+<pre><code>data = [(1,3),(2,1),(4,2)]
+</code></pre>
+<p>按第二个元素排序：</p>
+<pre><code>sorted(data, key=lambda x: x[1])
+</code></pre>
+<p>结果：</p>
+<pre><code>[(2,1),(4,2),(1,3)]
+</code></pre>
+<p>解释：</p>
+<pre><code>x = (1,3)
+x[1] = 3
+</code></pre>
+<p>排序依据是第二个值。</p>
+<p>算法题中非常常见：</p>
+<pre><code>intervals.sort(key=lambda x: x[1])
+</code></pre>
+<p>表示 <strong>按区间右端点排序</strong>。</p>
+<p>③ 按长度排序</p>
+<pre><code>words = ["apple","hi","banana"]
+
+sorted(words, key=lambda x: len(x))
+</code></pre>
+<p>结果：</p>
+<pre><code>['hi','apple','banana']
+</code></pre>
+<p>排序依据：</p>
+<pre><code>len(x)
+</code></pre>
+<p>④ 多关键字排序（非常重要）</p>
+<pre><code>data = [("Tom",20),("Jack",20),("Lucy",18)]
+</code></pre>
+<p>先按年龄，再按名字：</p>
+<pre><code>sorted(data, key=lambda x: (x[1], x[0]))
+</code></pre>
+<p>排序依据：</p>
+<pre><code>(age, name)
+</code></pre>
+<p>结果：</p>
+<pre><code>[('Lucy',18),('Jack',20),('Tom',20)]
+</code></pre>
+<p>⑤ 字典对象排序</p>
+<pre><code>data = [
+    {"name":"Tom","age":20},
+    {"name":"Lucy","age":18}
+]
+</code></pre>
+<p>按 age 排序：</p>
+<pre><code>sorted(data, key=lambda x: x["age"])
+</code></pre>
+<ol>
+<li>sorted vs sort</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>sorted</th>
+<th>sort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td>函数</td>
+<td>list方法</td>
+</tr>
+<tr>
+<td>是否返回新对象</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>是否修改原列表</td>
+<td>否</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<pre><code>sorted(nums)
+nums.sort()
+</code></pre>
+<p>算法题中两者都常见。</p>
+<ol>
+<li>算法题中最常见的三种写法</li>
+</ol>
+<p><strong>1 按元素排序</strong></p>
+<pre><code>sorted(nums)
+</code></pre>
+<p><strong>2 按某个位置排序</strong></p>
+<pre><code>sorted(data, key=lambda x: x[1])
+</code></pre>
+<p><strong>3 多关键字排序</strong></p>
+<pre><code>sorted(data, key=lambda x: (x[1], x[0]))
+</code></pre>
+<ol>
+<li>一句话理解 <code>lambda</code></li>
+</ol>
+<pre><code>lambda x: 表示对每个元素 x 计算一个排序依据
+</code></pre>
+<p>例如：</p>
+<pre><code>lambda x: x[1]
+</code></pre>
+<p>意思就是：</p>
+<pre><code>按照每个元素的第二个值排序
+</code></pre>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -2361,7 +2565,7 @@ output</div>
             <span class="c1"># 将原字符串添加到对应键的列表中</span>
             <span class="n">mp</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
         
-        <span class="c1"># 返回字典中所有的值（即分组后的列表）</span>
+        <span class="c1"># 返回字典中所有的值（即分组后的列表）,一定要将dict_values转成list。</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
 <span class="c1"># --- 以下是调用函数的示例 ---</span>
@@ -2404,7 +2608,7 @@ class Solution:
             # 将原字符串添加到对应键的列表中
             mp[key].append(st)
         
-        # 返回字典中所有的值（即分组后的列表）
+        # 返回字典中所有的值（即分组后的列表）,一定要将dict_values转成list。
         return list(mp.values())
 
 # --- 以下是调用函数的示例 ---
@@ -2464,7 +2668,7 @@ print(f"输出 (Output): {result}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -2485,6 +2689,7 @@ print(f"输出 (Output): {result}")</div>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
             <span class="n">key</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
             <span class="n">hashdict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">hashdict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">hashdict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'aet'</span><span class="p">,</span> <span class="s1">'ate'</span><span class="p">,</span> <span class="s1">'eat'</span><span class="p">,</span> <span class="s1">'app'</span><span class="p">,</span> <span class="s1">'ppa'</span><span class="p">]</span>
 <span class="n">jw</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
@@ -2499,6 +2704,7 @@ class Solution:
         for i in strs:
             key = ''.join(sorted(i))
             hashdict[key].append(i)
+        print(hashdict.values())
         return list(hashdict.values())
 strs = ['aet', 'ate', 'eat', 'app', 'ppa']
 jw = Solution()
@@ -2515,7 +2721,8 @@ print(a)</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[['aet', 'ate', 'eat'], ['app', 'ppa']]
+<pre>dict_values([['aet', 'ate', 'eat'], ['app', 'ppa']])
+[['aet', 'ate', 'eat'], ['app', 'ppa']]
 </pre>
 </div>
 </div>
@@ -2629,6 +2836,19 @@ print(f"输入: {test_nums_with_duplicates}, 最长连续序列长度: {solver.l
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>刷题错误：</p>
+<p>1.必须注意 cur_start = i、cur_start += 1</p>
+<p>2.遍历集合的时候，不能删除集合中的元素</p>
 </div>
 </div>
 </div>

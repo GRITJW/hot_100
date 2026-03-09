@@ -81,3 +81,4 @@ nav:
       - 3.网络层和损失函数: notebooks/pytorch-3.网络层.ipynb
       - 4.数据加载和梯度管理: notebooks/pytorch-4.数据加载和梯度管理.ipynb
       - 5.基础知识总结: notebooks/pytorch-5.基础知识总结.ipynb
+      - 6.pytorch各类库的梳理: notebooks/pytorch-6.architecture-tutorial.ipynb

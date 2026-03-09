@@ -954,6 +954,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.Hot100%E5%BD%92%E7%BA%B3%E4%B8%8E%E9%A2%98%E5%9E%8B%E5%AF%B9%E6%AF%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17.归纳总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1920,7 +1948,7 @@ preSum[j] − preSum[i] = k。因此，在遍历数组时，只需统计此前�
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -2044,7 +2072,7 @@ print(Solution().subarraySum(nums, k))
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -2176,7 +2204,7 @@ print(s.maxSlidingWindow(nums, k))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -2382,7 +2410,7 @@ print(Solution().minWindow(s, t))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -2395,63 +2423,79 @@ print(Solution().minWindow(s, t))</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">solution</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-        <span class="n">need</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">minWindow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">need</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+            <span class="n">need</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">need</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">window</span> <span class="o">=</span> <span class="p">{}</span>
+
         <span class="n">valid</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">min_len</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"inf"</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
-                <span class="n">window</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-                <span class="k">if</span> <span class="n">window</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">==</span> <span class="n">need</span><span class="p">[</span><span class="n">ch</span><span class="p">]:</span>
+        <span class="n">require</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">need</span><span class="p">)</span>
+
+        <span class="n">start</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">min_len</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">right</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
+                <span class="n">window</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">window</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">==</span> <span class="n">need</span><span class="p">[</span><span class="n">val</span><span class="p">]:</span>
                     <span class="n">valid</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">while</span> <span class="n">valid</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">need</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">min_len</span><span class="p">:</span>
-                    <span class="n">min_len</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">valid</span> <span class="o">==</span> <span class="n">require</span><span class="p">:</span>
+                <span class="n">cur_len</span> <span class="o">=</span> <span class="n">right</span><span class="o">-</span><span class="n">left</span><span class="o">+</span><span class="mi">1</span>
+                <span class="k">if</span> <span class="n">cur_len</span> <span class="o">&lt;</span> <span class="n">min_len</span><span class="p">:</span>
+                    <span class="n">min_len</span> <span class="o">=</span> <span class="n">cur_len</span>
                     <span class="n">start</span> <span class="o">=</span> <span class="n">left</span>
+
                 <span class="n">d</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
                 <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+                
                 <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">need</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">window</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">==</span> <span class="n">need</span><span class="p">[</span><span class="n">d</span><span class="p">]:</span>
                         <span class="n">valid</span> <span class="o">-=</span> <span class="mi">1</span>
-                    <span class="n">window</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="s2">""</span> <span class="k">if</span> <span class="n">min_len</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"inf"</span><span class="p">)</span> <span class="k">else</span> <span class="n">s</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">start</span> <span class="o">+</span> <span class="n">min_len</span><span class="p">]</span>
+                    <span class="n">window</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>            
+        <span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">min_len</span><span class="p">]</span> <span class="k">if</span> <span class="n">min_len</span> <span class="o">!=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">""</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="s2">"ADOBECODEBANC"</span>
 <span class="n">t</span> <span class="o">=</span> <span class="s2">"ABC"</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="p">()</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">minWindow</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">class solution:
-    def test(self, s, t):
-        need = Counter(t)
+<div class="clipboard-copy-txt" id="cell-4">class Solution:
+    def minWindow(self, s: str, t: str) -&gt; str:
+        need = {}
+        for i in t:
+            need[i] = need.get(i, 0) + 1
         window = {}
+
         valid = 0
-        left = 0
-        start = 0
-        min_len = float("inf")
-        for right, ch in enumerate(s):
-            if ch in need:
-                window[ch] = window.get(ch, 0) + 1
-                if window[ch] == need[ch]:
+        require = len(need)
+
+        start, left = 0, 0
+        n = len(s)
+        min_len = n+1
+        for right, val in enumerate(s):
+            if val in need:
+                window[val] = window.get(val, 0) + 1
+                if window[val] == need[val]:
                     valid += 1
-            while valid == len(need):
-                if right - left + 1 &lt; min_len:
-                    min_len = right - left + 1
+            while valid == require:
+                cur_len = right-left+1
+                if cur_len &lt; min_len:
+                    min_len = cur_len
                     start = left
+
                 d = s[left]
                 left += 1
+                
                 if d in need:
                     if window[d] == need[d]:
                         valid -= 1
-                    window[d] -= 1
-        return "" if min_len == float("inf") else s[start: start + min_len]
+                    window[d] -= 1            
+        return s[start:start+min_len] if min_len != n+1 else ""
 
 s = "ADOBECODEBANC"
 t = "ABC"
-print(solution().test(s, t))
+print(Solution().minWindow(s, t))
 </div>
 </div>
 </div>
