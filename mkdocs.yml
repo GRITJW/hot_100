@@ -82,3 +82,6 @@ nav:
       - 4.数据加载和梯度管理: notebooks/pytorch-4.数据加载和梯度管理.ipynb
       - 5.基础知识总结: notebooks/pytorch-5.基础知识总结.ipynb
       - 6.pytorch各类库的梳理: notebooks/pytorch-6.architecture-tutorial.ipynb
+  - 数据结构与python语法:
+      - 数据结构: notebooks/数据结构.ipynb
+      - python语法: notebooks/python语法.ipynb

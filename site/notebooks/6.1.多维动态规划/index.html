@@ -1311,6 +1311,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch-6.architecture-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.pytorch各类库的梳理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2439,7 +2467,7 @@ dp[i][0] = 0</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -2458,7 +2486,8 @@ dp[i][0] = 0</p>
         
         <span class="c1"># dp[i][j] 表示 text1[:i] 和 text2[:j] 的 LCS 长度</span>
         <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
-        
+
+        <span class="c1"># 练习出错：注意遍历边界，遍历的是dp和text</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
                 
@@ -2480,7 +2509,8 @@ dp[i][0] = 0</p>
         
         # dp[i][j] 表示 text1[:i] 和 text2[:j] 的 LCS 长度
         dp = [[0] * (n + 1) for _ in range(m + 1)]
-        
+
+        # 练习出错：注意遍历边界，遍历的是dp和text
         for i in range(1, m + 1):
             for j in range(1, n + 1):
                 
@@ -2670,7 +2700,7 @@ dp[i-1][j-1] + cost
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -2688,6 +2718,7 @@ dp[i-1][j-1] + cost
         <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
         
         <span class="c1"># dp[i][j] 表示 word1[:i] 转换为 word2[:j] 的最小操作数</span>
+        <span class="c1"># 边界必须处理，否则后续涉及到dp[i-1],dp[j-1]的时候会超过边界，取到最后的状态</span>
         <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
         
         <span class="c1"># 初始化边界</span>
@@ -2711,7 +2742,7 @@ dp[i-1][j-1] + cost
                     <span class="p">)</span>
         
         <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
-<span class="n">word1</span> <span class="o">=</span> <span class="s2">"horse"</span>
+<span class="n">word1</span> <span class="o">=</span> <span class="s2">""</span>
 <span class="n">word2</span> <span class="o">=</span> <span class="s2">"ros"</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">minDistance</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">))</span>
 </pre></div>
@@ -2720,6 +2751,7 @@ dp[i-1][j-1] + cost
         m, n = len(word1), len(word2)
         
         # dp[i][j] 表示 word1[:i] 转换为 word2[:j] 的最小操作数
+        # 边界必须处理，否则后续涉及到dp[i-1],dp[j-1]的时候会超过边界，取到最后的状态
         dp = [[0] * (n + 1) for _ in range(m + 1)]
         
         # 初始化边界
@@ -2743,7 +2775,7 @@ dp[i-1][j-1] + cost
                     )
         
         return dp[m][n]
-word1 = "horse"
+word1 = ""
 word2 = "ros"
 print(Solution().minDistance(word1, word2))</div>
 </div>

@@ -1120,6 +1120,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交叉熵：二元 vs. 多元的本质辨析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bce" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1206,6 +1217,17 @@
     <span class="md-ellipsis">
       
         MMOE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rqvae" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RQVAE
       
     </span>
   </a>
@@ -1450,6 +1472,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch-6.architecture-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.pytorch各类库的梳理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1583,6 +1633,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交叉熵：二元 vs. 多元的本质辨析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bce" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1669,6 +1730,17 @@
     <span class="md-ellipsis">
       
         MMOE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rqvae" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RQVAE
       
     </span>
   </a>
@@ -2160,7 +2232,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -2303,7 +2375,7 @@ print("注意力权重的形状:", attention.shape)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -2513,7 +2585,7 @@ K,V(分组): [B, g, L, d_k]</li>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -2571,7 +2643,7 @@ K,V(分组): [B, g, L, d_k]</li>
         <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_kv_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_kv_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-        <span class="c1"># 把 Q 分组： [B, h, L, d_k] -&gt; [B, g, h_per_group, L, d_k]</span>
+        <span class="c1"># 把 Q 分组： [B, h, L, d_k] -&gt; [B, g, h_per_group, L, d_k]，该形状是符合连续分组的，标准 GQA</span>
         <span class="n">qg</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_kv_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h_per_group</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
 
         <span class="c1"># 为了与组内 K,V 做 batched matmul，给 K,V 加一个组内头维度=1，方便广播</span>
@@ -2667,7 +2739,7 @@ class GroupedQueryAttention(nn.Module):
         k = k.view(B, L, self.num_kv_head, self.d_k).transpose(1, 2)
         v = v.view(B, L, self.num_kv_head, self.d_k).transpose(1, 2)
 
-        # 把 Q 分组： [B, h, L, d_k] -&gt; [B, g, h_per_group, L, d_k]
+        # 把 Q 分组： [B, h, L, d_k] -&gt; [B, g, h_per_group, L, d_k]，该形状是符合连续分组的，标准 GQA
         qg = q.view(B, self.num_kv_head, self.h_per_group, L, self.d_k)
 
         # 为了与组内 K,V 做 batched matmul，给 K,V 加一个组内头维度=1，方便广播
@@ -2755,7 +2827,7 @@ if __name__ == "__main__":
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -2930,7 +3002,7 @@ AUC 值，取值范围 [0, 1]</li>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -3057,11 +3129,11 @@ print(f"auc:{auc}")</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>labels:[0 1 0 0 1 0 0 1]
 scores:[0.1 0.9 0.2 0.8 1.  0.2 0.3 0.8]
-order:[0 2 5 6 3 7 1 4]
-labels_sorted:[0 0 0 0 0 1 1 1]
+order:[0 2 5 6 7 3 1 4]
+labels_sorted:[0 0 0 0 1 0 1 1]
 n_pos:3
 n_neg:5
-auc:1.0
+auc:0.9333333333333333
 </pre>
 </div>
 </div>
@@ -3069,23 +3141,23 @@ auc:1.0
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0aed20f7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=966e8108">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>练习</p>
+<p>但上述该方法np.argsort(scores)会存在并列分数的bug问题，正负分数相同的时候，贡献应该为0.5，而不是1或者0</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3a0b0511">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9194a77c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -3099,47 +3171,242 @@ auc:1.0
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">auc_rank</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
-    <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
-    <span class="n">labels_ordered</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
-    <span class="n">pos_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">labels_ordered</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">neg_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">labels_ordered</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">negative</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">positive</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">labels_ordered</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">negative</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">positive</span> <span class="o">+=</span> <span class="n">negative</span>
-    <span class="n">auc</span> <span class="o">=</span> <span class="n">positive</span> <span class="o">/</span> <span class="p">(</span><span class="n">pos_sample</span> <span class="o">*</span> <span class="n">neg_sample</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">auc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">auc_rank_fixed</span><span class="p">(</span><span class="n">q_list</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">q_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">label</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="c1"># ── Step 1：按分数从小到大排序 ──────────────────────────────────────</span>
+    <span class="c1"># argsort 返回的是"排序后的原始下标"，例如：</span>
+    <span class="c1">#   q = [0.1, 0.9, 0.2, 0.8, 1.0, 0.2, 0.3, 0.8]</span>
+    <span class="c1">#   rank_index = [0, 2, 5, 6, 3, 7, 1, 4]  （分数从小到大对应的原始位置）</span>
+    <span class="n">rank_index</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">q_list</span><span class="p">)</span>
+    <span class="n">q_sorted</span>     <span class="o">=</span> <span class="n">q_list</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>    <span class="c1"># 分数从小到大</span>
+    <span class="n">label_sorted</span> <span class="o">=</span> <span class="n">label</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>     <span class="c1"># label 跟着分数一起排好序</span>
+
+    <span class="n">total_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>       <span class="c1"># 正样本总数</span>
+    <span class="n">total_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>       <span class="c1"># 负样本总数</span>
+
+    <span class="c1"># ── Step 2：理解 AUC 的含义 ─────────────────────────────────────────</span>
+    <span class="c1"># AUC = "随机取一个正样本和一个负样本，正样本分数 &gt; 负样本分数" 的概率</span>
+    <span class="c1"># 具体：</span>
+    <span class="c1">#   concordant（正确序对）：正样本分数 &gt; 负样本分数，贡献 1.0</span>
+    <span class="c1">#   tie（平局）：           正样本分数 = 负样本分数，贡献 0.5</span>
+    <span class="c1">#   discordant（错误序对）：正样本分数 &lt; 负样本分数，贡献 0.0</span>
+    <span class="c1"># AUC = 所有正负样本对的贡献之和 / 正负样本对总数</span>
+
+    <span class="n">cum_neg</span>    <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># 记录"当前组之前"已经遍历过的负样本数量</span>
+    <span class="n">concordant</span> <span class="o">=</span> <span class="mf">0.0</span>   <span class="c1"># 累计贡献</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">n</span>       <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_sorted</span><span class="p">)</span>
+
+    <span class="c1"># ── Step 3：分组遍历（每组内分数完全相同）───────────────────────────</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+
+        <span class="c1"># 3a. 找到与位置 i 分数相同的区间 [i, j)</span>
+        <span class="c1">#     例如 score=0.2 出现在位置 2 和 3，则 i=2, j=4</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">q_sorted</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">q_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># 现在 label_sorted[i:j] 就是当前分数组内的所有样本</span>
+
+        <span class="n">group_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 组内正样本数</span>
+        <span class="n">group_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 组内负样本数</span>
+
+        <span class="c1"># 3b. 计算当前组内正样本与"所有负样本"形成的序对贡献</span>
+        <span class="c1">#</span>
+        <span class="c1">#   情况①：组前负样本（cum_neg 个）</span>
+        <span class="c1">#     这些负样本分数 &lt; 当前组分数</span>
+        <span class="c1">#     → 每个正样本都比它们分数高 → 每对贡献 1.0</span>
+        <span class="c1">#     → 新增 concordant = group_pos × cum_neg × 1.0</span>
+        <span class="c1">#</span>
+        <span class="c1">#   情况②：组内负样本（group_neg 个）</span>
+        <span class="c1">#     这些负样本与当前组正样本分数相同 → tie</span>
+        <span class="c1">#     → 每对贡献 0.5</span>
+        <span class="c1">#     → 新增 concordant = group_pos × group_neg × 0.5</span>
+        <span class="n">concordant</span> <span class="o">+=</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">cum_neg</span> <span class="o">+</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">group_neg</span> <span class="o">*</span> <span class="mf">0.5</span>
+
+        <span class="c1"># 3c. 当前组遍历完毕，把组内负样本数累加到 cum_neg</span>
+        <span class="c1">#     供后续更高分数的正样本使用</span>
+        <span class="n">cum_neg</span> <span class="o">+=</span> <span class="n">group_neg</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">j</span>   <span class="c1"># 移动到下一组</span>
+
+    <span class="c1"># ── Step 4：归一化 ──────────────────────────────────────────────────</span>
+    <span class="c1"># 正负样本对总数 = total_pos × total_neg</span>
+    <span class="k">return</span> <span class="n">concordant</span> <span class="o">/</span> <span class="p">(</span><span class="n">total_pos</span> <span class="o">*</span> <span class="n">total_neg</span><span class="p">)</span>
+
+
+<span class="c1"># ── 测试 ────────────────────────────────────────────────────────────────</span>
 <span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
-<span class="n">auc</span>  <span class="o">=</span> <span class="n">auc_rank</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"auc:</span><span class="si">{</span><span class="n">auc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">q</span>     <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"修复版  AUC: </span><span class="si">{</span><span class="n">auc_rank_fixed</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sklearn AUC: </span><span class="si">{</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-6">import numpy as np
-def auc_rank(labels, scores):
-    labels = np.array(labels)
-    scores = np.array(scores)
-    order = np.argsort(scores)
-    labels_ordered = labels[order]
-    pos_sample = np.sum(labels_ordered == 1)
-    neg_sample = np.sum(labels_ordered == 0)
-    negative = 0
-    positive = 0
-    for i in labels_ordered:
-        if i == 0:
-            negative += 1
-        else:
-            positive += negative
-    auc = positive / (pos_sample * neg_sample)
-    return auc
+from sklearn.metrics import roc_auc_score
+
+def auc_rank_fixed(q_list, label):
+    q_list = np.array(q_list, dtype=float)
+    label  = np.array(label)
+
+    # ── Step 1：按分数从小到大排序 ──────────────────────────────────────
+    # argsort 返回的是"排序后的原始下标"，例如：
+    #   q = [0.1, 0.9, 0.2, 0.8, 1.0, 0.2, 0.3, 0.8]
+    #   rank_index = [0, 2, 5, 6, 3, 7, 1, 4]  （分数从小到大对应的原始位置）
+    rank_index   = np.argsort(q_list)
+    q_sorted     = q_list[rank_index]    # 分数从小到大
+    label_sorted = label[rank_index]     # label 跟着分数一起排好序
+
+    total_pos = np.sum(label == 1)       # 正样本总数
+    total_neg = np.sum(label == 0)       # 负样本总数
+
+    # ── Step 2：理解 AUC 的含义 ─────────────────────────────────────────
+    # AUC = "随机取一个正样本和一个负样本，正样本分数 &gt; 负样本分数" 的概率
+    # 具体：
+    #   concordant（正确序对）：正样本分数 &gt; 负样本分数，贡献 1.0
+    #   tie（平局）：           正样本分数 = 负样本分数，贡献 0.5
+    #   discordant（错误序对）：正样本分数 &lt; 负样本分数，贡献 0.0
+    # AUC = 所有正负样本对的贡献之和 / 正负样本对总数
+
+    cum_neg    = 0     # 记录"当前组之前"已经遍历过的负样本数量
+    concordant = 0.0   # 累计贡献
+    i, n       = 0, len(label_sorted)
+
+    # ── Step 3：分组遍历（每组内分数完全相同）───────────────────────────
+    while i &lt; n:
+
+        # 3a. 找到与位置 i 分数相同的区间 [i, j)
+        #     例如 score=0.2 出现在位置 2 和 3，则 i=2, j=4
+        j = i
+        while j &lt; n and q_sorted[j] == q_sorted[i]:
+            j += 1
+        # 现在 label_sorted[i:j] 就是当前分数组内的所有样本
+
+        group_pos = np.sum(label_sorted[i:j] == 1)  # 组内正样本数
+        group_neg = np.sum(label_sorted[i:j] == 0)  # 组内负样本数
+
+        # 3b. 计算当前组内正样本与"所有负样本"形成的序对贡献
+        #
+        #   情况①：组前负样本（cum_neg 个）
+        #     这些负样本分数 &lt; 当前组分数
+        #     → 每个正样本都比它们分数高 → 每对贡献 1.0
+        #     → 新增 concordant = group_pos × cum_neg × 1.0
+        #
+        #   情况②：组内负样本（group_neg 个）
+        #     这些负样本与当前组正样本分数相同 → tie
+        #     → 每对贡献 0.5
+        #     → 新增 concordant = group_pos × group_neg × 0.5
+        concordant += group_pos * cum_neg + group_pos * group_neg * 0.5
+
+        # 3c. 当前组遍历完毕，把组内负样本数累加到 cum_neg
+        #     供后续更高分数的正样本使用
+        cum_neg += group_neg
+        i = j   # 移动到下一组
+
+    # ── Step 4：归一化 ──────────────────────────────────────────────────
+    # 正负样本对总数 = total_pos × total_neg
+    return concordant / (total_pos * total_neg)
+
+
+# ── 测试 ────────────────────────────────────────────────────────────────
 label = [0, 1, 0, 0, 1, 0, 0, 1]
+q     = [0.1, 0.9, 0.2, 0.8, 1, 0.2, 0.3, 0.8]
+
+print(f"修复版  AUC: {auc_rank_fixed(q, label)}")
+print(f"sklearn AUC: {roc_auc_score(label, q)}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>修复版  AUC: 0.9666666666666667
+sklearn AUC: 0.9666666666666667
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1afc0eca">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">auc_rank</span><span class="p">(</span><span class="n">q_list</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">q_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q_list</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">rank_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">q_list</span><span class="p">)</span>
+    <span class="n">q_list_ranked</span> <span class="o">=</span> <span class="n">q_list</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>
+    <span class="n">label_ranked</span> <span class="o">=</span> <span class="n">label</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>
+    <span class="n">total_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_ranked</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">total_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_ranked</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_ranked</span><span class="p">)</span>
+    <span class="n">cum_neg</span><span class="p">,</span> <span class="n">cum_pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">l</span>
+        <span class="k">while</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">q_list_ranked</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">==</span> <span class="n">q_list_ranked</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
+            <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">group_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_ranked</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">group_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_ranked</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cum_pos</span>  <span class="o">+=</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">cum_neg</span> <span class="o">+</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">group_neg</span> <span class="o">*</span> <span class="mf">0.5</span>
+        <span class="n">cum_neg</span> <span class="o">+=</span> <span class="n">group_neg</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">r</span>
+    <span class="k">return</span> <span class="n">cum_pos</span> <span class="o">/</span> <span class="p">(</span><span class="n">total_pos</span> <span class="o">*</span> <span class="n">total_neg</span><span class="p">)</span>
+
+
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">auc</span>  <span class="o">=</span> <span class="n">auc_rank</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"auc:</span><span class="si">{</span><span class="n">auc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-7">import numpy as np
+def auc_rank(q_list, label):
+    q_list = np.array(q_list)
+    label = np.array(label)
+    rank_index = np.argsort(q_list)
+    q_list_ranked = q_list[rank_index]
+    label_ranked = label[rank_index]
+    total_pos = np.sum(label_ranked == 1)
+    total_neg = np.sum(label_ranked == 0)
+    l, n= 0, len(label_ranked)
+    cum_neg, cum_pos = 0, 0
+    while l &lt; n:
+        r = l
+        while r &lt; n and q_list_ranked[l] == q_list_ranked[r]:
+            r += 1
+        group_neg = np.sum(label_ranked[l:r] == 0)
+        group_pos = np.sum(label_ranked[l:r] == 1)
+        cum_pos  += group_pos * cum_neg + group_pos * group_neg * 0.5
+        cum_neg += group_neg
+        l = r
+    return cum_pos / (total_pos * total_neg)
+
+
 q = [0.1, 0.9, 0.2, 0.8, 1, 0.2, 0.3, 0.8]
-auc  = auc_rank(label, q)
+label = [0, 1, 0, 0, 1, 0, 0, 1]
+auc  = auc_rank(q, label)
 print(f"auc:{auc}")</div>
 </div>
 </div>
@@ -3152,7 +3419,7 @@ print(f"auc:{auc}")</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>auc:1.0
+<pre>auc:0.9666666666666667
 </pre>
 </div>
 </div>
@@ -3206,10 +3473,10 @@ print(f"auc:{auc}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3303,7 +3570,7 @@ print(f"auc:{auc}")</div>
 <span class="n">user_id</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gauc_rank</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">weight_type</span><span class="o">=</span><span class="s1">'impression'</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">import numpy as np
+<div class="clipboard-copy-txt" id="cell-8">import numpy as np
 from collections import defaultdict
  
 def gauc_rank(user_ids, labels, scores, weight_type='impression'):
@@ -3399,7 +3666,7 @@ _, _ = gauc_rank(user_id, label, q, weight_type='impression')
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>gauc:0.8636363636363636
-user_auc_dict:{1: 1.0, 2: 1.0, 3: 0.5}
+user_auc_dict:{np.int64(1): np.float64(1.0), np.int64(2): np.float64(1.0), np.int64(3): np.float64(0.5)}
 </pre>
 </div>
 </div>
@@ -3417,16 +3684,16 @@ user_auc_dict:{1: 1.0, 2: 1.0, 3: 0.5}
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4d40bfba">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4d40bfba">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3489,7 +3756,7 @@ user_auc_dict:{1: 1.0, 2: 1.0, 3: 0.5}
 <span class="n">user_id</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gauc_rank</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">weight_type</span><span class="o">=</span><span class="s1">'impression'</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8">import numpy as np
+<div class="clipboard-copy-txt" id="cell-9">import numpy as np
 from collections import defaultdict
  
 def gauc_rank(user_ids, labels, scores, weight_type='impression'):
@@ -3546,6 +3813,20 @@ _, _ = gauc_rank(user_id, label, q, weight_type='impression')
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>gauc:0.8636363636363636
+user_auc_dict:{np.int64(1): np.float64(1.0), np.int64(2): np.float64(1.0), np.int64(3): np.float64(0.5)}
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=98a88cc9">
@@ -3565,6 +3846,16 @@ _, _ = gauc_rank(user_id, label, q, weight_type='impression')
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="vs">交叉熵：二元 vs. 多元的本质辨析<a class="anchor-link" href="#vs">¶</a></h3><p><strong>结论：数学本质相同，但工程实现上需要区分，且有重要的数值稳定性差异。</strong></p>
+<p>数学本质：统一公式</p>
+<p>交叉熵的通用定义为：</p>
+<p>$$H(p, q) = -\sum_{c=1}^{C} p(c) \log q(c)$$</p>
+<ul>
+<li><strong>多元（C 类）</strong>：对所有类别求和</li>
+<li><strong>二元（C=2）</strong>：代入 $p_1 = y,\ p_0 = 1-y$，退化为：</li>
+</ul>
+<p>$$H = -[y \log q + (1-y)\log(1-q)]$$</p>
+<p><strong>所以二元交叉熵是多元交叉熵在 C=2 时的特例，数学上完全一致。</strong></p>
 <h3 id="bce">BCE二类交叉熵实现<a class="anchor-link" href="#bce">¶</a></h3><p>1. 基础 BCE 公式</p>
 <p>BCE 的标准形式是基于概率定义的。假设 $y$ 为真实标签 (0 或 1)，$p$ 为模型预测为 1 的概率（即 Sigmoid 的输出），则损失 $L$ 为：</p>
 <p>$$L = -[y \cdot \log(p) + (1-y) \cdot \log(1-p)]$$</p>
@@ -3578,72 +3869,12 @@ _, _ = gauc_rank(user_id, label, q, weight_type='impression')
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bae18f09">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1a208e42">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">BCE_logits_Loss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">lables</span><span class="p">):</span>
-    <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_predict</span> <span class="o">*</span> <span class="n">lables</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_predict</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
-
-<span class="n">y_predict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
-<span class="n">lables</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCE_logits_Loss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span><span class="n">lables</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">bce_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-9">import numpy as np
-def BCE_logits_Loss(y_predict, lables):
-    per_sample_loss = np.maximum(y_predict, 0) - y_predict * lables + np.log(1 + np.exp(-np.abs(y_predict)))
-    return np.mean(per_sample_loss)
-
-y_predict = np.array([5,-4,5,-6])
-lables = np.array([1,0,1,0])
-
-bce_loss = BCE_logits_Loss(y_predict,lables)
-
-print(f"bce损失为{bce_loss}")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>bce损失为0.008514077508444018
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c2c53b0f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -3656,30 +3887,30 @@ print(f"bce损失为{bce_loss}")</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">BCE_logits_Loss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">lables</span><span class="p">):</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y_predict</span><span class="p">))</span>
-    <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">lables</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">lables</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">per_sample_loss</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 
-<span class="n">y_predict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">BCEloss_stable</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="s2">"稳定 BCE 公式必须使用 logits, 而不是使用概率p"</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_predict</span> <span class="o">*</span> <span class="n">label</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_predict</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCE_logits_Loss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span>
-
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.</span><span class="p">])</span>
+<span class="n">label</span>     <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">])</span>
+<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCEloss_stable</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">bce_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10">import numpy as np
-def BCE_logits_Loss(y_predict, lables):
-    p = 1 / (1 + np.exp(-y_predict))
-    per_sample_loss = -(lables * np.log(p) + (1 - lables) * np.log(1 - p))
-    return np.mean(per_sample_loss)
+<div class="clipboard-copy-txt" id="cell-10">import torch
+import torch.nn as nn
 
-y_predict = np.array([5,-4,5,-6])
-labels = np.array([1,0,1,0])
+def BCEloss_stable(y_predict, label):
+    "稳定 BCE 公式必须使用 logits, 而不是使用概率p"
+    loss = torch.clamp(y_predict, min=0) - y_predict * label + torch.log(1 + torch.exp(-torch.abs(y_predict)))
+    return loss.mean()
 
-bce_loss = BCE_logits_Loss(y_predict,labels)
-
+y_predict = torch.tensor([5., -4., 5., -6.])
+label     = torch.tensor([1.,  0., 1.,  0.])
+bce_loss = BCEloss_stable(y_predict, label)
 print(f"bce损失为{bce_loss}")</div>
 </div>
 </div>
@@ -3692,7 +3923,7 @@ print(f"bce损失为{bce_loss}")</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>bce损失为0.008514077508444016
+<pre>bce损失为0.008514078333973885
 </pre>
 </div>
 </div>
@@ -3705,7 +3936,7 @@ print(f"bce损失为{bce_loss}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -3732,6 +3963,66 @@ print(f"bce损失为{bce_loss}")</div>
 <div class="clipboard-copy-txt" id="cell-11">import torch
 def BCEloss(y_predict, label):
     p = torch.sigmoid(y_predict)
+    per_sample_loss = -(label * torch.log(p) + (1 - label) * torch.log(1 - p))
+    return per_sample_loss.mean()
+y_predict = torch.tensor([5., -4., 5., -6.])
+label = torch.tensor([1., 0., 1., 0.])
+bce_loss = BCEloss(y_predict,label)
+
+print(f"bce损失为{bce_loss}")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>bce损失为0.008514076471328735
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ed307968">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">BCEloss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">y_predict</span><span class="p">)</span>
+    <span class="c1"># 或者 p = 1 / (1+torch.exp(-y_predict))</span>
+    <span class="n">per_sample_loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">label</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">label</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">per_sample_loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.</span><span class="p">])</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">bce_loss</span> <span class="o">=</span> <span class="n">BCEloss</span><span class="p">(</span><span class="n">y_predict</span><span class="p">,</span><span class="n">label</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">bce_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-12">import torch
+def BCEloss(y_predict, label):
+    p = torch.sigmoid(y_predict)
+    # 或者 p = 1 / (1+torch.exp(-y_predict))
     per_sample_loss = -(label * torch.log(p) + (1 - label) * torch.log(1 - p))
     return per_sample_loss.mean()
 y_predict = torch.tensor([5., -4., 5., -6.])
@@ -3838,10 +4129,10 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3876,7 +4167,7 @@ $$</p>
 <span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">corss_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-12">import torch
+<div class="clipboard-copy-txt" id="cell-13">import torch
 def corss_entropy(logits, target):
     B, D = logits.shape
     # 0. 值稳定：减去每行最大值
@@ -3938,10 +4229,10 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3958,15 +4249,15 @@ $$</p>
 <span class="sd">    logits: (N, C)</span>
 <span class="sd">    target: (N,)</span>
 <span class="sd">    """</span>
-    <span class="n">N</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">B</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">shape</span>
     
     <span class="c1"># 1. 数值稳定：减去每行最大值，防止exp爆炸</span>
-    <span class="n">max_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">max_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>      <span class="c1"># (B,D) → (B,1)</span>
     <span class="n">logits_stable</span> <span class="o">=</span> <span class="n">logits</span> <span class="o">-</span> <span class="n">max_logits</span>
     <span class="c1"># 2. 计算 log(sum(exp()))</span>
     <span class="n">log_sum_exp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logits_stable</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
     <span class="c1"># 3. 取正确类别的 logit</span>
-    <span class="n">correct_logits</span> <span class="o">=</span> <span class="n">logits_stable</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">target</span><span class="p">]</span>
+    <span class="n">correct_logits</span> <span class="o">=</span> <span class="n">logits_stable</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="n">target</span><span class="p">]</span>     <span class="c1"># 第i行取第target[i]列, NumPy/PyTorch tensor 才支持这种矩阵索引。</span>
     <span class="c1"># 4. 负对数似然</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">correct_logits</span> <span class="o">+</span> <span class="n">log_sum_exp</span>
     
@@ -3976,24 +4267,24 @@ $$</p>
                     <span class="p">[</span><span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">],</span>
                     <span class="p">[</span><span class="mf">0.2533</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">]])</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">corss_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-13">import torch
+<div class="clipboard-copy-txt" id="cell-14">import torch
 
 def cross_entropy(logits, target):
     """
     logits: (N, C)
     target: (N,)
     """
-    N, C = logits.shape
+    B, D = logits.shape
     
     # 1. 数值稳定：减去每行最大值，防止exp爆炸
-    max_logits = torch.max(logits, dim=1, keepdim=True)[0]
+    max_logits = torch.max(logits, dim=1, keepdim=True)[0]      # (B,D) → (B,1)
     logits_stable = logits - max_logits
     # 2. 计算 log(sum(exp()))
     log_sum_exp = torch.log(torch.sum(torch.exp(logits_stable), dim=1))
     # 3. 取正确类别的 logit
-    correct_logits = logits_stable[torch.arange(N), target]
+    correct_logits = logits_stable[torch.arange(B), target]     # 第i行取第target[i]列, NumPy/PyTorch tensor 才支持这种矩阵索引。
     # 4. 负对数似然
     loss = -correct_logits + log_sum_exp
     
@@ -4003,7 +4294,69 @@ logits = torch.tensor([[1.0000, 0.4985, 0.6664, 0.2533],
                     [0.6664, 0.8408, 1.0000, 0.8372],
                     [0.2533, 0.5431, 0.8372, 1.0000]])
 target = torch.tensor([0, 1, 2, 3])
-print(corss_entropy(logits, target))</div>
+print(cross_entropy(logits, target))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>tensor(1.1176)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8ce76aaf">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">log_sum_exp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">logsumexp</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">pos_logits</span> <span class="o">=</span> <span class="n">logits</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span> <span class="n">target</span><span class="p">]</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">pos_logits</span> <span class="o">+</span> <span class="n">log_sum_exp</span>
+    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.4985</span><span class="p">,</span> <span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.2533</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.4985</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mf">0.2533</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">]])</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-15">import torch
+def cross_entropy(logits, target):
+    log_sum_exp = torch.logsumexp(logits, dim=-1)
+    pos_logits = logits[torch.arange(logits.size(0)), target]
+    loss = -pos_logits + log_sum_exp
+    return loss.mean()
+logits = torch.tensor([[1.0000, 0.4985, 0.6664, 0.2533],
+                    [0.4985, 1.0000, 0.8408, 0.5431],
+                    [0.6664, 0.8408, 1.0000, 0.8372],
+                    [0.2533, 0.5431, 0.8372, 1.0000]])
+target = torch.tensor([0, 1, 2, 3])
+print(cross_entropy(logits, target))</div>
 </div>
 </div>
 </div>
@@ -4039,10 +4392,10 @@ print(corss_entropy(logits, target))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4064,7 +4417,7 @@ print(corss_entropy(logits, target))</div>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"bce损失为</span><span class="si">{</span><span class="n">mes_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-14">import numpy as np
+<div class="clipboard-copy-txt" id="cell-16">import numpy as np
 def MSE_Loss(lables, y_predict):
     per_sample_loss = (lables-y_predict)**2
     return np.mean(per_sample_loss)
@@ -4120,10 +4473,10 @@ print(f"bce损失为{mes_loss}")</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4156,7 +4509,7 @@ print(f"bce损失为{mes_loss}")</div>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"focal_loss损失为</span><span class="si">{</span><span class="n">focal_loss损失为</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-15">import numpy as np
+<div class="clipboard-copy-txt" id="cell-17">import numpy as np
 
 def focal_loss_prob(y_pred_prob, y_true, alpha=0.25, gamma=2.0, reduction="mean", eps=1e-9):
     p = np.clip(y_pred_prob, eps, 1 - eps)
@@ -4211,9 +4564,9 @@ print(f"focal_loss损失为{focal_loss损失为}")</div>
 <li>K 个负样本 ${k_1^-, \dots, k_K^-}$</li>
 </ul>
 <p>构造候选集合：</p>
-<pre><code>$$
-\mathcal{K} = {k^+, k_1^-, \dots, k_K^-}
-$$</code></pre>
+<p>$$
+\mathcal{K} = \{k^+, k_1^-, \dots, k_K^-\}
+$$</p>
 <p>目标：</p>
 <blockquote>
 <p>在这 (K+1) 个候选中，正确识别出与 q 匹配的那个样本。</p>
@@ -4333,6 +4686,152 @@ $$</p>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f8ac38d2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">infoNCE</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">item_emb</span><span class="p">,</span> <span class="n">tempreture</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">):</span>
+    <span class="c1"># 归一化</span>
+    <span class="n">user_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">item_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">item_emb</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># 相似矩阵</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">item_emb</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">tempreture</span>
+    <span class="c1"># 标签</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">user_emb</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">user_emb</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="c1"># 多类交叉熵计算</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="c1"># Compute the cross entropy loss between input logits and target.</span>
+    <span class="k">return</span> <span class="n">loss</span>
+<span class="n">user_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">24.0</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">,</span> <span class="mf">32.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">12.1</span><span class="p">,</span> <span class="mf">11.1</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+<span class="n">item_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">24.0</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">,</span> <span class="mf">32.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">12.1</span><span class="p">,</span> <span class="mf">11.1</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">infoNCE</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">item_emb</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-18">import torch
+import torch.nn.functional as F
+def infoNCE(user_emb, item_emb, tempreture = 0.5):
+    # 归一化
+    user_emb = F.normalize(user_emb, dim = -1)
+    item_emb = F.normalize(item_emb, dim = -1)
+    # 相似矩阵
+    sim = torch.matmul(user_emb, item_emb.transpose(0, 1)) / tempreture
+    # 标签
+    labels = torch.arange(user_emb.size(0), device=user_emb.device)
+    # 多类交叉熵计算
+    loss = F.cross_entropy(sim, label) # Compute the cross entropy loss between input logits and target.
+    return loss
+user_emb = torch.tensor([[1.1, 24.0, 5.9], [3.3, 9.2, 32.1], [12.1, 11.1, 15.3], [0.8, 0.1, 0.4]])
+item_emb = torch.tensor([[1.1, 24.0, 5.9], [3.3, 9.2, 32.1], [12.1, 11.1, 15.3], [0.8, 0.1, 0.4]])
+print(infoNCE(user_emb, item_emb, 1))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>tensor(1.1176)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=be6ac798">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">info_nce</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">item_emb</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">user_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">item_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">item_emb</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">item_emb</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">temperature</span>
+
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">user_emb</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">user_emb</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="n">loss_u2i</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="n">loss_i2u</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">sim</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+    <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">loss_u2i</span> <span class="o">+</span> <span class="n">loss_i2u</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">loss</span>
+<span class="n">user_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">24.0</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">,</span> <span class="mf">32.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">12.1</span><span class="p">,</span> <span class="mf">11.1</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+<span class="n">item_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">24.0</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">,</span> <span class="mf">32.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">12.1</span><span class="p">,</span> <span class="mf">11.1</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">infoNCE</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">item_emb</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-19">import torch
+import torch.nn.functional as F
+
+def info_nce(user_emb, item_emb, temperature=1.0):
+    user_emb = F.normalize(user_emb, dim=-1)
+    item_emb = F.normalize(item_emb, dim=-1)
+
+    sim = torch.matmul(user_emb, item_emb.T) / temperature
+
+    labels = torch.arange(user_emb.size(0), device=user_emb.device)
+
+    loss_u2i = F.cross_entropy(sim, labels)
+    loss_i2u = F.cross_entropy(sim.T, labels)
+
+    loss = (loss_u2i + loss_i2u) / 2
+    return loss
+user_emb = torch.tensor([[1.1, 24.0, 5.9], [3.3, 9.2, 32.1], [12.1, 11.1, 15.3], [0.8, 0.1, 0.4]])
+item_emb = torch.tensor([[1.1, 24.0, 5.9], [3.3, 9.2, 32.1], [12.1, 11.1, 15.3], [0.8, 0.1, 0.4]])
+print(infoNCE(user_emb, item_emb, 1))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>tensor(1.1176)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=284137e4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -4350,10 +4849,10 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-20">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4440,7 +4939,7 @@ $$</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-16">import torch
+<div class="clipboard-copy-txt" id="cell-20">import torch
 import torch.nn as nn
 
 class MLP(nn.Module):
@@ -4521,16 +5020,16 @@ class MLP(nn.Module):
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=96dfec23">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=96dfec23">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-21">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4588,7 +5087,7 @@ class MLP(nn.Module):
 <span class="n">y</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-17">import torch
+<div class="clipboard-copy-txt" id="cell-21">import torch
 import torch.nn as nn
 # 常见顺序是：Linear -&gt; LayerNorm -&gt; Activation -&gt; Dropout
 class MLP(nn.Module):
@@ -4640,6 +5139,30 @@ print(y)
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>tensor([[[-1.2597, -0.3917, -2.1761, -1.6370,  0.9768, -0.1885,  0.2397,
+           0.1150,  0.9735,  1.2439, -0.0406,  0.5806,  1.0668,  0.0576,
+          -0.1426,  0.6159, -0.3554,  1.6073,  3.1268, -0.0107,  0.2118,
+          -0.8624,  1.1218, -0.4589,  1.9104, -0.9769,  0.3840,  0.5005,
+           0.6873,  0.2684, -0.0317,  0.2847],
+         [ 0.1464,  0.3139, -1.0614, -0.2200,  0.0767, -1.1065,  0.4512,
+          -1.3406,  1.3963, -0.7353, -1.5034, -0.8260,  0.6051, -0.4990,
+          -0.0943, -0.3740,  1.2251, -0.1666, -0.2752, -0.2456,  1.2412,
+          -0.5601,  0.0153,  0.4588, -1.2241, -2.3180, -1.7191, -0.8325,
+           0.4759,  0.6389, -0.8476,  0.1833]]])
+tensor([[[-0.4256],
+         [-0.3233]]], grad_fn=&lt;ViewBackward0&gt;)
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=660a23e7">
@@ -4658,10 +5181,10 @@ print(y)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-22">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4742,7 +5265,7 @@ print(y)
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-18">import torch 
+<div class="clipboard-copy-txt" id="cell-22">import torch 
 from torch import nn, optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
@@ -4824,30 +5347,30 @@ if __name__ == '__main__':
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>epoch[1], step[0], loss:2.30487060546875
-epoch[1], step[10], loss:2.2474365234375
-epoch[1], step[20], loss:2.1429443359375
-epoch[1], step[30], loss:1.953338623046875
-epoch[1], step[40], loss:1.589691162109375
-epoch[1], step[50], loss:1.1607837677001953
-epoch[1], step[60], loss:0.8270969390869141
-epoch[1], step[70], loss:0.7493977546691895
-epoch[1], step[80], loss:0.6877131462097168
-epoch[1], step[90], loss:0.5060857534408569
-epoch[1], step[100], loss:0.49372947216033936
-epoch[1], step[110], loss:0.503061830997467
-epoch[1], step[120], loss:0.4905708432197571
-epoch[1], step[130], loss:0.32233864068984985
-epoch[1], step[140], loss:0.44921380281448364
-epoch[1], step[150], loss:0.46268683671951294
-epoch[1], step[160], loss:0.36531856656074524
-epoch[1], step[170], loss:0.29948681592941284
-epoch[1], step[180], loss:0.33051609992980957
-epoch[1], step[190], loss:0.34873807430267334
-epoch[1], step[200], loss:0.36760321259498596
-epoch[1], step[210], loss:0.31475210189819336
-epoch[1], step[220], loss:0.3854420781135559
-epoch[1], step[230], loss:0.36614060401916504
+<pre>epoch[1], step[0], loss:2.30999755859375
+epoch[1], step[10], loss:2.25244140625
+epoch[1], step[20], loss:2.133575439453125
+epoch[1], step[30], loss:1.91766357421875
+epoch[1], step[40], loss:1.6343231201171875
+epoch[1], step[50], loss:1.292043685913086
+epoch[1], step[60], loss:0.9788870811462402
+epoch[1], step[70], loss:0.7801198959350586
+epoch[1], step[80], loss:0.5351661443710327
+epoch[1], step[90], loss:0.464899480342865
+epoch[1], step[100], loss:0.5750057697296143
+epoch[1], step[110], loss:0.46943703293800354
+epoch[1], step[120], loss:0.38245707750320435
+epoch[1], step[130], loss:0.4428865611553192
+epoch[1], step[140], loss:0.48432081937789917
+epoch[1], step[150], loss:0.3537149429321289
+epoch[1], step[160], loss:0.3857778310775757
+epoch[1], step[170], loss:0.37320905923843384
+epoch[1], step[180], loss:0.31382983922958374
+epoch[1], step[190], loss:0.3211347758769989
+epoch[1], step[200], loss:0.3056581914424896
+epoch[1], step[210], loss:0.3820638954639435
+epoch[1], step[220], loss:0.3279893696308136
+epoch[1], step[230], loss:0.3327226936817169
 </pre>
 </div>
 </div>
@@ -4871,10 +5394,10 @@ epoch[1], step[230], loss:0.36614060401916504
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-23">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4958,7 +5481,7 @@ epoch[1], step[230], loss:0.36614060401916504
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">task_outputs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Task </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> output shape: </span><span class="si">{</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-19">import torch
+<div class="clipboard-copy-txt" id="cell-23">import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -5056,10 +5579,10 @@ Task 1 output shape: torch.Size([10, 1])
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-20">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-24">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -5177,7 +5700,7 @@ Task 1 output shape: torch.Size([10, 1])
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">task_outputs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Task </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> output shape: </span><span class="si">{</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-20">import torch
+<div class="clipboard-copy-txt" id="cell-24">import torch
 import torch.nn as nn
 import torch.nn.functional as F
 # 常见顺序是：Linear -&gt; LayerNorm -&gt; Activation -&gt; Dropout
@@ -5299,6 +5822,602 @@ for i, output in enumerate(task_outputs):
 <pre>Task 0 output shape: torch.Size([10, 1])
 Task 1 output shape: torch.Size([10, 1])
 </pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e72494c1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="rqvae">RQVAE<a class="anchor-link" href="#rqvae">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=015a8e5a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-25">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="c1"># --- 1. 基础组件 (Building Blocks) ---</span>
+<span class="c1"># 我们首先定义构成完整模型的所有独立、可复用的模块。   </span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RQEncoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    编码器模块：</span>
+<span class="sd">    负责将高维输入向量压缩为低维潜在表示。</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hidden_dims</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">in_dim</span> <span class="o">=</span> <span class="n">input_dim</span>
+        <span class="k">for</span> <span class="n">hidden_dim</span> <span class="ow">in</span> <span class="n">hidden_dims</span><span class="p">:</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">),</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">),</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+            <span class="p">])</span>
+            <span class="n">in_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">layers</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RQDecoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    解码器模块：</span>
+<span class="sd">    负责将量化后的低维向量重建为原始维度。</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hidden_dims</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">in_dim</span> <span class="o">=</span> <span class="n">latent_dim</span>
+        <span class="k">for</span> <span class="n">hidden_dim</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">hidden_dims</span><span class="p">):</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">),</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">),</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+            <span class="p">])</span>
+            <span class="n">in_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">layers</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">VQEmbedding</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    单层向量量化模块 (Vector Quantization Embedding)</span>
+<span class="sd">    包含一个码本 (codebook)，负责将输入向量映射到码本中最接近的向量</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_embeddings</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">commitment_cost</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># defines the size of the codebook</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_embeddings</span> <span class="o">=</span> <span class="n">num_embeddings</span>
+        <span class="c1"># must be identical to the dimensionality of the latent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span> <span class="o">=</span> <span class="n">embedding_dim</span>
+        <span class="c1"># to balance the encoder's learning and the codebook's learning</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">commitment_cost</span> <span class="o">=</span> <span class="n">commitment_cost</span>
+        
+        <span class="c1"># 将码本注册为可学习的参数</span>
+<span class="w">        </span><span class="sd">"""The matrix is filled with random numbers sampled from a standard normal distribution </span>
+<span class="sd">        (mean 0, variance 1). This serves as the initial state of our codebook before </span>
+<span class="sd">        it is trained or properly initialized with K-means."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_embeddings</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">))</span>
+        <span class="c1"># 状态开关，用于确保后续使用真实数据（通过K-Means）初始化码本的操作只执行一次，不会在训练中被重复调用</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialized_with_data</span> <span class="o">=</span> <span class="kc">False</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_from_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        K-Means聚类算法用一小批真实数据来为码本提供一个“有根据的、高质量的”初始状态，</span>
+<span class="sd">        避免随机初始化陷阱，导致训练初期模型很难收敛，甚至出现码本崩溃的现象</span>
+<span class="sd">        arges</span>
+<span class="sd">        data: [n_samples, embedding_dim],原始Embedding通过未经训练的Encoder后得到的潜在向量集合，</span>
+<span class="sd">        它代表了数据在潜在空间的初始分布</span>
+<span class="sd">        """</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialized_with_data</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="c1"># 将输入的PyTorch张量转换为NumPy数组</span>
+        <span class="n">data_np</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="n">data_np</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="n">n_samples</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_embeddings</span><span class="p">:</span>
+            <span class="c1"># 样本小于码本大小时，有放回地抽样</span>
+            <span class="c1"># 从现有的 n_samples 个样本中，随机抽取 self.num_embeddings 个索引</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_embeddings</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">centroids</span> <span class="o">=</span> <span class="n">data_np</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># 初始化一个K-Means聚类器对象,n_init:KMeans算法的独立运行次数,max_iter:单次运行的最大迭代次数</span>
+            <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_embeddings</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s1">'auto'</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+            <span class="c1"># 数据上执行K-Means算法</span>
+            <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_np</span><span class="p">)</span>
+            <span class="c1"># 从.cluster_centers_属性中提取出计算好的聚类中心</span>
+            <span class="n">centroids</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+<span class="w">            </span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        torch.from_numpy(centroids): 将NumPy格式的质心数组转换回PyTorch张量。</span>
+<span class="sd">        .copy_(...): 这是一个原地操作（in-place operation），它将质心张量的数据复制到self.embeddings这个模型参数中。</span>
+<span class="sd">        使用.data是直接操作底层数据，可以避免干扰PyTorch的自动求导图。</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">centroids</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialized_with_data</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        inputs: [batch_size, embedding_dim]</span>
+<span class="sd">        forward 方法接收一批由Encoder传来的连续向量,为每个向量执行以下四个核心任务:</span>
+<span class="sd">        寻找最近邻: 在码本中为每个输入向量找到最匹配的那个码本向量。</span>
+<span class="sd">        计算量化损失: 计算两部分损失——一部分用于更新码本自身,另一部分用于更新前面的Encoder。</span>
+<span class="sd">        梯度“戏法”: 使用一种名为“梯度直通估计器”的技巧，解决量化过程中梯度无法传播的问题。</span>
+<span class="sd">        返回结果: 输出量化后的向量、找到的索引（即语义码），以及计算出的损失</span>
+<span class="sd">        """</span>
+        <span class="c1"># 高效地计算每个输入向量到码本中所有向量的平方欧氏距离</span>
+        <span class="c1"># inputs:(B, D); self.embeddings:(k, D)</span>
+        <span class="c1"># (B, 1) + (k,) - (B, K)，都广播机制为(B, K)</span>
+        <span class="n">distances</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">inputs</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span>
+            <span class="mi">2</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">t</span><span class="p">())</span>
+        <span class="p">)</span>
+        <span class="c1"># 执行量化对 distances 矩阵[batch_size, num_embeddings]的每一行（dim=1），</span>
+        <span class="c1"># 找到值最小的那个元素的索引, 这个索引就是距离最近的码本向量的索引</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># 根据索引获取量化后的向量,[batch_size, embedding_dim]</span>
+        <span class="n">quantized</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="p">)</span>
+        
+        <span class="c1"># 码本损失,梯度不会流向Encoder,只会流向 quantized,目标是更新码本</span>
+        <span class="n">codebook_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">quantized</span><span class="p">,</span> <span class="n">inputs</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>  
+        <span class="c1"># 承诺损失,梯度不会流向quantized,只会流向 Encoder,目标是更新Encoder</span>
+        <span class="n">commitment_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">quantized</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">commitment_cost</span> 
+        <span class="c1"># 该层的总量化损失</span>
+        <span class="n">total_loss</span> <span class="o">=</span> <span class="n">codebook_loss</span> <span class="o">+</span> <span class="n">commitment_loss</span>
+        
+        <span class="c1"># Straight-Through Estimator (梯度直通)</span>
+        <span class="c1"># 解决量化操作不可导的问题，torch.argmin是一个离散的查找操作，无法计算梯度。这意味着从Decoder传回的梯度会在这里中断，无法到达Encoder。</span>
+        <span class="c1"># d quantized / d inputs = 1, 从而能使梯度传到inputs，再到encoder，否则只能到quantized。</span>
+        <span class="n">quantized</span> <span class="o">=</span> <span class="n">inputs</span> <span class="o">+</span> <span class="p">(</span><span class="n">quantized</span> <span class="o">-</span> <span class="n">inputs</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+        
+        <span class="k">return</span> <span class="n">quantized</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">total_loss</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ResidualVQ</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    残差向量量化 (Residual Vector Quantization)。</span>
+<span class="sd">    包含多个VQEmbedding层，对前一层的残差进行逐层量化。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    num_layers: int: 指定流水线中包含多少个VQEmbedding层，也就是量化的层数。</span>
+<span class="sd">    num_embeddings_list: list: 一个整数列表，其长度必须等于num_layers。它为每一层VQEmbedding分别指定码本的大小。例如 [256, 128, 128]</span>
+<span class="sd">    embedding_dim: int: 潜在空间的维度，这个维度对于所有层都是相同的。</span>
+<span class="sd">    commitment_cost: float: 默认的承诺损失权重，会传递给它创建的所有VQEmbedding子模块。</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_layers</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_embeddings_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">commitment_cost</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span> <span class="o">=</span> <span class="n">num_layers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vq_layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span>
+            <span class="n">VQEmbedding</span><span class="p">(</span><span class="n">num_embeddings_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">commitment_cost</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_layers</span><span class="p">)</span>
+        <span class="p">])</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_from_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""逐层初始化所有码本。"""</span>
+        <span class="c1"># 创建一个输入数据的副本</span>
+        <span class="n">residual</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="c1"># 遍历每一个VQEmbedding层，准备逐个初始化。</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">vq_layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vq_layers</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[INFO] Initializing codebook layer </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
+            <span class="n">vq_layer</span><span class="o">.</span><span class="n">initialize_from_data</span><span class="p">(</span><span class="n">residual</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+                <span class="n">quantized</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">vq_layer</span><span class="p">(</span><span class="n">residual</span><span class="p">)</span>    <span class="c1">#ec0</span>
+                <span class="n">residual</span> <span class="o">-=</span> <span class="n">quantized</span>                   <span class="c1">#r0 -ec0</span>
+                
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">commitment_cost</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        inputs: torch.Tensor: 从编码器传来的一批潜在向量。</span>
+<span class="sd">        commitment_cost: float = None: 一个可选参数，允许在训练中动态地改变承诺损失的权重</span>
+<span class="sd">        """</span>
+        <span class="n">residual</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="n">quantized_total</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">indices_list</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1">#  用于收集每一层产生的索引（语义码）</span>
+        <span class="n">loss_total</span> <span class="o">=</span> <span class="mf">0.0</span>
+        
+        <span class="k">for</span> <span class="n">vq_layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vq_layers</span><span class="p">:</span>
+            <span class="c1"># 支持动态传入commitment_cost</span>
+            <span class="k">if</span> <span class="n">commitment_cost</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">vq_layer</span><span class="o">.</span><span class="n">commitment_cost</span> <span class="o">=</span> <span class="n">commitment_cost</span>
+            
+            <span class="n">quantized</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">vq_layer</span><span class="p">(</span><span class="n">residual</span><span class="p">)</span>
+            <span class="n">residual</span> <span class="o">-=</span> <span class="n">quantized</span>
+            <span class="n">quantized_total</span> <span class="o">+=</span> <span class="n">quantized</span>
+            <span class="n">indices_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+            <span class="n">loss_total</span> <span class="o">+=</span> <span class="n">loss</span>
+<span class="w">        </span><span class="sd">"""将收集到的多个一维索引张量堆叠成一个二维张量，形状为[batch_size, num_layers]。这便是最终的、多层次的语义ID。"""</span>
+        <span class="k">return</span> <span class="n">quantized_total</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">indices_list</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">loss_total</span>
+
+
+<span class="c1"># --- 2. 整合模型 (The Main Model) ---</span>
+<span class="c1"># 使用上面定义的基础组件，拼装成完整的RQ-VAE模型。</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RQVAE</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    完整的残差量化变分自编码器 (RQ-VAE) 模型。</span>
+<span class="sd">    通过组合RQEncoder, ResidualVQ, 和RQDecoder模块构建。</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">hidden_dims</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">num_vq_layers</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_embeddings_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">commitment_cost</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">):</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">RQEncoder</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dims</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vq</span> <span class="o">=</span> <span class="n">ResidualVQ</span><span class="p">(</span><span class="n">num_vq_layers</span><span class="p">,</span> <span class="n">num_embeddings_list</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">,</span> <span class="n">commitment_cost</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">RQDecoder</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">hidden_dims</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">input_dim</span><span class="p">)</span>
+
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""编码输入到潜在空间。"""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z_q</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""从量化后的潜在表示解码。"""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">z_q</span><span class="p">)</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">commitment_cost</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""完整的前向传播过程。"""</span>
+        <span class="n">z_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">z_q</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">vq_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vq</span><span class="p">(</span><span class="n">z_e</span><span class="p">,</span> <span class="n">commitment_cost</span><span class="p">)</span>
+        <span class="n">x_recon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">z_q</span><span class="p">)</span>
+        
+        <span class="n">recon_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">x_recon</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">total_loss</span> <span class="o">=</span> <span class="n">recon_loss</span> <span class="o">+</span> <span class="n">vq_loss</span>
+        
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">'x_recon'</span><span class="p">:</span> <span class="n">x_recon</span><span class="p">,</span>
+            <span class="s1">'indices'</span><span class="p">:</span> <span class="n">indices</span><span class="p">,</span>
+            <span class="s1">'total_loss'</span><span class="p">:</span> <span class="n">total_loss</span><span class="p">,</span>
+            <span class="s1">'recon_loss'</span><span class="p">:</span> <span class="n">recon_loss</span><span class="p">,</span>
+            <span class="s1">'vq_loss'</span><span class="p">:</span> <span class="n">vq_loss</span>
+        <span class="p">}</span>
+        
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_semantic_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""(推理时使用) 获取输入的语义ID。"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">z_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vq</span><span class="p">(</span><span class="n">z_e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">indices</span>
+        
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_codebooks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">100000</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""使用数据集初始化所有码本，这是训练前的关键步骤。"""</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">[IMPORTANT] Collecting data for codebook initialization..."</span><span class="p">)</span>
+        <span class="n">init_data_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">total_samples</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="c1"># 切换到评估模式，关闭BN等层的训练行为</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Collecting data"</span><span class="p">):</span>
+                <span class="c1"># 兼容多种DataLoader输出格式</span>
+                <span class="n">emb_batch</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="k">else</span> <span class="n">batch</span>
+                <span class="n">emb_batch</span> <span class="o">=</span> <span class="n">emb_batch</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+                
+                <span class="n">z_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">emb_batch</span><span class="p">)</span>
+                <span class="n">init_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z_e</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+                
+                <span class="n">total_samples</span> <span class="o">+=</span> <span class="n">z_e</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">total_samples</span> <span class="o">&gt;=</span> <span class="n">max_samples</span><span class="p">:</span>
+                    <span class="k">break</span>
+        
+        <span class="n">init_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">init_data_list</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vq</span><span class="o">.</span><span class="n">initialize_from_data</span><span class="p">(</span><span class="n">init_data</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"[SUCCESS] All codebooks initialized with data."</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-25">import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from sklearn.cluster import KMeans
+import numpy as np
+from tqdm import tqdm
+
+# --- 1. 基础组件 (Building Blocks) ---
+# 我们首先定义构成完整模型的所有独立、可复用的模块。   
+
+class RQEncoder(nn.Module):
+    """
+    编码器模块：
+    负责将高维输入向量压缩为低维潜在表示。
+    """
+    def __init__(self, input_dim: int, hidden_dims: list, latent_dim: int):
+        super().__init__()
+        layers = []
+        in_dim = input_dim
+        for hidden_dim in hidden_dims:
+            layers.extend([
+                nn.Linear(in_dim, hidden_dim),
+                nn.BatchNorm1d(hidden_dim),
+                nn.ReLU()
+            ])
+            in_dim = hidden_dim
+        layers.append(nn.Linear(in_dim, latent_dim))
+        self.encoder = nn.Sequential(*layers)
+
+    def forward(self, x):
+        return self.encoder(x)
+
+class RQDecoder(nn.Module):
+    """
+    解码器模块：
+    负责将量化后的低维向量重建为原始维度。
+    """
+    def __init__(self, latent_dim: int, hidden_dims: list, output_dim: int):
+        super().__init__()
+        layers = []
+        in_dim = latent_dim
+        for hidden_dim in reversed(hidden_dims):
+            layers.extend([
+                nn.Linear(in_dim, hidden_dim),
+                nn.BatchNorm1d(hidden_dim),
+                nn.ReLU()
+            ])
+            in_dim = hidden_dim
+        layers.append(nn.Linear(in_dim, output_dim))
+        self.decoder = nn.Sequential(*layers)
+
+    def forward(self, x):
+        return self.decoder(x)
+
+class VQEmbedding(nn.Module):
+    """
+    单层向量量化模块 (Vector Quantization Embedding)
+    包含一个码本 (codebook)，负责将输入向量映射到码本中最接近的向量
+    """
+    def __init__(self, num_embeddings: int, embedding_dim: int, commitment_cost: float = 0.25):
+        super().__init__()
+        # defines the size of the codebook
+        self.num_embeddings = num_embeddings
+        # must be identical to the dimensionality of the latent
+        self.embedding_dim = embedding_dim
+        # to balance the encoder's learning and the codebook's learning
+        self.commitment_cost = commitment_cost
+        
+        # 将码本注册为可学习的参数
+        """The matrix is filled with random numbers sampled from a standard normal distribution 
+        (mean 0, variance 1). This serves as the initial state of our codebook before 
+        it is trained or properly initialized with K-means."""
+        self.embeddings = nn.Parameter(torch.randn(num_embeddings, embedding_dim))
+        # 状态开关，用于确保后续使用真实数据（通过K-Means）初始化码本的操作只执行一次，不会在训练中被重复调用
+        self.initialized_with_data = False
+        
+    def initialize_from_data(self, data: torch.Tensor):
+        """
+        K-Means聚类算法用一小批真实数据来为码本提供一个“有根据的、高质量的”初始状态，
+        避免随机初始化陷阱，导致训练初期模型很难收敛，甚至出现码本崩溃的现象
+        arges
+        data: [n_samples, embedding_dim],原始Embedding通过未经训练的Encoder后得到的潜在向量集合，
+        它代表了数据在潜在空间的初始分布
+        """
+
+        if self.initialized_with_data:
+            return
+        
+        # 将输入的PyTorch张量转换为NumPy数组
+        data_np = data.detach().cpu().numpy()
+        n_samples = data_np.shape[0]
+        
+        if n_samples &lt; self.num_embeddings:
+            # 样本小于码本大小时，有放回地抽样
+            # 从现有的 n_samples 个样本中，随机抽取 self.num_embeddings 个索引
+            indices = np.random.choice(n_samples, self.num_embeddings, replace=True)
+            centroids = data_np[indices]
+        else:
+            # 初始化一个K-Means聚类器对象,n_init:KMeans算法的独立运行次数,max_iter:单次运行的最大迭代次数
+            kmeans = KMeans(n_clusters=self.num_embeddings, n_init='auto', max_iter=100)
+            # 数据上执行K-Means算法
+            kmeans.fit(data_np)
+            # 从.cluster_centers_属性中提取出计算好的聚类中心
+            centroids = kmeans.cluster_centers_
+            
+        """
+        torch.from_numpy(centroids): 将NumPy格式的质心数组转换回PyTorch张量。
+        .copy_(...): 这是一个原地操作（in-place operation），它将质心张量的数据复制到self.embeddings这个模型参数中。
+        使用.data是直接操作底层数据，可以避免干扰PyTorch的自动求导图。
+        """
+        self.embeddings.data.copy_(torch.from_numpy(centroids))
+        self.initialized_with_data = True
+
+    def forward(self, inputs: torch.Tensor):
+        """
+        inputs: [batch_size, embedding_dim]
+        forward 方法接收一批由Encoder传来的连续向量,为每个向量执行以下四个核心任务:
+        寻找最近邻: 在码本中为每个输入向量找到最匹配的那个码本向量。
+        计算量化损失: 计算两部分损失——一部分用于更新码本自身,另一部分用于更新前面的Encoder。
+        梯度“戏法”: 使用一种名为“梯度直通估计器”的技巧，解决量化过程中梯度无法传播的问题。
+        返回结果: 输出量化后的向量、找到的索引（即语义码），以及计算出的损失
+        """
+        # 高效地计算每个输入向量到码本中所有向量的平方欧氏距离
+        # inputs:(B, D); self.embeddings:(k, D)
+        # (B, 1) + (k,) - (B, K)，都广播机制为(B, K)
+        distances = (
+            torch.sum(inputs**2, dim=1, keepdim=True) +
+            torch.sum(self.embeddings**2, dim=1) -
+            2 * torch.matmul(inputs, self.embeddings.t())
+        )
+        # 执行量化对 distances 矩阵[batch_size, num_embeddings]的每一行（dim=1），
+        # 找到值最小的那个元素的索引, 这个索引就是距离最近的码本向量的索引
+        indices = torch.argmin(distances, dim=1)
+        # 根据索引获取量化后的向量,[batch_size, embedding_dim]
+        quantized = F.embedding(indices, self.embeddings)
+        
+        # 码本损失,梯度不会流向Encoder,只会流向 quantized,目标是更新码本
+        codebook_loss = F.mse_loss(quantized, inputs.detach())  
+        # 承诺损失,梯度不会流向quantized,只会流向 Encoder,目标是更新Encoder
+        commitment_loss = F.mse_loss(inputs, quantized.detach()) * self.commitment_cost 
+        # 该层的总量化损失
+        total_loss = codebook_loss + commitment_loss
+        
+        # Straight-Through Estimator (梯度直通)
+        # 解决量化操作不可导的问题，torch.argmin是一个离散的查找操作，无法计算梯度。这意味着从Decoder传回的梯度会在这里中断，无法到达Encoder。
+        # d quantized / d inputs = 1, 从而能使梯度传到inputs，再到encoder，否则只能到quantized。
+        quantized = inputs + (quantized - inputs).detach()
+        
+        return quantized, indices, total_loss
+
+class ResidualVQ(nn.Module):
+    """
+    残差向量量化 (Residual Vector Quantization)。
+    包含多个VQEmbedding层，对前一层的残差进行逐层量化。
+
+    Args:
+    num_layers: int: 指定流水线中包含多少个VQEmbedding层，也就是量化的层数。
+    num_embeddings_list: list: 一个整数列表，其长度必须等于num_layers。它为每一层VQEmbedding分别指定码本的大小。例如 [256, 128, 128]
+    embedding_dim: int: 潜在空间的维度，这个维度对于所有层都是相同的。
+    commitment_cost: float: 默认的承诺损失权重，会传递给它创建的所有VQEmbedding子模块。
+    """
+    def __init__(self, num_layers: int, num_embeddings_list: list, embedding_dim: int, commitment_cost: float = 0.25):
+        super().__init__()
+        self.num_layers = num_layers
+        self.vq_layers = nn.ModuleList([
+            VQEmbedding(num_embeddings_list[i], embedding_dim, commitment_cost)
+            for i in range(num_layers)
+        ])
+        
+    def initialize_from_data(self, data: torch.Tensor):
+        """逐层初始化所有码本。"""
+        # 创建一个输入数据的副本
+        residual = data.clone()
+        # 遍历每一个VQEmbedding层，准备逐个初始化。
+        for i, vq_layer in enumerate(self.vq_layers):
+            print(f"[INFO] Initializing codebook layer {i+1}/{self.num_layers}...")
+            vq_layer.initialize_from_data(residual)
+            with torch.no_grad():
+                quantized, _, _ = vq_layer(residual)    #ec0
+                residual -= quantized                   #r0 -ec0
+                
+    def forward(self, inputs: torch.Tensor, commitment_cost: float = None):
+        """
+        inputs: torch.Tensor: 从编码器传来的一批潜在向量。
+        commitment_cost: float = None: 一个可选参数，允许在训练中动态地改变承诺损失的权重
+        """
+        residual = inputs
+        quantized_total = torch.zeros_like(inputs)
+        indices_list = []   #  用于收集每一层产生的索引（语义码）
+        loss_total = 0.0
+        
+        for vq_layer in self.vq_layers:
+            # 支持动态传入commitment_cost
+            if commitment_cost is not None:
+                vq_layer.commitment_cost = commitment_cost
+            
+            quantized, indices, loss = vq_layer(residual)
+            residual -= quantized
+            quantized_total += quantized
+            indices_list.append(indices)
+            loss_total += loss
+        """将收集到的多个一维索引张量堆叠成一个二维张量，形状为[batch_size, num_layers]。这便是最终的、多层次的语义ID。"""
+        return quantized_total, torch.stack(indices_list, dim=1), loss_total
+
+
+# --- 2. 整合模型 (The Main Model) ---
+# 使用上面定义的基础组件，拼装成完整的RQ-VAE模型。
+
+
+class RQVAE(nn.Module):
+    """
+    完整的残差量化变分自编码器 (RQ-VAE) 模型。
+    通过组合RQEncoder, ResidualVQ, 和RQDecoder模块构建。
+    """
+    def __init__(self, input_dim: int, hidden_dims: list, latent_dim: int,
+                 num_vq_layers: int, num_embeddings_list: list, commitment_cost: float = 0.25):
+        
+        super().__init__()
+        self.encoder = RQEncoder(input_dim, hidden_dims, latent_dim)
+        self.vq = ResidualVQ(num_vq_layers, num_embeddings_list, latent_dim, commitment_cost)
+        self.decoder = RQDecoder(latent_dim, hidden_dims, output_dim=input_dim)
+
+        
+    def encode(self, x: torch.Tensor) -&gt; torch.Tensor:
+        """编码输入到潜在空间。"""
+        return self.encoder(x)
+        
+    def decode(self, z_q: torch.Tensor) -&gt; torch.Tensor:
+        """从量化后的潜在表示解码。"""
+        return self.decoder(z_q)
+        
+    def forward(self, x: torch.Tensor, commitment_cost: float = None):
+        """完整的前向传播过程。"""
+        z_e = self.encode(x)
+        z_q, indices, vq_loss = self.vq(z_e, commitment_cost)
+        x_recon = self.decode(z_q)
+        
+        recon_loss = F.mse_loss(x_recon, x)
+        total_loss = recon_loss + vq_loss
+        
+        return {
+            'x_recon': x_recon,
+            'indices': indices,
+            'total_loss': total_loss,
+            'recon_loss': recon_loss,
+            'vq_loss': vq_loss
+        }
+        
+    @torch.no_grad()
+    def get_semantic_ids(self, x: torch.Tensor) -&gt; torch.Tensor:
+        """(推理时使用) 获取输入的语义ID。"""
+        self.eval()
+        z_e = self.encode(x)
+        _, indices, _ = self.vq(z_e)
+        return indices
+        
+    def initialize_codebooks(self, dataloader, device, max_samples=100000):
+        """使用数据集初始化所有码本，这是训练前的关键步骤。"""
+        print("\n[IMPORTANT] Collecting data for codebook initialization...")
+        init_data_list = []
+        total_samples = 0
+        
+        # 切换到评估模式，关闭BN等层的训练行为
+        self.encoder.eval()
+        with torch.no_grad():
+            for batch in tqdm(dataloader, desc="Collecting data"):
+                # 兼容多种DataLoader输出格式
+                emb_batch = batch[1] if isinstance(batch, (list, tuple)) else batch
+                emb_batch = emb_batch.to(device)
+                
+                z_e = self.encoder(emb_batch)
+                init_data_list.append(z_e.cpu())
+                
+                total_samples += z_e.shape[0]
+                if total_samples &gt;= max_samples:
+                    break
+        
+        init_data = torch.cat(init_data_list, dim=0)
+        self.vq.initialize_from_data(init_data)
+        print("[SUCCESS] All codebooks initialized with data.")</div>
 </div>
 </div>
 </div>
