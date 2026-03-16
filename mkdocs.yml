@@ -53,25 +53,28 @@ extra_javascript:
 # =====================
 nav:
   - 首页: index.md
-  - hot100:
-      - 1.哈希表: notebooks/1.哈希表.ipynb
-      - 2.数组: notebooks/2.数组.ipynb
-      - 3.双指针: notebooks/3.双指针.ipynb
-      - 4.字串: notebooks/4.字串.ipynb
-      - 5.滑动窗口: notebooks/5.滑动窗口.ipynb
-      - 6.动态规划: notebooks/6.动态规划.ipynb
-      - 6.1.多维动态规划: notebooks/6.1.多维动态规划.ipynb
-      - 7.矩阵: notebooks/7.矩阵.ipynb
-      - 8.栈: notebooks/8.栈.ipynb
-      - 9.堆: notebooks/9.堆.ipynb
-      - 10.二叉树: notebooks/10.二叉树.ipynb
-      - 11.回溯: notebooks/11.回溯.ipynb
-      - 12.贪心算法: notebooks/12.贪心算法.ipynb
-      - 13.图论: notebooks/13.图论.ipynb
-      - 14.二分查找: notebooks/14.二分查找.ipynb
-      - 15.链表: notebooks/15.链表.ipynb
-      - 16.排序: notebooks/16.排序.ipynb
-      - 17.归纳总结: notebooks/17.Hot100归纳与题型对比.ipynb
+  - 算法ht100:
+      - 总览: file:///C:/Users/glen/AppData/Local/Temp/MicrosoftEdgeDownloads/e77a935d-7839-49e3-8a97-42b97a7a3e61/leetcode_classification_system.html
+      - 数据结构类: 
+        - 数组: notebooks/2.数组.ipynb
+        - 链表: notebooks/15.链表.ipynb
+        - 栈与队列: notebooks/8.栈.ipynb
+        - 哈希表: notebooks/1.哈希表.ipynb
+        - 二叉树: notebooks/10.二叉树.ipynb
+        - 堆: notebooks/9.堆.ipynb
+        - 图: notebooks/13.图论.ipynb
+        - 7.矩阵: notebooks/7.矩阵.ipynb
+      - 算法思想类:
+        - 双指针: notebooks/3.双指针.ipynb
+        - 滑动窗口: notebooks/5.滑动窗口.ipynb
+        - 二分查找: notebooks/14.二分查找.ipynb
+        - 动态规划: notebooks/6.动态规划.ipynb
+        - 多维动态规划: notebooks/6.1.多维动态规划.ipynb
+        - 贪心: notebooks/12.贪心算法.ipynb
+        - 回溯: notebooks/11.回溯.ipynb
+      - 补充知识:
+        - 排序: notebooks/16.排序.ipynb
+      - 归纳总结: notebooks/17.Hot100归纳与题型对比.ipynb
   - 搜广推面试手撕题:
       - 常见面试题: notebooks/搜广推常见面试题目.ipynb
       - 主播实际手撕题: notebooks/面试手撕题.ipynb
