@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算法刷题分类体系</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f5f4f0;
+  --color-bg-tertiary: #eceae3;
+  --color-text-primary: #1a1a18;
+  --color-text-secondary: #5f5e5a;
+  --color-text-tertiary: #888780;
+  --color-border-primary: rgba(0,0,0,0.4);
+  --color-border-secondary: rgba(0,0,0,0.25);
+  --color-border-tertiary: rgba(0,0,0,0.12);
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-primary: #2a2a28;
+    --color-bg-secondary: #222220;
+    --color-bg-tertiary: #1c1c1a;
+    --color-text-primary: #d4d2c8;
+    --color-text-secondary: #9c9a92;
+    --color-text-tertiary: #6a6860;
+    --color-border-secondary: rgba(255,255,255,0.2);
+    --color-border-tertiary: rgba(255,255,255,0.1);
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  padding: 20px 16px 48px;
+  min-height: 100vh;
+}
+.root { max-width: 900px; margin: 0 auto; }
+
+/* Banner */
+.top-banner { text-align: center; margin-bottom: 20px; padding: 16px; }
+.top-banner h1 { font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.top-banner p { font-size: 13px; color: var(--color-text-secondary); }
+
+/* Principle cards */
+.principle-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.principle-card {
+  background: var(--color-bg-primary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+}
+.p-icon { font-size: 20px; margin-bottom: 6px; }
+.p-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.p-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+
+/* Section headers */
+.section-header {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--color-text-secondary);
+  margin: 14px 0 8px;
+}
+
+/* Tags */
+.tags-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 6px; }
+.tag {
+  font-size: 12px; padding: 5px 13px; border-radius: 20px;
+  border: 0.5px solid; cursor: pointer; transition: all 0.15s;
+  user-select: none;
+}
+.tag:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.tag.ds    { background: #E6F1FB; color: #0C447C; border-color: #B5D4F4; }
+.tag.algo  { background: #E1F5EE; color: #085041; border-color: #9FE1CB; }
+.tag.adv   { background: #FAEEDA; color: #633806; border-color: #FAC775; }
+.tag.active-tag { font-weight: 600; }
+.tag.ds.active-tag    { background: #185FA5; color: #fff; border-color: #185FA5; }
+.tag.algo.active-tag  { background: #0F6E56; color: #fff; border-color: #0F6E56; }
+.tag.adv.active-tag   { background: #854F0B; color: #fff; border-color: #854F0B; }
+
+/* Divider */
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 16px 0; }
+
+/* Detail panel */
+.detail-panel {
+  background: var(--color-bg-primary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  min-height: 220px;
+}
+.panel-placeholder {
+  display: flex; align-items: center; justify-content: center;
+  height: 220px; color: var(--color-text-tertiary); font-size: 13px;
+}
+
+/* Panel header */
+.panel-header {
+  padding: 16px 20px 0;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.panel-title { font-size: 18px; font-weight: 500; color: var(--color-text-primary); }
+.detail-badge {
+  font-size: 11px; padding: 3px 10px; border-radius: 12px;
+  font-weight: 500;
+}
+.badge-ds   { background: #E6F1FB; color: #185FA5; }
+.badge-algo { background: #E1F5EE; color: #0F6E56; }
+.badge-adv  { background: #FAEEDA; color: #854F0B; }
+
+/* Tabs */
+.tabs {
+  display: flex; gap: 0; padding: 12px 20px 0; border-bottom: 0.5px solid var(--color-border-tertiary);
+  margin-top: 12px;
+}
+.tab-btn {
+  font-size: 13px; padding: 8px 16px; cursor: pointer;
+  border: none; background: none; color: var(--color-text-secondary);
+  border-bottom: 2px solid transparent; margin-bottom: -0.5px;
+  transition: all 0.15s; font-family: var(--font-sans);
+}
+.tab-btn:hover { color: var(--color-text-primary); }
+.tab-btn.active { color: var(--color-text-primary); font-weight: 500; border-bottom-color: var(--color-text-primary); }
+
+/* Tab panes */
+.tab-pane { padding: 16px 20px 20px; display: none; }
+.tab-pane.active { display: block; }
+
+/* Insight box */
+.insight-box {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f5ef 100%);
+  border-left: 3px solid #185FA5;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 12px 14px; margin-bottom: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  .insight-box { background: linear-gradient(135deg, #1a2535 0%, #162520 100%); border-left-color: #4a8fd4; }
+}
+.insight-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #185FA5; display: block; margin-bottom: 5px; }
+@media (prefers-color-scheme: dark) { .insight-label { color: #4a8fd4; } }
+.insight-text { font-size: 13px; color: var(--color-text-primary); line-height: 1.65; }
+
+/* Paragraphs */
+.para-block { margin-bottom: 14px; }
+.para-block p { font-size: 13px; color: var(--color-text-primary); line-height: 1.75; }
+.para-block p strong { color: var(--color-text-primary); font-weight: 600; }
+
+/* Section label */
+.section-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--color-text-secondary);
+  margin: 14px 0 8px;
+}
+
+/* Patterns list */
+.patterns-list { list-style: none; margin-bottom: 12px; }
+.patterns-list li {
+  font-size: 13px; color: var(--color-text-secondary);
+  padding: 4px 0; display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.5;
+}
+.patterns-list li::before {
+  content: ""; display: inline-block; width: 5px; height: 5px;
+  background: var(--color-text-tertiary); border-radius: 50%;
+  margin-top: 7px; flex-shrink: 0;
+}
+
+/* Example problems */
+.examples-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.example-chip {
+  font-size: 11px; padding: 3px 10px; border-radius: 12px;
+  background: var(--color-bg-secondary); border: 0.5px solid var(--color-border-secondary);
+  color: var(--color-text-secondary);
+}
+
+/* Code template */
+.code-block {
+  font-family: var(--font-mono); font-size: 12px;
+  background: var(--color-bg-secondary); border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--radius-md); padding: 16px; overflow-x: auto;
+  line-height: 1.7; color: var(--color-text-secondary); white-space: pre;
+}
+
+/* Graph tab */
+.graph-container { width: 100%; overflow: hidden; }
+.graph-svg { width: 100%; }
+.related-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.related-chip {
+  font-size: 12px; padding: 4px 12px; border-radius: 16px;
+  border: 0.5px solid; cursor: pointer; transition: all 0.12s;
+}
+.related-chip:hover { transform: translateY(-1px); }
+.related-chip.ds    { background: #E6F1FB; color: #0C447C; border-color: #B5D4F4; }
+.related-chip.algo  { background: #E1F5EE; color: #085041; border-color: #9FE1CB; }
+.related-chip.adv   { background: #FAEEDA; color: #633806; border-color: #FAC775; }
+.related-chip span.rel-label { font-size: 10px; color: inherit; opacity: 0.7; margin-left: 4px; }
+
+@media (max-width: 600px) {
+  .principle-row { grid-template-columns: 1fr; }
+  .panel-header { padding: 14px 14px 0; }
+  .tab-pane { padding: 14px 14px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="root">
+
+<div class="top-banner">
+  <h1>算法刷题分类体系</h1>
+  <p>三层结构 · 点击任意标签查看深度解析、代码模板与关系图谱</p>
+</div>
+
+<div class="principle-row">
+  <div class="principle-card">
+    <div class="p-icon">🗂</div>
+    <div class="p-title">数据结构类</div>
+    <div class="p-desc">决定问题的"形状"——用什么容器装数据，决定了可以使用哪些操作</div>
+  </div>
+  <div class="principle-card">
+    <div class="p-icon">💡</div>
+    <div class="p-title">算法思想类</div>
+    <div class="p-desc">决定解题的"策略"——如何搜索答案、如何缩小问题规模</div>
+  </div>
+  <div class="principle-card">
+    <div class="p-icon">⚡</div>
+    <div class="p-title">高级技巧类</div>
+    <div class="p-desc">前两类的组合优化——在特定场景下大幅降低复杂度的专项技法</div>
+  </div>
+</div>
+
+<div class="section-header">数据结构类</div>
+<div class="tags-row">
+  <span class="tag ds" onclick="showDetail('array',this)">数组</span>
+  <span class="tag ds" onclick="showDetail('linkedlist',this)">链表</span>
+  <span class="tag ds" onclick="showDetail('stack',this)">栈</span>
+  <span class="tag ds" onclick="showDetail('queue',this)">队列</span>
+  <span class="tag ds" onclick="showDetail('hashmap',this)">哈希表</span>
+  <span class="tag ds" onclick="showDetail('tree',this)">二叉树</span>
+  <span class="tag ds" onclick="showDetail('heap',this)">堆</span>
+  <span class="tag ds" onclick="showDetail('graph',this)">图</span>
+</div>
+
+<div class="section-header">算法思想类</div>
+<div class="tags-row">
+  <span class="tag algo" onclick="showDetail('twoptr',this)">双指针</span>
+  <span class="tag algo" onclick="showDetail('sliding',this)">滑动窗口</span>
+  <span class="tag algo" onclick="showDetail('binary',this)">二分查找</span>
+  <span class="tag algo" onclick="showDetail('greedy',this)">贪心</span>
+  <span class="tag algo" onclick="showDetail('dp',this)">动态规划</span>
+  <span class="tag algo" onclick="showDetail('backtrack',this)">回溯</span>
+  <span class="tag algo" onclick="showDetail('bfsdfs',this)">BFS / DFS</span>
+  <span class="tag algo" onclick="showDetail('divcon',this)">分治</span>
+  <span class="tag algo" onclick="showDetail('prefix',this)">前缀和</span>
+  <span class="tag algo" onclick="showDetail('diff',this)">差分</span>
+</div>
+
+<div class="section-header">高级技巧类</div>
+<div class="tags-row">
+  <span class="tag adv" onclick="showDetail('monotone',this)">单调栈 / 单调队列</span>
+  <span class="tag adv" onclick="showDetail('binanswer',this)">二分答案</span>
+  <span class="tag adv" onclick="showDetail('treedp',this)">树形 DP</span>
+  <span class="tag adv" onclick="showDetail('union',this)">并查集</span>
+</div>
+
+<div class="divider"></div>
+
+<div class="detail-panel" id="detail-panel">
+  <div class="panel-placeholder" id="panel-placeholder">← 点击上方任意标签，查看深度解析</div>
+  <div id="panel-content" style="display:none">
+    <div class="panel-header">
+      <span class="panel-title" id="panel-title"></span>
+      <span class="detail-badge" id="panel-badge"></span>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('analysis',this)">深度解析</button>
+      <button class="tab-btn" onclick="switchTab('template',this)">代码模板</button>
+      <button class="tab-btn" onclick="switchTab('graph',this)">关系图谱</button>
+    </div>
+    <div id="tab-analysis" class="tab-pane active">
+      <div class="insight-box">
+        <span class="insight-label">核心洞察</span>
+        <div class="insight-text" id="panel-insight"></div>
+      </div>
+      <div id="panel-paragraphs"></div>
+      <div class="section-label">常见题型模式</div>
+      <ul class="patterns-list" id="panel-patterns"></ul>
+      <div class="section-label">代表题目</div>
+      <div class="examples-row" id="panel-examples"></div>
+    </div>
+    <div id="tab-template" class="tab-pane">
+      <div class="section-label" style="margin-top:0">核心套路 / 代码框架</div>
+      <pre class="code-block" id="panel-template"></pre>
+    </div>
+    <div id="tab-graph" class="tab-pane">
+      <div class="section-label" style="margin-top:0">算法关系网络（点击节点可跳转）</div>
+      <div class="graph-container" id="panel-graph"></div>
+      <div class="section-label">关联节点</div>
+      <div class="related-row" id="panel-related"></div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const data = {
+  array: {
+    title: '数组', type: 'ds', badge: '数据结构',
+    insight: '数组是整个算法体系的基础载体——掌握数组结构，等于掌握了双指针、滑动窗口、前缀和、二分查找等六大技巧的应用环境。',
+    paragraphs: [
+      '<strong>核心思想：</strong>数组以连续内存建立位置与值的映射关系，这意味着你可以通过下标在 O(1) 时间内直接访问任意元素。这种随机访问能力是绝大多数算法技巧的前提条件。理解数组类题目的关键在于认识到：<strong>数组的本质是"位置关系"的结构化存储</strong>。题目中的下标差、区间范围、前后关系，本质上都是在利用数组的位置性质。因此，数组类问题的突破口通常不在于数据本身，而在于如何设计下标的移动或区间的划分。',
+      '<strong>主要应用：</strong>数组问题往往围绕"下标关系""区间关系"和"顺序结构"展开。大量经典算法问题都建立在数组之上，例如子数组问题、区间统计问题、排序问题、搜索问题等。许多经典算法技巧——如双指针、滑动窗口、前缀和、二分查找、单调栈——几乎都是在数组结构上发挥最大作用，因此数组是算法题中<strong>最常见的数据载体</strong>。',
+      '<strong>关系网络：</strong>数组是栈、队列、堆的底层实现容器；哈希表的底层也依赖数组存储桶结构。算法层面，数组是双指针、滑动窗口、前缀和、差分、二分查找、单调栈这六大技巧最主要的应用场景。可以说，数组在算法体系中处于<strong>基础载体的位置</strong>，连接了最多的其他知识点。'
+    ],
+    template: `# 模式一：双指针（有序数组配对）
+left, right = 0, len(nums) - 1
+while left < right:
+    s = nums[left] + nums[right]
+    if s == target: return [left, right]
+    elif s < target: left += 1
+    else: right -= 1
+
+# 模式二：原地修改（快慢指针去重）
+slow = 0
+for fast in range(len(nums)):
+    if nums[fast] != nums[slow]:
+        slow += 1
+        nums[slow] = nums[fast]
+return slow + 1
+
+# 模式三：前缀和区间查询
+prefix = [0] * (n + 1)
+for i in range(n):
+    prefix[i+1] = prefix[i] + nums[i]
+# 区间 [i,j] 之和 = prefix[j+1] - prefix[i]`,
+    patterns: [
+      '暴力 O(n²) → 尝试用哈希表或双指针将其降为 O(n)',
+      '区间问题 → 排序后双指针，或前缀和 + 哈希',
+      '原地修改 → 快慢指针，slow 指向写入位置，fast 扫描',
+      '区间更新多次 → 差分数组，最后还原',
+      '有序数组中查找 → 首先考虑二分查找'
+    ],
+    related: [
+      {key:'twoptr', label:'双指针', rel:'主要应用场景'},
+      {key:'sliding', label:'滑动窗口', rel:'应用场景'},
+      {key:'prefix', label:'前缀和', rel:'利用累积性质'},
+      {key:'diff', label:'差分', rel:'区间批量更新'},
+      {key:'binary', label:'二分查找', rel:'需要有序性'},
+      {key:'monotone', label:'单调栈', rel:'底层容器'}
+    ],
+    examples: ['1 Two Sum','15 Three Sum','56 Merge Intervals','283 Move Zeros','238 Product Except Self']
+  },
+
+  linkedlist: {
+    title: '链表', type: 'ds', badge: '数据结构',
+    insight: '链表问题的本质是指针操作——你需要时刻追踪"当前指针在哪、前后节点分别是什么"，而不是关注下标。哑节点几乎是所有链表操作的万能起点。',
+    paragraphs: [
+      '<strong>核心思想：</strong>链表以指针连接节点形成动态结构，与数组的顺序访问不同，链表强调的是节点之间的连接关系。插入和删除操作在已知操作位置的前提下可以 O(1) 完成，但无法像数组那样通过下标随机访问。在实操中，几乎所有链表操作的起点都应该是创建一个<strong>哑节点（dummy node）</strong>，它能统一处理头节点的边界情况，避免大量特判。',
+      '<strong>主要应用：</strong>链表问题集中在结构重排与节点操作，例如链表反转、链表合并、链表环检测以及链表分段处理等。许多链表题的关键在于设计合适的指针移动方式：<strong>快慢指针</strong>是最重要的技巧——两个指针以不同速度遍历，可以判断环（Floyd 判圈算法）、找链表中点、定位倒数第 k 个节点，将看似需要两次遍历的操作压缩为一次。',
+      '<strong>关系网络：</strong>链表是栈、队列的一种底层实现方式；<strong>双向链表与哈希表的组合</strong>是实现 LRU 缓存（LC 146）的标准方案，是面试高频考点。递归也是链表问题的重要工具，反转链表同时拥有迭代写法和递归写法，两者都是理解链表递归的入门练习。'
+    ],
+    template: `# 万能起点：哑节点
+dummy = ListNode(0)
+dummy.next = head
+
+# 快慢指针：找链表中点
+slow, fast = head, head
+while fast and fast.next:
+    slow = slow.next
+    fast = fast.next.next
+# slow 此时在中点
+
+# 快慢指针：判断环
+slow, fast = head, head
+while fast and fast.next:
+    slow = slow.next
+    fast = fast.next.next
+    if slow == fast:
+        return True  # 有环
+
+# 反转链表（迭代）
+prev, curr = None, head
+while curr:
+    nxt = curr.next
+    curr.next = prev
+    prev = curr
+    curr = nxt
+return prev`,
+    patterns: [
+      '快慢指针：找中点、判环（Floyd算法）、找倒数第 k 个节点',
+      '哑节点：统一头节点边界，避免特殊情况判断',
+      '递归反转：理解链表递归的经典练习',
+      '合并有序链表：双指针比较，接入较小节点',
+      'LRU 缓存：哈希表 + 双向链表的组合设计'
+    ],
+    related: [
+      {key:'twoptr', label:'双指针', rel:'快慢指针应用'},
+      {key:'divcon', label:'分治', rel:'递归处理结构'},
+      {key:'stack', label:'栈', rel:'链表底层实现'},
+      {key:'hashmap', label:'哈希表', rel:'LRU缓存组合'}
+    ],
+    examples: ['21 Merge Two Lists','141 Linked List Cycle','206 Reverse List','146 LRU Cache','25 Reverse K Group']
+  },
+
+  stack: {
+    title: '栈', type: 'ds', badge: '数据结构',
+    insight: '每当你遇到"当前元素需要等待某个条件满足后才能处理"的场景，就应该优先考虑栈。栈天然表达嵌套结构和延迟处理的需求。',
+    paragraphs: [
+      '<strong>核心思想：</strong>栈利用后进先出（LIFO）的访问顺序维护元素之间的"最近关系"。栈结构特别适合处理那些"当前元素需要依赖最近未处理元素"的问题，因此它能够自然表达嵌套结构或逆序关系。栈的能力上限远不止括号匹配这类入门题。',
+      '<strong>单调栈：</strong>这是栈最重要的高级形态。它在遍历数组时维护一个严格单调（递增或递减）的栈。当一个新元素打破单调性时，被弹出的元素与新元素之间就形成了"下一个更大/更小元素"的关系，从而将朴素的 O(n²) 枚举降为 O(n)。理解单调栈的关键在于：<strong>栈中存储的不是答案，而是"还没找到答案的候选元素"</strong>——候选元素出栈的时刻，正是它找到答案的时刻。',
+      '<strong>关系网络：</strong>栈是 DFS 非递归实现的底层结构——递归调用本身依赖系统调用栈，将递归改写为迭代时需要显式维护一个栈。<strong>单调栈</strong>是栈在数组问题上的专项扩展，柱状图最大矩形（LC 84）和接雨水（LC 42）都是其经典应用。栈也是实现计算器（表达式求值）类题目的标准工具。'
+    ],
+    template: `# 单调递减栈：找每个元素的下一个更大值
+stack = []
+result = [-1] * n
+for i in range(n):
+    while stack and nums[stack[-1]] < nums[i]:
+        idx = stack.pop()
+        result[idx] = nums[i]  # idx 找到了它的答案
+    stack.append(i)
+
+# 括号匹配
+stack = []
+for ch in s:
+    if ch in '([{':
+        stack.append(ch)
+    else:
+        if not stack or not match(stack[-1], ch):
+            return False
+        stack.pop()
+return len(stack) == 0
+
+# DFS 非递归（用栈模拟）
+stack = [root]
+while stack:
+    node = stack.pop()
+    visit(node)
+    if node.right: stack.append(node.right)
+    if node.left:  stack.append(node.left)`,
+    patterns: [
+      '括号匹配/嵌套结构：入栈等待，遇到配对则弹出',
+      '单调栈：下一个更大/更小元素，O(n) 替代 O(n²)',
+      'DFS 非递归：用显式栈模拟函数调用栈',
+      '表达式求值：双栈（运算符栈 + 操作数栈）',
+      '柱状图最大矩形 / 接雨水：单调栈经典难题'
+    ],
+    related: [
+      {key:'monotone', label:'单调栈', rel:'特化形式'},
+      {key:'bfsdfs', label:'BFS/DFS', rel:'DFS底层结构'},
+      {key:'backtrack', label:'回溯', rel:'隐式依赖调用栈'},
+      {key:'array', label:'数组', rel:'底层容器结构'}
+    ],
+    examples: ['20 Valid Parentheses','84 Largest Rectangle','42 Trapping Rain Water','739 Daily Temperatures','227 Basic Calculator II']
+  },
+
+  queue: {
+    title: '队列', type: 'ds', badge: '数据结构',
+    insight: '队列的 FIFO 特性保证了 BFS 能正确求出无权图的最短路——第一次访问到某节点时，走过的步数一定是最少的，这一性质是 BFS 正确性的根本保证。',
+    paragraphs: [
+      '<strong>核心思想：</strong>队列通过先进先出（FIFO）的顺序结构保证元素按照到达顺序被处理。这种顺序特性使队列非常适合处理逐层扩展或逐步传播的问题。队列最重要的应用是 <strong>BFS（广度优先搜索）</strong>——在 BFS 中，队列保证了节点按照距离起点由近到远的顺序被处理，这是 BFS 能够求解无权图最短路径的根本原因。',
+      '<strong>单调队列：</strong>这是队列的高级扩展形式，通常以双端队列（deque）实现。它在滑动窗口场景下维护窗口内的最大值或最小值，在 O(1) 时间内完成查询。关键操作是：当新元素入队时，从队尾弹出所有比它小（或大）的元素；当窗口滑动时，检查队首元素是否已滑出窗口范围。这使得滑动窗口最大值（LC 239）可以在 O(n) 时间内解决，而非朴素的 O(nk)。',
+      '<strong>关系网络：</strong>队列是 BFS 的基础设施，两者几乎不可分割。<strong>优先队列（堆）</strong>是队列的变体，它以元素优先级而非到达顺序决定处理顺序，常用于 Dijkstra 最短路和 Top K 问题。单调队列是栈和队列思想的融合，同时也是滑动窗口技巧的性能优化工具。'
+    ],
+    template: `# BFS 标准模板（最短路）
+from collections import deque
+q = deque([(start, 0)])  # (节点, 步数)
+visited = {start}
+while q:
+    node, step = q.popleft()
+    if node == target:
+        return step
+    for nb in graph[node]:
+        if nb not in visited:
+            visited.add(nb)
+            q.append((nb, step + 1))
+
+# 层序遍历（按层分组）
+q = deque([root])
+while q:
+    level_size = len(q)
+    level = []
+    for _ in range(level_size):
+        node = q.popleft()
+        level.append(node.val)
+        if node.left:  q.append(node.left)
+        if node.right: q.append(node.right)
+    result.append(level)`,
+    patterns: [
+      'BFS 最短路：无权图、迷宫、棋盘类问题的标准解法',
+      '层序遍历：树的按层处理，deque 实现',
+      '多源 BFS：多个起点同时出发（腐烂橙子 LC 994）',
+      '单调队列：滑动窗口最大/最小值的 O(n) 解法',
+      '优先队列（heapq）：Dijkstra、Top K、合并 K 个有序链表'
+    ],
+    related: [
+      {key:'bfsdfs', label:'BFS/DFS', rel:'BFS的核心容器'},
+      {key:'monotone', label:'单调队列', rel:'区间最值优化'},
+      {key:'sliding', label:'滑动窗口', rel:'单调队列优化工具'},
+      {key:'heap', label:'堆', rel:'优先队列变体'}
+    ],
+    examples: ['102 Level Order','994 Rotting Oranges','127 Word Ladder','239 Sliding Window Maximum','207 Course Schedule']
+  },
+
+  hashmap: {
+    title: '哈希表', type: 'ds', badge: '数据结构',
+    insight: '哈希表在算法题中通常不是主角，而是"加速工具"。当你在暴力解法中发现有重复查找某个元素是否存在的操作时，这几乎总是引入哈希表的信号。',
+    paragraphs: [
+      '<strong>核心思想：</strong>哈希表通过哈希函数建立元素与存储位置之间的映射关系，从而实现 O(1) 的平均查找、插入和删除。它的本质是<strong>利用额外空间建立索引，从而降低搜索复杂度</strong>。Two Sum（LC 1）是最典型的例子：将"对每个元素都遍历剩余数组查找补数"的 O(n²) 解法，用哈希表降为 O(n)。',
+      '<strong>高级模式：</strong>哈希表与前缀和的组合是解决子数组类问题的强大模式。以"子数组和等于 k"（LC 560）为例：记录每个前缀和出现的次数，当遍历到位置 i 时，查找哈希表中 prefix[i] - k 出现了多少次，就知道有多少个以 i 结尾的合法子数组。这个技巧将看似复杂的区间统计问题转化为简单的哈希查询，是<strong>前缀和 + 哈希</strong>的标准范式。',
+      '<strong>关系网络：</strong>哈希表与数组、字符串的组合几乎覆盖了大量中等难度题目。<strong>双向链表与哈希表的组合</strong>实现 LRU 缓存，是数据结构设计类题目的经典范式。哈希表也常作为滑动窗口的状态维护工具（记录窗口内各字符出现次数），以及图的访问记录容器（visited 集合）。'
+    ],
+    template: `# 模式一：先查后存（Two Sum）
+seen = {}
+for i, x in enumerate(nums):
+    if target - x in seen:
+        return [seen[target - x], i]
+    seen[x] = i
+
+# 模式二：前缀和 + 哈希（子数组和 = k）
+count = defaultdict(int)
+count[0] = 1
+prefix = 0
+ans = 0
+for x in nums:
+    prefix += x
+    ans += count[prefix - k]
+    count[prefix] += 1
+
+# 模式三：字符频率统计（滑动窗口配合）
+from collections import Counter
+need = Counter(t)
+window = defaultdict(int)
+satisfied = 0`,
+    patterns: [
+      '先查后存：Two Sum 类，O(n) 替代 O(n²) 暴力',
+      '前缀和 + 哈希：统计满足条件的子数组数量',
+      '字符统计：字母异位词、最小覆盖子串',
+      '最长连续序列：以每个数为起点，O(n) 哈希跳跃',
+      'LRU 缓存：哈希表（O(1)查找）+ 双向链表（O(1)增删）'
+    ],
+    related: [
+      {key:'array', label:'数组', rel:'常配合使用'},
+      {key:'sliding', label:'滑动窗口', rel:'维护窗口状态'},
+      {key:'prefix', label:'前缀和', rel:'子数组统计组合'},
+      {key:'linkedlist', label:'链表', rel:'LRU缓存组合'}
+    ],
+    examples: ['1 Two Sum','3 Longest Substring','49 Group Anagrams','560 Subarray Sum = K','128 Longest Consecutive']
+  },
+
+  tree: {
+    title: '二叉树', type: 'ds', badge: '数据结构',
+    insight: '递归是树的天然语言。任何树题都问自己两个问题：根节点需要从子树获取什么信息？根节点需要向子树传递什么信息？前者用后序，后者用前序。',
+    paragraphs: [
+      '<strong>核心思想：</strong>二叉树利用递归结构天然地分解问题——每个节点都可以视为一棵以它为根的子树。因此几乎所有树的问题都可以表述为：先解决左子树，再解决右子树，最后在当前节点合并结果。这正是<strong>分治思想</strong>的直接体现。理解树题的关键在于掌握"在哪个位置处理节点"：前序位置（进入节点时）适合向下传参，后序位置（离开节点时）适合收集子树信息向上汇报。',
+      '<strong>主要应用：</strong>树的问题包括遍历、路径计算、结构判断等。BST（二叉搜索树）的中序遍历 = 有序数组，这是很多 BST 题目的核心观察。<strong>树形 DP</strong> 是动态规划在树结构中的重要扩展：状态定义在节点上，通过后序遍历进行状态转移。打家劫舍 III（LC 337）是入门级树形 DP，每个节点面临"选"或"不选"的决策，形成二元状态转移。',
+      '<strong>关系网络：</strong>二叉树是 DFS 和 BFS 的主要练习场，DFS 对应前/中/后序遍历，BFS 对应层序遍历。BST 与二分查找在逻辑上完全对应，在 BST 中查找等价于有序数组的二分查找。动态规划中的<strong>树形 DP</strong> 以二叉树为载体。此外，堆在逻辑上也是完全二叉树，只是通常以数组实现。'
+    ],
+    template: `# 后序遍历框架（自底向上收集信息）
+def solve(root):
+    if not root:
+        return base_case
+    left_val  = solve(root.left)
+    right_val = solve(root.right)
+    # 在后序位置：利用左右子树结果计算当前节点答案
+    return f(root.val, left_val, right_val)
+
+# 前序遍历框架（自顶向下传递信息）
+def dfs(root, path_sum):
+    if not root:
+        return
+    path_sum += root.val
+    if not root.left and not root.right:
+        check_answer(path_sum)
+    dfs(root.left, path_sum)
+    dfs(root.right, path_sum)
+
+# BST 中序遍历（得到有序数组）
+def inorder(root):
+    if not root: return
+    inorder(root.left)
+    process(root.val)   # 此处处理即为有序访问
+    inorder(root.right)`,
+    patterns: [
+      '后序框架：从子树收集信息（路径和、树的直径、最大深度）',
+      '前序框架：向子树传递参数（路径问题、序列化）',
+      'BST：中序有序性，插入/删除/查找的 O(log n) 操作',
+      '树形 DP：在节点处定义状态，后序位置做转移',
+      '层序遍历：BFS + 队列，按层处理节点'
+    ],
+    related: [
+      {key:'bfsdfs', label:'BFS/DFS', rel:'主要遍历方式'},
+      {key:'divcon', label:'分治', rel:'算法自然体现'},
+      {key:'treedp', label:'树形DP', rel:'DP扩展形式'},
+      {key:'binary', label:'二分查找', rel:'BST查找等价'},
+      {key:'heap', label:'堆', rel:'完全二叉树变体'}
+    ],
+    examples: ['104 Max Depth','543 Diameter','124 Max Path Sum','105 Build from Preorder+Inorder','337 House Robber III']
+  },
+
+  heap: {
+    title: '堆', type: 'ds', badge: '数据结构',
+    insight: '堆是动态数据集合中维护最值的专用工具。当你需要反复获取当前最大值或最小值，且数据在动态变化时，堆比全排序更高效——因为排序是一次性的，而堆是动态的。',
+    paragraphs: [
+      '<strong>核心思想：</strong>堆（优先队列）动态维护数据集合中的最值，支持 O(log n) 的插入和弹出操作，O(1) 的最值查询。标准的 Python heapq 是小顶堆（最小值在顶）；要模拟大顶堆，通常取负值入堆。<strong>Top K 问题</strong>是堆最典型的应用：维护一个大小为 k 的小顶堆，遍历 n 个元素，若当前元素大于堆顶则替换，最终堆中的 k 个元素就是前 k 大。时间复杂度 O(n log k)，优于全排序的 O(n log n)。',
+      '<strong>重要应用：</strong>堆在 <strong>Dijkstra 最短路算法</strong>中扮演关键角色——每次从优先队列中取出距起点最近的未确认节点，然后更新其邻居的距离。这正是贪心思想的体现，用优先队列优化后时间复杂度从 O(V²) 降为 O((V+E) log V)。此外，"合并 K 个有序链表"（LC 23）也是堆的经典应用：将每个链表的头节点入堆，每次取最小节点接入结果，并将该节点的下一个节点入堆。',
+      '<strong>关系网络：</strong>堆在逻辑上是<strong>完全二叉树</strong>，通常以数组实现（父节点 i 的子节点为 2i+1 和 2i+2）。堆与贪心算法密切结合，许多贪心问题需要堆来高效维护当前最优候选（如任务调度）。堆也与图论问题结合，是 Dijkstra 算法的标准加速工具。'
+    ],
+    template: `import heapq
+
+# 小顶堆基本操作
+heap = []
+heapq.heappush(heap, val)
+min_val = heapq.heappop(heap)
+
+# Top K 大元素（维护小顶堆）
+heap = []
+for x in nums:
+    heapq.heappush(heap, x)
+    if len(heap) > k:
+        heapq.heappop(heap)  # 弹出最小值，堆中保留最大的 k 个
+
+# Dijkstra 最短路
+import heapq
+dist = {start: 0}
+pq = [(0, start)]
+while pq:
+    d, u = heapq.heappop(pq)
+    if d > dist.get(u, float('inf')): continue
+    for v, w in graph[u]:
+        nd = d + w
+        if nd < dist.get(v, float('inf')):
+            dist[v] = nd
+            heapq.heappush(pq, (nd, v))`,
+    patterns: [
+      'Top K：维护大小为 k 的堆，O(n log k)',
+      '实时中位数：一个大顶堆 + 一个小顶堆，各维护一半',
+      'Dijkstra：优先队列驱动的最短路，O((V+E)log V)',
+      '合并 K 个有序序列：堆维护当前各序列最小值',
+      '任务调度：按截止时间/优先级排序，堆动态维护候选'
+    ],
+    related: [
+      {key:'tree', label:'二叉树', rel:'完全二叉树逻辑结构'},
+      {key:'greedy', label:'贪心', rel:'动态维护最优候选'},
+      {key:'bfsdfs', label:'BFS/DFS', rel:'Dijkstra优化'},
+      {key:'array', label:'数组', rel:'底层数组实现'}
+    ],
+    examples: ['215 Kth Largest','347 Top K Frequent','23 Merge K Lists','295 Find Median','743 Network Delay (Dijkstra)']
+  },
+
+  graph: {
+    title: '图', type: 'ds', badge: '数据结构',
+    insight: '图是对"关系"建模的通用工具。当题目中出现"节点之间的连接关系"或"从 A 状态可以转移到 B 状态"时，抽象为图往往是最清晰的建模方式。',
+    paragraphs: [
+      '<strong>核心思想：</strong>图通过节点与边描述复杂关系网络，相比树结构，图允许环和多路径，能够表示更复杂的连接关系。图在算法题中有三类核心问题：<strong>遍历问题</strong>（判断连通性、找连通分量，用 DFS/BFS）；<strong>路径问题</strong>（求最短路，无权图用 BFS，有权图用 Dijkstra）；<strong>拓扑问题</strong>（判断有向图是否有环、找任务合法执行顺序，用拓扑排序）。',
+      '<strong>重要技巧：</strong><strong>隐式图</strong>是图论题中的高阶形态——题目不直接给出图结构，而是通过状态转移规则隐式定义图，例如单词接龙（LC 127）中每次改变单词的一个字母就是一条边，这需要你自己识别出图的结构。建图方式的选择本身也很重要：邻接表适合稀疏图，邻接矩阵适合稠密图，在实际刷题中邻接表（defaultdict(list)）几乎是标配。',
+      '<strong>关系网络：</strong>图是 BFS 和 DFS 的主要应用场景。<strong>并查集</strong>是图的连通性问题的高效专用工具，适合动态维护连通关系。动态规划可以应用在有向无环图（DAG）上，DAG 的拓扑序天然提供了状态转移的计算顺序。Dijkstra 算法本质上是贪心思想在图上的应用。'
+    ],
+    template: `from collections import defaultdict, deque
+
+# 建图（邻接表）
+graph = defaultdict(list)
+for u, v in edges:
+    graph[u].append(v)
+    graph[v].append(u)  # 无向图
+
+# 拓扑排序（Kahn算法，BFS）
+in_degree = defaultdict(int)
+for u, v in edges:
+    in_degree[v] += 1
+q = deque([n for n in nodes if in_degree[n] == 0])
+order = []
+while q:
+    node = q.popleft()
+    order.append(node)
+    for nb in graph[node]:
+        in_degree[nb] -= 1
+        if in_degree[nb] == 0:
+            q.append(nb)
+# 若 len(order) != num_nodes，则图中有环
+
+# DFS 判环（有向图）
+WHITE, GRAY, BLACK = 0, 1, 2
+color = defaultdict(int)
+def has_cycle(u):
+    color[u] = GRAY
+    for v in graph[u]:
+        if color[v] == GRAY: return True
+        if color[v] == WHITE and has_cycle(v): return True
+    color[u] = BLACK
+    return False`,
+    patterns: [
+      '连通分量：DFS/BFS 遍历所有节点，计数连通块',
+      '最短路（无权）：BFS，按层扩展',
+      '最短路（有权非负）：Dijkstra + 优先队列',
+      '拓扑排序：Kahn（BFS）或 DFS 后序，检测有环',
+      '隐式图建模：从状态转移规则识别图结构'
+    ],
+    related: [
+      {key:'bfsdfs', label:'BFS/DFS', rel:'基础搜索方法'},
+      {key:'union', label:'并查集', rel:'动态连通性'},
+      {key:'dp', label:'动态规划', rel:'DAG上的DP'},
+      {key:'greedy', label:'贪心', rel:'Dijkstra本质'}
+    ],
+    examples: ['200 Number of Islands','207 Course Schedule','743 Network Delay','127 Word Ladder','684 Redundant Connection']
+  },
+
+  twoptr: {
+    title: '双指针', type: 'algo', badge: '算法思想',
+    insight: '双指针的本质是利用数据的单调性（通常是有序性），使得当一个指针移动时，另一个指针不需要回退，从而将 O(n²) 的嵌套枚举降为 O(n) 的线性扫描。',
+    paragraphs: [
+      '<strong>核心思想：</strong>双指针用两个指针协同移动来代替嵌套循环的枚举。关键在于利用数据的某种单调性，使指针的移动方向具有确定性——当一个指针移动时，另一个指针不需要回退，每个元素最多被访问常数次。有两种主要形态：<strong>对撞指针</strong>（从两端向中间，适合有序数组配对）和<strong>同向指针</strong>（快慢指针，有速度差或距离差）。',
+      '<strong>与滑动窗口的关系：</strong>这是最容易混淆的一点。滑动窗口本质上就是同向双指针的一种特例，但两者关注点不同：双指针强调两个指针的<strong>相对关系</strong>（距离、速度），滑动窗口强调两个指针围成的<strong>区间状态</strong>（区间内的元素统计）。可以认为，滑动窗口是双指针在"需要维护区间内部状态"场景下的具体实现形式。',
+      '<strong>关系网络：</strong>双指针是滑动窗口的父类思想；快慢指针是双指针在链表上的专项应用；双指针解决有序数组配对问题时，通常需要<strong>排序</strong>作为前置步骤。因此，三数之和（LC 15）等经典题目的解题流程是：排序 → 固定一个数 → 双指针枚举剩余两个数。'
+    ],
+    template: `# 对撞指针（有序数组，两数之和）
+left, right = 0, len(nums) - 1
+while left < right:
+    s = nums[left] + nums[right]
+    if s == target:
+        return [left, right]
+    elif s < target:
+        left += 1
+    else:
+        right -= 1
+
+# 同向指针（原地去重）
+slow = 0
+for fast in range(1, len(nums)):
+    if nums[fast] != nums[slow]:
+        slow += 1
+        nums[slow] = nums[fast]
+
+# 快慢指针（链表找中点）
+slow, fast = head, head
+while fast and fast.next:
+    slow = slow.next
+    fast = fast.next.next
+# slow 停在中点`,
+    patterns: [
+      '对撞指针：有序数组中的配对问题，两数之和/三数之和',
+      '快慢指针：链表判环（Floyd算法）、找中点、找倒数第 k 个',
+      '同向指针：原地去重、移除元素（slow 写，fast 读）',
+      '两个数组双指针：合并有序数组、求交集/并集',
+      '容器盛水：贪心 + 对撞指针，每次移动较短的一侧'
+    ],
+    related: [
+      {key:'sliding', label:'滑动窗口', rel:'双指针特化形式'},
+      {key:'array', label:'数组', rel:'主要应用场景'},
+      {key:'linkedlist', label:'链表', rel:'快慢指针应用'},
+      {key:'greedy', label:'贪心', rel:'排序作为前置步骤'}
+    ],
+    examples: ['11 Container With Most Water','15 Three Sum','26 Remove Duplicates','141 Linked List Cycle','42 Trapping Rain Water']
+  },
+
+  sliding: {
+    title: '滑动窗口', type: 'algo', badge: '算法思想',
+    insight: '滑动窗口的关键设计决策是确定"窗口合法性的判断条件"以及"窗口不合法时移动哪个指针"。模板几乎固定，难点在于维护窗口内部的状态。',
+    paragraphs: [
+      '<strong>核心思想：</strong>滑动窗口用一个动态区间 [left, right] 代替对所有子区间的枚举。扩张右边界来纳入新元素，收缩左边界来排除不合法元素，始终维护窗口处于"恰好合法"的状态。这种方式保证每个元素最多被加入和移出窗口各一次，因此时间复杂度为 O(n)。',
+      '<strong>状态维护：</strong><strong>哈希表与滑动窗口的组合</strong>几乎是字符串类滑动窗口题的标配——用哈希表记录窗口内各字符的出现次数，进出窗口时更新计数，并用一个额外变量记录"当前满足条件的字符数量"，避免每次都遍历哈希表检查合法性。以最小覆盖子串（LC 76）为例：窗口需要包含目标字符串的所有字符，当包含时收缩窗口找最小值，当不包含时扩张窗口。',
+      '<strong>关系网络：</strong>滑动窗口是<strong>双指针的特化版本</strong>，本质上是同向双指针加上区间状态维护。哈希表是维护窗口状态的标准工具。<strong>单调队列</strong>是滑动窗口在"求区间最值"场景下的性能优化手段——普通滑动窗口无法 O(1) 得到区间最值，单调队列解决了这个问题。'
+    ],
+    template: `# 不定长窗口（求最长/最短满足条件的子串）
+from collections import defaultdict
+left = 0
+window = defaultdict(int)
+ans = 0
+for right in range(len(s)):
+    # 1. 扩张：新元素加入窗口
+    window[s[right]] += 1
+
+    # 2. 收缩：窗口不合法时移动左指针
+    while window_invalid(window):
+        window[s[left]] -= 1
+        if window[s[left]] == 0:
+            del window[s[left]]
+        left += 1
+
+    # 3. 更新答案（此处窗口合法）
+    ans = max(ans, right - left + 1)
+
+# 固定长度窗口
+for i in range(len(nums)):
+    if i >= k:
+        # 移出左边元素
+        update_remove(nums[i - k])
+    # 加入新元素
+    update_add(nums[i])
+    if i >= k - 1:
+        record_answer()`,
+    patterns: [
+      '最长无重复子串：哈希表记录字符位置，right 扩张，left 跳跃',
+      '最小覆盖子串：哈希表 + 满足字符计数，双指针夹逼',
+      '字符串排列：固定长度窗口 + 字符频率比较',
+      '最大连续 1：允许 k 次翻转，滑窗维护窗口内 0 的数量',
+      '最长子数组和 ≤ k：前缀和 + 单调队列（deque）'
+    ],
+    related: [
+      {key:'twoptr', label:'双指针', rel:'父类思想'},
+      {key:'hashmap', label:'哈希表', rel:'窗口状态维护'},
+      {key:'monotone', label:'单调队列', rel:'区间最值优化'},
+      {key:'array', label:'数组', rel:'主要应用场景'}
+    ],
+    examples: ['3 Longest Substring No Repeat','76 Minimum Window Substring','567 Permutation in String','239 Sliding Window Max','424 Longest Repeating Character']
+  },
+
+  binary: {
+    title: '二分查找', type: 'algo', badge: '算法思想',
+    insight: '二分查找的本质不是"在有序数组中找值"，而是"在具有单调性的空间中找分界点"——分界点左侧全部不满足条件，右侧全部满足（或反过来）。',
+    paragraphs: [
+      '<strong>核心思想：</strong>二分查找识别并利用单调性，通过每次排除一半的搜索空间快速逼近答案。<strong>三种常见形态</strong>：标准二分（在有序数组中查找特定值）；边界二分（寻找左边界或右边界，有重复元素时找第一个/最后一个满足条件的位置）；二分答案（对答案的取值范围二分，用判定函数验证候选答案是否可行）。',
+      '<strong>二分答案：</strong>当你在描述题目时，如果脑海中出现了"至少""最多""最小化最大值""最大化最小值"这类词语，就应该优先考虑二分答案。这类词语意味着答案具有单调性：如果答案 x 可行，则所有大于（或小于）x 的值也可行。此时在答案空间上二分，用一个 check(mid) 判定函数验证可行性，check 函数通常用<strong>贪心策略</strong>在 O(n) 时间内实现。',
+      '<strong>关系网络：</strong>二分查找与<strong>分治思想</strong>天然同源，都是通过减半规模求解。在 BST 中，查找操作逻辑上等价于有序数组的二分查找。<strong>LIS（最长递增子序列）</strong>的 O(n log n) 解法是二分查找与动态规划的经典结合——用二分在已有序列中找插入位置。二分答案技巧通常需要与贪心组合，因为判定函数往往用贪心实现。'
+    ],
+    template: `# 模板一：查找目标值
+left, right = 0, len(nums) - 1
+while left <= right:
+    mid = (left + right) // 2
+    if nums[mid] == target: return mid
+    elif nums[mid] < target: left = mid + 1
+    else: right = mid - 1
+
+# 模板二：寻找左边界（第一个 >= target 的位置）
+left, right = 0, len(nums)
+while left < right:
+    mid = (left + right) // 2
+    if nums[mid] >= target:
+        right = mid
+    else:
+        left = mid + 1
+return left  # 即为左边界
+
+# 模板三：二分答案
+def check(mid):
+    # 贪心验证 mid 是否可行
+    return feasible
+
+left, right = min_possible, max_possible
+while left < right:
+    mid = (left + right) // 2
+    if check(mid): right = mid  # mid 可行，答案可能更小
+    else: left = mid + 1        # mid 不可行，答案需更大`,
+    patterns: [
+      '经典二分：在有序数组中查找目标（left <= right）',
+      '边界二分：找第一个/最后一个满足条件的位置',
+      '二分答案：最小化最大值、最大化最小值类题目',
+      '旋转数组：利用哪一侧有序来决定往哪边收缩',
+      'LIS O(n log n)：维护最长上升子序列的末尾元素序列，二分定位'
+    ],
+    related: [
+      {key:'divcon', label:'分治', rel:'理论同源'},
+      {key:'binanswer', label:'二分答案', rel:'高级扩展应用'},
+      {key:'greedy', label:'贪心', rel:'check函数实现'},
+      {key:'dp', label:'动态规划', rel:'LIS转移优化'},
+      {key:'tree', label:'二叉树', rel:'BST查找等价'}
+    ],
+    examples: ['34 Find First and Last','35 Search Insert','875 Koko Bananas','1011 Ship Packages','300 LIS (O(nlogn))']
+  },
+
+  greedy: {
+    title: '贪心', type: 'algo', badge: '算法思想',
+    insight: '贪心的正确性依赖"贪心选择性质"（局部最优能推出全局最优），这需要数学证明或直觉判断。排序通常是建立贪心决策优先级的前置步骤。',
+    paragraphs: [
+      '<strong>核心思想：</strong>贪心算法在每一步选择当前看起来最优的决策，跳过对所有可能方案的枚举。与动态规划不同，贪心不保存子问题的结果，而是一路向前、永不回头。贪心的正确性依赖问题具备<strong>贪心选择性质</strong>，即局部最优能够导向全局最优，这通常通过交换论证来证明：假设存在一个非贪心的最优解，通过"交换"使其变得更贪心，并证明交换后不会变差。',
+      '<strong>区间类问题：</strong>这是贪心的重要应用领域。以区间调度（选出最多不重叠区间）为例，贪心策略是按<strong>结束时间</strong>排序，每次选结束最早且不与已选区间重叠的区间。直觉是：结束越早，给后续区间留下的空间越大。这类"排序后扫描"的模式是贪心题的高频套路——<strong>排序本身就是在建立贪心决策的优先级</strong>。',
+      '<strong>贪心与 DP 的边界：</strong>两者都涉及最优化，但 DP 通过穷举所有子问题状态来保证全局最优，贪心通过局部最优跳过穷举。对于同一道题，如果能找到贪心选择性质，贪心往往比 DP 更高效。跳跃游戏（LC 55）既可以用 DP 做 O(n²)，也可以用贪心做 O(n)——贪心关键观察是：只需维护当前能到达的最远位置，不需要知道具体从哪里跳过来。'
+    ],
+    template: `# 模式一：区间调度（按结束时间贪心）
+intervals.sort(key=lambda x: x[1])  # 按结束时间升序
+count = 0
+end = float('-inf')
+for start, finish in intervals:
+    if start >= end:  # 不重叠
+        count += 1
+        end = finish
+
+# 模式二：跳跃游戏（维护最远可达位置）
+max_reach = 0
+for i in range(len(nums)):
+    if i > max_reach:
+        return False  # 到不了位置 i
+    max_reach = max(max_reach, i + nums[i])
+return True
+
+# 模式三：贪心 + 堆（任务调度）
+import heapq
+tasks.sort()
+heap = []
+for start, end, profit in tasks:
+    # 堆中维护所有可做的任务，按利润排序
+    heapq.heappush(heap, -profit)
+result += -heapq.heappop(heap)`,
+    patterns: [
+      '区间调度：按结束时间排序，贪心选取最多不重叠区间',
+      '跳跃游戏：维护当前可达最远位置，一次遍历',
+      '分发糖果：先从左到右保证递增，再从右到左保证递减',
+      '任务调度：堆 + 贪心，动态维护最优候选',
+      '股票问题：只要明天比今天涨就买入（贪心思维）'
+    ],
+    related: [
+      {key:'dp', label:'动态规划', rel:'更强条件下的简化'},
+      {key:'binary', label:'二分查找', rel:'验证贪心策略'},
+      {key:'heap', label:'堆', rel:'动态维护最优候选'},
+      {key:'binanswer', label:'二分答案', rel:'check函数贪心实现'}
+    ],
+    examples: ['55 Jump Game','435 Non-overlapping Intervals','452 Minimum Arrows','135 Candy','406 Queue Reconstruction']
+  },
+
+  dp: {
+    title: '动态规划', type: 'algo', badge: '算法思想',
+    insight: 'DP 设计的核心是状态定义——dp[i] 究竟代表什么？定义清晰则转移方程自然浮现，定义模糊则寸步难行。先用记忆化搜索验证思路，再改写为迭代 DP，是最有效的学习路径。',
+    paragraphs: [
+      '<strong>核心思想：</strong>动态规划通过记录子问题的结果并利用状态转移关系逐步构建最终解，适用于具有<strong>重叠子问题</strong>和<strong>最优子结构</strong>的问题。DP 的实际设计三步走：①定义状态（dp[i] 或 dp[i][j] 究竟代表什么）；②写出状态转移方程（dp[i] 如何从之前状态推导）；③确定初始条件和计算顺序。状态定义是核心难点，定义得好则转移方程自然浮现。',
+      '<strong>重要子类型：</strong><strong>背包问题</strong>（0-1背包、完全背包）是 DP 的经典模型，核心差异在于每件物品能否重复使用。<strong>区间 DP</strong>（如矩阵链乘、戳气球 LC 312）的状态是区间，计算顺序是从短区间到长区间。<strong>多维 DP 的空间压缩</strong>：当 dp[i][j] 的计算只依赖上一行时，可以用一维数组滚动更新，将空间从 O(mn) 降为 O(n)。',
+      '<strong>关系网络：</strong>回溯是动态规划的"未优化版本"——加入记忆化后，回溯就变成了 DP；贪心是 DP 在问题满足更强条件时的简化版本；<strong>二分查找可以优化 LIS</strong> 的时间复杂度（从 O(n²) 到 O(n log n)）；<strong>树形 DP</strong> 是 DP 在树结构上的扩展；<strong>单调队列/栈</strong>可以优化特定类型 DP 的状态转移，将 O(n) 的转移降为 O(1)。'
+    ],
+    template: `# 一维 DP（爬楼梯类）
+dp = [0] * (n + 1)
+dp[0], dp[1] = 1, 1
+for i in range(2, n + 1):
+    dp[i] = dp[i-1] + dp[i-2]
+
+# 二维 DP（背包）
+# dp[i][j] = 前 i 个物品，容量 j 时的最大价值
+dp = [[0]*(W+1) for _ in range(n+1)]
+for i in range(1, n+1):
+    for j in range(W+1):
+        dp[i][j] = dp[i-1][j]  # 不选第 i 件
+        if j >= weight[i]:
+            dp[i][j] = max(dp[i][j], dp[i-1][j-weight[i]] + value[i])
+
+# 记忆化搜索（先验证思路再改写迭代）
+from functools import lru_cache
+@lru_cache(maxsize=None)
+def dfs(i, j):
+    if base_condition: return base_value
+    return f(dfs(i-1, j), dfs(i, j-1), ...)`,
+    patterns: [
+      '线性 DP：LIS（最长递增子序列）、最长公共子序列',
+      '背包 DP：0-1背包、完全背包（内循环方向区分）',
+      '区间 DP：戳气球、矩阵链乘（从短区间到长区间）',
+      '路径 DP：网格最短路、最小路径和',
+      '记忆化搜索 → 迭代 DP：先写 DFS，加 @lru_cache，再改写'
+    ],
+    related: [
+      {key:'backtrack', label:'回溯', rel:'记忆化后等价'},
+      {key:'greedy', label:'贪心', rel:'特例简化版本'},
+      {key:'binary', label:'二分查找', rel:'LIS转移优化'},
+      {key:'treedp', label:'树形DP', rel:'树结构上的扩展'},
+      {key:'monotone', label:'单调栈', rel:'状态转移优化'}
+    ],
+    examples: ['70 Climbing Stairs','322 Coin Change','300 LIS','1143 LCS','312 Burst Balloons']
+  },
+
+  backtrack: {
+    title: '回溯', type: 'algo', badge: '算法思想',
+    insight: '回溯 = DFS + 撤销。"做选择 → 递归 → 撤销选择"是其标准三步结构。剪枝的质量直接决定性能优劣，可将指数级搜索空间压缩几个数量级。',
+    paragraphs: [
+      '<strong>核心思想：</strong>回溯算法在解空间树上做受控的深度优先搜索：向下探索一条路径，若到达叶节点则记录结果，若发现当前路径不可能导向有效解则<strong>剪枝</strong>返回，然后继续探索其他路径。回溯的本质是带有撤销操作的 DFS，"做选择——递归——撤销选择"是其标准代码结构。',
+      '<strong>排列 vs 组合：</strong>这两类问题在代码结构上有关键差异。<strong>排列问题</strong>中每个位置都可以从全部未使用的元素中选择，通常用 visited 数组记录已使用元素；<strong>组合问题</strong>中每次只能选择"当前元素之后"的元素，因此需要一个 start 参数防止重复选取。子集问题可视为组合问题的变体——每次递归时既可以选当前元素也可以不选。',
+      '<strong>剪枝：</strong>剪枝分两类：<strong>合法性剪枝</strong>（当前路径已违反约束时立即返回，如 N 皇后中检测冲突）；<strong>最优性剪枝</strong>（当前路径即使延伸到底也不可能优于已知最优解时返回）。有效剪枝可以将指数级搜索空间压缩几个数量级。回溯对回溯加入记忆化本质上就变成了动态规划，这也是为什么记忆化搜索题目既可以用回溯解决，也可以改写为标准 DP。'
+    ],
+    template: `# 组合问题框架（带 start 参数，防重复）
+def backtrack(start, path):
+    result.append(path[:])  # 子集问题：每次都记录
+    for i in range(start, len(nums)):
+        # 剪枝：跳过重复元素
+        if i > start and nums[i] == nums[i-1]:
+            continue
+        path.append(nums[i])
+        backtrack(i + 1, path)  # 不重复用：i+1；可重复用：i
+        path.pop()
+
+# 排列问题框架（带 visited，顺序有意义）
+def backtrack(path, visited):
+    if len(path) == n:
+        result.append(path[:])
+        return
+    for i in range(n):
+        if visited[i]: continue
+        visited[i] = True
+        path.append(nums[i])
+        backtrack(path, visited)
+        path.pop()
+        visited[i] = False`,
+    patterns: [
+      '组合：start 参数防重，不重复使用元素（LC 77/39）',
+      '排列：visited 数组，每个元素只用一次（LC 46）',
+      '子集：每次都记录路径，组合框架变体（LC 78）',
+      'N 皇后 / 数独：带约束的排列，合法性剪枝关键',
+      '单词搜索：矩阵上的回溯，visited 记录已访问格子'
+    ],
+    related: [
+      {key:'bfsdfs', label:'BFS/DFS', rel:'底层DFS框架'},
+      {key:'dp', label:'动态规划', rel:'加记忆化后等价'},
+      {key:'tree', label:'二叉树', rel:'解空间树结构'}
+    ],
+    examples: ['46 Permutations','78 Subsets','39 Combination Sum','51 N-Queens','79 Word Search']
+  },
+
+  bfsdfs: {
+    title: 'BFS / DFS', type: 'algo', badge: '算法思想',
+    insight: '判断标准：需要最短路径或最少步数 → BFS；需要遍历所有可能路径或枚举所有结果 → DFS。BFS 以层数保证最短，DFS 以深度穷举完整。',
+    paragraphs: [
+      '<strong>BFS vs DFS：</strong>BFS 按距离起点由近到远逐层扩展节点，依靠队列实现。<strong>BFS 的核心优势是保证无权图最短路的正确性</strong>——第一次访问到某节点时，所经过的步数一定是最少的。DFS 沿一条路径深入到头再回溯，依靠递归（隐式系统栈）或显式栈实现，实现简洁且空间消耗少，适合遍历所有可能路径、判断连通性、检测环、以及组合枚举类问题。',
+      '<strong>双向 BFS：</strong>这是 BFS 的重要优化变体，适用于已知起点和终点的最短路搜索。同时从起点和终点出发进行 BFS，当两个搜索前沿相遇时即找到答案。双向 BFS 将搜索的时间复杂度从 O(b^d) 压缩到 O(b^(d/2))（b 为分支因子，d 为最短路长度），在字符串变换类题目（如单词接龙）中效果显著。',
+      '<strong>关系网络：</strong>DFS 是<strong>回溯算法</strong>的底层框架，加上撤销操作和路径记录就变成了回溯。<strong>BFS 依赖队列</strong>作为底层数据结构，且与最短路算法密切相关（Dijkstra 是带权重的广义 BFS）。树的前/中/后序遍历是 DFS 在树上的具体形态，树的层序遍历是 BFS 在树上的具体形态。并查集可以替代 BFS/DFS 解决连通性问题，但无法求最短路。'
+    ],
+    template: `# BFS 标准模板（最短路/层序）
+from collections import deque
+q = deque([start])
+visited = {start}
+steps = 0
+while q:
+    for _ in range(len(q)):  # 按层处理
+        node = q.popleft()
+        if node == target: return steps
+        for nb in get_neighbors(node):
+            if nb not in visited:
+                visited.add(nb)
+                q.append(nb)
+    steps += 1
+
+# DFS 标准模板（图，带 visited）
+visited = set()
+def dfs(node):
+    visited.add(node)
+    for nb in graph[node]:
+        if nb not in visited:
+            dfs(nb)
+
+# 双向 BFS（优化起终点已知的最短路）
+front, back = {start}, {end}
+steps = 0
+while front and back:
+    if len(front) > len(back):
+        front, back = back, front
+    nxt = set()
+    for node in front:
+        for nb in get_neighbors(node):
+            if nb in back: return steps + 1
+            nxt.add(nb)
+    front = nxt
+    steps += 1`,
+    patterns: [
+      'BFS 最短路：迷宫、棋盘、状态变换类（步数即层数）',
+      '多源 BFS：多个起点同时出发（腐烂橙子、01矩阵）',
+      'DFS 连通分量：岛屿问题、省份数量',
+      'DFS 拓扑排序：后序 DFS，按出栈顺序记录',
+      '双向 BFS：单词接龙等已知终点的搜索'
+    ],
+    related: [
+      {key:'queue', label:'队列', rel:'BFS的底层容器'},
+      {key:'stack', label:'栈', rel:'DFS迭代底层'},
+      {key:'backtrack', label:'回溯', rel:'DFS加撤销操作'},
+      {key:'graph', label:'图', rel:'主要应用场景'},
+      {key:'tree', label:'二叉树', rel:'树的遍历形式'}
+    ],
+    examples: ['200 Number of Islands','127 Word Ladder','994 Rotting Oranges','130 Surrounded Regions','207 Course Schedule']
+  },
+
+  divcon: {
+    title: '分治', type: 'algo', badge: '算法思想',
+    insight: '分治与 DP 的关键区别在于子问题是否重叠：子问题相互独立用分治，子问题大量重叠则加记忆化变为 DP。树结构中几乎所有算法都是分治的自然体现。',
+    paragraphs: [
+      '<strong>核心思想：</strong>分治将规模为 n 的问题拆分为若干规模更小的同类子问题，递归求解后合并。时间复杂度通过主定理（Master Theorem）分析：T(n) = aT(n/b) + f(n)。<strong>分治与动态规划的关键区别</strong>在于子问题是否重叠——如果子问题相互独立，用分治；如果子问题大量重叠，用动态规划加记忆化。归并排序的子数组是不重叠的（分治），而斐波那契数列的子问题大量重叠（DP）。',
+      '<strong>主要应用：</strong>归并排序是分治最典型的应用，且在分治过程中统计<strong>逆序对</strong>是经典技巧（LC 315）——在合并两个有序数组时，右半部分的元素被提前到左半部分某个元素之前，就构成逆序对，这样 O(n log n) 完成统计。<strong>快速选择</strong>是分治与随机化的结合，用于 O(n) 平均时间找第 k 大元素。',
+      '<strong>关系网络：</strong>分治是<strong>二分查找的理论归属</strong>（每次将问题规模减半）；分治在<strong>树结构</strong>中无处不在，每个树算法本质上都是分治的体现（先处理子树，再合并）；记忆化分治 = DP，当分治的子问题开始重叠时，加入缓存即变成动态规划。'
+    ],
+    template: `# 归并排序（分治 + 合并）
+def merge_sort(arr, left, right):
+    if left >= right: return
+    mid = (left + right) // 2
+    merge_sort(arr, left, mid)
+    merge_sort(arr, mid+1, right)
+    merge(arr, left, mid, right)  # 合并两个有序段
+
+# 快速选择（找第 k 大，O(n) 平均）
+def quick_select(nums, left, right, k):
+    pivot = partition(nums, left, right)
+    if pivot == k: return nums[pivot]
+    elif pivot < k: return quick_select(nums, pivot+1, right, k)
+    else: return quick_select(nums, left, pivot-1, k)
+
+# 逆序对统计（归并中顺手计算）
+def merge_count(arr, left, mid, right):
+    count = 0
+    i, j = left, mid + 1
+    while i <= mid and j <= right:
+        if arr[i] <= arr[j]: i += 1
+        else:
+            count += (mid - i + 1)  # arr[i..mid] 都与 arr[j] 构成逆序
+            j += 1
+    return count`,
+    patterns: [
+      '归并排序：O(n log n)，稳定排序，同时可统计逆序对',
+      '快速选择：O(n) 平均时间找第 k 大元素（partition）',
+      '大数乘法 / 快速幂：减少乘法次数',
+      '最近点对：分治 + O(n) 合并步骤',
+      '树上分治：以树的重心为分割点，处理跨子树路径'
+    ],
+    related: [
+      {key:'binary', label:'二分查找', rel:'分治的典型应用'},
+      {key:'dp', label:'动态规划', rel:'子问题重叠则加缓存'},
+      {key:'tree', label:'二叉树', rel:'树算法的本质'}
+    ],
+    examples: ['23 Merge K Lists','215 Kth Largest','53 Max Subarray (divide)','315 Count Smaller After Self','912 Sort an Array']
+  },
+
+  prefix: {
+    title: '前缀和', type: 'algo', badge: '算法思想',
+    insight: '前缀和将区间求和从 O(n) 降为 O(1)，代价是 O(n) 的预处理。与哈希表结合后，能够将"子数组统计"类问题的复杂度从 O(n²) 降为 O(n)。',
+    paragraphs: [
+      '<strong>核心思想：</strong>前缀和通过一次线性预处理，将任意区间的求和操作从 O(n) 降为 O(1)。核心公式：sum(i, j) = prefix[j+1] - prefix[i]。这是<strong>空间换时间</strong>思想最典型的体现之一。适用于静态数组的多次区间查询场景（若需要动态修改则需树状数组或线段树）。',
+      '<strong>与哈希表的组合：</strong>这是前缀和最强大的扩展。以"连续子数组和等于 k"（LC 560）为例：若存在 prefix[j] - prefix[i] == k，则区间 [i, j-1] 的和为 k。在遍历前缀和的过程中，用哈希表记录每个前缀和出现的次数，当计算到 prefix[j] 时，查找 prefix[j] - k 在哈希表中出现了多少次，即为以 j-1 结尾的合法子数组数量。这个技巧将 O(n²) 的双层循环降为 O(n)，是<strong>前缀和 + 哈希</strong>的标准范式。',
+      '<strong>关系网络：</strong>前缀和与<strong>差分</strong>互为逆运算——差分记录变化量，前缀和恢复原始序列。<strong>二维前缀和</strong>是一维前缀和在矩阵场景中的扩展，可以 O(1) 查询任意矩形区域元素和。前缀和在动态规划优化中也有应用：当 DP 的转移涉及区间求和时，前缀和可以将转移复杂度从 O(n) 降为 O(1)。'
+    ],
+    template: `# 一维前缀和
+prefix = [0] * (n + 1)
+for i in range(n):
+    prefix[i+1] = prefix[i] + nums[i]
+# 区间 [l, r] 之和（0-indexed）
+range_sum = prefix[r+1] - prefix[l]
+
+# 前缀和 + 哈希（子数组和 = k 的数量）
+from collections import defaultdict
+count = defaultdict(int)
+count[0] = 1
+prefix_sum = 0
+ans = 0
+for x in nums:
+    prefix_sum += x
+    ans += count[prefix_sum - k]
+    count[prefix_sum] += 1
+
+# 二维前缀和（矩阵区域和）
+# 构建
+for i in range(1, m+1):
+    for j in range(1, n+1):
+        pre[i][j] = pre[i-1][j] + pre[i][j-1] - pre[i-1][j-1] + mat[i-1][j-1]
+# 查询矩形 (r1,c1)~(r2,c2)
+query = pre[r2+1][c2+1] - pre[r1][c2+1] - pre[r2+1][c1] + pre[r1][c1]`,
+    patterns: [
+      '区间求和 O(1)：多次查询同一静态数组的区间和',
+      '前缀和 + 哈希：统计满足条件的子数组数量（最常用）',
+      '二维前缀和：矩形区域和、统计矩形内满足条件的元素',
+      '前缀积：类似前缀和，用除法求区间积（LC 238）',
+      'DP 优化：当 DP 转移涉及区间求和时，O(n) 转移降为 O(1)'
+    ],
+    related: [
+      {key:'hashmap', label:'哈希表', rel:'子数组统计组合'},
+      {key:'diff', label:'差分', rel:'互为逆运算'},
+      {key:'dp', label:'动态规划', rel:'优化状态转移'},
+      {key:'array', label:'数组', rel:'作用对象'}
+    ],
+    examples: ['303 Range Sum Query','560 Subarray Sum = K','304 Range Sum 2D','525 Contiguous Array','1248 Count Nice Subarray']
+  },
+
+  diff: {
+    title: '差分', type: 'algo', badge: '算法思想',
+    insight: '差分是前缀和的逆操作。当需要对一个数组进行多次区间加减操作后再查询结果时，差分将每次区间更新的代价从 O(n) 降为 O(1)，最后一次性 O(n) 还原。',
+    paragraphs: [
+      '<strong>核心思想：</strong>差分记录序列相邻元素之间的变化量，从而将"多次区间修改后查询"的问题转化为简单操作。对区间 [l, r] 整体加上值 v，只需 diff[l] += v, diff[r+1] -= v，最后通过对差分数组求前缀和还原修改后的原数组。这使得 m 次区间修改的总时间复杂度从 O(mn) 降为 O(m + n)。',
+      '<strong>局限与适用场景：</strong>差分是一种<strong>离线方法</strong>——你需要先记录所有修改操作，最后统一处理，无法支持"修改后立即查询单点值"的在线场景（在线场景需要树状数组或线段树）。适合的题目模式是：题目给出多组区间操作，问最终每个位置的值，或者问满足某条件的位置数量。',
+      '<strong>关系网络：</strong>差分是<strong>前缀和的逆运算</strong>，这是两者互为逆操作的数学本质：差分数组的前缀和等于原数组。差分与前缀和在同一题目中常常配合出现——差分负责高效处理区间更新，前缀和负责还原最终结果。<strong>二维差分</strong>是差分在矩阵场景中的扩展，支持对矩形区域进行整体加减操作。'
+    ],
+    template: `# 一维差分
+diff = [0] * (n + 2)  # 多留一位避免越界
+
+# 操作：区间 [l, r] 整体加 val
+def add(l, r, val):
+    diff[l] += val
+    diff[r+1] -= val
+
+# 多次区间操作后还原
+for l, r, val in operations:
+    add(l, r, val)
+
+# 通过前缀和还原原数组
+result = [0] * n
+result[0] = diff[0]
+for i in range(1, n):
+    result[i] = result[i-1] + diff[i]
+
+# 二维差分（矩形区域加 val）
+def add2d(r1, c1, r2, c2, val):
+    diff[r1][c1]     += val
+    diff[r1][c2+1]   -= val
+    diff[r2+1][c1]   -= val
+    diff[r2+1][c2+1] += val`,
+    patterns: [
+      '区间批量修改 + 最终查询：多次区间加减，一次性还原',
+      '航班预订（LC 1109）：每段航班加乘客，查询每段人数',
+      '拼车（LC 1094）：区间上下车，判断是否超载',
+      '二维差分：矩形区域加值，用于图像处理类题目',
+      '差分 + 前缀和：先差分处理，再前缀和还原，标准流程'
+    ],
+    related: [
+      {key:'prefix', label:'前缀和', rel:'互为逆运算'},
+      {key:'array', label:'数组', rel:'作用对象'}
+    ],
+    examples: ['1109 Corporate Flight Bookings','1094 Car Pooling','370 Range Addition','798 Smallest Rotation Index','995 Min K Bit Flips']
+  },
+
+  monotone: {
+    title: '单调栈 / 单调队列', type: 'adv', badge: '高级技巧',
+    insight: '单调栈中存储的不是答案，而是"还没找到答案的候选元素"——候选元素出栈的时刻正是它找到答案的时刻。这种延迟处理思想是单调栈的本质。',
+    paragraphs: [
+      '<strong>单调栈：</strong>在遍历数组时维护一个严格单调（递增或递减）的栈。当新元素打破单调性时，被弹出的元素与新元素之间就形成了"下一个更大/更小元素"的关系。这将朴素的 O(n²) 枚举降为 O(n)。<strong>单调递减栈</strong>用于找"下一个更大值"；<strong>单调递增栈</strong>用于找"下一个更小值"。柱状图最大矩形（LC 84）和接雨水（LC 42）是单调栈的两道经典难题，都是通过维护单调递增栈来找到每根柱子的左右边界。',
+      '<strong>单调队列：</strong>这是队列的高级扩展形式，用双端队列（deque）实现，在滑动窗口场景下维护窗口内的最大或最小值，O(1) 时间查询。关键操作是：新元素入队时，从队尾弹出所有比它小（或大）的元素（保持单调性）；窗口滑动时，检查队首元素是否已滑出窗口范围（超出则弹出）。滑动窗口最大值（LC 239）可以用单调队列在 O(n) 时间解决，而非朴素的 O(nk)。',
+      '<strong>与 DP 的结合：</strong>单调栈/队列还可以优化特定类型的动态规划。当 DP 转移方程形如 dp[i] = min(dp[j]) + cost(i)，且 j 在一个滑动窗口范围内时，可以用单调队列将每个转移从 O(n) 降为 O(1)，从而将整体 DP 从 O(n²) 降为 O(n)。这是竞赛中的高级技巧，但面试中偶尔出现。'
+    ],
+    template: `# 单调递减栈：下一个更大元素
+stack = []  # 存储下标
+result = [-1] * n
+for i in range(n):
+    while stack and nums[stack[-1]] < nums[i]:
+        idx = stack.pop()
+        result[idx] = nums[i]  # idx 找到了下一个更大值
+    stack.append(i)
+
+# 单调递增栈：接雨水（找左右第一个更高柱子）
+stack = []
+water = 0
+for i in range(n):
+    while stack and height[stack[-1]] < height[i]:
+        bottom = stack.pop()
+        if stack:
+            width = i - stack[-1] - 1
+            h = min(height[i], height[stack[-1]]) - height[bottom]
+            water += width * h
+    stack.append(i)
+
+# 单调队列：滑动窗口最大值
+from collections import deque
+dq = deque()  # 存储下标，队首为最大值下标
+result = []
+for i in range(len(nums)):
+    while dq and nums[dq[-1]] < nums[i]: dq.pop()  # 维护递减
+    dq.append(i)
+    if dq[0] <= i - k: dq.popleft()  # 滑出窗口
+    if i >= k-1: result.append(nums[dq[0]])`,
+    patterns: [
+      '下一个更大/更小元素：单调栈，O(n) 替代 O(n²)',
+      '柱状图最大矩形：单调递增栈找左右边界',
+      '接雨水：单调递增栈，计算每个凹坑能接的水量',
+      '滑动窗口最大值：单调队列（deque），O(n)',
+      '优化滑窗 DP：单调队列将 O(n²) DP 降为 O(n)'
+    ],
+    related: [
+      {key:'stack', label:'栈', rel:'底层数据结构'},
+      {key:'queue', label:'队列', rel:'单调队列变体'},
+      {key:'sliding', label:'滑动窗口', rel:'区间最值的工具'},
+      {key:'dp', label:'动态规划', rel:'优化DP状态转移'},
+      {key:'array', label:'数组', rel:'主要应用环境'}
+    ],
+    examples: ['739 Daily Temperatures','84 Largest Rectangle','42 Trapping Rain Water','239 Sliding Window Max','901 Online Stock Span']
+  },
+
+  binanswer: {
+    title: '二分答案', type: 'adv', badge: '高级技巧',
+    insight: '识别二分答案的关键词：题目中出现"至少""最多""最小化最大值""最大化最小值"——这类词语几乎总是意味着答案具有单调性，可以二分。',
+    paragraphs: [
+      '<strong>核心思想：</strong>当答案本身具有单调性时（越大越容易满足条件/越小越难），对答案空间进行二分，用 check(mid) 函数验证候选答案是否可行。这是二分查找从"在数据中找值"扩展到"在答案空间中找临界点"的重要跨越。判断是否可以用二分答案的标准是：如果答案 x 可行，则所有大于（或小于）x 的值也可行——即答案空间具有"可行/不可行"的两段性。',
+      '<strong>check 函数设计：</strong>check(mid) 函数的作用是验证"mid 是否是一个可行答案"，通常用<strong>贪心策略</strong>在 O(n) 时间内实现。以"爱吃香蕉的珂珂"（LC 875）为例：二分速度 s，check(s) 贪心验证以速度 s 能否在 h 小时内吃完所有香蕉——这是一个简单的模拟过程。以"分割数组的最大值"（LC 410）为例：二分子数组最大和的上限 m，check(m) 贪心地将数组切分为尽量多的子数组（每次让子数组和尽量大但不超过 m），验证切分数量是否不超过 k。',
+      '<strong>关系网络：</strong>二分答案是<strong>二分查找</strong>的高级应用，两者共享"在单调空间中找分界点"的核心思想。check 函数通常用<strong>贪心</strong>实现，有时也用动态规划（但实际面试中以贪心为主）。整体技巧可以看作：<strong>二分外层 + 贪心内层</strong>，是两种思想的优雅组合。'
+    ],
+    template: `# 二分答案通用框架
+def check(mid):
+    """贪心验证 mid 是否可行，O(n)"""
+    # 根据题意模拟，返回 True/False
+    pass
+
+# 确定答案范围
+left, right = min_possible_answer, max_possible_answer
+
+# 二分寻找左边界（最小可行答案）
+while left < right:
+    mid = (left + right) // 2
+    if check(mid):
+        right = mid   # mid 可行，答案可能更小
+    else:
+        left = mid + 1  # mid 不可行，答案需更大
+return left
+
+# 例：LC 875 爱吃香蕉（最小速度）
+def check(speed):
+    hours = sum((pile + speed - 1) // speed for pile in piles)
+    return hours <= h
+
+left, right = 1, max(piles)
+# 套入上方框架即可`,
+    patterns: [
+      '最小化最大值：分割数组（LC 410）、运载包裹（LC 1011）',
+      '最大化最小值：磁力石头（LC 1552）、种花最大间距',
+      '时间/速度单调性：吃香蕉（LC 875）、完成任务的最少天数',
+      'check 函数 = 贪心模拟：验证 mid 是否可行，O(n)',
+      '浮点二分：精度要求高的优化问题（循环固定次数）'
+    ],
+    related: [
+      {key:'binary', label:'二分查找', rel:'本质思想基础'},
+      {key:'greedy', label:'贪心', rel:'check函数实现方式'},
+      {key:'dp', label:'动态规划', rel:'check也可用DP验证'}
+    ],
+    examples: ['875 Koko Eating Bananas','1011 Ship Within D Days','410 Split Array Largest Sum','1552 Magnetic Force','2064 Minimized Max. Products']
+  },
+
+  treedp: {
+    title: '树形 DP', type: 'adv', badge: '高级技巧',
+    insight: '树形 DP 的核心是后序遍历——先计算子树的状态，再在父节点处合并。状态定义在节点上，子树的结果通过递归返回值传递给父节点。',
+    paragraphs: [
+      '<strong>核心思想：</strong>树形 DP 是动态规划在树结构上的重要扩展。状态被定义在节点上，通过<strong>后序遍历</strong>（先处理子节点，再处理父节点）进行状态转移。每个节点的 dp 值由其左右子树的 dp 值合并而来，这正是分治 + DP 的体现。树形 DP 的难点通常在于状态定义——需要思考：当前节点的 dp 值应该"包含当前节点"还是"以当前节点为根的子树"？',
+      '<strong>经典模式：</strong><strong>打家劫舍 III</strong>（LC 337）是入门级树形 DP：每个节点面临"选"或"不选"的决策，选则不能选其子节点，不选则子节点可以自由选择——递归函数返回一个二元组 (不选当前节点的最大值, 选当前节点的最大值)。<strong>二叉树最大路径和</strong>（LC 124）是更经典的树形 DP：每个节点的贡献分两种情况——路径经过当前节点连接左右子树（用于更新全局答案），或路径以当前节点为端点向上延伸（作为返回值）。',
+      '<strong>关系网络：</strong>树形 DP 以<strong>二叉树（或多叉树）</strong>为载体，以<strong>动态规划</strong>为核心思想，以<strong>后序 DFS</strong> 为遍历方式，是三者的结合。理解树形 DP 的前提是熟悉树的递归框架（二叉树部分），以及标准 DP 的状态定义方法（动态规划部分）。'
+    ],
+    template: `# 树形 DP 框架（以打家劫舍 III 为例）
+def dp(node):
+    if not node:
+        return (0, 0)  # (不选当前节点最大值, 选当前节点最大值)
+
+    left_no, left_yes   = dp(node.left)
+    right_no, right_yes = dp(node.right)
+
+    # 不选当前节点：子节点可选可不选
+    not_rob = max(left_no, left_yes) + max(right_no, right_yes)
+    # 选当前节点：子节点不能选
+    rob = node.val + left_no + right_no
+
+    return (not_rob, rob)
+
+root_no, root_yes = dp(root)
+return max(root_no, root_yes)
+
+# 二叉树最大路径和（经典树形 DP）
+self.ans = float('-inf')
+def dfs(node):
+    if not node: return 0
+    left  = max(0, dfs(node.left))   # 负贡献不取
+    right = max(0, dfs(node.right))
+    self.ans = max(self.ans, node.val + left + right)  # 更新全局
+    return node.val + max(left, right)  # 返回单侧最大贡献`,
+    patterns: [
+      '二元状态树形DP：选/不选当前节点（打家劫舍 III）',
+      '最大路径和：返回单侧最大值，全局记录双侧连接',
+      '树的直径：两次 DFS 或一次后序 DFS 记录全局最长',
+      '树上背包：以子树大小为容量的背包问题',
+      '最小高度树：找树的重心（度数最小的节点）'
+    ],
+    related: [
+      {key:'tree', label:'二叉树', rel:'载体数据结构'},
+      {key:'dp', label:'动态规划', rel:'核心算法思想'},
+      {key:'bfsdfs', label:'BFS/DFS', rel:'后序遍历方式'}
+    ],
+    examples: ['337 House Robber III','124 Max Path Sum','543 Diameter of Binary Tree','968 Binary Tree Cameras','834 Sum of Distances in Tree']
+  },
+
+  union: {
+    title: '并查集', type: 'adv', badge: '高级技巧',
+    insight: '并查集是处理"动态连通性"问题的专用工具：快速判断两点是否连通（find），以及合并两个集合（union）。路径压缩 + 按秩合并使均摊复杂度近乎 O(1)。',
+    paragraphs: [
+      '<strong>核心思想：</strong>并查集高效处理"动态连通性"问题。两个核心操作：find(x) 查找 x 所属集合的代表元素；union(x, y) 将 x 和 y 所在的集合合并。<strong>路径压缩</strong>优化：在 find 时将路径上的所有节点直接挂到根节点，使后续查找更快。<strong>按秩合并</strong>优化：始终将高度较小的树挂到高度较大的树下，防止树退化成链表。两种优化结合后，单次操作的均摊时间复杂度为 O(α(n))，其中 α 为反阿克曼函数，对所有实际输入近乎为 O(1)。',
+      '<strong>主要应用：</strong>并查集适合"动态合并集合，动态查询连通性"的场景。<strong>冗余连接</strong>（LC 684）：对每条边进行 union，若两端点已经连通（same find root），则这条边是冗余的——这就是用并查集检测环的方法。<strong>账户合并</strong>（LC 721）：将属于同一账户的邮箱 union 在一起，最终同一集合就是同一账户。Kruskal 最小生成树算法也依赖并查集判断加入一条边是否会形成环。',
+      '<strong>关系网络：</strong>并查集是<strong>图的连通性问题</strong>的高效专用工具，可以替代 BFS/DFS 解决连通性问题，但无法求最短路。与 BFS/DFS 相比，并查集的优势在于：可以<strong>动态地</strong>添加边并立即查询连通状态，而 BFS/DFS 需要在图结构固定后才能运行。'
+    ],
+    template: `class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))
+        self.rank = [0] * n
+        self.components = n  # 连通分量数量
+
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])  # 路径压缩
+        return self.parent[x]
+
+    def union(self, x, y):
+        px, py = self.find(x), self.find(y)
+        if px == py:
+            return False  # 已经连通，加入此边会成环
+        # 按秩合并
+        if self.rank[px] < self.rank[py]:
+            px, py = py, px
+        self.parent[py] = px
+        if self.rank[px] == self.rank[py]:
+            self.rank[px] += 1
+        self.components -= 1
+        return True
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)`,
+    patterns: [
+      '连通分量计数：union 后统计 components 数量',
+      '检测环：union 前检查两端是否已 connected',
+      '账户合并：邮箱作为节点，union 同账户邮箱',
+      'Kruskal 最小生成树：按权重排序边，依次 union',
+      '带权并查集：维护节点到根的权重（种类、距离）'
+    ],
+    related: [
+      {key:'graph', label:'图', rel:'连通性专用工具'},
+      {key:'bfsdfs', label:'BFS/DFS', rel:'连通性问题可替代'}
+    ],
+    examples: ['200 Number of Islands','684 Redundant Connection','721 Accounts Merge','547 Number of Provinces','1202 Smallest String Exchanging']
+  }
+};
+
+// ─── 工具函数 ──────────────────────────────────────────────
+function switchTab(tabName, btn) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabName).classList.add('active');
+  btn.classList.add('active');
+}
+
+function buildGraph(key) {
+  const d = data[key];
+  if (!d || !d.related || d.related.length === 0) return '<p style="color:var(--color-text-tertiary);font-size:13px;padding:20px 0;">暂无关系数据</p>';
+
+  const rels = d.related;
+  const n = rels.length;
+  const W = 560, H = Math.max(240, 160 + n * 18);
+  const cx = W / 2, cy = H / 2;
+  const radius = Math.min(105, 70 + n * 8);
+
+  const typeColors = {
+    ds:   { fill: '#E6F1FB', stroke: '#185FA5', text: '#0C447C' },
+    algo: { fill: '#E1F5EE', stroke: '#0F6E56', text: '#085041' },
+    adv:  { fill: '#FAEEDA', stroke: '#854F0B', text: '#633806' }
+  };
+  const centerColors = {
+    ds:   { fill: '#185FA5', text: '#ffffff' },
+    algo: { fill: '#0F6E56', text: '#ffffff' },
+    adv:  { fill: '#854F0B', text: '#ffffff' }
+  };
+
+  let lines = '', nodes = '';
+
+  rels.forEach((rel, i) => {
+    const angle = -Math.PI / 2 + (2 * Math.PI / n) * i;
+    const nx = cx + radius * Math.cos(angle);
+    const ny = cy + radius * Math.sin(angle);
+    const dx = nx - cx, dy = ny - cy;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const x1 = (cx + (dx / dist) * 28).toFixed(1);
+    const y1 = (cy + (dy / dist) * 28).toFixed(1);
+    const x2 = (nx - (dx / dist) * 34).toFixed(1);
+    const y2 = (ny - (dy / dist) * 14).toFixed(1);
+
+    lines += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#c8c6bf" stroke-width="1" marker-end="url(#g-arrow)"/>`;
+
+    const mx = ((cx + nx) / 2).toFixed(1);
+    const my = ((cy + ny) / 2 - 6).toFixed(1);
+    lines += `<text x="${mx}" y="${my}" text-anchor="middle" font-size="9" fill="#a8a69e" font-family="sans-serif">${rel.rel}</text>`;
+
+    const nd = data[rel.key];
+    const tc = nd ? typeColors[nd.type] : typeColors.ds;
+    const lw = Math.max(58, rel.label.length * 13);
+
+    nodes += `<g onclick="jumpTo('${rel.key}')" style="cursor:pointer">
+      <rect x="${(nx - lw/2).toFixed(1)}" y="${(ny - 13).toFixed(1)}" width="${lw}" height="26" rx="13" fill="${tc.fill}" stroke="${tc.stroke}" stroke-width="0.8"/>
+      <text x="${nx.toFixed(1)}" y="${(ny + 5).toFixed(1)}" text-anchor="middle" font-size="11" fill="${tc.text}" font-weight="500" font-family="sans-serif">${rel.label}</text>
+    </g>`;
+  });
+
+  const cc = centerColors[d.type];
+  const titleLen = d.title.length;
+  const cr = titleLen > 3 ? 30 : 26;
+  const fs = titleLen > 3 ? 10 : 12;
+
+  return `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="g-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M2 2L8 5L2 8" fill="none" stroke="#c8c6bf" stroke-width="1.5" stroke-linecap="round"/>
+      </marker>
+    </defs>
+    ${lines}
+    <circle cx="${cx}" cy="${cy}" r="${cr}" fill="${cc.fill}"/>
+    <text x="${cx}" y="${(cy + fs/3).toFixed(1)}" text-anchor="middle" font-size="${fs}" fill="${cc.text}" font-weight="600" font-family="sans-serif">${d.title}</text>
+    ${nodes}
+  </svg>`;
+}
+
+// ─── 跳转（点击图谱节点） ──────────────────────────────────
+function jumpTo(key) {
+  document.querySelectorAll('.tag').forEach(t => t.classList.remove('active-tag'));
+  // 找到对应 tag 并激活
+  document.querySelectorAll('.tag').forEach(t => {
+    if (t.getAttribute('onclick') && t.getAttribute('onclick').includes("'" + key + "'")) {
+      t.classList.add('active-tag');
+    }
+  });
+  showDetailByKey(key);
+  // 切换到关系图谱 tab（保持在图谱视图）
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-graph').classList.add('active');
+  document.querySelectorAll('.tab-btn')[2].classList.add('active');
+}
+
+// ─── 主渲染函数 ───────────────────────────────────────────
+function showDetailByKey(key) {
+  const d = data[key];
+  if (!d) return;
+
+  // 显示内容区
+  document.getElementById('panel-placeholder').style.display = 'none';
+  document.getElementById('panel-content').style.display = 'block';
+
+  // 标题 + 徽章
+  document.getElementById('panel-title').textContent = d.title;
+  const badge = document.getElementById('panel-badge');
+  badge.textContent = d.badge;
+  badge.className = 'detail-badge badge-' + d.type;
+
+  // Tab 1：深度解析
+  document.getElementById('panel-insight').innerHTML = d.insight;
+
+  const parasEl = document.getElementById('panel-paragraphs');
+  parasEl.innerHTML = d.paragraphs.map(p => `<div class="para-block"><p>${p}</p></div>`).join('');
+
+  const patternsEl = document.getElementById('panel-patterns');
+  patternsEl.innerHTML = d.patterns.map(p => `<li>${p}</li>`).join('');
+
+  const examplesEl = document.getElementById('panel-examples');
+  examplesEl.innerHTML = d.examples.map(e => `<span class="example-chip">${e}</span>`).join('');
+
+  // Tab 2：代码模板
+  document.getElementById('panel-template').textContent = d.template;
+
+  // Tab 3：关系图谱
+  document.getElementById('panel-graph').innerHTML = buildGraph(key);
+
+  const relatedEl = document.getElementById('panel-related');
+  relatedEl.innerHTML = d.related.map(r => {
+    const nd = data[r.key];
+    const cls = nd ? nd.type : 'ds';
+    return `<span class="related-chip ${cls}" onclick="jumpTo('${r.key}')">${r.label}<span class="rel-label">${r.rel}</span></span>`;
+  }).join('');
+}
+
+function showDetail(key, tagEl) {
+  // 激活对应 tag
+  document.querySelectorAll('.tag').forEach(t => t.classList.remove('active-tag'));
+  if (tagEl) tagEl.classList.add('active-tag');
+
+  // 切换到"深度解析" tab
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-analysis').classList.add('active');
+  document.querySelectorAll('.tab-btn')[0].classList.add('active');
+
+  showDetailByKey(key);
+
+  // 滚动到详情面板
+  document.getElementById('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

@@ -4,18 +4,18 @@ site_author: GlenTT
 site_url: https://GRITJW.github.io/hot100/
 
 # =====================
-# 主题配置（核心美观来源）
+# 主题配置
 # =====================
 theme:
   name: material
   language: zh
   features:
-    - navigation.tabs          # 顶部导航
-    - navigation.sections     # 左侧分组
-    - navigation.expand       # 默认展开
-    - navigation.top          # 返回顶部按钮
-    - content.code.copy       # 代码一键复制
-    - content.code.annotate   # 代码注释增强
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
 
   palette:
     - scheme: default
@@ -23,16 +23,16 @@ theme:
       accent: indigo
 
 # =====================
-# 插件（Notebook 渲染关键）
+# 插件
 # =====================
 plugins:
   - search
   - mkdocs-jupyter:
-      execute: false           # 不重新执行 Notebook（非常重要）
-      include_source: true     # 可查看原始 ipynb
+      execute: false
+      include_source: true
 
 # =====================
-# Markdown 扩展（代码 & 数学公式）
+# Markdown 扩展
 # =====================
 markdown_extensions:
   - pymdownx.highlight
@@ -41,50 +41,55 @@ markdown_extensions:
       generic: true
   - toc:
       permalink: true
+  - md_in_html
 
 # =====================
-# 数学公式支持（LaTeX）
+# 数学公式支持
 # =====================
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 # =====================
-# 导航结构（你的网站结构）
+# 导航结构
 # =====================
 nav:
   - 首页: index.md
-  - 算法ht100:
-      - 总览: file:///C:/Users/glen/AppData/Local/Temp/MicrosoftEdgeDownloads/e77a935d-7839-49e3-8a97-42b97a7a3e61/leetcode_classification_system.html
-      - 数据结构类: 
-        - 数组: notebooks/2.数组.ipynb
-        - 链表: notebooks/15.链表.ipynb
-        - 栈与队列: notebooks/8.栈.ipynb
-        - 哈希表: notebooks/1.哈希表.ipynb
-        - 二叉树: notebooks/10.二叉树.ipynb
-        - 堆: notebooks/9.堆.ipynb
-        - 图: notebooks/13.图论.ipynb
-        - 7.矩阵: notebooks/7.矩阵.ipynb
+
+  - 算法 Hot100:
+      - 总览 (交互地图): notebooks/算法刷题/overview.md
+      - 数据结构类:
+          - 数组: notebooks/算法刷题/数据结构/数组.ipynb
+          - 链表: notebooks/算法刷题/数据结构/链表.ipynb
+          - 栈与队列: notebooks/算法刷题/数据结构/栈与队列.ipynb
+          - 哈希表: notebooks/算法刷题/数据结构/哈希表.ipynb
+          - 二叉树: notebooks/算法刷题/数据结构/二叉树.ipynb
+          - 堆: notebooks/算法刷题/数据结构/堆.ipynb
+          - 图: notebooks/算法刷题/数据结构/图论.ipynb
       - 算法思想类:
-        - 双指针: notebooks/3.双指针.ipynb
-        - 滑动窗口: notebooks/5.滑动窗口.ipynb
-        - 二分查找: notebooks/14.二分查找.ipynb
-        - 动态规划: notebooks/6.动态规划.ipynb
-        - 多维动态规划: notebooks/6.1.多维动态规划.ipynb
-        - 贪心: notebooks/12.贪心算法.ipynb
-        - 回溯: notebooks/11.回溯.ipynb
+          - 前缀和: notebooks/算法刷题/算法/前缀和.ipynb
+          - 双指针: notebooks/算法刷题/算法/双指针.ipynb
+          - 滑动窗口: notebooks/算法刷题/算法/滑动窗口.ipynb
+          - 二分查找: notebooks/算法刷题/算法/二分查找.ipynb
+          - 一维 DP: notebooks/算法刷题/算法/动态规划.ipynb
+          - 多维 DP: notebooks/算法刷题/算法/多维动态规划.ipynb
+          - 贪心: notebooks/算法刷题/算法/贪心算法.ipynb
+          - 回溯: notebooks/算法刷题/算法/回溯.ipynb
       - 补充知识:
-        - 排序: notebooks/16.排序.ipynb
-      - 归纳总结: notebooks/17.Hot100归纳与题型对比.ipynb
-  - 搜广推面试手撕题:
-      - 常见面试题: notebooks/搜广推常见面试题目.ipynb
-      - 主播实际手撕题: notebooks/面试手撕题.ipynb
-  - Pytorch常见语法总结: 
-      - 1.数学运算: notebooks/pytorch-1.数学运算.ipynb
-      - 2.张量操作: notebooks/pytorch-2.张量操作.ipynb
-      - 3.网络层和损失函数: notebooks/pytorch-3.网络层.ipynb
-      - 4.数据加载和梯度管理: notebooks/pytorch-4.数据加载和梯度管理.ipynb
-      - 5.基础知识总结: notebooks/pytorch-5.基础知识总结.ipynb
-      - 6.pytorch各类库的梳理: notebooks/pytorch-6.architecture-tutorial.ipynb
-  - 数据结构与python语法:
-      - 数据结构: notebooks/数据结构.ipynb
-      - python语法: notebooks/python语法.ipynb
+          - 排序: notebooks/算法刷题/排序.ipynb
+          - 归纳总结: notebooks/算法刷题/Hot100归纳与题型对比.ipynb
+
+  - 搜广推&LLM业务题:
+      - 常见面试题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
+      - 手撕题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
+
+  - 数据结构:
+      - 数据结构: notebooks/数据结构基础/数据结构.ipynb
+
+  - Python & PyTorch语法:
+      - Python 语法: notebooks/python基础和pytorch基础/python语法.ipynb
+      - 1. 数学运算: notebooks/python基础和pytorch基础/pytorch-1.数学运算.ipynb
+      - 2. 张量操作: notebooks/python基础和pytorch基础/pytorch-2.张量操作.ipynb
+      - 3. 网络层与损失函数: notebooks/python基础和pytorch基础/pytorch-3.网络层.ipynb
+      - 4. 数据加载与梯度管理: notebooks/python基础和pytorch基础/pytorch-4.数据加载和梯度管理.ipynb
+      - 5. 基础知识总结: notebooks/python基础和pytorch基础/pytorch-5.基础知识总结.ipynb
+      - 6. 各类库梳理: notebooks/python基础和pytorch基础/pytorch-6.architecture-tutorial.ipynb

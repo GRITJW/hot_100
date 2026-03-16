@@ -5,7 +5,7 @@
 <!-- 嵌入交互 HTML 地图 -->
 <div style="width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1);">
   <iframe
-    src="../algorithm_overview.html"
+    src="../leetcode_classification_system.html"
     style="width: 100%; height: 820px; border: none; display: block;"
     title="算法分类交互地图"
   ></iframe>
