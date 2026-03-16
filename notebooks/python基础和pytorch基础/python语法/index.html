@@ -12,27 +12,31 @@
         <meta name="author" content="GlenTT">
       
       
-        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/%E7%BB%83%E4%B9%A0/">
+        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/python%E8%AF%AD%E6%B3%95/">
       
       
+        <link rel="prev" href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+      
+      
+        <link rel="next" href="../pytorch-1.%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>练习 - 推荐算法学习笔记</title>
+        <title>Python 语法 - 推荐算法学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +55,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -75,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#collections" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -85,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="推荐算法学习笔记" class="md-header__button md-logo" aria-label="推荐算法学习笔记" data-md-component="logo">
+    <a href="../../.." title="推荐算法学习笔记" class="md-header__button md-logo" aria-label="推荐算法学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -105,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              练习
+              Python 语法
             
           </span>
         </div>
@@ -190,7 +199,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -211,7 +220,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/overview/" class="md-tabs__link">
+        <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/overview/" class="md-tabs__link">
           
   
   
@@ -231,7 +240,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../%E6%90%9C%E5%B9%BF%E6%8E%A8%26llm%E4%B8%9A%E5%8A%A1%E5%92%8C%E8%AE%AD%E7%BB%83/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-tabs__link">
+        <a href="../../%E6%90%9C%E5%B9%BF%E6%8E%A8%26llm%E4%B8%9A%E5%8A%A1%E5%92%8C%E8%AE%AD%E7%BB%83/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-tabs__link">
           
   
   
@@ -251,7 +260,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-tabs__link">
+        <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-tabs__link">
           
   
   
@@ -267,11 +276,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/python%E8%AF%AD%E6%B3%95/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -305,7 +316,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="推荐算法学习笔记" class="md-nav__button md-logo" aria-label="推荐算法学习笔记" data-md-component="logo">
+    <a href="../../.." title="推荐算法学习笔记" class="md-nav__button md-logo" aria-label="推荐算法学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -323,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -404,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/overview/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/overview/" class="md-nav__link">
         
   
   
@@ -486,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/" class="md-nav__link">
         
   
   
@@ -514,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -542,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="md-nav__link">
         
   
   
@@ -570,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -598,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
         
   
   
@@ -626,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/" class="md-nav__link">
         
   
   
@@ -654,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../算法刷题/数据结构/图论.ipynb" class="md-nav__link">
+      <a href="../../算法刷题/数据结构/图论.ipynb" class="md-nav__link">
         
   
   
@@ -744,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C/" class="md-nav__link">
         
   
   
@@ -772,7 +783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
         
   
   
@@ -800,7 +811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="md-nav__link">
         
   
   
@@ -828,7 +839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
         
   
   
@@ -856,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
         
   
   
@@ -884,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%A4%9A%E7%BB%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%A4%9A%E7%BB%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
         
   
   
@@ -912,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -940,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
         
   
   
@@ -1030,7 +1041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%8E%92%E5%BA%8F/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E6%8E%92%E5%BA%8F/" class="md-nav__link">
         
   
   
@@ -1058,7 +1069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/Hot100%E5%BD%92%E7%BA%B3%E4%B8%8E%E9%A2%98%E5%9E%8B%E5%AF%B9%E6%AF%94/" class="md-nav__link">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/Hot100%E5%BD%92%E7%BA%B3%E4%B8%8E%E9%A2%98%E5%9E%8B%E5%AF%B9%E6%AF%94/" class="md-nav__link">
         
   
   
@@ -1155,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%90%9C%E5%B9%BF%E6%8E%A8%26llm%E4%B8%9A%E5%8A%A1%E5%92%8C%E8%AE%AD%E7%BB%83/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
+      <a href="../../%E6%90%9C%E5%B9%BF%E6%8E%A8%26llm%E4%B8%9A%E5%8A%A1%E5%92%8C%E8%AE%AD%E7%BB%83/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
         
   
   
@@ -1183,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%90%9C%E5%B9%BF%E6%8E%A8%26llm%E4%B8%9A%E5%8A%A1%E5%92%8C%E8%AE%AD%E7%BB%83/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
+      <a href="../../%E6%90%9C%E5%B9%BF%E6%8E%A8%26llm%E4%B8%9A%E5%8A%A1%E5%92%8C%E8%AE%AD%E7%BB%83/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
         
   
   
@@ -1272,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
         
   
   
@@ -1304,28 +1315,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -1343,7 +1357,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1358,10 +1372,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/python%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 语法
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1377,6 +1416,386 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        collections 常用数据结构总览
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="collections 常用数据结构总览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、deque（双端队列）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、deque（双端队列）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 核心特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 典型使用场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 典型使用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BFS（最常见）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        滑动窗口
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defaultdict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、defaultdict（带默认值字典）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、defaultdict（带默认值字典）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 核心特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 常见默认类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 典型使用场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 典型使用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        统计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图结构（算法中非常重要）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Counter（计数器）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Counter（计数器）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常用操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 统计次数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 找出现最多元素
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 字符统计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型使用场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="典型使用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top K 问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字符串统计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordereddict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、OrderedDict（有序字典）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namedtuple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、namedtuple（结构化元组）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、算法刷题中最重要的三个
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、刷题建议（最重要）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、刷题建议（最重要）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 BFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 图结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 频率统计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1389,7 +1808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/pytorch-1.%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/" class="md-nav__link">
+      <a href="../pytorch-1.%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/" class="md-nav__link">
         
   
   
@@ -1417,7 +1836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/pytorch-2.%E5%BC%A0%E9%87%8F%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../pytorch-2.%E5%BC%A0%E9%87%8F%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   
@@ -1445,7 +1864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/pytorch-3.%E7%BD%91%E7%BB%9C%E5%B1%82/" class="md-nav__link">
+      <a href="../pytorch-3.%E7%BD%91%E7%BB%9C%E5%B1%82/" class="md-nav__link">
         
   
   
@@ -1473,7 +1892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/" class="md-nav__link">
+      <a href="../pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/" class="md-nav__link">
         
   
   
@@ -1501,7 +1920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/pytorch-5.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="md-nav__link">
+      <a href="../pytorch-5.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="md-nav__link">
         
   
   
@@ -1529,7 +1948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python%E5%9F%BA%E7%A1%80%E5%92%8Cpytorch%E5%9F%BA%E7%A1%80/pytorch-6.architecture-tutorial/" class="md-nav__link">
+      <a href="../pytorch-6.architecture-tutorial/" class="md-nav__link">
         
   
   
@@ -1575,6 +1994,376 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        collections 常用数据结构总览
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="collections 常用数据结构总览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、deque（双端队列）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、deque（双端队列）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 核心特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 典型使用场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 典型使用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BFS（最常见）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        滑动窗口
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defaultdict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、defaultdict（带默认值字典）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、defaultdict（带默认值字典）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 核心特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 常见默认类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 典型使用场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 典型使用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        统计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图结构（算法中非常重要）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Counter（计数器）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Counter（计数器）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用操作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常用操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 统计次数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 找出现最多元素
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 字符统计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型使用场景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="典型使用场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#top-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Top K 问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字符串统计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ordereddict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、OrderedDict（有序字典）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namedtuple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、namedtuple（结构化元组）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、算法刷题中最重要的三个
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、刷题建议（最重要）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、刷题建议（最重要）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 BFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 图结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 频率统计
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1590,7 +2379,7 @@
 
 
 
-  <h1>练习</h1>
+  <h1>Python 语法</h1>
 
 <script>
 (function (global, factory) {
@@ -2028,1068 +2817,275 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </style>
 <!-- End of mermaid configuration --><div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e8e969ef">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">MHA</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">num_head</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="k">assert</span> <span class="n">input_dim</span> <span class="o">%</span> <span class="n">num_head</span> <span class="o">==</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_dim</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span> <span class="o">=</span> <span class="n">num_head</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">=</span> <span class="n">input_dim</span> <span class="o">//</span> <span class="n">num_head</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wqkv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">input_dim</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wo</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">qkv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wqkv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">qkv</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">attention</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">attention</span> <span class="o">=</span> <span class="n">attention</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span>
-        <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">attention</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">attention_scores</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wo</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">output</span>
-<span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">36</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
-<span class="n">mha</span> <span class="o">=</span> <span class="n">MHA</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">mha</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-1">import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import math
-
-class MHA(nn.Module):
-
-    def __init__(self, input_dim, num_head):
-        super().__init__()
-        assert input_dim % num_head == 0
-        self.input_dim = input_dim
-        self.num_head = num_head
-        self.d_k = input_dim // num_head
-        self.wqkv = nn.Linear(input_dim, input_dim * 3)
-        self.wo = nn.Linear(input_dim, input_dim)
-
-    def forward(self, x, mask=None):
-        B, L, D = x.shape
-        qkv = self.wqkv(x)
-        q, k, v = torch.chunk(qkv, 3, dim=-1)
-        q = q.view(B, L, self.num_head, self.d_k).transpose(1, 2)
-        k = k.view(B, L, self.num_head, self.d_k).transpose(1, 2)
-        v = v.view(B, L, self.num_head, self.d_k).transpose(1, 2)
-        attention = torch.matmul(q, k.transpose(-1, -2)) / math.sqrt(self.d_k)
-        if mask is not None:
-            attention = attention.masked_fill(mask == 0, -1e9)
-        attention_scores = F.softmax(attention, dim=-1)
-        context = torch.matmul(attention_scores, v)
-        context = context.transpose(1, 2).contiguous().view(B, L, D)
-        output = self.wo(context)
-        return output
-B, L, D = 10, 20, 36
-x = torch.randn(B, L, D)
-mha = MHA(D, 2)
-
-print(mha(x).shape)</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa504811">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">MQA</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">num_head</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="k">assert</span> <span class="n">input_dim</span> <span class="o">%</span> <span class="n">num_head</span> <span class="o">==</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_dim</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span> <span class="o">=</span> <span class="n">num_head</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">=</span> <span class="n">input_dim</span> <span class="o">//</span> <span class="n">num_head</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wq</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wkv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wo</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wq</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">kv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wkv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">kv</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># (B, 1, L, d_k)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># (B, 1, L, d_k)</span>
-        <span class="n">attention</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">attention</span> <span class="o">=</span> <span class="n">attention</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span>
-        <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">attention</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">attention_scores</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wo</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">output</span>
-<span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">36</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
-<span class="n">mha</span> <span class="o">=</span> <span class="n">MQA</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">mha</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-2">import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import math
-
-class MQA(nn.Module):
-
-    def __init__(self, input_dim, num_head):
-        super().__init__()
-        assert input_dim % num_head == 0
-        self.input_dim = input_dim
-        self.num_head = num_head
-        self.d_k = input_dim // num_head
-        self.wq = nn.Linear(input_dim, input_dim)
-        self.wkv = nn.Linear(input_dim, self.d_k * 2)
-        self.wo = nn.Linear(input_dim, input_dim)
-
-    def forward(self, x, mask=None):
-        B, L, D = x.shape
-        q = self.wq(x)
-        kv = self.wkv(x)
-        k, v = torch.chunk(kv, 2, dim=-1)
-        q = q.view(B, L, self.num_head, self.d_k).transpose(1, 2)
-        k = torch.unsqueeze(k, 1)   # (B, 1, L, d_k)
-        v = torch.unsqueeze(v, 1)   # (B, 1, L, d_k)
-        attention = torch.matmul(q, k.transpose(-1, -2)) / math.sqrt(self.d_k)
-        if mask is not None:
-            attention = attention.masked_fill(mask == 0, -1e9)
-        attention_scores = F.softmax(attention, dim=-1)
-        context = torch.matmul(attention_scores, v)
-        context = context.transpose(1, 2).contiguous().view(B, L, D)
-        output = self.wo(context)
-        return output
-B, L, D = 10, 20, 36
-x = torch.randn(B, L, D)
-mha = MQA(D, 2)
-
-print(mha(x).shape)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>torch.Size([10, 20, 36])
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=987c3542">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5797abd0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=87116969">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<h2 id="collections">collections 常用数据结构总览<a class="anchor-link" href="#collections">¶</a></h2><table>
+<thead>
+<tr>
+<th>数据结构</th>
+<th>作用</th>
+<th>典型场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deque</code></td>
+<td>双端队列</td>
+<td>BFS、滑动窗口</td>
+</tr>
+<tr>
+<td><code>defaultdict</code></td>
+<td>带默认值的字典</td>
+<td>分组统计、图结构</td>
+</tr>
+<tr>
+<td><code>Counter</code></td>
+<td>计数器字典</td>
+<td>频率统计</td>
+</tr>
+<tr>
+<td><code>OrderedDict</code></td>
+<td>有序字典</td>
+<td>LRU缓存</td>
+</tr>
+<tr>
+<td><code>namedtuple</code></td>
+<td>具名元组</td>
+<td>结构化数据</td>
+</tr>
+<tr>
+<td><code>ChainMap</code></td>
+<td>多字典合并</td>
+<td>配置管理</td>
+</tr>
+</tbody>
+</table>
+<p>算法和工程中最常用的是：</p>
+<p><strong>deque / defaultdict / Counter</strong></p>
+<h3 id="deque">一、deque（双端队列）<a class="anchor-link" href="#deque">¶</a></h3><h4 id="1">1 核心特点<a class="anchor-link" href="#1">¶</a></h4><p><code>deque</code> 是 <strong>双端队列</strong>：</p>
+<ul>
+<li>头尾插入删除 <strong>O(1)</strong></li>
+<li>比 <code>list.pop(0)</code> 快很多</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">GQA</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">q_num_head</span><span class="p">,</span> <span class="n">kv_num_head</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="k">assert</span> <span class="n">input_dim</span> <span class="o">%</span> <span class="n">q_num_head</span> <span class="o">==</span> <span class="mi">0</span>
-        <span class="k">assert</span> <span class="n">q_num_head</span> <span class="o">%</span> <span class="n">kv_num_head</span> <span class="o">==</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_dim</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">q_num_head</span> <span class="o">=</span> <span class="n">q_num_head</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kv_num_head</span> <span class="o">=</span> <span class="n">kv_num_head</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">=</span> <span class="n">input_dim</span> <span class="o">//</span> <span class="n">q_num_head</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_q_group</span> <span class="o">=</span> <span class="n">q_num_head</span> <span class="o">//</span> <span class="n">kv_num_head</span>
+<span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># 右侧入队</span>
+<span class="n">q</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 左侧入队</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">wq</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wkv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">*</span> <span class="n">kv_num_head</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wo</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wq</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kv_num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_q_group</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
-        <span class="n">kv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wkv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">kv</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kv_num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kv_num_head</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># (B, self.kv_num_head, 1, L, d_k)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># (B, self.kv_num_head, 1, L, d_k)</span>
-        <span class="n">attention</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">attention</span> <span class="o">=</span> <span class="n">attention</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span>
-        <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">attention</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">attention_scores</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_num_head</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wo</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">output</span>
-<span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">36</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
-<span class="n">mha</span> <span class="o">=</span> <span class="n">GQA</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">mha</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>          <span class="c1"># 右侧出队</span>
+<span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>      <span class="c1"># 左侧出队</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import math
+<h4 id="2">2 典型使用场景<a class="anchor-link" href="#2">¶</a></h4><h5 id="bfs">BFS（最常见）<a class="anchor-link" href="#bfs">¶</a></h5><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
 
-class GQA(nn.Module):
+<span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
 
-    def __init__(self, input_dim, q_num_head, kv_num_head):
-        super().__init__()
-        assert input_dim % q_num_head == 0
-        assert q_num_head % kv_num_head == 0
-        self.input_dim = input_dim
-        self.q_num_head = q_num_head
-        self.kv_num_head = kv_num_head
-        self.d_k = input_dim // q_num_head
-        self.num_q_group = q_num_head // kv_num_head
-
-        self.wq = nn.Linear(input_dim, input_dim)
-        self.wkv = nn.Linear(input_dim, self.d_k * kv_num_head * 2)
-        self.wo = nn.Linear(input_dim, input_dim)
-
-    def forward(self, x, mask=None):
-        B, L, D = x.shape
-        q = self.wq(x)
-        q = q.view(B, L, self.q_num_head, self.d_k).transpose(1, 2).contiguous().view(B, self.kv_num_head, self.num_q_group, L, self.d_k)
-        kv = self.wkv(x)
-        k, v = torch.chunk(kv, 2, dim=-1)
-        k = k.view(B, L, self.kv_num_head, self.d_k).transpose(1, 2)
-        v = v.view(B, L, self.kv_num_head, self.d_k).transpose(1, 2)
-        k = torch.unsqueeze(k, 2)   # (B, self.kv_num_head, 1, L, d_k)
-        v = torch.unsqueeze(v, 2)   # (B, self.kv_num_head, 1, L, d_k)
-        attention = torch.matmul(q, k.transpose(-1, -2)) / math.sqrt(self.d_k)
-        if mask is not None:
-            attention = attention.masked_fill(mask == 0, -1e9)
-        attention_scores = F.softmax(attention, dim=-1)
-        context = torch.matmul(attention_scores, v)
-        context = context.view(B, self.q_num_head, L, self.d_k).transpose(1, 2).contiguous().view(B, L, D)
-        output = self.wo(context)
-        return output
-B, L, D = 10, 20, 36
-x = torch.randn(B, L, D)
-mha = GQA(D, 4, 2)
-
-print(mha(x).shape)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>torch.Size([10, 20, 36])
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4e0dbca2">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">auc_rank</span><span class="p">(</span><span class="n">q_list</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-    <span class="n">q_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q_list</span><span class="p">)</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-    <span class="n">rank_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">q_list</span><span class="p">)</span>
-    <span class="n">q_list_ranked</span> <span class="o">=</span> <span class="n">q_list</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>
-    <span class="n">label_ranked</span> <span class="o">=</span> <span class="n">label</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>
-    <span class="n">total_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_ranked</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">total_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_ranked</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_ranked</span><span class="p">)</span>
-    <span class="n">cum_neg</span><span class="p">,</span> <span class="n">cum_pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">l</span>
-        <span class="k">while</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">q_list_ranked</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">==</span> <span class="n">q_list_ranked</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
-            <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">group_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_ranked</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">group_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_ranked</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">cum_pos</span>  <span class="o">+=</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">cum_neg</span> <span class="o">+</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">group_neg</span> <span class="o">*</span> <span class="mf">0.5</span>
-        <span class="n">cum_neg</span> <span class="o">+=</span> <span class="n">group_neg</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="n">r</span>
-    <span class="k">return</span> <span class="n">cum_pos</span> <span class="o">/</span> <span class="p">(</span><span class="n">total_pos</span> <span class="o">*</span> <span class="n">total_neg</span><span class="p">)</span>
-
-
-<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
-<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">auc</span>  <span class="o">=</span> <span class="n">auc_rank</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"auc:</span><span class="si">{</span><span class="n">auc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">import numpy as np
-def auc_rank(q_list, label):
-    q_list = np.array(q_list)
-    label = np.array(label)
-    rank_index = np.argsort(q_list)
-    q_list_ranked = q_list[rank_index]
-    label_ranked = label[rank_index]
-    total_pos = np.sum(label_ranked == 1)
-    total_neg = np.sum(label_ranked == 0)
-    l, n= 0, len(label_ranked)
-    cum_neg, cum_pos = 0, 0
-    while l &lt; n:
-        r = l
-        while r &lt; n and q_list_ranked[l] == q_list_ranked[r]:
-            r += 1
-        group_neg = np.sum(label_ranked[l:r] == 0)
-        group_pos = np.sum(label_ranked[l:r] == 1)
-        cum_pos  += group_pos * cum_neg + group_pos * group_neg * 0.5
-        cum_neg += group_neg
-        l = r
-    return cum_pos / (total_pos * total_neg)
+<p>典型题：</p>
+<ul>
+<li>腐烂的橘子</li>
+<li>岛屿问题</li>
+<li>图最短路径</li>
+</ul>
+<h5 id="">滑动窗口<a class="anchor-link" href="#">¶</a></h5><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
 
+<span class="n">window</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
 
-q = [0.1, 0.9, 0.2, 0.8, 1, 0.2, 0.3, 0.8]
-label = [0, 1, 0, 0, 1, 0, 0, 1]
-auc  = auc_rank(q, label)
-print(f"auc:{auc}")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>auc:0.9666666666666667
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8aee5aff">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">auc_rank_fixed</span><span class="p">(</span><span class="n">q_list</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-    <span class="n">q_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">label</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-
-    <span class="c1"># ── Step 1：按分数从小到大排序 ──────────────────────────────────────</span>
-    <span class="c1"># argsort 返回的是"排序后的原始下标"，例如：</span>
-    <span class="c1">#   q = [0.1, 0.9, 0.2, 0.8, 1.0, 0.2, 0.3, 0.8]</span>
-    <span class="c1">#   rank_index = [0, 2, 5, 6, 3, 7, 1, 4]  （分数从小到大对应的原始位置）</span>
-    <span class="n">rank_index</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">q_list</span><span class="p">)</span>
-    <span class="n">q_sorted</span>     <span class="o">=</span> <span class="n">q_list</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>    <span class="c1"># 分数从小到大</span>
-    <span class="n">label_sorted</span> <span class="o">=</span> <span class="n">label</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>     <span class="c1"># label 跟着分数一起排好序</span>
-
-    <span class="n">total_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>       <span class="c1"># 正样本总数</span>
-    <span class="n">total_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>       <span class="c1"># 负样本总数</span>
-
-    <span class="c1"># ── Step 2：理解 AUC 的含义 ─────────────────────────────────────────</span>
-    <span class="c1"># AUC = "随机取一个正样本和一个负样本，正样本分数 &gt; 负样本分数" 的概率</span>
-    <span class="c1"># 具体：</span>
-    <span class="c1">#   concordant（正确序对）：正样本分数 &gt; 负样本分数，贡献 1.0</span>
-    <span class="c1">#   tie（平局）：           正样本分数 = 负样本分数，贡献 0.5</span>
-    <span class="c1">#   discordant（错误序对）：正样本分数 &lt; 负样本分数，贡献 0.0</span>
-    <span class="c1"># AUC = 所有正负样本对的贡献之和 / 正负样本对总数</span>
-
-    <span class="n">cum_neg</span>    <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># 记录"当前组之前"已经遍历过的负样本数量</span>
-    <span class="n">concordant</span> <span class="o">=</span> <span class="mf">0.0</span>   <span class="c1"># 累计贡献</span>
-    <span class="n">i</span><span class="p">,</span> <span class="n">n</span>       <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_sorted</span><span class="p">)</span>
-
-    <span class="c1"># ── Step 3：分组遍历（每组内分数完全相同）───────────────────────────</span>
-    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
-
-        <span class="c1"># 3a. 找到与位置 i 分数相同的区间 [i, j)</span>
-        <span class="c1">#     例如 score=0.2 出现在位置 2 和 3，则 i=2, j=4</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span>
-        <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">q_sorted</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">q_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="c1"># 现在 label_sorted[i:j] 就是当前分数组内的所有样本</span>
-
-        <span class="n">group_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 组内正样本数</span>
-        <span class="n">group_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_sorted</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 组内负样本数</span>
-
-        <span class="c1"># 3b. 计算当前组内正样本与"所有负样本"形成的序对贡献</span>
-        <span class="c1">#</span>
-        <span class="c1">#   情况①：组前负样本（cum_neg 个）</span>
-        <span class="c1">#     这些负样本分数 &lt; 当前组分数</span>
-        <span class="c1">#     → 每个正样本都比它们分数高 → 每对贡献 1.0</span>
-        <span class="c1">#     → 新增 concordant = group_pos × cum_neg × 1.0</span>
-        <span class="c1">#</span>
-        <span class="c1">#   情况②：组内负样本（group_neg 个）</span>
-        <span class="c1">#     这些负样本与当前组正样本分数相同 → tie</span>
-        <span class="c1">#     → 每对贡献 0.5</span>
-        <span class="c1">#     → 新增 concordant = group_pos × group_neg × 0.5</span>
-        <span class="n">concordant</span> <span class="o">+=</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">cum_neg</span> <span class="o">+</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">group_neg</span> <span class="o">*</span> <span class="mf">0.5</span>
-
-        <span class="c1"># 3c. 当前组遍历完毕，把组内负样本数累加到 cum_neg</span>
-        <span class="c1">#     供后续更高分数的正样本使用</span>
-        <span class="n">cum_neg</span> <span class="o">+=</span> <span class="n">group_neg</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">j</span>   <span class="c1"># 移动到下一组</span>
-
-    <span class="c1"># ── Step 4：归一化 ──────────────────────────────────────────────────</span>
-    <span class="c1"># 正负样本对总数 = total_pos × total_neg</span>
-    <span class="k">return</span> <span class="n">concordant</span> <span class="o">/</span> <span class="p">(</span><span class="n">total_pos</span> <span class="o">*</span> <span class="n">total_neg</span><span class="p">)</span>
-
-
-<span class="c1"># ── 测试 ────────────────────────────────────────────────────────────────</span>
-<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">q</span>     <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"修复版  AUC: </span><span class="si">{</span><span class="n">auc_rank_fixed</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sklearn AUC: </span><span class="si">{</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+    <span class="k">while</span> <span class="n">window</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">window</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+        <span class="n">window</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">import numpy as np
-from sklearn.metrics import roc_auc_score
-
-def auc_rank_fixed(q_list, label):
-    q_list = np.array(q_list, dtype=float)
-    label  = np.array(label)
-
-    # ── Step 1：按分数从小到大排序 ──────────────────────────────────────
-    # argsort 返回的是"排序后的原始下标"，例如：
-    #   q = [0.1, 0.9, 0.2, 0.8, 1.0, 0.2, 0.3, 0.8]
-    #   rank_index = [0, 2, 5, 6, 3, 7, 1, 4]  （分数从小到大对应的原始位置）
-    rank_index   = np.argsort(q_list)
-    q_sorted     = q_list[rank_index]    # 分数从小到大
-    label_sorted = label[rank_index]     # label 跟着分数一起排好序
-
-    total_pos = np.sum(label == 1)       # 正样本总数
-    total_neg = np.sum(label == 0)       # 负样本总数
-
-    # ── Step 2：理解 AUC 的含义 ─────────────────────────────────────────
-    # AUC = "随机取一个正样本和一个负样本，正样本分数 &gt; 负样本分数" 的概率
-    # 具体：
-    #   concordant（正确序对）：正样本分数 &gt; 负样本分数，贡献 1.0
-    #   tie（平局）：           正样本分数 = 负样本分数，贡献 0.5
-    #   discordant（错误序对）：正样本分数 &lt; 负样本分数，贡献 0.0
-    # AUC = 所有正负样本对的贡献之和 / 正负样本对总数
-
-    cum_neg    = 0     # 记录"当前组之前"已经遍历过的负样本数量
-    concordant = 0.0   # 累计贡献
-    i, n       = 0, len(label_sorted)
-
-    # ── Step 3：分组遍历（每组内分数完全相同）───────────────────────────
-    while i &lt; n:
-
-        # 3a. 找到与位置 i 分数相同的区间 [i, j)
-        #     例如 score=0.2 出现在位置 2 和 3，则 i=2, j=4
-        j = i
-        while j &lt; n and q_sorted[j] == q_sorted[i]:
-            j += 1
-        # 现在 label_sorted[i:j] 就是当前分数组内的所有样本
-
-        group_pos = np.sum(label_sorted[i:j] == 1)  # 组内正样本数
-        group_neg = np.sum(label_sorted[i:j] == 0)  # 组内负样本数
-
-        # 3b. 计算当前组内正样本与"所有负样本"形成的序对贡献
-        #
-        #   情况①：组前负样本（cum_neg 个）
-        #     这些负样本分数 &lt; 当前组分数
-        #     → 每个正样本都比它们分数高 → 每对贡献 1.0
-        #     → 新增 concordant = group_pos × cum_neg × 1.0
-        #
-        #   情况②：组内负样本（group_neg 个）
-        #     这些负样本与当前组正样本分数相同 → tie
-        #     → 每对贡献 0.5
-        #     → 新增 concordant = group_pos × group_neg × 0.5
-        concordant += group_pos * cum_neg + group_pos * group_neg * 0.5
-
-        # 3c. 当前组遍历完毕，把组内负样本数累加到 cum_neg
-        #     供后续更高分数的正样本使用
-        cum_neg += group_neg
-        i = j   # 移动到下一组
-
-    # ── Step 4：归一化 ──────────────────────────────────────────────────
-    # 正负样本对总数 = total_pos × total_neg
-    return concordant / (total_pos * total_neg)
-
-
-# ── 测试 ────────────────────────────────────────────────────────────────
-label = [0, 1, 0, 0, 1, 0, 0, 1]
-q     = [0.1, 0.9, 0.2, 0.8, 1, 0.2, 0.3, 0.8]
-
-print(f"修复版  AUC: {auc_rank_fixed(q, label)}")
-print(f"sklearn AUC: {roc_auc_score(label, q)}")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>修复版  AUC: 0.9666666666666667
-sklearn AUC: 0.9666666666666667
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8dbab5df">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">MLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"gelu"</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s2">"LN"</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>        
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="n">layer_dim</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_dim</span><span class="p">]</span> <span class="o">+</span> <span class="n">hidden_dim</span> <span class="o">+</span> <span class="p">[</span><span class="n">output_dim</span><span class="p">]</span>
-        <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>                   
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">layer_dim</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">layer_dim</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">layer_dim</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>
-
-            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">norm</span> <span class="o">==</span> <span class="s2">"LN"</span><span class="p">:</span>                                    
-                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">layer_dim</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>  
-                <span class="k">elif</span> <span class="n">norm</span> <span class="o">==</span> <span class="s2">"BN"</span><span class="p">:</span>                                 
-                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">layer_dim</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"不支持的归一化: </span><span class="si">{</span><span class="n">norm</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-                <span class="k">if</span> <span class="n">activation</span> <span class="o">==</span> <span class="s2">"relu"</span><span class="p">:</span>
-                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
-                <span class="k">elif</span> <span class="n">activation</span> <span class="o">==</span> <span class="s2">"tanh"</span><span class="p">:</span>
-                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">())</span>
-                <span class="k">elif</span> <span class="n">activation</span> <span class="o">==</span> <span class="s2">"sigmoid"</span><span class="p">:</span>
-                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">())</span>
-                <span class="k">elif</span> <span class="n">activation</span> <span class="o">==</span> <span class="s2">"gelu"</span><span class="p">:</span>                          
-                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">())</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"不支持的激活函数: </span><span class="si">{</span><span class="n">activation</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">dropout</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>                                    
-                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">))</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">layers</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-
-<span class="c1"># ===== 验证 =====</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s2">"LN"</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   
+<p>典型题：</p>
+<ul>
+<li>滑动窗口最大值</li>
+</ul>
+<h3 id="defaultdict">二、defaultdict（带默认值字典）<a class="anchor-link" href="#defaultdict">¶</a></h3><h4 id="1">1 核心特点<a class="anchor-link" href="#1">¶</a></h4><p>普通字典：</p>
+<div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">d</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c1"># 报错</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">import torch
-import torch.nn as nn
-import torch.nn.functional as F
+<p><code>defaultdict</code> 会自动创建默认值。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
 
-class MLP(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim, activation="gelu", norm="LN", dropout=0.1):        
-        super().__init__()
-        layer_dim = [input_dim] + hidden_dim + [output_dim]
-        layers = []                   
-        n = len(layer_dim)
-
-        for i in range(n - 1):
-            layers.append(nn.Linear(layer_dim[i], layer_dim[i + 1]))
-
-            if i &lt; n - 2:
-                if norm == "LN":                                    
-                    layers.append(nn.LayerNorm(layer_dim[i + 1]))  
-                elif norm == "BN":                                 
-                    layers.append(nn.BatchNorm1d(layer_dim[i + 1]))
-                else:
-                    raise ValueError(f"不支持的归一化: {norm}")
-
-                if activation == "relu":
-                    layers.append(nn.ReLU())
-                elif activation == "tanh":
-                    layers.append(nn.Tanh())
-                elif activation == "sigmoid":
-                    layers.append(nn.Sigmoid())
-                elif activation == "gelu":                          
-                    layers.append(nn.GELU())
-                else:
-                    raise ValueError(f"不支持的激活函数: {activation}")
-                if dropout &gt; 0:                                    
-                    layers.append(nn.Dropout(dropout))
-
-        self.network = nn.Sequential(*layers)
-
-    def forward(self, x):
-        return self.network(x)
-
-
-# ===== 验证 =====
-model = MLP(input_dim=64, hidden_dim=[128, 128], output_dim=10, norm="LN")
-x = torch.randn(32, 64)
-print(model(x).shape)   </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>torch.Size([32, 10])
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=78e3ccd1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="n">B</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">logit_max</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">logit_stable</span> <span class="o">=</span> <span class="n">logits</span> <span class="o">-</span> <span class="n">logit_max</span>
-    <span class="n">logit_log_sum_exp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logit_stable</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">pos_logits</span> <span class="o">=</span> <span class="n">logit_stable</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="n">target</span><span class="p">]</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span> <span class="n">pos_logits</span> <span class="o">+</span> <span class="n">logit_log_sum_exp</span>
-    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.4985</span><span class="p">,</span> <span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.2533</span><span class="p">],</span>
-                    <span class="p">[</span><span class="mf">0.4985</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">],</span>
-                    <span class="p">[</span><span class="mf">0.6664</span><span class="p">,</span> <span class="mf">0.8408</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">],</span>
-                    <span class="p">[</span><span class="mf">0.2533</span><span class="p">,</span> <span class="mf">0.5431</span><span class="p">,</span> <span class="mf">0.8372</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">]])</span>
-<span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">d</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">import torch
-def cross_entropy(logits, target):
-    B, D = logits.shape
-    logit_max = torch.max(logits, dim=-1)[0]
-    logit_stable = logits - logit_max
-    logit_log_sum_exp = torch.log(torch.sum(torch.exp(logit_stable), dim=-1))
-    pos_logits = logit_stable[torch.arange(B), target]
-    loss = - pos_logits + logit_log_sum_exp
-    return loss.mean()
-logits = torch.tensor([[1.0000, 0.4985, 0.6664, 0.2533],
-                    [0.4985, 1.0000, 0.8408, 0.5431],
-                    [0.6664, 0.8408, 1.0000, 0.8372],
-                    [0.2533, 0.5431, 0.8372, 1.0000]])
-target = torch.tensor([0, 1, 2, 3])
-print(cross_entropy(logits, target))</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>tensor(1.1176)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a6e8b4ad">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">BCE_loss</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">logits</span> <span class="o">*</span> <span class="n">label</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">logits</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-8">import torch
-import torch.nn.functional as F
-def BCE_loss(logits, label):
-    loss = torch.clamp(logits, min=0) - logits * label + torch.log(1 + torch.exp(-torch.abs(logits)))
-    return loss.mean()</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=126906e8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">infoNce</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">item_emb</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    user_emb: (B, D)</span>
-<span class="sd">    item_emb: (B, D)</span>
-<span class="sd">    """</span>
-    <span class="n">user_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">item_emb</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">item_emb</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">sim</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">user_emb</span><span class="p">,</span> <span class="n">item_emb</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">temperature</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">user_emb</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-9">import torch
-import torch.nn as nn
-import torch.nn.functional as F
-def infoNce(user_emb, item_emb, temperature=1.0):
-    """
-    user_emb: (B, D)
-    item_emb: (B, D)
-    """
-    user_emb = F.normalize(user_emb, dim=-1)
-    item_emb = F.normalize(item_emb, dim=-1)
-    sim = torch.matmul(user_emb, item_emb.transpose(0, 1)) / temperature
-    label = torch.arange(user_emb.size(0))
-    loss = F.cross_entropy(sim, label)
-    return loss.mean()</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e4e9c2f9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">auc_rank</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-    <span class="n">rank_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-    <span class="n">q_rank</span> <span class="o">=</span> <span class="n">q</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>
-    <span class="n">label_rank</span> <span class="o">=</span> <span class="n">label</span><span class="p">[</span><span class="n">rank_index</span><span class="p">]</span>
-    <span class="n">t_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">t_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">l</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-    <span class="n">cum_neg</span><span class="p">,</span> <span class="n">cum_pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">l</span>
-        <span class="k">while</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">q_rank</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">==</span> <span class="n">q_rank</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
-            <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">group_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_rank</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">group_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">label_rank</span><span class="p">[</span><span class="n">l</span><span class="p">:</span><span class="n">r</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">cum_pos</span> <span class="o">+=</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">cum_neg</span> <span class="o">+</span> <span class="n">group_pos</span> <span class="o">*</span> <span class="n">group_neg</span> <span class="o">*</span> <span class="mf">0.5</span>
-        <span class="n">cum_neg</span> <span class="o">+=</span> <span class="n">group_neg</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="n">r</span>
-    <span class="k">return</span> <span class="n">cum_pos</span> <span class="o">/</span> <span class="p">(</span><span class="n">t_pos</span><span class="o">*</span><span class="n">t_neg</span><span class="p">)</span>
-<span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
-<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">auc</span>  <span class="o">=</span> <span class="n">auc_rank</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"auc:</span><span class="si">{</span><span class="n">auc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-10">import numpy as np
-def auc_rank(q, label):
-    q = np.array(q)
-    label = np.array(label)
-    rank_index = np.argsort(q)
-    q_rank = q[rank_index]
-    label_rank = label[rank_index]
-    t_pos = np.sum(label == 1)
-    t_neg = np.sum(label == 0)
-    l, n = 0, len(q)
-    cum_neg, cum_pos = 0, 0
-    while l &lt; n:
-        r = l
-        while r &lt; n and q_rank[l] == q_rank[r]:
-            r += 1
-        group_neg = np.sum(label_rank[l:r] == 0)
-        group_pos = np.sum(label_rank[l:r] == 1)
-        cum_pos += group_pos * cum_neg + group_pos * group_neg * 0.5
-        cum_neg += group_neg
-        l = r
-    return cum_pos / (t_pos*t_neg)
-q = [0.1, 0.9, 0.2, 0.8, 1, 0.2, 0.3, 0.8]
-label = [0, 1, 0, 0, 1, 0, 0, 1]
-auc  = auc_rank(q, label)
-print(f"auc:{auc}")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>auc:0.9666666666666667
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6a579a62">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TreeNode</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">__init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># 创建一个链表作为结果容器</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+<p>输出：</p>
+<pre><code>{'a':1}
+</code></pre>
+<h4 id="2">2 常见默认类型<a class="anchor-link" href="#2">¶</a></h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td>默认0</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td>默认空列表</td>
+</tr>
+<tr>
+<td><code>set</code></td>
+<td>默认空集合</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3">3 典型使用场景<a class="anchor-link" href="#3">¶</a></h4><h5 id="">统计<a class="anchor-link" href="#">¶</a></h5><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
 
-    <span class="c1"># 返回前序遍历结果</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">preorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">res</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-    <span class="c1"># 二叉树遍历函数</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">traverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="c1"># 前序遍历位置</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="n">count</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">class TreeNode:
-    def __init(self, val, left, right):
-        self.val = val
-        self.left = left
-        self.right = right
-class Solution:
-    def __init__(self):
-        # 创建一个链表作为结果容器
-        self.res = []
+<h5 id="">分组<a class="anchor-link" href="#">¶</a></h5><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 
-    # 返回前序遍历结果
-    def preorder(self, root: TreeNode):
-        self.traverse(root)
-        return self.res
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="n">groups</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</pre></div>
+<h5 id="">图结构（算法中非常重要）<a class="anchor-link" href="#">¶</a></h5><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 
-    # 二叉树遍历函数
-    def traverse(self, root: TreeNode):
-        if not root:
-            return
-        # 前序遍历位置
-        self.res.append(root.val)
-        self.traverse(root.left)
-        self.traverse(root.right)</div>
-</div>
-</div>
+<span class="n">graph</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">graph</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+<p>表示：</p>
+<pre><code>1 -&gt; [2,3]
+</code></pre>
+<p>常见题：</p>
+<ul>
+<li>图 DFS</li>
+<li>图 BFS</li>
+<li>拓扑排序</li>
+</ul>
+<h3 id="counter">三、Counter（计数器）<a class="anchor-link" href="#counter">¶</a></h3><p><code>Counter</code> 是 <strong>统计频率的字典</strong>。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+<p>输出：</p>
+<pre><code>{3:3, 1:2, 2:1}
+</code></pre>
+<h4 id="">常用操作<a class="anchor-link" href="#">¶</a></h4><h5 id="1">1 统计次数<a class="anchor-link" href="#1">¶</a></h5><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># 3</span>
+</pre></div>
+<h5 id="2">2 找出现最多元素<a class="anchor-link" href="#2">¶</a></h5><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p>输出：</p>
+<pre><code>[(3,3)]
+</code></pre>
+<h5 id="3">3 字符统计<a class="anchor-link" href="#3">¶</a></h5><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="s2">"banana"</span><span class="p">)</span>
+</pre></div>
+<p>输出：</p>
+<pre><code>{'a':3,'n':2,'b':1}
+</code></pre>
+<h4 id="">典型使用场景<a class="anchor-link" href="#">¶</a></h4><h5 id="top-k">Top K 问题<a class="anchor-link" href="#top-k">¶</a></h5><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+<p>典型题：</p>
+<ul>
+<li>前K高频元素</li>
+</ul>
+<h5 id="">字符串统计<a class="anchor-link" href="#">¶</a></h5><div class="highlight"><pre><span></span><span class="n">Counter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+<p>典型题：</p>
+<ul>
+<li>字母异位词</li>
+</ul>
+<h3 id="ordereddict">四、OrderedDict（有序字典）<a class="anchor-link" href="#ordereddict">¶</a></h3><p>普通字典（Python3.7+）已经保持插入顺序，但 <code>OrderedDict</code> 仍用于 <strong>顺序控制</strong>。</p>
+<p>典型用途：</p>
+<p><strong>LRU Cache</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="n">cache</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+
+<span class="n">cache</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
+</pre></div>
+<p>常见题：</p>
+<ul>
+<li>LRU缓存</li>
+</ul>
+<h3 id="namedtuple">五、namedtuple（结构化元组）<a class="anchor-link" href="#namedtuple">¶</a></h3><p>用于创建 <strong>带字段名的元组</strong>。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="n">Point</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">"Point"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"x"</span><span class="p">,</span><span class="s2">"y"</span><span class="p">])</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+<p>输出：</p>
+<pre><code>1
+2
+</code></pre>
+<p>优点：</p>
+<ul>
+<li>比 tuple 可读性高</li>
+<li>比 class 轻量</li>
+</ul>
+<h3 id="">六、算法刷题中最重要的三个<a class="anchor-link" href="#">¶</a></h3><p>几乎 <strong>90% LeetCode + 面试</strong> 用到的是：</p>
+<table>
+<thead>
+<tr>
+<th>数据结构</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deque</td>
+<td>BFS</td>
+</tr>
+<tr>
+<td>defaultdict</td>
+<td>图结构</td>
+</tr>
+<tr>
+<td>Counter</td>
+<td>频率统计</td>
+</tr>
+</tbody>
+</table>
+<h3 id="">七、刷题建议（最重要）<a class="anchor-link" href="#">¶</a></h3><p>看到题目时快速判断：</p>
+<h5 id="1-bfs">1 BFS<a class="anchor-link" href="#1-bfs">¶</a></h5><p>用：</p>
+<pre><code>deque
+</code></pre>
+<p>例：</p>
+<ul>
+<li>腐烂橘子</li>
+<li>最短路径</li>
+</ul>
+<h5 id="2">2 图结构<a class="anchor-link" href="#2">¶</a></h5><p>用：</p>
+<pre><code>defaultdict(list)
+</code></pre>
+<p>例：</p>
+<ul>
+<li>拓扑排序</li>
+<li>图DFS</li>
+</ul>
+<h5 id="3">3 频率统计<a class="anchor-link" href="#3">¶</a></h5><p>用：</p>
+<pre><code>Counter
+</code></pre>
+<p>例：</p>
+<ul>
+<li>前K高频元素</li>
+<li>字符统计</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3156,10 +3152,10 @@ class Solution:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
