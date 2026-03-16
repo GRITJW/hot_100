@@ -1,0 +1,322 @@
+
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0; }
+.root { padding: 1.5rem 1rem 2rem; font-family: var(--font-sans); }
+.top-banner { text-align: center; margin-bottom: 1.5rem; }
+.top-banner h2 { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px; }
+.top-banner p { font-size: 12px; color: var(--color-text-secondary); margin: 0; }
+.meta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.meta-card { border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-secondary); padding: 12px 14px; background: var(--color-background-secondary); cursor: pointer; transition: all 0.15s; }
+.meta-card:hover { background: var(--color-background-primary); border-color: var(--color-border-primary); }
+.meta-card.active { background: var(--color-background-primary); border-color: var(--color-border-primary); }
+.meta-label { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-text-secondary); margin-bottom: 6px; text-transform: uppercase; }
+.meta-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.meta-sub { font-size: 11px; color: var(--color-text-tertiary); }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 12px 0; }
+.section-header { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 8px; letter-spacing: 0.03em; }
+.tags-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.tag { font-size: 12px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid; cursor: pointer; transition: all 0.15s; }
+.tag:hover { opacity: 0.8; }
+.tag.ds { background: #E6F1FB; color: #0C447C; border-color: #B5D4F4; }
+.tag.algo { background: #E1F5EE; color: #085041; border-color: #9FE1CB; }
+.tag.adv { background: #FAEEDA; color: #633806; border-color: #FAC775; }
+.tag.active-tag { font-weight: 500; }
+.detail-panel { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px; min-height: 180px; }
+.detail-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px; }
+.detail-badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-bottom: 10px; }
+.badge-ds { background: #E6F1FB; color: #185FA5; }
+.badge-algo { background: #E1F5EE; color: #0F6E56; }
+.badge-adv { background: #FAEEDA; color: #854F0B; }
+.detail-core { font-size: 13px; color: var(--color-text-primary); line-height: 1.6; margin-bottom: 10px; }
+.detail-section { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 5px; margin-top: 10px; }
+.detail-list { margin: 0; padding: 0; list-style: none; }
+.detail-list li { font-size: 12px; color: var(--color-text-secondary); padding: 3px 0; display: flex; gap: 6px; }
+.detail-list li::before { content: "·"; color: var(--color-text-tertiary); flex-shrink: 0; }
+.links-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.link-tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); cursor: pointer; }
+.link-tag:hover { color: var(--color-text-primary); }
+.principle-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.principle-card { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px; }
+.principle-icon { font-size: 16px; margin-bottom: 4px; }
+.principle-title { font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.principle-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+</style>
+<div class="root">
+<div class="top-banner">
+  <h2>算法刷题分类体系</h2>
+  <p>三层结构 · 点击任意标签查看详解与题型联系</p>
+</div>
+
+<div class="principle-row">
+  <div class="principle-card">
+    <div class="principle-icon">🗂</div>
+    <div class="principle-title">数据结构类</div>
+    <div class="principle-desc">问题的"形状"，决定你用什么容器装数据</div>
+  </div>
+  <div class="principle-card">
+    <div class="principle-icon">💡</div>
+    <div class="principle-title">算法思想类</div>
+    <div class="principle-desc">问题的"解法策略"，决定你用什么方式搜索答案</div>
+  </div>
+  <div class="principle-card">
+    <div class="principle-icon">⚡</div>
+    <div class="principle-title">高级技巧类</div>
+    <div class="principle-desc">在前两类基础上的优化或特殊变体</div>
+  </div>
+</div>
+
+<div class="section-header">数据结构类</div>
+<div class="tags-row" id="tags-ds">
+  <span class="tag ds" onclick="showDetail('array')">数组</span>
+  <span class="tag ds" onclick="showDetail('linkedlist')">链表</span>
+  <span class="tag ds" onclick="showDetail('stack')">栈</span>
+  <span class="tag ds" onclick="showDetail('queue')">队列</span>
+  <span class="tag ds" onclick="showDetail('hashmap')">哈希表</span>
+  <span class="tag ds" onclick="showDetail('tree')">二叉树</span>
+  <span class="tag ds" onclick="showDetail('graph')">图</span>
+</div>
+
+<div class="section-header">算法思想类</div>
+<div class="tags-row" id="tags-algo">
+  <span class="tag algo" onclick="showDetail('twoptr')">双指针</span>
+  <span class="tag algo" onclick="showDetail('sliding')">滑动窗口</span>
+  <span class="tag algo" onclick="showDetail('binary')">二分查找</span>
+  <span class="tag algo" onclick="showDetail('greedy')">贪心</span>
+  <span class="tag algo" onclick="showDetail('dp')">动态规划</span>
+  <span class="tag algo" onclick="showDetail('backtrack')">回溯</span>
+  <span class="tag algo" onclick="showDetail('bfsdfs')">BFS / DFS</span>
+  <span class="tag algo" onclick="showDetail('divcon')">分治</span>
+  <span class="tag algo" onclick="showDetail('prefix')">前缀和</span>
+  <span class="tag algo" onclick="showDetail('diff')">差分</span>
+</div>
+
+<div class="section-header">高级技巧类</div>
+<div class="tags-row" id="tags-adv">
+  <span class="tag adv" onclick="showDetail('monotone')">单调栈 / 单调队列</span>
+  <span class="tag adv" onclick="showDetail('binanswer')">二分答案</span>
+  <span class="tag adv" onclick="showDetail('treedp')">树形DP</span>
+  <span class="tag adv" onclick="showDetail('union')">并查集</span>
+</div>
+
+<div class="divider"></div>
+<div class="detail-panel" id="detail-panel">
+  <div style="display:flex;align-items:center;justify-content:center;height:140px;color:var(--color-text-tertiary);font-size:13px;">← 点击上方任意标签，查看详细解析</div>
+</div>
+</div>
+
+<script>
+const data = {
+  array: {
+    title: '数组',
+    type: 'ds', badge: '数据结构',
+    core: '最基础的线性结构。核心操作是通过下标 O(1) 随机访问。大多数其他题型（双指针、滑窗、前缀和）都建立在数组之上。',
+    template: '无固定模板，通常与其他技巧结合使用',
+    patterns: ['遍历/暴力 O(n²) → 思考能否用哈希/双指针降为 O(n)', '原地修改（快慢指针）', '排序后双指针（Two Sum 变体）'],
+    related: ['双指针', '滑动窗口', '前缀和', '差分', '二分查找'],
+    example: 'LeetCode 1 Two Sum, 15 Three Sum, 283 Move Zeros'
+  },
+  linkedlist: {
+    title: '链表',
+    type: 'ds', badge: '数据结构',
+    core: '节点指针构成的序列，插入/删除 O(1) 但无随机访问。核心技巧几乎全部基于"指针操作"。',
+    template: '哑节点 dummy = new ListNode(0); dummy.next = head 几乎是万能开头',
+    patterns: ['快慢指针（找中点、判环）', '双指针（找倒数第 k 个）', '递归反转', '合并有序链表'],
+    related: ['双指针', '递归/分治'],
+    example: 'LeetCode 21 Merge Two Lists, 141 Detect Cycle, 206 Reverse'
+  },
+  stack: {
+    title: '栈',
+    type: 'ds', badge: '数据结构',
+    core: 'LIFO 结构，适合处理"最近未处理的元素"。括号匹配、函数调用、单调栈都是栈的典型场景。',
+    template: 'stack = []\nfor x in arr:\n    while stack and condition(stack[-1], x):\n        stack.pop()  # 单调栈核心\n    stack.append(x)',
+    patterns: ['括号匹配（对称结构）', '递归转迭代', '单调栈（下一个更大/小元素）', '函数计算表达式'],
+    related: ['单调栈', '回溯（隐式栈）'],
+    example: 'LeetCode 20 Valid Parentheses, 84 Largest Rectangle, 739 Daily Temperatures'
+  },
+  queue: {
+    title: '队列',
+    type: 'ds', badge: '数据结构',
+    core: 'FIFO 结构，BFS 的核心容器。单调队列用于滑动窗口最值问题。',
+    template: 'from collections import deque\nq = deque([start])\nwhile q:\n    node = q.popleft()\n    for next in neighbors(node):\n        if not visited: q.append(next)',
+    patterns: ['BFS 层序遍历（最短路）', '优先队列（堆）用于 Dijkstra、Top K', '单调队列（窗口最值）'],
+    related: ['BFS/DFS', '单调队列'],
+    example: 'LeetCode 102 Binary Tree Level Order, 239 Sliding Window Maximum'
+  },
+  hashmap: {
+    title: '哈希表',
+    type: 'ds', badge: '数据结构',
+    core: 'O(1) 查找。核心思想：用空间换时间。当需要"快速判断某元素是否存在"时，优先考虑哈希表。',
+    template: '# 常见模式：先查后存\nfor i, x in enumerate(nums):\n    if target - x in seen:\n        return [seen[target-x], i]\n    seen[x] = i',
+    patterns: ['Two Sum 类（存补数）', '频率统计（Counter）', '前缀和 + 哈希（子数组和）', '同构字符串'],
+    related: ['前缀和', '滑动窗口'],
+    example: 'LeetCode 1 Two Sum, 3 Longest Substring, 560 Subarray Sum Equals K'
+  },
+  tree: {
+    title: '二叉树',
+    type: 'ds', badge: '数据结构',
+    core: '递归是树的天然语言。任何树题都问自己：根节点需要什么信息？从左/右子树返回什么？',
+    template: 'def solve(root):\n    if not root: return base_case\n    left = solve(root.left)\n    right = solve(root.right)\n    return f(root.val, left, right)  # 后序位置',
+    patterns: ['前/中/后序遍历（递归/迭代）', 'BST 的中序 = 有序数组', '路径问题（前序/后序结合）', '序列化/反序列化'],
+    related: ['BFS/DFS', '动态规划（树形DP）', '二分查找（BST）'],
+    example: 'LeetCode 104 Max Depth, 543 Diameter, 124 Max Path Sum'
+  },
+  graph: {
+    title: '图',
+    type: 'ds', badge: '数据结构',
+    core: '图是树的泛化（树是特殊的无环图）。核心问题：遍历（BFS/DFS）、最短路、拓扑排序、连通性。',
+    template: '# 邻接表建图\ngraph = defaultdict(list)\nfor u, v in edges:\n    graph[u].append(v)\n    graph[v].append(u)',
+    patterns: ['BFS 最短路（无权图）', 'Dijkstra 最短路（有权图）', '拓扑排序（有向无环图/课程表）', '并查集（连通分量）', 'DFS 判环'],
+    related: ['BFS/DFS', '并查集', '动态规划（DAG 上DP）'],
+    example: 'LeetCode 207 Course Schedule, 200 Number of Islands, 743 Network Delay'
+  },
+  twoptr: {
+    title: '双指针',
+    type: 'algo', badge: '算法思想',
+    core: '用两个指针在数组/链表上移动，将 O(n²) 暴力降为 O(n)。前提：数组有序，或指针移动方向单调。',
+    template: '# 对撞指针\nleft, right = 0, len(arr) - 1\nwhile left < right:\n    if condition: left += 1\n    else: right -= 1',
+    patterns: ['对撞指针（Two Sum 有序版、盛水容器）', '快慢指针（链表判环、原地去重）', '同向指针（滑动窗口的底层实现）'],
+    related: ['滑动窗口（是双指针的特化）', '链表', '数组'],
+    example: 'LeetCode 11 Container With Most Water, 26 Remove Duplicates, 142 Linked List Cycle II'
+  },
+  sliding: {
+    title: '滑动窗口',
+    type: 'algo', badge: '算法思想',
+    core: '双指针的特化：维护一个窗口 [left, right]，right 扩张、left 收缩，始终保持窗口合法。适用于"连续子数组/子串"问题。',
+    template: 'left = 0\nfor right in range(len(s)):\n    window.add(s[right])   # 扩张\n    while window_invalid():  # 收缩\n        window.remove(s[left])\n        left += 1\n    ans = max(ans, right - left + 1)',
+    patterns: ['最长满足条件的子串/子数组', '最短满足条件的子串', '固定长度窗口的统计'],
+    related: ['双指针（是其父类）', '哈希表（维护窗口状态）'],
+    example: 'LeetCode 3 Longest Substring, 76 Minimum Window Substring, 567 Permutation in String'
+  },
+  binary: {
+    title: '二分查找',
+    type: 'algo', badge: '算法思想',
+    core: '在单调空间中通过不断折半缩小范围。关键：找到"单调性"。不只用于有序数组，凡是答案具有"越大越容易/越小越容易"的单调性，都可二分答案。',
+    template: '# 通用左边界模板\nleft, right = lo, hi\nwhile left < right:\n    mid = (left + right) // 2\n    if check(mid):   # 满足条件\n        right = mid  # 收缩右边\n    else:\n        left = mid + 1',
+    patterns: ['在排序数组中查找目标（经典）', '查找左/右边界（lower/upper bound）', '二分答案（最小化最大值、最大化最小值）', '旋转数组二分'],
+    related: ['分治（理论归属）', '贪心（二分答案的 check 函数常用贪心验证）', '动态规划（可用二分优化部分DP）'],
+    example: 'LeetCode 34 Find Range, 875 Koko Bananas, 1011 Ship Packages, 410 Split Array'
+  },
+  greedy: {
+    title: '贪心',
+    type: 'algo', badge: '算法思想',
+    core: '每步做局部最优选择，期望全局最优。没有固定模板，需要证明局部最优 → 全局最优（或反例驱动）。与DP的区别：DP保存所有状态，贪心只保留一个。',
+    template: '# 无固定模板，常见：排序 + 扫描\narr.sort(key=lambda x: ...)\nfor item in arr:\n    if can_take(item):\n        take(item)',
+    patterns: ['区间问题（排序后扫描）', '跳跃游戏（局部可达 → 全局可达）', '任务调度', '哈夫曼编码思想'],
+    related: ['二分查找（验证贪心策略）', '排序', '优先队列（堆贪心）'],
+    example: 'LeetCode 55 Jump Game, 435 Non-overlapping Intervals, 452 Minimum Arrows'
+  },
+  dp: {
+    title: '动态规划',
+    type: 'algo', badge: '算法思想',
+    core: '将大问题拆分为有重叠子问题的小问题，用记忆化避免重复计算。三要素：状态定义、转移方程、初始条件。',
+    template: '# 一维DP模板\ndp = [0] * (n + 1)\ndp[0] = base_case\nfor i in range(1, n + 1):\n    dp[i] = f(dp[i-1], dp[i-2], ...)  # 状态转移',
+    patterns: ['线性DP（最长子序列 LIS/LCS）', '背包问题（0-1/完全/分组）', '区间DP（矩阵链乘、戳气球）', '树形DP', '状压DP'],
+    related: ['回溯（DP 的记忆化版本）', '贪心（有时可替代DP）', '二分查找（优化DP转移 O(nlogn) LIS）'],
+    example: 'LeetCode 300 LIS, 322 Coin Change, 1143 LCS, 312 Burst Balloons'
+  },
+  backtrack: {
+    title: '回溯',
+    type: 'algo', badge: '算法思想',
+    core: '在决策树上做 DFS，找所有满足条件的路径。与DP的区别：回溯枚举所有可能，不缓存（或缓存后变成DP）。剪枝是回溯的核心优化。',
+    template: 'def backtrack(path, choices):\n    if end_condition:\n        result.append(path[:])\n        return\n    for choice in choices:\n        path.append(choice)    # 做选择\n        backtrack(path, next_choices)\n        path.pop()             # 撤销选择',
+    patterns: ['排列（有顺序）', '组合（无顺序）', '子集', 'N皇后/数独（带约束的排列）', '单词搜索（在矩阵上回溯）'],
+    related: ['DFS（回溯是带撤销的DFS）', '动态规划（记忆化回溯 = DP）'],
+    example: 'LeetCode 46 Permutations, 78 Subsets, 39 Combination Sum, 51 N-Queens'
+  },
+  bfsdfs: {
+    title: 'BFS / DFS',
+    type: 'algo', badge: '算法思想',
+    core: 'BFS：按层扩散，天然保证最短路（无权图），用队列实现。DFS：深入优先，适合遍历所有可能性，用栈/递归实现。两者是图/树遍历的两种顺序。',
+    template: '# BFS\nq = deque([start]); visited = {start}\nwhile q:\n    node = q.popleft()\n    for nb in graph[node]:\n        if nb not in visited:\n            visited.add(nb); q.append(nb)',
+    patterns: ['BFS：最短路径数、最少操作步数、层序遍历', 'DFS：路径枚举、连通分量、拓扑排序', '双向BFS（优化搜索空间）'],
+    related: ['图（应用场景）', '回溯（DFS + 撤销）', '树（DFS 天然对应递归）'],
+    example: 'LeetCode 200 Islands, 127 Word Ladder (BFS), 130 Surrounded Regions (DFS)'
+  },
+  divcon: {
+    title: '分治',
+    type: 'algo', badge: '算法思想',
+    core: '将问题拆为规模更小的同类子问题，递归解决后合并。时间复杂度用主定理分析。二分查找、归并排序都是分治。',
+    template: 'def solve(arr, left, right):\n    if left >= right: return base\n    mid = (left + right) // 2\n    L = solve(arr, left, mid)\n    R = solve(arr, mid+1, right)\n    return merge(L, R)',
+    patterns: ['归并排序（及逆序对统计）', '快速幂', '数组中第 K 大元素（快速选择）', '矩阵乘法', '大数乘法'],
+    related: ['二分查找（分治的特例）', '动态规划（记忆化分治 = DP）'],
+    example: 'LeetCode 23 Merge K Lists, 215 Kth Largest, 53 Max Subarray (分治解法)'
+  },
+  prefix: {
+    title: '前缀和',
+    type: 'algo', badge: '算法思想',
+    core: '预处理前缀数组，使区间求和降为 O(1)。核心公式：sum(i,j) = prefix[j+1] - prefix[i]。与哈希表结合可解子数组和等于 k 的问题。',
+    template: 'prefix = [0] * (n + 1)\nfor i in range(n):\n    prefix[i+1] = prefix[i] + nums[i]\n# 区间 [i,j] 之和：\nrange_sum = prefix[j+1] - prefix[i]',
+    patterns: ['区间求和 O(1)（静态数组）', '子数组和等于 k（前缀和 + 哈希）', '二维前缀和（矩阵区域和）', '差分（前缀和的逆操作）'],
+    related: ['哈希表（配合解子数组问题）', '差分（互为逆运算）'],
+    example: 'LeetCode 560 Subarray Sum K, 304 Range Sum 2D, 525 Contiguous Array'
+  },
+  diff: {
+    title: '差分',
+    type: 'algo', badge: '算法思想',
+    core: '前缀和的逆操作。对区间 [i,j] 整体加 k，只需在差分数组上做 diff[i]+=k, diff[j+1]-=k，最后还原。适合"区间批量更新"场景。',
+    template: 'diff = [0] * (n + 1)\n# 区间 [l, r] 整体加 val\ndiff[l] += val\ndiff[r+1] -= val\n# 还原原数组\nfor i in range(1, n):\n    diff[i] += diff[i-1]',
+    patterns: ['区间批量修改 + 单点查询', '航班预订（区间加减）', '二维差分'],
+    related: ['前缀和（互为逆运算）', '数组'],
+    example: 'LeetCode 1109 Corporate Flight Bookings, 1094 Car Pooling'
+  },
+  monotone: {
+    title: '单调栈 / 单调队列',
+    type: 'adv', badge: '高级技巧',
+    core: '单调栈：维护一个单调递增/减的栈，处理"下一个更大/小元素"类问题，O(n) 代替 O(n²)。单调队列：维护窗口内的最大/最小值，配合滑动窗口使用。',
+    template: '# 单调递减栈（找下一个更大元素）\nstack = []\nresult = [-1] * n\nfor i in range(n):\n    while stack and nums[stack[-1]] < nums[i]:\n        result[stack.pop()] = nums[i]\n    stack.append(i)',
+    patterns: ['下一个更大元素（Next Greater Element）', '柱状图最大矩形', '接雨水', '滑动窗口最大值'],
+    related: ['栈（底层结构）', '滑动窗口（单调队列配合）', '动态规划（优化某些DP转移）'],
+    example: 'LeetCode 739 Daily Temperatures, 84 Largest Rectangle, 42 Trapping Rain, 239 Sliding Max'
+  },
+  binanswer: {
+    title: '二分答案',
+    type: 'adv', badge: '高级技巧',
+    core: '当"答案本身具有单调性"时（越大越容易满足/越小越难），对答案空间二分，用 check(mid) 函数验证可行性。是二分查找的高级应用。',
+    template: 'def check(mid):\n    # 贪心验证 mid 是否可行\n    return feasible\n\nleft, right = min_ans, max_ans\nwhile left < right:\n    mid = (left + right) // 2\n    if check(mid): right = mid\n    else: left = mid + 1',
+    patterns: ['最小化最大值（分组、运输）', '最大化最小值（石头游戏）', 'Koko 吃香蕉类（速度/时间单调）'],
+    related: ['二分查找（本质）', '贪心（check 函数通常用贪心实现）'],
+    example: 'LeetCode 875 Koko Bananas, 1011 Ship Packages, 410 Split Array Largest Sum'
+  },
+  treedp: {
+    title: '树形DP',
+    type: 'adv', badge: '高级技巧',
+    core: '在树上做动态规划，状态定义在节点上，用后序遍历（子树信息返回给父节点）进行状态转移。本质：树的 DFS + DP。',
+    template: 'def dp(node):\n    if not node: return 0\n    left = dp(node.left)\n    right = dp(node.right)\n    # 在后序位置做状态转移\n    return f(node.val, left, right)',
+    patterns: ['最大路径和（不一定过根）', '打家劫舍 III（选与不选）', '树的直径', '最小高度树'],
+    related: ['二叉树（应用结构）', '动态规划（思想）', 'DFS（遍历方式）'],
+    example: 'LeetCode 124 Max Path Sum, 337 House Robber III, 543 Diameter'
+  },
+  union: {
+    title: '并查集',
+    type: 'adv', badge: '高级技巧',
+    core: '高效处理"动态连通性"问题：快速判断两点是否连通（同一集合），以及合并两个集合。路径压缩 + 按秩合并使均摊复杂度近乎 O(1)。',
+    template: 'parent = list(range(n))\ndef find(x):\n    if parent[x] != x:\n        parent[x] = find(parent[x])  # 路径压缩\n    return parent[x]\ndef union(x, y):\n    parent[find(x)] = find(y)',
+    patterns: ['连通分量计数', '冗余连接（判环）', '账户合并', 'Kruskal 最小生成树'],
+    related: ['图（应用场景）', 'BFS/DFS（可替代，但并查集更高效于动态连通）'],
+    example: 'LeetCode 684 Redundant Connection, 721 Accounts Merge, 200 Number of Islands'
+  }
+};
+
+function showDetail(key) {
+  const d = data[key];
+  const badgeClass = 'badge-' + d.type;
+  const panel = document.getElementById('detail-panel');
+  const related = d.related.map(r => `<span class="link-tag" onclick="sendPrompt('请详解算法题型：${r}')">${r} ↗</span>`).join('');
+  panel.innerHTML = `
+    <div class="detail-title">${d.title}</div>
+    <span class="detail-badge ${badgeClass}">${d.badge}</span>
+    <div class="detail-core">${d.core}</div>
+    <div class="detail-section">核心套路 / 框架</div>
+    <pre style="font-family:var(--font-mono);font-size:11px;color:var(--color-text-secondary);background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:6px;padding:10px;overflow-x:auto;line-height:1.6;margin:0 0 8px;">${d.template}</pre>
+    <div class="detail-section">常见题型模式</div>
+    <ul class="detail-list">${d.patterns.map(p=>`<li>${p}</li>`).join('')}</ul>
+    <div class="detail-section">关联题型（可联动学习）</div>
+    <div class="links-row">${related}</div>
+    <div class="detail-section" style="margin-top:10px">代表题目</div>
+    <div style="font-size:12px;color:var(--color-text-tertiary);">${d.example}</div>
+  `;
+  document.querySelectorAll('.tag').forEach(t => t.classList.remove('active-tag'));
+  event.target.classList.add('active-tag');
+}
+</script>
