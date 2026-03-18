@@ -4069,6 +4069,169 @@ O(n²)</p>
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3d01562">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>最长递增子序列（LIS）的核心思想可以从两个层次理解：首先是动态规划的直观定义，其次是在此基础上通过贪心与二分查找进行优化。</p>
+<p>从问题本质来看，LIS要求在保持原有顺序的前提下，找到一个长度最大的严格递增子序列。最直接的思路是动态规划：定义 <code>dp[i]</code> 表示以 <code>nums[i]</code> 作为结尾的最长递增子序列长度。为了计算 <code>dp[i]</code>，需要查看所有 <code>j &lt; i</code> 的位置，如果 <code>nums[j] &lt; nums[i]</code>，则可以把 <code>nums[i]</code> 接在 <code>nums[j]</code> 之后，因此有状态转移 <code>dp[i] = max(dp[i], dp[j] + 1)</code>。这种方法需要两层循环，时间复杂度为 O(n²)。</p>
+<p>进一步观察这个过程会发现，动态规划实际上在做一件事情：对于不同长度的递增序列，我们只关心“这个长度的递增序列最小的结尾是多少”。原因是结尾越小，将来就越容易接上更大的元素，从而形成更长的递增序列。因此可以维护一个数组 <code>tails</code>，其中 <code>tails[k]</code> 表示长度为 <code>k+1</code> 的递增子序列能够达到的最小结尾。这个数组具有单调递增的性质。</p>
+<p>遍历数组中的每一个元素 <code>num</code> 时，如果 <code>num</code> 比 <code>tails</code> 的最后一个元素大，就说明可以扩展当前最长序列，直接将 <code>num</code> 加入 <code>tails</code>；否则，就在 <code>tails</code> 中找到第一个大于等于 <code>num</code> 的位置，并用 <code>num</code> 替换该位置的元素。这样做的意义在于：保持相同长度的递增序列时，让结尾尽可能小，从而为后续元素留下更大的增长空间。由于 <code>tails</code> 始终是有序的，因此寻找替换位置可以使用二分查找，将查找复杂度从线性降低到对数。</p>
+<p>随着遍历的进行，<code>tails</code> 数组会逐渐维护出不同长度递增序列的最优结尾状态。虽然 <code>tails</code> 本身不一定对应真实存在的一条完整递增子序列，但它的长度始终等于当前能够构成的最长递增子序列长度。因此最终 <code>tails</code> 的长度就是 LIS 的长度。该方法在每个元素上执行一次二分查找，总时间复杂度为 O(n log n)，空间复杂度为 O(n)。</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f2d16ad0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">lengthOfLIS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        
+        <span class="c1"># tails[i] 表示：</span>
+        <span class="c1"># 长度为 i+1 的递增子序列中，所有可能情况里“最小的结尾元素”</span>
+        <span class="c1"># 维护这个数组的目的：让结尾尽可能小，从而更容易接上后面的数字</span>
+        <span class="c1"># 注意：tails 本身不一定是真实的 LIS，只是用于维护最优状态</span>
+        <span class="n">tails</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1"># 依次遍历数组中的每个数字</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            
+            <span class="c1"># --- 使用二分查找 num 在 tails 中应该插入的位置 ---</span>
+            <span class="c1"># 我们要找到 tails 中第一个 &gt;= num 的位置</span>
+            <span class="c1"># 因为 tails 是单调递增的，所以可以二分查找</span>
+            
+            <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tails</span><span class="p">)</span>
+            
+            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+                
+                <span class="c1"># 如果 tails[mid] &lt; num</span>
+                <span class="c1"># 说明 num 应该在右侧</span>
+                <span class="k">if</span> <span class="n">tails</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
+                    <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># 否则 num 应该在 mid 或更左的位置</span>
+                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span>
+            
+            <span class="c1"># 循环结束后</span>
+            <span class="c1"># left 就是第一个 &gt;= num 的位置</span>
+            
+            <span class="c1"># --- 更新 tails ---</span>
+            
+            <span class="c1"># 如果 num 比 tails 中所有元素都大</span>
+            <span class="c1"># 说明可以扩展一个更长的递增序列</span>
+            <span class="k">if</span> <span class="n">left</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tails</span><span class="p">):</span>
+                <span class="n">tails</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 否则，用 num 替换 tails[left]</span>
+                <span class="c1"># 表示：同样长度的递增序列，我们找到了一个更小的结尾</span>
+                <span class="c1"># 更小的结尾意味着未来更容易接上新的数字</span>
+                <span class="n">tails</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span>
+        
+        <span class="c1"># tails 的长度就是最长递增子序列的长度</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">tails</span><span class="p">)</span>
+
+
+<span class="c1"># --- 使用示例 ---</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">18</span><span class="p">]</span>
+
+<span class="n">solver</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">lengthOfLIS</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-8">from typing import List
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -&gt; int:
+        
+        # tails[i] 表示：
+        # 长度为 i+1 的递增子序列中，所有可能情况里“最小的结尾元素”
+        # 维护这个数组的目的：让结尾尽可能小，从而更容易接上后面的数字
+        # 注意：tails 本身不一定是真实的 LIS，只是用于维护最优状态
+        tails = []
+        
+        # 依次遍历数组中的每个数字
+        for num in nums:
+            
+            # --- 使用二分查找 num 在 tails 中应该插入的位置 ---
+            # 我们要找到 tails 中第一个 &gt;= num 的位置
+            # 因为 tails 是单调递增的，所以可以二分查找
+            
+            left, right = 0, len(tails)
+            
+            while left &lt; right:
+                mid = (left + right) // 2
+                
+                # 如果 tails[mid] &lt; num
+                # 说明 num 应该在右侧
+                if tails[mid] &lt; num:
+                    left = mid + 1
+                else:
+                    # 否则 num 应该在 mid 或更左的位置
+                    right = mid
+            
+            # 循环结束后
+            # left 就是第一个 &gt;= num 的位置
+            
+            # --- 更新 tails ---
+            
+            # 如果 num 比 tails 中所有元素都大
+            # 说明可以扩展一个更长的递增序列
+            if left == len(tails):
+                tails.append(num)
+            else:
+                # 否则，用 num 替换 tails[left]
+                # 表示：同样长度的递增序列，我们找到了一个更小的结尾
+                # 更小的结尾意味着未来更容易接上新的数字
+                tails[left] = num
+        
+        # tails 的长度就是最长递增子序列的长度
+        return len(tails)
+
+
+# --- 使用示例 ---
+nums = [10,9,2,4,5,3,7,101,18]
+
+solver = Solution()
+print(solver.lengthOfLIS(nums))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>5
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3dc38252">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -4094,7 +4257,7 @@ O(n²)</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4119,7 +4282,7 @@ O(n²)</p>
 <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">maxProduct</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8">class Solution:
+<div class="clipboard-copy-txt" id="cell-9">class Solution:
     def maxProduct(self, nums: List[int]) -&gt; int:
         result = max_arr = min_arr = nums[0]
         n = len(nums)
@@ -4191,7 +4354,7 @@ print(Solution().maxProduct(nums))</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4220,7 +4383,7 @@ print(Solution().maxProduct(nums))</div>
 <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">canPartition</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9">from typing import List
+<div class="clipboard-copy-txt" id="cell-10">from typing import List
 
 class Solution:
     def canPartition(self, nums: List[int]) -&gt; bool:
@@ -4320,7 +4483,7 @@ dp[i] 表示 以索引 i 结尾的最长有效括号子串长度。
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4416,7 +4579,7 @@ dp[i] 表示 以索引 i 结尾的最长有效括号子串长度。
 <span class="n">s</span> <span class="o">=</span> <span class="s2">"()(())"</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">longestValidParentheses</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10">from typing import List
+<div class="clipboard-copy-txt" id="cell-11">from typing import List
 
 class Solution:
     def longestValidParentheses(self, s: str) -&gt; int:
@@ -4528,7 +4691,7 @@ print(Solution().longestValidParentheses(s))</div>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4564,7 +4727,7 @@ print(Solution().longestValidParentheses(s))</div>
 <span class="n">s</span> <span class="o">=</span> <span class="s2">"(()())"</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">longestValidParentheses</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>  <span class="c1"># 输出 6</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">from typing import List
+<div class="clipboard-copy-txt" id="cell-12">from typing import List
 
 class Solution:
     def longestValidParentheses(self, s: str) -&gt; int:
