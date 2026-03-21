@@ -67,6 +67,7 @@ nav:
           - 图: notebooks/算法刷题/数据结构/图论.ipynb
       - 算法思想类:
           - 前缀和: notebooks/算法刷题/算法/前缀和.ipynb
+          - 差分: notebooks/算法刷题/算法/差分.ipynb
           - 双指针: notebooks/算法刷题/算法/双指针.ipynb
           - 滑动窗口: notebooks/算法刷题/算法/滑动窗口.ipynb
           - 二分查找: notebooks/算法刷题/算法/二分查找.ipynb
