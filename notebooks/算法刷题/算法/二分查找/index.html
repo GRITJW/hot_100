@@ -792,6 +792,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../%E5%B7%AE%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
         
   
@@ -2527,13 +2555,13 @@ class Solution:
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=bef594dc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bef594dc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -2552,42 +2580,32 @@ class Solution:
     <span class="k">def</span><span class="w"> </span><span class="nf">searchRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">findLeft</span><span class="p">():</span>
-            <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-
-            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
+            <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
                 <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-
-                <span class="k">if</span>  <span class="n">target</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
-                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
-
-                <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
-                    <span class="n">ans</span> <span class="o">=</span> <span class="n">mid</span>
-
-            <span class="k">return</span> <span class="n">ans</span>
-
+            <span class="c1"># 修正：加边界检查，避免 left == len(nums) 时越界</span>
+            <span class="k">return</span> <span class="n">left</span> <span class="k">if</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">findRight</span><span class="p">():</span>
-            <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-
-            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
+            <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
                 <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-
                 <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target</span><span class="p">:</span>
                     <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
-
-                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
-                    <span class="n">ans</span> <span class="o">=</span> <span class="n">mid</span>
-
-            <span class="k">return</span> <span class="n">ans</span>
-
+                    <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span>
+            <span class="c1"># 修正：right boundary 语义为"最右 target 的下一位"，故检查 left-1</span>
+            <span class="k">return</span> <span class="n">left</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">left</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
 
         <span class="k">return</span> <span class="p">[</span><span class="n">findLeft</span><span class="p">(),</span> <span class="n">findRight</span><span class="p">()]</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">searchRange</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>  <span class="c1"># 输出: [5, 7]</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-4">from typing import List
 
@@ -2595,42 +2613,45 @@ class Solution:
     def searchRange(self, nums: List[int], target: int) -&gt; List[int]:
 
         def findLeft():
-            left, right = 0, len(nums) - 1
-            ans = -1
-
-            while left &lt;= right:
+            left, right = 0, len(nums)
+            while left &lt; right:
                 mid = (left + right) // 2
-
-                if  target &lt;= nums[mid]:
-                    right = mid - 1
+                if target &lt;= nums[mid]:
+                    right = mid
                 else:
                     left = mid + 1
-
-                if target == nums[mid]:
-                    ans = mid
-
-            return ans
-
+            # 修正：加边界检查，避免 left == len(nums) 时越界
+            return left if left &lt; len(nums) and nums[left] == target else -1
 
         def findRight():
-            left, right = 0, len(nums) - 1
-            ans = -1
-
-            while left &lt;= right:
+            left, right = 0, len(nums)
+            while left &lt; right:
                 mid = (left + right) // 2
-
                 if nums[mid] &lt;= target:
                     left = mid + 1
                 else:
-                    right = mid - 1
+                    right = mid
+            # 修正：right boundary 语义为"最右 target 的下一位"，故检查 left-1
+            return left - 1 if left &gt; 0 and nums[left - 1] == target else -1
 
-                if nums[mid] == target:
-                    ans = mid
+        return [findLeft(), findRight()]
 
-            return ans
-
-
-        return [findLeft(), findRight()]</div>
+nums = [1, 2, 3, 3, 4, 5, 5, 5]
+target = 5
+print(Solution().searchRange(nums, target))  # 输出: [5, 7]</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[5, 7]
+</pre>
 </div>
 </div>
 </div>
@@ -2826,13 +2847,13 @@ O(1)（原地操作）</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=306fdf77">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=306fdf77">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -2850,22 +2871,41 @@ O(1)（原地操作）</p>
         <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
         <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
             <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+            <span class="c1"># 中间值大于右侧最大值，说明最小值肯定在右侧</span>
             <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">right</span><span class="p">]:</span>
                 <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span>
         <span class="k">return</span> <span class="n">nums</span><span class="p">[</span><span class="n">right</span><span class="p">]</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">findMin</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-6">class Solution:
     def findMin(self, nums: List[int]) -&gt; int:
         left, right = 0, len(nums)-1
         while left &lt; right:
             mid = (left + right) // 2
+            # 中间值大于右侧最大值，说明最小值肯定在右侧
             if nums[mid] &gt; nums[right]:
                 left = mid + 1
             else:
                 right = mid
-        return nums[right]</div>
+        return nums[right]
+nums = [4, 5, 6, 7, 0, 1, 2]
+print(Solution().findMin(nums))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0
+</pre>
 </div>
 </div>
 </div>
@@ -2878,8 +2918,7 @@ O(1)（原地操作）</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>利用哪一侧有序来决定往哪边收缩</p>
-<p>通过二分查找，每次比较 nums[mid] 和 nums[right]：如果 nums[mid] &gt; nums[right]，说明最小值在右半区间；否则说明最小值在左半区间（包含 mid），不断缩小搜索区间，最终收敛到最小元素位置。</p>
+<p>该算法的核心思路是：旋转数组本质上由两段有序子数组拼接而成，通过比较 <code>nums[mid]</code> 与 <code>nums[right]</code> 的大小关系，可以判断当前"断点"（即最小值）落在哪一侧——若 <code>nums[mid] &gt; nums[right]</code>，说明 mid 仍处于左侧较高的那段，最小值必然在 mid 右侧，故将 <code>left</code> 收缩至 <code>mid + 1</code>；否则 mid 已处于右侧较低的那段，最小值在 mid 或其左侧，故将 <code>right</code> 收缩至 <code>mid</code>。如此反复利用有序性不断排除不可能区间，直至 <code>left == right</code>，区间收敛到唯一的最小值位置。</p>
 <hr/>
 </div>
 </div>
