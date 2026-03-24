@@ -783,6 +783,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%B7%AE%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
         
   
@@ -1378,6 +1406,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a的b次方（阿里）
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1597,6 +1636,17 @@
     <span class="md-ellipsis">
       
         最大化分堆后的最小堆大小
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a的b次方（阿里）
       
     </span>
   </a>
@@ -2137,6 +2187,17 @@
     <span class="md-ellipsis">
       
         最大化分堆后的最小堆大小
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a的b次方（阿里）
       
     </span>
   </a>
@@ -4077,6 +4138,200 @@ print(solve(stones, m))</div>
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dab7bd27">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="ab">a的b次方（阿里）<a class="anchor-link" href="#ab">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5ed7e1fd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fast_pow</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    计算 a 的 b 次方（a^b），使用快速幂算法（O(log n)）</span>
+
+<span class="sd">    参数：</span>
+<span class="sd">        a: 底数（可以是浮点数）</span>
+<span class="sd">        b: 指数（可以是负数、0、正数）</span>
+
+<span class="sd">    返回：</span>
+<span class="sd">        a^b 的结果</span>
+<span class="sd">    """</span>
+
+    <span class="c1"># 1. 特殊情况：b == 0</span>
+    <span class="c1"># 任何数的 0 次方为 1（包括负数和正数）</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">1.0</span>
+
+    <span class="c1"># 2. 处理负指数</span>
+    <span class="c1"># a^(-b) = 1 / (a^b)</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">fast_pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>
+
+    <span class="c1"># 3. 初始化结果</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="c1"># 4. 快速幂核心</span>
+    <span class="k">while</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># 如果当前 b 是奇数</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">*=</span> <span class="n">a</span>  <span class="c1"># 乘上当前底数</span>
+        <span class="c1"># 底数平方</span>
+        <span class="n">a</span> <span class="o">*=</span> <span class="n">a</span>
+        <span class="c1"># 指数右移（等价于 b //= 2）</span>
+        <span class="n">b</span> <span class="o">//=</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fast_pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-11">def fast_pow(a: float, b: int) -&gt; float:
+    """
+    计算 a 的 b 次方（a^b），使用快速幂算法（O(log n)）
+
+    参数：
+        a: 底数（可以是浮点数）
+        b: 指数（可以是负数、0、正数）
+
+    返回：
+        a^b 的结果
+    """
+
+    # 1. 特殊情况：b == 0
+    # 任何数的 0 次方为 1（包括负数和正数）
+    if b == 0:
+        return 1.0
+
+    # 2. 处理负指数
+    # a^(-b) = 1 / (a^b)
+    if b &lt; 0:
+        return 1 / fast_pow(a, -b)
+
+    # 3. 初始化结果
+    result = 1.0
+
+    # 4. 快速幂核心
+    while b &gt; 0:
+        # 如果当前 b 是奇数
+        if b % 2 == 1:
+            result *= a  # 乘上当前底数
+        # 底数平方
+        a *= a
+        # 指数右移（等价于 b //= 2）
+        b //= 2
+    return result
+
+a = 4
+b = 5
+print(fast_pow(a, b))</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1024.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bf7d180f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>可以把这段算法理解为：<strong>一边读取指数 (b) 的二进制，一边决定“这一位要不要用”，同时把底数不断升级为更高次幂。</strong></p>
+<p>用一个具体例子说明：计算 (2^{13})。</p>
+<p>先把 13 写成二进制：
+$
+13 = 1101_2 = 1 + 4 + 8
+$</p>
+<p>算法从最低位开始处理（从右往左）：</p>
+<ul>
+<li>初始：a = 2，b = 13，result = 1</li>
+</ul>
+<p><strong>第1轮：b=13（奇数）</strong></p>
+<ul>
+<li>“奇数”意味着：当前二进制最低位是 1 → 这一位要用</li>
+<li>所以：result *= a → result = 2</li>
+<li>然后 a 平方：a = 4（表示下一位对应的 (2^2)）</li>
+<li>b 整除 2：b = 6（相当于右移一位，从 1101 → 110）</li>
+</ul>
+<p><strong>第2轮：b=6（偶数）</strong></p>
+<ul>
+<li>偶数 → 当前位是 0 → 这一位不用</li>
+<li>result 不变</li>
+<li>a 平方：a = 16（现在表示 (2^4)）</li>
+<li>b // 2：b = 3（110 → 11）</li>
+</ul>
+<p><strong>第3轮：b=3（奇数）</strong></p>
+<ul>
+<li>奇数 → 当前位是 1 → 要用</li>
+<li>result *= a → result = 2 × 16 = 32</li>
+<li>a 平方：a = 256（表示 (2^8)）</li>
+<li>b // 2：b = 1（11 → 1）</li>
+</ul>
+<p><strong>第4轮：b=1（奇数）</strong></p>
+<ul>
+<li>奇数 → 要用</li>
+<li>result *= a → result = 32 × 256 = 8192</li>
+<li>a 平方（无所谓了）</li>
+<li>b // 2 → 0（结束）</li>
+</ul>
+<p>核心本质（关键解释你卡住的点）</p>
+<ul>
+<li><p><strong>“b 是奇数 → 乘”</strong>
+本质是：当前二进制位是 1，需要把这一位对应的幂乘进去</p>
+</li>
+<li><p><strong>“b //= 2”</strong>
+本质是：<strong>把指数右移一位，去看下一位（二进制）</strong></p>
+</li>
+</ul>
+<p>一句话总结</p>
+<p>这段代码其实是在做：</p>
+<blockquote>
+<p><strong>从低位到高位扫描 b 的二进制：遇到 1 就乘当前幂，同时每一步把底数平方以对应更高位。</strong></p>
+</blockquote>
+<p>如果用最直观的话讲：</p>
+<blockquote>
+<p>“b 是奇数”不是数学技巧，而是“这一位是 1”；
+“b 除以 2”也不是随便除，而是“去看下一位”。</p>
+</blockquote>
 </div>
 </div>
 </div>

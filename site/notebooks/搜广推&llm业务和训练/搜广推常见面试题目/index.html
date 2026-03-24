@@ -777,6 +777,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%B7%AE%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
         
   
@@ -1796,6 +1824,17 @@
     <span class="md-ellipsis">
       
         RQVAE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-mixing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        token mixing
       
     </span>
   </a>
@@ -6322,6 +6361,171 @@ class RQVAE(nn.Module):
         init_data = torch.cat(init_data_list, dim=0)
         self.vq.initialize_from_data(init_data)
         print("[SUCCESS] All codebooks initialized with data.")</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=611a7414">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="token-mixing">token mixing<a class="anchor-link" href="#token-mixing">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cedc28a1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-25">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RankMixerTokenMixing</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    论文原版 Token Mixing：完全 parameter-free 的块矩阵转置。</span>
+
+<span class="sd">    核心操作（公式 3+4）：</span>
+<span class="sd">        将 X ∈ R^(T×D) 视为 T×H 块矩阵（每块 d_h 维），</span>
+<span class="sd">        做块转置得到 H×T 块矩阵，reshape 成 H×(T·d_h)。</span>
+<span class="sd">        令 H=T，则输出 shape 仍为 (T, D)，残差连接成立。</span>
+
+<span class="sd">    参数：零（parameter-free）</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_tokens</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># 论文明确规定 H = T</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">num_tokens</span>
+        <span class="k">assert</span> <span class="n">dim</span> <span class="o">%</span> <span class="n">H</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"dim(</span><span class="si">{</span><span class="n">dim</span><span class="si">}</span><span class="s2">) 必须能被 num_tokens/H(</span><span class="si">{</span><span class="n">H</span><span class="si">}</span><span class="s2">) 整除"</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">num_tokens</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">H</span> <span class="o">=</span> <span class="n">H</span>                  <span class="c1"># H = T</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d_h</span> <span class="o">=</span> <span class="n">dim</span> <span class="o">//</span> <span class="n">H</span>         <span class="c1"># 每个 head 的维度</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        x: (B, T, D)</span>
+<span class="sd">        """</span>
+        <span class="n">B</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">residual</span> <span class="o">=</span> <span class="n">x</span>
+
+        <span class="c1"># Step 1: Split — (B, T, D) → (B, T, H, d_h)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_h</span><span class="p">)</span>
+
+        <span class="c1"># Step 2: 块矩阵转置 — swap T(dim1) 和 H(dim2)</span>
+        <span class="c1"># (B, T, H, d_h) → (B, H, T, d_h)</span>
+        <span class="c1"># 对应论文公式(4): s^h = Concat(x_1^h, x_2^h, ..., x_T^h)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+
+        <span class="c1"># Step 3: Merge — (B, H, T, d_h) → (B, H, T*d_h)</span>
+        <span class="c1"># 因为 H=T，所以 (B, H, T*d_h) = (B, T, D) ✓ shape 与输入相同</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">,</span> <span class="n">T</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_h</span><span class="p">)</span>
+
+        <span class="c1"># Step 4: 残差 + LayerNorm（公式 5）</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">residual</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+
+
+<span class="c1"># ── 验证 ──</span>
+<span class="n">B</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">64</span>   <span class="c1"># d_h = 64/16 = 4</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">RankMixerTokenMixing</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">D</span><span class="p">,</span> <span class="n">num_tokens</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"输入: </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> → 输出: </span><span class="si">{</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># (4,16,64) → (4,16,64)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-25">import torch
+import torch.nn as nn
+
+
+class RankMixerTokenMixing(nn.Module):
+    """
+    论文原版 Token Mixing：完全 parameter-free 的块矩阵转置。
+
+    核心操作（公式 3+4）：
+        将 X ∈ R^(T×D) 视为 T×H 块矩阵（每块 d_h 维），
+        做块转置得到 H×T 块矩阵，reshape 成 H×(T·d_h)。
+        令 H=T，则输出 shape 仍为 (T, D)，残差连接成立。
+
+    参数：零（parameter-free）
+    """
+
+    def __init__(self, dim: int, num_tokens: int):
+        super().__init__()
+        # 论文明确规定 H = T
+        H = num_tokens
+        assert dim % H == 0, f"dim({dim}) 必须能被 num_tokens/H({H}) 整除"
+
+        self.T = num_tokens
+        self.H = H                  # H = T
+        self.d_h = dim // H         # 每个 head 的维度
+        self.norm = nn.LayerNorm(dim)
+
+    def forward(self, x: torch.Tensor) -&gt; torch.Tensor:
+        """
+        x: (B, T, D)
+        """
+        B, T, D = x.shape
+        residual = x
+
+        # Step 1: Split — (B, T, D) → (B, T, H, d_h)
+        x = x.view(B, T, self.H, self.d_h)
+
+        # Step 2: 块矩阵转置 — swap T(dim1) 和 H(dim2)
+        # (B, T, H, d_h) → (B, H, T, d_h)
+        # 对应论文公式(4): s^h = Concat(x_1^h, x_2^h, ..., x_T^h)
+        x = x.transpose(1, 2).contiguous()
+
+        # Step 3: Merge — (B, H, T, d_h) → (B, H, T*d_h)
+        # 因为 H=T，所以 (B, H, T*d_h) = (B, T, D) ✓ shape 与输入相同
+        x = x.view(B, self.H, T * self.d_h)
+
+        # Step 4: 残差 + LayerNorm（公式 5）
+        return self.norm(residual + x)
+
+
+# ── 验证 ──
+B, T, D = 4, 16, 64   # d_h = 64/16 = 4
+
+model = RankMixerTokenMixing(dim=D, num_tokens=T)
+
+x = torch.randn(B, T, D)
+out = model(x)
+print(f"输入: {x.shape} → 输出: {out.shape}")  # (4,16,64) → (4,16,64)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>输入: torch.Size([4, 16, 64]) → 输出: torch.Size([4, 16, 64])
+</pre>
 </div>
 </div>
 </div>
