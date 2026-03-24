@@ -64,7 +64,6 @@ nav:
           - 哈希表: notebooks/算法刷题/数据结构/哈希表.ipynb
           - 二叉树: notebooks/算法刷题/数据结构/二叉树.ipynb
           - 堆: notebooks/算法刷题/数据结构/堆.ipynb
-          - 图: notebooks/算法刷题/数据结构/图论.ipynb
       - 算法思想类:
           - 前缀和: notebooks/算法刷题/算法/前缀和.ipynb
           - 差分: notebooks/算法刷题/算法/差分.ipynb
@@ -75,17 +74,23 @@ nav:
           - 多维 DP: notebooks/算法刷题/算法/多维动态规划.ipynb
           - 贪心: notebooks/算法刷题/算法/贪心算法.ipynb
           - 回溯: notebooks/算法刷题/算法/回溯.ipynb
+          - 图: notebooks/算法刷题/算法/图论.ipynb
       - 补充知识:
           - 排序: notebooks/算法刷题/排序.ipynb
           - 归纳总结: notebooks/算法刷题/Hot100归纳与题型对比.ipynb
 
-  - 搜广推&LLM业务题:
-      - 常见面试题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
-      - 手撕题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
-
   - 数据结构:
       - 数据结构: notebooks/数据结构基础/数据结构.ipynb
 
+  - 搜广推&LLM业务题:
+      - 常见面试题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
+      - 手撕题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
+  
+  - 论文理解:
+      - OneRec: notebooks/搜广推&llm业务和训练/论文理解/onerec.md
+      - OneTrans: notebooks/搜广推&llm业务和训练/论文理解/onetrans.md
+      - RankMixer: notebooks/搜广推&llm业务和训练/论文理解/rankmixer.md
+      
   - Python & PyTorch语法:
       - Python 语法: notebooks/python基础和pytorch基础/python语法.ipynb
       - 1. 数学运算: notebooks/python基础和pytorch基础/pytorch-1.数学运算.ipynb
