@@ -83,7 +83,7 @@ nav:
       - 数据结构: notebooks/数据结构基础/数据结构.ipynb
 
   - 搜广推&LLM业务题:
-      - 常见面试题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
+      - 常见面试题: notebooks/搜广推&llm业务和训练/搜广推常见面试题目.ipynb
       - 手撕题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
   
   - 论文理解:
@@ -99,3 +99,5 @@ nav:
       - 4. 数据加载与梯度管理: notebooks/python基础和pytorch基础/pytorch-4.数据加载和梯度管理.ipynb
       - 5. 基础知识总结: notebooks/python基础和pytorch基础/pytorch-5.基础知识总结.ipynb
       - 6. 各类库梳理: notebooks/python基础和pytorch基础/pytorch-6.architecture-tutorial.ipynb
+  - 机器学习基础知识:
+      - 梯度计算和优化算法: notebooks/机器学习/优化算法/优化算法总结.ipynb
