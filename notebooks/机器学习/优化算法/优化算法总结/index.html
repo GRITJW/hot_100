@@ -2207,6 +2207,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用优化器的实现和在MLP中的应用
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2511,6 +2522,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用优化器的实现和在MLP中的应用
+      
+    </span>
+  </a>
   
 </li>
       
@@ -3090,7 +3112,7 @@ $$\theta_{t+1} = \theta_t - \eta \nabla L(\theta_t)$$
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -3160,6 +3182,1089 @@ step 1500: x=1.386023, σ(x)=0.799957, loss=1.88e-09
 
 解析解: 1.386294
 梯度下降解: 1.386023
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=77b7b2d0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseOptimizer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Adam</span><span class="p">(</span><span class="n">BaseOptimizer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">beta1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">beta2</span><span class="o">=</span><span class="mf">0.999</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span> <span class="o">=</span> <span class="n">beta1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">=</span> <span class="n">beta2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+            <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span>
+
+            <span class="n">m</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">)</span><span class="o">.</span><span class="n">addcmul_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">)</span>
+
+            <span class="n">m_hat</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+            <span class="n">v_hat</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+            <span class="n">p</span><span class="o">.</span><span class="n">addcdiv_</span><span class="p">(</span><span class="n">m_hat</span><span class="p">,</span> <span class="n">v_hat</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">),</span> <span class="n">value</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+
+                
+<span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.8</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">opt</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">([</span><span class="n">x</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"optimized x:"</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"true x:"</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-2">import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class BaseOptimizer:
+    def zero_grad(self, params):
+        for p in params:
+            if p.grad is not None:
+                p.grad.zero_()
+
+class Adam(BaseOptimizer):
+    def __init__(self, lr=1e-3, beta1=0.9, beta2=0.999, eps=1e-8):
+        self.lr = lr
+        self.beta1 = beta1
+        self.beta2 = beta2
+        self.eps = eps
+        self.m = {}
+        self.v = {}
+        self.t = 0
+
+    @torch.no_grad()
+    def step(self, params):
+        self.t += 1
+        for p in params:
+            if p.grad is None:
+                continue
+            key = id(p)
+            if key not in self.m:
+                self.m[key] = torch.zeros_like(p)
+                self.v[key] = torch.zeros_like(p)
+
+            m = self.m[key]
+            v = self.v[key]
+            g = p.grad
+
+            m.mul_(self.beta1).add_(g, alpha=1 - self.beta1)
+            v.mul_(self.beta2).addcmul_(g, g, value=1 - self.beta2)
+
+            m_hat = m / (1 - self.beta1 ** self.t)
+            v_hat = v / (1 - self.beta2 ** self.t)
+
+            p.addcdiv_(m_hat, v_hat.sqrt().add(self.eps), value=-self.lr)
+
+                
+def sigmoid(x):
+    return 1 / (1 + torch.exp(-x))
+
+target = torch.tensor([0.8])
+x = torch.tensor([0.0], requires_grad=True)
+
+opt = Adam(lr=0.1)
+
+for step in range(200):
+    loss = 0.5 * (sigmoid(x) - target).pow(2).sum()
+
+    if x.grad is not None:
+        x.grad.zero_()
+    loss.backward()
+    opt.step([x])
+
+print("optimized x:", x.item())
+print("true x:", torch.logit(target).item())</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>optimized x: 1.3863083124160767
+true x: 1.3862944841384888
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=561b77e3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1b1109c1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="mlp">常用优化器的实现和在MLP中的应用<a class="anchor-link" href="#mlp">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=abe5f201">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># 基类：所有优化器的公共接口</span>
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseOptimizer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        每次 backward() 之后，梯度会累积在 p.grad 上。</span>
+<span class="sd">        若不清零，下一次 backward() 的梯度会叠加在旧梯度上，导致更新错误。</span>
+<span class="sd">        因此每次 step 结束（或开始）前必须手动清零。</span>
+<span class="sd">        """</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+
+
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># 梯度下降 GD / SGD / MiniBatchSGD</span>
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GD</span><span class="p">(</span><span class="n">BaseOptimizer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    ── 数学公式 ──────────────────────────────</span>
+<span class="sd">    θ_t = θ_{t-1} - lr * g_t</span>
+
+<span class="sd">    其中 g_t = ∂L/∂θ  为当前损失对参数的梯度</span>
+
+<span class="sd">    ── 三种变体的区别（仅在于 g_t 的计算范围）──</span>
+<span class="sd">      GD         : g_t 由全部数据计算（全量梯度，稳定但慢）</span>
+<span class="sd">      SGD        : g_t 由单条样本计算（噪声大，但有正则化效果）</span>
+<span class="sd">      MiniBatchSGD: g_t 由一个 batch 计算（工程中最常用的折中方案）</span>
+<span class="sd">    三者的参数更新公式完全一致，差异仅在调用方传入的数据量，</span>
+<span class="sd">    故 SGD 和 MiniBatchSGD 直接继承 GD，无需重写任何逻辑。</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>  <span class="c1"># 学习率：控制每步更新的幅度</span>
+
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>  <span class="c1"># 禁用自动微分，节省内存，参数更新不需要被记录进计算图</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># p = p - lr * grad</span>
+            <span class="c1"># add_(tensor, alpha=k)  等价于  p += k * tensor</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SGD</span><span class="p">(</span><span class="n">GD</span><span class="p">):</span>
+    <span class="k">pass</span>  <span class="c1"># 完全复用 GD，语义上表示"单样本梯度下降"</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MiniBatchSGD</span><span class="p">(</span><span class="n">GD</span><span class="p">):</span>
+    <span class="k">pass</span>  <span class="c1"># 完全复用 GD，语义上表示"小批量梯度下降"</span>
+
+
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># Momentum（动量优化器）</span>
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Momentum</span><span class="p">(</span><span class="n">BaseOptimizer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    ── 动机 ────────────────────────────────────────────────────────</span>
+<span class="sd">    纯 SGD 在梯度方向剧烈震荡时（如狭长山谷），收敛极慢。</span>
+<span class="sd">    动量的思想：引入"速度"变量 v，对历史梯度做指数加权平均，</span>
+<span class="sd">    使更新方向更平滑，同时在一致方向上加速。</span>
+
+<span class="sd">    ── 数学公式 ──────────────────────────────</span>
+<span class="sd">    v_t = β * v_{t-1} + (1-β) * g_t    # 速度 = 衰减旧速度 + 新梯度贡献</span>
+<span class="sd">    θ_t = θ_{t-1} - lr * v_t           # 参数沿速度方向更新</span>
+
+<span class="sd">    ── 参数说明 ──────────────────────────────</span>
+<span class="sd">    β（beta）: 动量系数，典型值 0.9</span>
+<span class="sd">      β 越大 → 历史梯度权重越高 → 方向更平滑，但对新梯度响应更迟钝</span>
+<span class="sd">      β=0    → 退化为普通 SGD</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span>
+        <span class="c1"># 用字典惰性存储每个参数的速度缓冲</span>
+        <span class="c1"># key = id(p)：参数对象的内存地址，作为唯一标识</span>
+        <span class="c1"># 惰性初始化：第一次 step 时才为该参数创建零向量</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">:</span>
+                <span class="c1"># 首次出现：初始化速度为全零（形状与参数相同）</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+            <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># 取出该参数对应的速度（引用，原地修改会持久化）</span>
+
+            <span class="c1"># v = β * v + (1-β) * g</span>
+            <span class="c1"># mul_(β)         → v = β * v            （衰减旧速度）</span>
+            <span class="c1"># add_(g, α=1-β)  → v = v + (1-β) * g   （融入新梯度）</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span>
+
+            <span class="c1"># θ = θ - lr * v</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+
+
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># AdaGrad（自适应梯度优化器）</span>
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AdaGrad</span><span class="p">(</span><span class="n">BaseOptimizer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    ── 动机 ────────────────────────────────────────────────────────</span>
+<span class="sd">    不同参数的梯度尺度差异可能很大（如 NLP 中稀疏特征 vs 高频特征）。</span>
+<span class="sd">    AdaGrad 为每个参数维护一个**累积历史梯度平方和** s，</span>
+<span class="sd">    用它来自适应地缩放每个参数的学习率：</span>
+<span class="sd">      历史梯度大的参数 → s 大 → 有效学习率小（防止过冲）</span>
+<span class="sd">      历史梯度小的参数 → s 小 → 有效学习率大（加速学习）</span>
+
+<span class="sd">    ── 数学公式 ──────────────────────────────</span>
+<span class="sd">    s_t = s_{t-1} + g_t²                    # 累积梯度平方（只增不减）</span>
+<span class="sd">    θ_t = θ_{t-1} - (lr / √(s_t + ε)) * g_t</span>
+
+<span class="sd">    ── 缺陷 ────────────────────────────────────────────────────────</span>
+<span class="sd">    s_t 单调递增，训练后期有效学习率趋近于 0，导致参数停止更新。</span>
+<span class="sd">    RMSProp 通过引入衰减系数解决此问题。</span>
+
+<span class="sd">    ── 参数说明 ──────────────────────────────</span>
+<span class="sd">    ε（eps）: 防止除以零的小量，典型值 1e-8</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 累积梯度平方，key=id(p)，惰性初始化</span>
+
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+            <span class="c1"># s = s + g²</span>
+            <span class="c1"># pow(2) 为逐元素平方</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+            <span class="c1"># θ = θ - lr * g / (√s + ε)</span>
+            <span class="c1"># addcdiv_(num, denom, value=k) 等价于 p += k * (num / denom)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">addcdiv_</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">),</span> <span class="n">value</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+
+
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># RMSProp（均方根传播）</span>
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RMSProp</span><span class="p">(</span><span class="n">BaseOptimizer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    ── 动机 ────────────────────────────────────────────────────────</span>
+<span class="sd">    AdaGrad 的改进版：将"累积梯度平方"改为"指数移动平均梯度平方"，</span>
+<span class="sd">    引入衰减系数 β，使 s 不再单调递增，从而在训练后期仍保持有效学习率。</span>
+
+<span class="sd">    ── 数学公式 ──────────────────────────────</span>
+<span class="sd">    s_t = β * s_{t-1} + (1-β) * g_t²       # 梯度平方的指数移动平均</span>
+<span class="sd">    θ_t = θ_{t-1} - (lr / √(s_t + ε)) * g_t</span>
+
+<span class="sd">    ── 与 AdaGrad 的对比 ────────────────────</span>
+<span class="sd">    AdaGrad:  s_t = s_{t-1} + g²         → s 只增不减，最终 lr→0</span>
+<span class="sd">    RMSProp:  s_t = β*s_{t-1} + (1-β)*g² → s 跟踪近期梯度，lr 稳定</span>
+
+<span class="sd">    ── 参数说明 ──────────────────────────────</span>
+<span class="sd">    β（beta）: 衰减系数，典型值 0.9，控制历史梯度的"遗忘速度"</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 梯度平方的指数移动平均，key=id(p)</span>
+
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+            <span class="c1"># s = β * s + (1-β) * g²</span>
+            <span class="c1"># mul_(β)              → s = β * s</span>
+            <span class="c1"># addcmul_(g, g, v=1-β)→ s = s + (1-β)*g*g  （逐元素 g²）</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span><span class="o">.</span><span class="n">addcmul_</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span>
+
+            <span class="c1"># θ = θ - lr * g / (√s + ε)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">addcdiv_</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">),</span> <span class="n">value</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+
+
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># Adam（自适应矩估计）= Momentum + RMSProp + 偏差修正</span>
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Adam</span><span class="p">(</span><span class="n">BaseOptimizer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    ── 动机 ────────────────────────────────────────────────────────</span>
+<span class="sd">    Adam 综合了两种思想：</span>
+<span class="sd">      1. Momentum  → 一阶矩 m：对梯度做指数移动平均，平滑更新方向</span>
+<span class="sd">      2. RMSProp   → 二阶矩 v：对梯度平方做指数移动平均，自适应学习率</span>
+
+<span class="sd">    额外引入"偏差修正"：训练初期 m/v 从零开始，会系统性地低估真实均值，</span>
+<span class="sd">    除以 (1-β^t) 可以补偿这一偏差（t 越大，修正系数越趋近于 1，影响消失）。</span>
+
+<span class="sd">    ── 完整数学公式 ──────────────────────────</span>
+<span class="sd">    # Step 1: 更新一阶矩（梯度的指数移动平均）</span>
+<span class="sd">    m_t = β1 * m_{t-1} + (1-β1) * g_t</span>
+
+<span class="sd">    # Step 2: 更新二阶矩（梯度平方的指数移动平均）</span>
+<span class="sd">    v_t = β2 * v_{t-1} + (1-β2) * g_t²</span>
+
+<span class="sd">    # Step 3: 偏差修正（消除初期零初始化带来的低估）</span>
+<span class="sd">    m̂_t = m_t / (1 - β1^t)</span>
+<span class="sd">    v̂_t = v_t / (1 - β2^t)</span>
+
+<span class="sd">    # Step 4: 参数更新（自适应学习率）</span>
+<span class="sd">    θ_t = θ_{t-1} - lr * m̂_t / (√v̂_t + ε)</span>
+
+<span class="sd">    ── 参数说明 ──────────────────────────────</span>
+<span class="sd">    β1=0.9  : 一阶矩衰减系数，控制梯度均值的平滑程度</span>
+<span class="sd">    β2=0.999: 二阶矩衰减系数，控制梯度方差的平滑程度（更大 → 更稳定）</span>
+<span class="sd">    ε=1e-8  : 防止除零，同时对极小梯度参数起到下界保护作用</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">beta1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">beta2</span><span class="o">=</span><span class="mf">0.999</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span>    <span class="o">=</span> <span class="n">lr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span> <span class="o">=</span> <span class="n">beta1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">=</span> <span class="n">beta2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span>   <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="p">{}</span>   <span class="c1"># 一阶矩缓冲（梯度均值），key=id(p)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">{}</span>   <span class="c1"># 二阶矩缓冲（梯度方差），key=id(p)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># 全局时间步，用于偏差修正系数 (1-β^t)</span>
+
+    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># 每调用一次 step，时间步 +1</span>
+
+        <span class="c1"># 提前计算偏差修正系数，避免在循环内重复计算（微小优化）</span>
+        <span class="n">bc1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>  <span class="c1"># bias correction for m</span>
+        <span class="n">bc2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>  <span class="c1"># bias correction for v</span>
+
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">:</span>
+                <span class="c1"># 惰性初始化：首次遇到该参数时，创建全零的一/二阶矩缓冲</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+            <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># 该参数的一阶矩（引用，原地修改会持久化）</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>  <span class="c1"># 该参数的二阶矩（引用）</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">grad</span>       <span class="c1"># 当前梯度</span>
+
+            <span class="c1"># ── Step 1: 更新一阶矩 ──────────────────────</span>
+            <span class="c1"># m = β1 * m + (1-β1) * g; alpha表示g的缩放系数</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span>
+
+            <span class="c1"># ── Step 2: 更新二阶矩 ──────────────────────</span>
+            <span class="c1"># v = β2 * v + (1-β2) * g²</span>
+            <span class="c1"># addcmul_(g, g, value=k) → v += k * g * g（逐元素平方，无临时张量）</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">)</span><span class="o">.</span><span class="n">addcmul_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">)</span>
+
+            <span class="c1"># ── Step 3: 偏差修正 ────────────────────────</span>
+            <span class="c1"># 注意：m_hat / v_hat 是新张量（不带下划线），不修改 m/v 本身</span>
+            <span class="c1"># 必须保留未修正的 m/v 用于下一个 step 的递推</span>
+            <span class="n">m_hat</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="n">bc1</span>   <span class="c1"># m̂ = m / (1-β1^t)</span>
+            <span class="n">v_hat</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="n">bc2</span>   <span class="c1"># v̂ = v / (1-β2^t)</span>
+
+            <span class="c1"># ── Step 4: 参数更新 ────────────────────────</span>
+            <span class="c1"># θ = θ - lr * m̂ / (√v̂ + ε)</span>
+            <span class="c1"># addcdiv_(num, denom, value=k) → p += k * (num/denom)  原地操作</span>
+            <span class="c1"># v_hat.sqrt().add(self.eps)：先开根号，再加 ε（均不带下划线，产生临时张量）</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">addcdiv_</span><span class="p">(</span><span class="n">m_hat</span><span class="p">,</span> <span class="n">v_hat</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">),</span> <span class="n">value</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+
+
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># 优化器族谱：演进关系一览</span>
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1">#</span>
+<span class="c1">#   SGD ──(加动量)──→ Momentum</span>
+<span class="c1">#    │</span>
+<span class="c1">#    └──(自适应lr)──→ AdaGrad ──(改累积为EMA)──→ RMSProp</span>
+<span class="c1">#                                                    │</span>
+<span class="c1">#                         Momentum ──────────────────┘</span>
+<span class="c1">#                              └──(两者结合+偏差修正)──→ Adam</span>
+<span class="c1">#</span>
+<span class="c1"># 每种优化器解决的核心问题：</span>
+<span class="c1">#   SGD       : 最基础，方向即梯度，无任何自适应</span>
+<span class="c1">#   Momentum  : 解决震荡，在一致方向上加速</span>
+<span class="c1">#   AdaGrad   : 解决特征梯度尺度差异，但后期 lr→0</span>
+<span class="c1">#   RMSProp   : 修复 AdaGrad 的 lr 衰减问题</span>
+<span class="c1">#   Adam      : 综合 Momentum + RMSProp，工程中最常用</span>
+
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># self.m和self.v的设计逻辑</span>
+<span class="c1"># ══════════════════════════════════════════════════════════════════</span>
+<span class="c1"># 一个简单的两层网络，有 4 个参数</span>
+<span class="c1"># model = Linear(2 -&gt; 4) + Linear(4 -&gt; 1)</span>
+
+<span class="c1"># # 对应 4 个 key</span>
+<span class="c1"># self.m = {</span>
+<span class="c1">#     id(W1): tensor(shape=[2,4]),   # W1 的一阶矩</span>
+<span class="c1">#     id(b1): tensor(shape=[4]),     # b1 的一阶矩</span>
+<span class="c1">#     id(W2): tensor(shape=[4,1]),   # W2 的一阶矩</span>
+<span class="c1">#     id(b2): tensor(shape=[1]),     # b2 的一阶矩</span>
+<span class="c1"># }</span>
+<span class="c1"># self.v 结构完全相同</span>
+
+
+<span class="c1"># 用 id(p) 而不是直接用 p 作为 key，原因是：</span>
+<span class="c1"># # 张量本身不能做字典 key（不可哈希）</span>
+<span class="c1"># self.m[p] = ...      # ❌ 报错</span>
+
+<span class="c1"># # id(p) 是整数（内存地址），可以做 key</span>
+<span class="c1"># self.m[id(p)] = ...  # ✅ 正常</span>
+<span class="c1"># ```</span>
+
+<span class="c1"># 所以整个逻辑链条是：</span>
+<span class="c1"># ```</span>
+<span class="c1"># params 里的每个参数 p</span>
+<span class="c1">#     → id(p) 作为唯一标识</span>
+<span class="c1">#     → 对应字典里独立的 m[key] 和 v[key]</span>
+<span class="c1">#     → 各自维护自己的递推历史</span>
+<span class="c1">#     → 各自计算自己的自适应学习率</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-3">import torch
+import torch.nn.functional as F
+from torch.utils.data import DataLoader, TensorDataset
+
+torch.manual_seed(42)
+
+# ══════════════════════════════════════════════════════════════════
+# 基类：所有优化器的公共接口
+# ══════════════════════════════════════════════════════════════════
+class BaseOptimizer:
+    def zero_grad(self, params):
+        """
+        每次 backward() 之后，梯度会累积在 p.grad 上。
+        若不清零，下一次 backward() 的梯度会叠加在旧梯度上，导致更新错误。
+        因此每次 step 结束（或开始）前必须手动清零。
+        """
+        for p in params:
+            if p.grad is not None:
+                p.grad.zero_()
+
+
+# ══════════════════════════════════════════════════════════════════
+# 梯度下降 GD / SGD / MiniBatchSGD
+# ══════════════════════════════════════════════════════════════════
+class GD(BaseOptimizer):
+    """
+    ── 数学公式 ──────────────────────────────
+    θ_t = θ_{t-1} - lr * g_t
+
+    其中 g_t = ∂L/∂θ  为当前损失对参数的梯度
+
+    ── 三种变体的区别（仅在于 g_t 的计算范围）──
+      GD         : g_t 由全部数据计算（全量梯度，稳定但慢）
+      SGD        : g_t 由单条样本计算（噪声大，但有正则化效果）
+      MiniBatchSGD: g_t 由一个 batch 计算（工程中最常用的折中方案）
+    三者的参数更新公式完全一致，差异仅在调用方传入的数据量，
+    故 SGD 和 MiniBatchSGD 直接继承 GD，无需重写任何逻辑。
+    """
+    def __init__(self, lr=1e-2):
+        self.lr = lr  # 学习率：控制每步更新的幅度
+
+    @torch.no_grad()  # 禁用自动微分，节省内存，参数更新不需要被记录进计算图
+    def step(self, params):
+        for p in params:
+            if p.grad is None:
+                continue
+            # p = p - lr * grad
+            # add_(tensor, alpha=k)  等价于  p += k * tensor
+            p.add_(p.grad, alpha=-self.lr)
+
+class SGD(GD):
+    pass  # 完全复用 GD，语义上表示"单样本梯度下降"
+
+class MiniBatchSGD(GD):
+    pass  # 完全复用 GD，语义上表示"小批量梯度下降"
+
+
+# ══════════════════════════════════════════════════════════════════
+# Momentum（动量优化器）
+# ══════════════════════════════════════════════════════════════════
+class Momentum(BaseOptimizer):
+    """
+    ── 动机 ────────────────────────────────────────────────────────
+    纯 SGD 在梯度方向剧烈震荡时（如狭长山谷），收敛极慢。
+    动量的思想：引入"速度"变量 v，对历史梯度做指数加权平均，
+    使更新方向更平滑，同时在一致方向上加速。
+
+    ── 数学公式 ──────────────────────────────
+    v_t = β * v_{t-1} + (1-β) * g_t    # 速度 = 衰减旧速度 + 新梯度贡献
+    θ_t = θ_{t-1} - lr * v_t           # 参数沿速度方向更新
+
+    ── 参数说明 ──────────────────────────────
+    β（beta）: 动量系数，典型值 0.9
+      β 越大 → 历史梯度权重越高 → 方向更平滑，但对新梯度响应更迟钝
+      β=0    → 退化为普通 SGD
+    """
+    def __init__(self, lr=1e-2, beta=0.9):
+        self.lr = lr
+        self.beta = beta
+        # 用字典惰性存储每个参数的速度缓冲
+        # key = id(p)：参数对象的内存地址，作为唯一标识
+        # 惰性初始化：第一次 step 时才为该参数创建零向量
+        self.v = {}
+
+    @torch.no_grad()
+    def step(self, params):
+        for p in params:
+            if p.grad is None:
+                continue
+
+            key = id(p)
+            if key not in self.v:
+                # 首次出现：初始化速度为全零（形状与参数相同）
+                self.v[key] = torch.zeros_like(p)
+
+            v = self.v[key]  # 取出该参数对应的速度（引用，原地修改会持久化）
+
+            # v = β * v + (1-β) * g
+            # mul_(β)         → v = β * v            （衰减旧速度）
+            # add_(g, α=1-β)  → v = v + (1-β) * g   （融入新梯度）
+            v.mul_(self.beta).add_(p.grad, alpha=1 - self.beta)
+
+            # θ = θ - lr * v
+            p.add_(v, alpha=-self.lr)
+
+
+# ══════════════════════════════════════════════════════════════════
+# AdaGrad（自适应梯度优化器）
+# ══════════════════════════════════════════════════════════════════
+class AdaGrad(BaseOptimizer):
+    """
+    ── 动机 ────────────────────────────────────────────────────────
+    不同参数的梯度尺度差异可能很大（如 NLP 中稀疏特征 vs 高频特征）。
+    AdaGrad 为每个参数维护一个**累积历史梯度平方和** s，
+    用它来自适应地缩放每个参数的学习率：
+      历史梯度大的参数 → s 大 → 有效学习率小（防止过冲）
+      历史梯度小的参数 → s 小 → 有效学习率大（加速学习）
+
+    ── 数学公式 ──────────────────────────────
+    s_t = s_{t-1} + g_t²                    # 累积梯度平方（只增不减）
+    θ_t = θ_{t-1} - (lr / √(s_t + ε)) * g_t
+
+    ── 缺陷 ────────────────────────────────────────────────────────
+    s_t 单调递增，训练后期有效学习率趋近于 0，导致参数停止更新。
+    RMSProp 通过引入衰减系数解决此问题。
+
+    ── 参数说明 ──────────────────────────────
+    ε（eps）: 防止除以零的小量，典型值 1e-8
+    """
+    def __init__(self, lr=1e-2, eps=1e-8):
+        self.lr = lr
+        self.eps = eps
+        self.s = {}  # 累积梯度平方，key=id(p)，惰性初始化
+
+    @torch.no_grad()
+    def step(self, params):
+        for p in params:
+            if p.grad is None:
+                continue
+
+            key = id(p)
+            if key not in self.s:
+                self.s[key] = torch.zeros_like(p)
+
+            s = self.s[key]
+
+            # s = s + g²
+            # pow(2) 为逐元素平方
+            s.add_(p.grad.pow(2))
+
+            # θ = θ - lr * g / (√s + ε)
+            # addcdiv_(num, denom, value=k) 等价于 p += k * (num / denom)
+            p.addcdiv_(p.grad, s.sqrt().add(self.eps), value=-self.lr)
+
+
+# ══════════════════════════════════════════════════════════════════
+# RMSProp（均方根传播）
+# ══════════════════════════════════════════════════════════════════
+class RMSProp(BaseOptimizer):
+    """
+    ── 动机 ────────────────────────────────────────────────────────
+    AdaGrad 的改进版：将"累积梯度平方"改为"指数移动平均梯度平方"，
+    引入衰减系数 β，使 s 不再单调递增，从而在训练后期仍保持有效学习率。
+
+    ── 数学公式 ──────────────────────────────
+    s_t = β * s_{t-1} + (1-β) * g_t²       # 梯度平方的指数移动平均
+    θ_t = θ_{t-1} - (lr / √(s_t + ε)) * g_t
+
+    ── 与 AdaGrad 的对比 ────────────────────
+    AdaGrad:  s_t = s_{t-1} + g²         → s 只增不减，最终 lr→0
+    RMSProp:  s_t = β*s_{t-1} + (1-β)*g² → s 跟踪近期梯度，lr 稳定
+
+    ── 参数说明 ──────────────────────────────
+    β（beta）: 衰减系数，典型值 0.9，控制历史梯度的"遗忘速度"
+    """
+    def __init__(self, lr=1e-3, beta=0.9, eps=1e-8):
+        self.lr = lr
+        self.beta = beta
+        self.eps = eps
+        self.s = {}  # 梯度平方的指数移动平均，key=id(p)
+
+    @torch.no_grad()
+    def step(self, params):
+        for p in params:
+            if p.grad is None:
+                continue
+
+            key = id(p)
+            if key not in self.s:
+                self.s[key] = torch.zeros_like(p)
+
+            s = self.s[key]
+
+            # s = β * s + (1-β) * g²
+            # mul_(β)              → s = β * s
+            # addcmul_(g, g, v=1-β)→ s = s + (1-β)*g*g  （逐元素 g²）
+            s.mul_(self.beta).addcmul_(p.grad, p.grad, value=1 - self.beta)
+
+            # θ = θ - lr * g / (√s + ε)
+            p.addcdiv_(p.grad, s.sqrt().add(self.eps), value=-self.lr)
+
+
+# ══════════════════════════════════════════════════════════════════
+# Adam（自适应矩估计）= Momentum + RMSProp + 偏差修正
+# ══════════════════════════════════════════════════════════════════
+class Adam(BaseOptimizer):
+    """
+    ── 动机 ────────────────────────────────────────────────────────
+    Adam 综合了两种思想：
+      1. Momentum  → 一阶矩 m：对梯度做指数移动平均，平滑更新方向
+      2. RMSProp   → 二阶矩 v：对梯度平方做指数移动平均，自适应学习率
+
+    额外引入"偏差修正"：训练初期 m/v 从零开始，会系统性地低估真实均值，
+    除以 (1-β^t) 可以补偿这一偏差（t 越大，修正系数越趋近于 1，影响消失）。
+
+    ── 完整数学公式 ──────────────────────────
+    # Step 1: 更新一阶矩（梯度的指数移动平均）
+    m_t = β1 * m_{t-1} + (1-β1) * g_t
+
+    # Step 2: 更新二阶矩（梯度平方的指数移动平均）
+    v_t = β2 * v_{t-1} + (1-β2) * g_t²
+
+    # Step 3: 偏差修正（消除初期零初始化带来的低估）
+    m̂_t = m_t / (1 - β1^t)
+    v̂_t = v_t / (1 - β2^t)
+
+    # Step 4: 参数更新（自适应学习率）
+    θ_t = θ_{t-1} - lr * m̂_t / (√v̂_t + ε)
+
+    ── 参数说明 ──────────────────────────────
+    β1=0.9  : 一阶矩衰减系数，控制梯度均值的平滑程度
+    β2=0.999: 二阶矩衰减系数，控制梯度方差的平滑程度（更大 → 更稳定）
+    ε=1e-8  : 防止除零，同时对极小梯度参数起到下界保护作用
+    """
+    def __init__(self, lr=1e-3, beta1=0.9, beta2=0.999, eps=1e-8):
+        self.lr    = lr
+        self.beta1 = beta1
+        self.beta2 = beta2
+        self.eps   = eps
+        self.m = {}   # 一阶矩缓冲（梯度均值），key=id(p)
+        self.v = {}   # 二阶矩缓冲（梯度方差），key=id(p)
+        self.t = 0    # 全局时间步，用于偏差修正系数 (1-β^t)
+
+    @torch.no_grad()
+    def step(self, params):
+        self.t += 1  # 每调用一次 step，时间步 +1
+
+        # 提前计算偏差修正系数，避免在循环内重复计算（微小优化）
+        bc1 = 1 - self.beta1 ** self.t  # bias correction for m
+        bc2 = 1 - self.beta2 ** self.t  # bias correction for v
+
+        for p in params:
+            if p.grad is None:
+                continue
+
+            key = id(p)
+            if key not in self.m:
+                # 惰性初始化：首次遇到该参数时，创建全零的一/二阶矩缓冲
+                self.m[key] = torch.zeros_like(p)
+                self.v[key] = torch.zeros_like(p)
+
+            m = self.m[key]  # 该参数的一阶矩（引用，原地修改会持久化）
+            v = self.v[key]  # 该参数的二阶矩（引用）
+            g = p.grad       # 当前梯度
+
+            # ── Step 1: 更新一阶矩 ──────────────────────
+            # m = β1 * m + (1-β1) * g; alpha表示g的缩放系数
+            m.mul_(self.beta1).add_(g, alpha=1 - self.beta1)
+            m.mul_(self.beta1).add_(g, alpha=1 - self.beta1)
+
+            # ── Step 2: 更新二阶矩 ──────────────────────
+            # v = β2 * v + (1-β2) * g²
+            # addcmul_(g, g, value=k) → v += k * g * g（逐元素平方，无临时张量）
+            v.mul_(self.beta2).addcmul_(g, g, value=1 - self.beta2)
+
+            # ── Step 3: 偏差修正 ────────────────────────
+            # 注意：m_hat / v_hat 是新张量（不带下划线），不修改 m/v 本身
+            # 必须保留未修正的 m/v 用于下一个 step 的递推
+            m_hat = m / bc1   # m̂ = m / (1-β1^t)
+            v_hat = v / bc2   # v̂ = v / (1-β2^t)
+
+            # ── Step 4: 参数更新 ────────────────────────
+            # θ = θ - lr * m̂ / (√v̂ + ε)
+            # addcdiv_(num, denom, value=k) → p += k * (num/denom)  原地操作
+            # v_hat.sqrt().add(self.eps)：先开根号，再加 ε（均不带下划线，产生临时张量）
+            p.addcdiv_(m_hat, v_hat.sqrt().add(self.eps), value=-self.lr)
+
+
+# ══════════════════════════════════════════════════════════════════
+# 优化器族谱：演进关系一览
+# ══════════════════════════════════════════════════════════════════
+#
+#   SGD ──(加动量)──→ Momentum
+#    │
+#    └──(自适应lr)──→ AdaGrad ──(改累积为EMA)──→ RMSProp
+#                                                    │
+#                         Momentum ──────────────────┘
+#                              └──(两者结合+偏差修正)──→ Adam
+#
+# 每种优化器解决的核心问题：
+#   SGD       : 最基础，方向即梯度，无任何自适应
+#   Momentum  : 解决震荡，在一致方向上加速
+#   AdaGrad   : 解决特征梯度尺度差异，但后期 lr→0
+#   RMSProp   : 修复 AdaGrad 的 lr 衰减问题
+#   Adam      : 综合 Momentum + RMSProp，工程中最常用
+
+# ══════════════════════════════════════════════════════════════════
+# self.m和self.v的设计逻辑
+# ══════════════════════════════════════════════════════════════════
+# 一个简单的两层网络，有 4 个参数
+# model = Linear(2 -&gt; 4) + Linear(4 -&gt; 1)
+
+# # 对应 4 个 key
+# self.m = {
+#     id(W1): tensor(shape=[2,4]),   # W1 的一阶矩
+#     id(b1): tensor(shape=[4]),     # b1 的一阶矩
+#     id(W2): tensor(shape=[4,1]),   # W2 的一阶矩
+#     id(b2): tensor(shape=[1]),     # b2 的一阶矩
+# }
+# self.v 结构完全相同
+
+
+# 用 id(p) 而不是直接用 p 作为 key，原因是：
+# # 张量本身不能做字典 key（不可哈希）
+# self.m[p] = ...      # ❌ 报错
+
+# # id(p) 是整数（内存地址），可以做 key
+# self.m[id(p)] = ...  # ✅ 正常
+# ```
+
+# 所以整个逻辑链条是：
+# ```
+# params 里的每个参数 p
+#     → id(p) 作为唯一标识
+#     → 对应字典里独立的 m[key] 和 v[key]
+#     → 各自维护自己的递推历史
+#     → 各自计算自己的自适应学习率</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=22c03d5a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dims</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">layernorm</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="n">layer_dims</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_dim</span><span class="p">]</span> <span class="o">+</span> <span class="n">hidden_dims</span> <span class="o">+</span> <span class="p">[</span><span class="n">output_dim</span><span class="p">]</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_dims</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">layer_dims</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">layer_dims</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">layer_dims</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># 最后一层不要激活/Dropout/Norm</span>
+                <span class="k">if</span> <span class="n">layernorm</span><span class="p">:</span>
+                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">layer_dims</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>      <span class="c1"># nn.LayerNorm 必须指定 特征维度大小（即输入最后一维的大小）</span>
+
+                <span class="k">if</span> <span class="n">activation</span> <span class="o">==</span> <span class="s1">'relu'</span><span class="p">:</span>
+                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+                <span class="k">elif</span> <span class="n">activation</span> <span class="o">==</span> <span class="s1">'sigmoid'</span><span class="p">:</span>
+                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">())</span>
+                <span class="k">elif</span> <span class="n">activation</span> <span class="o">==</span> <span class="s1">'tanh'</span><span class="p">:</span>
+                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">())</span>
+
+                <span class="c1"># Dropout接收的输入是经过ReLU激活后的向量，然后对这些激活值进行随机屏蔽，直接影响的是传递给下一层的信息</span>
+                <span class="k">if</span> <span class="n">dropout</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">))</span>
+
+        <span class="c1"># *被称为"解包操作符"（unpacking operator），它的作用是将一个可迭代对象（如列表、元组）中的元素逐个取出，作为独立的参数传递给函数。</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">layers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialize_weight</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">():</span>       <span class="c1"># 调用self.modules()会依次返回整个MLP模型、第一个Linear层、LayerNorm层、ReLU层、第二个Linear层等等</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span>       <span class="c1"># Linear层有权重矩阵和偏置向量需要初始化</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>  <span class="c1"># PyTorch的设计体系中，函数名末尾的下划线表示这是一个"就地操作"（in-place operation），意思是它会直接修改传入的张量，而不是返回一个新的张量。</span>
+                <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">total_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">(</span><span class="n">set_to_none</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+
+            <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">xb</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">: total_loss损失为</span><span class="si">{</span><span class="n">total_loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+        <span class="n">avg_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_loss</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">history</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">AdaGrad</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-4">import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import DataLoader, TensorDataset
+
+torch.manual_seed(42)
+
+
+class MLP(nn.Module):
+    def __init__(self, input_dim, hidden_dims, output_dim, activation='relu', dropout=0.1, layernorm=True):
+        super().__init__()
+
+        layer_dims = [input_dim] + hidden_dims + [output_dim]
+        layers = []
+
+        for i in range(len(layer_dims) - 1):
+            layers.append(nn.Linear(layer_dims[i], layer_dims[i+1]))
+
+            if i &lt; len(layer_dims) - 2:  # 最后一层不要激活/Dropout/Norm
+                if layernorm:
+                    layers.append(nn.LayerNorm(layer_dims[i+1]))      # nn.LayerNorm 必须指定 特征维度大小（即输入最后一维的大小）
+
+                if activation == 'relu':
+                    layers.append(nn.ReLU())
+                elif activation == 'sigmoid':
+                    layers.append(nn.Sigmoid())
+                elif activation == 'tanh':
+                    layers.append(nn.Tanh())
+
+                # Dropout接收的输入是经过ReLU激活后的向量，然后对这些激活值进行随机屏蔽，直接影响的是传递给下一层的信息
+                if dropout &gt; 0:
+                    layers.append(nn.Dropout(dropout))
+
+        # *被称为"解包操作符"（unpacking operator），它的作用是将一个可迭代对象（如列表、元组）中的元素逐个取出，作为独立的参数传递给函数。
+        self.network = nn.Sequential(*layers)
+        self.initialize_weight()
+
+    def initialize_weight(self):
+        for module in self.modules():       # 调用self.modules()会依次返回整个MLP模型、第一个Linear层、LayerNorm层、ReLU层、第二个Linear层等等
+            if isinstance(module, nn.Linear):       # Linear层有权重矩阵和偏置向量需要初始化
+                nn.init.xavier_uniform_(module.weight)  # PyTorch的设计体系中，函数名末尾的下划线表示这是一个"就地操作"（in-place operation），意思是它会直接修改传入的张量，而不是返回一个新的张量。
+                if module.bias is not None:
+                    nn.init.constant_(module.bias, 0)
+
+    def forward(self, x):
+        return self.network(x)
+
+def train(model, optimizer, loader, epochs=100):
+    history = []
+    for epoch in range(epochs+1):
+        total_loss = 0.0
+        for xb, yb in loader:
+            pred = model(xb)
+            loss = F.mse_loss(pred, yb)
+
+            model.zero_grad(set_to_none=True)
+            loss.backward()
+            optimizer.step(model.parameters())
+
+            total_loss += loss.item() * xb.size(0)
+        if epoch % 100 == 0:
+            print(f"{epoch}: total_loss损失为{total_loss}")
+
+        avg_loss = total_loss / len(loader.dataset)
+        history.append(avg_loss)
+
+    return history
+
+N = 2000
+X = torch.rand(N, 2) * 4 - 2
+y = torch.sin(X[:, :1]) + 0.3 * X[:, 1:2] ** 2 + 0.1 * torch.randn(N, 1)
+
+dataset = TensorDataset(X, y)
+
+model = MLP(2, [8, 16], 1)
+optimizer = AdaGrad(lr=1e-1)
+loader = DataLoader(dataset, batch_size=32, shuffle=True)
+history = train(model, optimizer, loader, epochs=500)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>0: total_loss损失为507.2723476886749
+100: total_loss损失为103.4418934583664
+200: total_loss损失为92.72998484969139
+300: total_loss损失为84.88741222023964
+400: total_loss损失为79.32599598169327
+500: total_loss损失为75.8373444378376
 </pre>
 </div>
 </div>

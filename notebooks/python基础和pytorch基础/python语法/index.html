@@ -2257,6 +2257,78 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#adam-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adam 优化器中的 PyTorch 原地操作详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adam 优化器中的 PyTorch 原地操作详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、核心概念：带下划线 = 原地操作（In-place）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、逐行拆解 Adam 的核心更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、为什么不用 ？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、完整操作速查表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adam-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、一图总结 Adam 一次 step 的数据流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3171,6 +3243,78 @@
     <span class="md-ellipsis">
       
         最终整体结构回顾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adam-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adam 优化器中的 PyTorch 原地操作详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adam 优化器中的 PyTorch 原地操作详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、核心概念：带下划线 = 原地操作（In-place）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、逐行拆解 Adam 的核心更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、为什么不用 ？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、完整操作速查表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adam-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、一图总结 Adam 一次 step 的数据流
       
     </span>
   </a>
@@ -4346,6 +4490,142 @@ Adam（子类）
 └── step：实现 Adam 的具体更新公式
 </code></pre>
 <p>总结一句话：<code>super().__init__(params, lr)</code> 的意思是"先让父类把公共的初始化工作做完，我再在此基础上添加自己特有的东西"。这是所有继承结构中 <code>__init__</code> 的标准写法。</p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>class Adam(BaseOptimizer)</code></td>
+<td>声明 Adam <strong>继承</strong> BaseOptimizer，获得其所有方法</td>
+</tr>
+<tr>
+<td><code>super().__init__(params, lr)</code></td>
+<td>调用父类的 <code>__init__</code>，执行父类的初始化赋值操作</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=402d1da2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e39a2aa4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="adam-pytorch">Adam 优化器中的 PyTorch 原地操作详解<a class="anchor-link" href="#adam-pytorch">¶</a></h2><h3 id="_-in-place">一、核心概念：带下划线 <code>_</code> = 原地操作（In-place）<a class="anchor-link" href="#_-in-place">¶</a></h3><div class="highlight"><pre><span></span><span class="c1"># 普通操作：创建新张量，原张量不变</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># b 是新张量，a 还是 [1, 2]</span>
+
+<span class="c1"># 原地操作：直接修改原张量，不创建新对象</span>
+<span class="n">a</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>         <span class="c1"># a 本身变成 [2, 4]，没有新张量产生</span>
+</pre></div>
+<blockquote>
+<p><strong>为什么优化器要用原地操作？</strong>
+优化器管理的 <code>m</code>、<code>v</code>、<code>p</code> 都是需要<strong>持久存活</strong>的状态缓冲，每次 step 只是更新其数值，不能丢掉原对象再新建一个——否则字典里存的引用就失效了。</p>
+</blockquote>
+<hr/>
+<h3 id="adam">二、逐行拆解 Adam 的核心更新<a class="anchor-link" href="#adam">¶</a></h3><p><strong>第一行：更新一阶矩 m</strong></p>
+<div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span>
+</pre></div>
+<p>对应数学公式：$m_t = \beta_1 \cdot m_{t-1} + (1-\beta_1) \cdot g_t$</p>
+<p>拆开看：</p>
+<div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span>               <span class="c1"># m = m * beta1        （衰减旧均值）</span>
+ <span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span>  <span class="c1"># m = m + g*(1-beta1)  （加入新梯度）</span>
+</pre></div>
+<p><code>alpha</code> 是 <code>add_</code> 的缩放系数，等价于：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 等价写法（但会产生临时张量，浪费内存）</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span>
+</pre></div>
+<hr/>
+<p><strong>第二行：更新二阶矩 v</strong></p>
+<div class="highlight"><pre><span></span><span class="n">v</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">)</span><span class="o">.</span><span class="n">addcmul_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">)</span>
+</pre></div>
+<p>对应数学公式：$v_t = \beta_2 \cdot v_{t-1} + (1-\beta_2) \cdot g_t^2$</p>
+<p><code>addcmul_</code> = add + component-wise multiply（逐元素乘后相加）：</p>
+<div class="highlight"><pre><span></span><span class="c1"># addcmul_(tensor1, tensor2, value=k)  等价于：</span>
+<span class="c1"># self += k * tensor1 * tensor2</span>
+
+<span class="n">v</span><span class="o">.</span><span class="n">addcmul_</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">)</span>
+<span class="c1"># 即：v = v + (1-beta2) * g * g     ← g*g 就是梯度平方</span>
+</pre></div>
+<hr/>
+<p><strong>第三行：参数更新</strong></p>
+<div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">addcdiv_</span><span class="p">(</span><span class="n">m_hat</span><span class="p">,</span> <span class="n">v_hat</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">),</span> <span class="n">value</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+</pre></div>
+<p>对应数学公式：$\theta_t = \theta_{t-1} - \alpha \cdot \dfrac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$</p>
+<p><code>addcdiv_</code> = add + component-wise divide（逐元素除后相加）：</p>
+<div class="highlight"><pre><span></span><span class="c1"># addcdiv_(numerator, denominator, value=k) 等价于：</span>
+<span class="c1"># self += k * (numerator / denominator)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">addcdiv_</span><span class="p">(</span><span class="n">m_hat</span><span class="p">,</span> <span class="n">v_hat</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">),</span> <span class="n">value</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
+<span class="c1"># 即：p = p + (-lr) * m_hat / (sqrt(v_hat) + eps)</span>
+</pre></div>
+<hr/>
+<h3 id="torchmatmul">三、为什么不用 <code>torch.matmul</code>？<a class="anchor-link" href="#torchmatmul">¶</a></h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>torch.matmul</code></td>
+<td>矩阵乘法，做线性变换（如 <code>x @ W</code>）</td>
+</tr>
+<tr>
+<td><code>mul_</code> / <code>addcmul_</code></td>
+<td><strong>逐元素</strong>乘法，每个参数独立缩放</td>
+</tr>
+</tbody>
+</table>
+<p>Adam 更新的本质是：<strong>对每个参数分量独立地计算自适应学习率</strong>，不同分量之间没有任何交叉影响，因此是逐元素操作，与矩阵乘法无关。</p>
+<div class="highlight"><pre><span></span><span class="c1"># 直觉类比：</span>
+<span class="c1"># matmul: [1,2] @ [[3],[4]] = 1*3 + 2*4 = 11  ← 各分量混合</span>
+<span class="c1"># mul_  : [1,2] * [3,4]     = [3, 8]           ← 各分量独立</span>
+</pre></div>
+<hr/>
+<h3 id="">四、完整操作速查表<a class="anchor-link" href="#">¶</a></h3><pre><code>操作符                    含义                          等价普通写法
+─────────────────────────────────────────────────────────────────
+a.mul_(k)                a = a * k                    a *= k
+a.add_(b, alpha=k)       a = a + k*b                  a += k * b
+a.addcmul_(b, c, value=k)  a = a + k*(b*c)  逐元素      a += k * b * c
+a.addcdiv_(b, c, value=k)  a = a + k*(b/c)  逐元素      a += k * b / c
+a.sqrt()                 返回新张量（各元素开根号）      —
+a.add(eps)               返回新张量（各元素加 eps）      —（注意无下划线）
+</code></pre>
+<blockquote>
+<p><strong>链式调用</strong>如 <code>v_hat.sqrt().add(self.eps)</code> 中没有下划线，是因为这里需要的是<strong>临时计算结果</strong>（分母），不需要修改 <code>v_hat</code> 本身。</p>
+</blockquote>
+<hr/>
+<h3 id="adam-step">五、一图总结 Adam 一次 step 的数据流<a class="anchor-link" href="#adam-step">¶</a></h3><pre><code>g = p.grad
+    │
+    ├──→ m.mul_(β1).add_(g, α=1-β1)        更新一阶矩 m（梯度均值）
+    │
+    ├──→ v.mul_(β2).addcmul_(g,g, v=1-β2)  更新二阶矩 v（梯度方差）
+    │
+    ├──→ m_hat = m / (1 - β1^t)            偏差修正
+    │    v_hat = v / (1 - β2^t)
+    │
+    └──→ p.addcdiv_(m_hat, √v_hat+ε, v=-lr) 参数更新
+</code></pre>
 </div>
 </div>
 </div>
