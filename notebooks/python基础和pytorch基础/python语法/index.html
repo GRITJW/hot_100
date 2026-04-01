@@ -29,7 +29,7 @@
     
     
       
-        <title>Python 语法 - 推荐算法学习笔记</title>
+        <title>Python 运算符专题讲解：面向算法竞赛初学者 - 推荐算法学习笔记</title>
       
     
     
@@ -54,6 +54,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -114,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python 语法
+              Python 运算符专题讲解：面向算法竞赛初学者
             
           </span>
         </div>
@@ -1616,7 +1618,7 @@
   <span class="md-ellipsis">
     
   
-    Python 语法
+    Python 运算符专题讲解：面向算法竞赛初学者
   
 
     
@@ -1634,7 +1636,7 @@
   <span class="md-ellipsis">
     
   
-    Python 语法
+    Python 运算符专题讲解：面向算法竞赛初学者
   
 
     
@@ -2318,6 +2320,766 @@
     <span class="md-ellipsis">
       
         五、一图总结 Adam 一次 step 的数据流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 运算符专题讲解：面向算法竞赛初学者
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python 运算符专题讲解：面向算法竞赛初学者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、Python 常见算术运算符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、Python 常见算术运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 运算符速览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 逐一详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 逐一详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        减法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        乘法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#true-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实数除法（True Division）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向下取整除法（Floor Division）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        取余/取模
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        幂运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、取余运算 与模数 mod 的关系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、取余运算 与模数 mod 的关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-remaindermodulus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 余数（Remainder）与模数（Modulus）的定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 对 2 取模：判断奇偶性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 同余关系： 的含义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 竞赛中 的四大核心应用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 竞赛中 的四大核心应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1circular-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用 1：循环数组（Circular Array）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用 2：大数取模防溢出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3fast-exponentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用 3：快速幂（Fast Exponentiation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4string-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用 4：字符串哈希（String Hashing）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、比较运算符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、比较运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 运算符列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 与 的严格区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Python 特有：链式比较
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、逻辑运算符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、逻辑运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 运算符列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-short-circuit-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 短路求值（Short-circuit Evaluation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 综合示例：区间判断与网格 BFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、位运算符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、位运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 二进制基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 六种位运算符详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 六种位运算符详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位与（Bitwise AND）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位或（Bitwise OR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-xor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位异或（Bitwise XOR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位取反（Bitwise NOT）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        左移（Left Shift）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        右移（Right Shift）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 核心技巧： 判断奇偶
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-state-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 综合示例：状态压缩（State Compression）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、竞赛常用数学函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、竞赛常用数学函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 内置函数（无需导入）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 内置函数（无需导入）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 绝对值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 — 幂运算与快速幂
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 四舍五入
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 模块函数（需要 ）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 模块函数（需要 ）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 平方根
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 — 向下/向上取整
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 最大公约数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 对数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 函数功能分类速查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、运算符优先级
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、运算符优先级">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 优先级表（从高到低）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 经典示例： 为什么不是 20？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 常见优先级陷阱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：竞赛场景速查表
       
     </span>
   </a>
@@ -3326,6 +4088,766 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#python_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 运算符专题讲解：面向算法竞赛初学者
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python 运算符专题讲解：面向算法竞赛初学者">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、Python 常见算术运算符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、Python 常见算术运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 运算符速览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 逐一详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 逐一详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        减法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        乘法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#true-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实数除法（True Division）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向下取整除法（Floor Division）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        取余/取模
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        幂运算
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、取余运算 与模数 mod 的关系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、取余运算 与模数 mod 的关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-remaindermodulus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 余数（Remainder）与模数（Modulus）的定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 对 2 取模：判断奇偶性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 同余关系： 的含义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 竞赛中 的四大核心应用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 竞赛中 的四大核心应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1circular-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用 1：循环数组（Circular Array）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用 2：大数取模防溢出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3fast-exponentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用 3：快速幂（Fast Exponentiation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4string-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用 4：字符串哈希（String Hashing）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、比较运算符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、比较运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 运算符列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 与 的严格区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Python 特有：链式比较
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、逻辑运算符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、逻辑运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 运算符列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-short-circuit-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 短路求值（Short-circuit Evaluation）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 综合示例：区间判断与网格 BFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、位运算符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、位运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 二进制基础
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 六种位运算符详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 六种位运算符详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位与（Bitwise AND）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位或（Bitwise OR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-xor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位异或（Bitwise XOR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位取反（Bitwise NOT）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        左移（Left Shift）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        右移（Right Shift）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 核心技巧： 判断奇偶
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-state-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 综合示例：状态压缩（State Compression）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、竞赛常用数学函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、竞赛常用数学函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 内置函数（无需导入）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 内置函数（无需导入）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 绝对值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 — 幂运算与快速幂
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 四舍五入
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 模块函数（需要 ）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 模块函数（需要 ）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 平方根
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        与 — 向下/向上取整
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 最大公约数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        — 对数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 函数功能分类速查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、运算符优先级
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、运算符优先级">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 优先级表（从高到低）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 经典示例： 为什么不是 20？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 常见优先级陷阱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 记忆口诀
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：竞赛场景速查表
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3342,8 +4864,6 @@
                   
 
 
-
-  <h1>Python 语法</h1>
 
 <script>
 (function (global, factory) {
@@ -4626,6 +6146,937 @@ a.add(eps)               返回新张量（各元素加 eps）      —（注意
     │
     └──→ p.addcdiv_(m_hat, √v_hat+ε, v=-lr) 参数更新
 </code></pre>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aa54114e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="python">Python 运算符专题讲解：面向算法竞赛初学者<a class="anchor-link" href="#python">¶</a></h1><blockquote>
+<p><strong>适用对象</strong>：ACM / OJ 竞赛入门学习者<br/>
+<strong>学习目标</strong>：系统掌握 Python 常见运算符及其在算法题中的典型应用</p>
+</blockquote>
+<hr/>
+<h2 id="python">一、Python 常见算术运算符<a class="anchor-link" href="#python">¶</a></h2><p>Python 提供了七种基本算术运算符，每一种都在算法题中有其特定的应用场景。</p>
+<h3 id="11">1.1 运算符速览<a class="anchor-link" href="#11">¶</a></h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>英文名称</th>
+<th>数学含义</th>
+<th>典型应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Addition</td>
+<td>加法</td>
+<td>求和、字符串拼接</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Subtraction</td>
+<td>减法</td>
+<td>差值计算、偏移量</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Multiplication</td>
+<td>乘法</td>
+<td>组合计数、面积计算</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>True Division</td>
+<td>实数除法</td>
+<td>几何计算、期望值</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>Floor Division</td>
+<td>向下取整除法</td>
+<td>分组、二分中点</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Modulo</td>
+<td>取余/取模</td>
+<td>奇偶判断、循环数组、哈希</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>Exponentiation</td>
+<td>幂运算</td>
+<td>快速幂、多项式计算</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h3 id="12">1.2 逐一详解<a class="anchor-link" href="#12">¶</a></h3><h4 id=""><code>+</code> 加法<a class="anchor-link" href="#">¶</a></h4><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>    <span class="c1"># 8</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"AC"</span> <span class="o">+</span> <span class="s2">"M"</span><span class="p">)</span>  <span class="c1"># 字符串拼接：ACM</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：前缀和、区间求和、BFS 路径长度累加。</p>
+</blockquote>
+<hr/>
+<h4 id="-"><code>-</code> 减法<a class="anchor-link" href="#-">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># 取绝对值：5</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：差分数组、计算两点距离、偏移量转换（如坐标压缩）。</p>
+</blockquote>
+<hr/>
+<h4 id=""><code>*</code> 乘法<a class="anchor-link" href="#">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>    <span class="c1"># 42</span>
+<span class="nb">print</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 初始化列表：[0, 0, 0, 0, 0]</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：组合计数、矩阵初始化、等差数列求和公式。</p>
+</blockquote>
+<hr/>
+<h4 id="true-division"><code>/</code> 实数除法（True Division）<a class="anchor-link" href="#true-division">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># 3.5   ← 结果是浮点数</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">6</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># 3.0   ← 注意：整数相除也是浮点数</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：几何题（斜率、距离）、概率期望计算。<br/>
+<strong>常见错误</strong>：将 <code>/</code> 误用于需要整数下标的场合，如 <code>arr[n / 2]</code> 会报错，应使用 <code>arr[n // 2]</code>。</p>
+</blockquote>
+<hr/>
+<h4 id="floor-division"><code>//</code> 向下取整除法（Floor Division）<a class="anchor-link" href="#floor-division">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 3    ← 向下取整</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># -4   ← 注意：负数向负无穷取整，不是截断</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># -4</span>
+</pre></div>
+<p><strong><code>/</code> 与 <code>//</code> 的本质区别</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>结果</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>7 / 2</code></td>
+<td><code>3.5</code></td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td><code>7 // 2</code></td>
+<td><code>3</code></td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td><code>-7 // 2</code></td>
+<td><code>-4</code></td>
+<td><code>int</code>（向负无穷取整）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>竞赛场景</strong>：二分法求中点 <code>mid = (lo + hi) // 2</code>；分组问题（n 个元素每组 k 个，共 <code>n // k</code> 组）；树结构中父节点索引 <code>parent = i // 2</code>（1-indexed 堆）。<br/>
+<strong>常见陷阱</strong>：Python 的 <code>//</code> 是"向下取整（floor）"，而 C/C++ 的整数除法是"向零截断（truncate）"。对负数而言两者结果不同，竞赛中需特别注意。</p>
+</blockquote>
+<hr/>
+<h4 id=""><code>%</code> 取余/取模<a class="anchor-link" href="#">¶</a></h4><p>详见第二节（重点模块）。</p>
+<hr/>
+<h4 id=""><code>**</code> 幂运算<a class="anchor-link" href="#">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span><span class="p">)</span>      <span class="c1"># 1024</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>     <span class="c1"># 1.4142135...（等价于 √2）</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000000007</span><span class="p">))</span>  <span class="c1"># 快速幂取模：1024</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：计算 $2^n$、矩阵幂；但在竞赛中<strong>强烈推荐使用内置 <code>pow(a, b, mod)</code></strong> 代替 <code>a**b % mod</code>，前者效率更高且不会溢出中间值（详见第六节）。<br/>
+<strong>常见错误</strong>：<code>2**10**2</code> 的运算顺序是 <code>2**(10**2) = 2**100</code>，因为 <code>**</code> 是右结合的。</p>
+</blockquote>
+<hr/>
+<h3 id="13">1.3 记忆口诀<a class="anchor-link" href="#13">¶</a></h3><blockquote>
+<p><strong>"加减乘除，整除取模，幂次方"</strong><br/>
+<code>/</code> 是"真除"得小数，<code>//</code> 是"整除"向下取，<code>%</code> 是"余数"找规律，<code>**</code> 是"幂次"快速算。</p>
+</blockquote>
+<hr/>
+<h2 id="mod">二、取余运算 <code>%</code> 与模数 mod 的关系<a class="anchor-link" href="#mod">¶</a></h2><p>本节是竞赛算法的核心基础，务必深入理解。</p>
+<h3 id="21-remaindermodulus">2.1 余数（Remainder）与模数（Modulus）的定义<a class="anchor-link" href="#21-remaindermodulus">¶</a></h3><p><strong>余数（Remainder）</strong>：整数 <code>a</code> 除以 <code>b</code> 后"剩下的部分"。<br/>
+数学表达：若 $a = b \times q + r$，则 $r$ 是 $a$ 除以 $b$ 的余数，其中 $0 \leq r &lt; b$（b &gt; 0 时）。</p>
+<p><strong>模数（Modulus）</strong>：在 <code>a % b</code> 中，<strong><code>b</code> 就是模数</strong>（即除数），<code>a</code> 是被除数。</p>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>       <span class="c1"># b 是模数</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span>   <span class="c1"># r = 2，即余数</span>
+<span class="c1"># 验证：17 = 5 × 3 + 2</span>
+</pre></div>
+<hr/>
+<h3 id="22-i-2-2">2.2 <code>i % 2</code> 对 2 取模：判断奇偶性<a class="anchor-link" href="#22-i-2-2">¶</a></h3><p>表达式 <code>i % 2</code> 的含义是：将 <code>i</code> 除以 2，取其余数。<br/>
+由于任意整数除以 2，余数只能是 <code>0</code> 或 <code>1</code>，因此：</p>
+<ul>
+<li><code>i % 2 == 0</code>：<code>i</code> 是偶数（被 2 整除，无余数）</li>
+<li><code>i % 2 == 1</code>：<code>i</code> 是奇数（不能被 2 整除，余 1）</li>
+</ul>
+<p><strong>为什么模 2 可以判断奇偶？</strong><br/>
+本质在于十进制整数的奇偶性完全由<strong>最低位</strong>决定。偶数最低位为 0（可被 2 整除），奇数最低位为 1（不可被 2 整除）。<code>% 2</code> 操作正是提取这一信息。</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> 是偶数"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> 是奇数"</span><span class="p">)</span>
+<span class="c1"># 输出：</span>
+<span class="c1"># 7 是奇数</span>
+<span class="c1"># 8 是偶数</span>
+<span class="c1"># -3 是奇数</span>
+<span class="c1"># 0 是偶数</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 1  → 7 是奇数</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">8</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># 0  → 8 是偶数</span>
+</pre></div>
+<blockquote>
+<p><strong>注意</strong>：Python 中 <code>-3 % 2 = 1</code>（结果非负，符合数学模运算定义）。C++ 中 <code>-3 % 2 = -1</code>（截断除法）。跨语言移植时需注意符号差异。</p>
+</blockquote>
+<hr/>
+<h3 id="23-a-b-mod-m">2.3 同余关系：<code>a ≡ b (mod m)</code> 的含义<a class="anchor-link" href="#23-a-b-mod-m">¶</a></h3><p>数学符号 $a \equiv b \pmod{m}$ 表示：<strong>$a$ 和 $b$ 被 $m$ 除后余数相同</strong>，即 $m \mid (a - b)$（$m$ 整除 $a - b$）。</p>
+<div class="highlight"><pre><span></span><span class="c1"># 17 ≡ 2 (mod 5)，因为 17 % 5 = 2，且 2 % 5 = 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">17</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">%</span> <span class="mi">5</span><span class="p">)</span>   <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">17</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># True，即 5 | 15</span>
+</pre></div>
+<p>在竞赛中，这意味着凡是对 <code>m</code> 取模后结果相同的两个数，在"模 m 的意义下"是等价的——这是哈希、周期性分析、数论问题的基础。</p>
+<hr/>
+<h3 id="24">2.4 竞赛中 <code>%</code> 的四大核心应用<a class="anchor-link" href="#24">¶</a></h3><h4 id="1circular-array">应用 1：循环数组（Circular Array）<a class="anchor-link" href="#1circular-array">¶</a></h4><p><strong>场景</strong>：在长度为 <code>n</code> 的数组中，下标 <code>i</code> 的下一个位置是 <code>(i + 1) % n</code>，自动回绕到开头。</p>
+<div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+
+<span class="c1"># 模拟循环移动 k 步</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>   <span class="c1"># 超过数组长度的步数</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="n">n</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c1"># 输出：40 50 10 20 30 40 50</span>
+</pre></div>
+<blockquote>
+<p><strong>本质</strong>：<code>% n</code> 将无限的整数序列映射到 <code>[0, n-1]</code> 的有限区间，实现"环形"效果。</p>
+</blockquote>
+<hr/>
+<h4 id="2">应用 2：大数取模防溢出<a class="anchor-link" href="#2">¶</a></h4><p><strong>场景</strong>：题目要求"答案对 $10^9 + 7$ 取模"，防止中间计算结果超出整数范围。</p>
+<p>Python 整数本身无溢出，但为遵循题目要求且保持高效：</p>
+<div class="highlight"><pre><span></span><span class="n">MOD</span> <span class="o">=</span> <span class="mi">1_000_000_007</span>
+
+<span class="c1"># 错误做法（中间值极大，对某些语言会溢出）</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="n">MOD</span>
+
+<span class="c1"># 正确做法：每步取模，保持数值在合理范围</span>
+<span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">a</span> <span class="o">%</span> <span class="n">MOD</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">b</span> <span class="o">%</span> <span class="n">MOD</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">c</span> <span class="o">%</span> <span class="n">MOD</span>
+</pre></div>
+<blockquote>
+<p><strong>数学保证</strong>：$(a \times b) \bmod m = ((a \bmod m) \times (b \bmod m)) \bmod m$，即取模操作对乘法具有分配律。</p>
+</blockquote>
+<hr/>
+<h4 id="3fast-exponentiation">应用 3：快速幂（Fast Exponentiation）<a class="anchor-link" href="#3fast-exponentiation">¶</a></h4><p><strong>场景</strong>：计算 $a^b \bmod m$，若用 <code>a**b % m</code> 则中间结果极大；应使用 Python 内置 <code>pow(a, b, m)</code>，其内部实现即快速幂算法。</p>
+<div class="highlight"><pre><span></span><span class="n">MOD</span> <span class="o">=</span> <span class="mi">1_000_000_007</span>
+
+<span class="c1"># 计算 2^(10^9) mod (10^9+7)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">9</span><span class="p">,</span> <span class="n">MOD</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 快速得出结果，不会溢出或超时</span>
+</pre></div>
+<p>手动实现快速幂以理解原理：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fast_pow</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">mod</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">base</span> <span class="o">%=</span> <span class="n">mod</span>
+    <span class="k">while</span> <span class="n">exp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">exp</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>      <span class="c1"># 当前位为奇数（二进制末位为 1）</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">base</span> <span class="o">%</span> <span class="n">mod</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">base</span> <span class="o">*</span> <span class="n">base</span> <span class="o">%</span> <span class="n">mod</span>
+        <span class="n">exp</span> <span class="o">//=</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fast_pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">MOD</span><span class="p">))</span>  <span class="c1"># 1024</span>
+</pre></div>
+<blockquote>
+<p><strong>核心思想</strong>：利用 $a^{2k} = (a^k)^2$ 将指数每次减半，时间复杂度从 $O(b)$ 降至 $O(\log b)$。<code>exp % 2</code> 用于判断当前二进制位是否为 1，<code>exp //= 2</code> 用于右移一位。</p>
+</blockquote>
+<hr/>
+<h4 id="4string-hashing">应用 4：字符串哈希（String Hashing）<a class="anchor-link" href="#4string-hashing">¶</a></h4><p><strong>场景</strong>：将字符串映射为整数，用于快速比较子串是否相等。</p>
+<div class="highlight"><pre><span></span><span class="n">MOD</span> <span class="o">=</span> <span class="mi">1_000_000_007</span>
+<span class="n">BASE</span> <span class="o">=</span> <span class="mi">131</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">"abcdef"</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">BASE</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">%</span> <span class="n">MOD</span>   <span class="c1"># 每步取模，防止数值爆炸</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>  <span class="c1"># 字符串 "abcdef" 对应的哈希值</span>
+</pre></div>
+<blockquote>
+<p><strong><code>% MOD</code> 的作用</strong>：将哈希值限制在 <code>[0, MOD-1]</code> 范围内，既防止溢出，又将哈希表大小控制在合理区间。</p>
+</blockquote>
+<hr/>
+<h3 id="25">2.5 记忆口诀<a class="anchor-link" href="#25">¶</a></h3><blockquote>
+<p><strong>"b 是模数 a 被除，余数在 [0, b-1] 住；模 2 判奇偶，模 n 绕圆圈；乘法分配律，取模防溢出。"</strong></p>
+</blockquote>
+<hr/>
+<h2 id="">三、比较运算符<a class="anchor-link" href="#">¶</a></h2><p>比较运算符用于判断两个值之间的关系，返回布尔值 <code>True</code> 或 <code>False</code>。</p>
+<h3 id="31">3.1 运算符列表<a class="anchor-link" href="#31">¶</a></h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>英文名称</th>
+<th>含义</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>Equal</td>
+<td>相等</td>
+<td><code>3 == 3</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Not Equal</td>
+<td>不等</td>
+<td><code>3 != 4</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Greater than</td>
+<td>大于</td>
+<td><code>5 &gt; 3</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Less than</td>
+<td>小于</td>
+<td><code>2 &lt; 1</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Greater or equal</td>
+<td>大于等于</td>
+<td><code>3 &gt;= 3</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Less or equal</td>
+<td>小于等于</td>
+<td><code>4 &lt;= 3</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 <code>=</code> 与 <code>==</code> 的严格区别<a class="anchor-link" href="#32">¶</a></h3><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>赋值运算符</td>
+<td>将右侧的值<strong>赋给</strong>左侧变量</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>比较运算符</td>
+<td>判断两侧的值是否<strong>相等</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="c1"># 赋值</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>          <span class="c1"># 将 5 赋给 x</span>
+
+<span class="c1"># 比较</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># True：x 的值等于 5 吗？</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span>  <span class="c1"># False</span>
+
+<span class="c1"># 典型错误（在 Python 中会直接报语法错误）</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">:</span>      <span class="c1"># SyntaxError: invalid syntax</span>
+    <span class="k">pass</span>
+
+<span class="c1"># 正确写法</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"x 等于 5"</span><span class="p">)</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：条件判断（<code>if</code>/<code>while</code>）、排序自定义比较函数（<code>key=lambda</code>）、二分查找终止条件。</p>
+</blockquote>
+<h3 id="33-python">3.3 Python 特有：链式比较<a class="anchor-link" href="#33-python">¶</a></h3><p>Python 支持将多个比较运算符链式组合，语义与数学中完全一致：</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>      <span class="c1"># True：相当于 (1 &lt; x) and (x &lt; 10)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span>     <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span>       <span class="c1"># False</span>
+
+<span class="c1"># 等价但更繁琐的写法</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># True（效果相同）</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：区间合法性验证，如判断坐标是否在网格内：<code>0 &lt;= r &lt; rows and 0 &lt;= c &lt; cols</code>。</p>
+</blockquote>
+<h3 id="34">3.4 记忆口诀<a class="anchor-link" href="#34">¶</a></h3><blockquote>
+<p><strong>"单等号赋值，双等号比较；链式比较像数学，左右夹逼最自然。"</strong></p>
+</blockquote>
+<hr/>
+<h2 id="">四、逻辑运算符<a class="anchor-link" href="#">¶</a></h2><p>逻辑运算符用于组合多个布尔表达式，在条件判断和过滤中大量使用。</p>
+<h3 id="41">4.1 运算符列表<a class="anchor-link" href="#41">¶</a></h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>英文名称</th>
+<th>含义</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>and</code></td>
+<td>Logical AND</td>
+<td>逻辑与（全真才真）</td>
+<td><code>True and False</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td>Logical OR</td>
+<td>逻辑或（有真即真）</td>
+<td><code>True or False</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>Logical NOT</td>
+<td>逻辑非（取反）</td>
+<td><code>not True</code></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-short-circuit-evaluation">4.2 短路求值（Short-circuit Evaluation）<a class="anchor-link" href="#42-short-circuit-evaluation">¶</a></h3><p>Python 的 <code>and</code> 和 <code>or</code> 具有短路特性：</p>
+<ul>
+<li><code>A and B</code>：若 <code>A</code> 为假，直接返回 <code>A</code>，不计算 <code>B</code></li>
+<li><code>A or B</code>：若 <code>A</code> 为真，直接返回 <code>A</code>，不计算 <code>B</code></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"check(</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">) called"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="c1"># and 短路：第一个条件为假时，第二个不执行</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">check</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># 仅输出：check(-1) called</span>
+<span class="c1"># result = False</span>
+
+<span class="c1"># or 短路：第一个条件为真时，第二个不执行</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="n">check</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># 仅输出：check(1) called</span>
+<span class="c1"># result = True</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：边界条件保护。例如访问数组前先检查下标合法性：<code>if 0 &lt;= i &lt; n and arr[i] &gt; 0</code>。若 <code>i</code> 越界，短路机制保证 <code>arr[i]</code> 不被执行，避免 <code>IndexError</code>。</p>
+</blockquote>
+<h3 id="43-bfs">4.3 综合示例：区间判断与网格 BFS<a class="anchor-link" href="#43-bfs">¶</a></h3><div class="highlight"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span>
+<span class="n">visited</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">cols</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">)]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_valid</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="c1"># 判断坐标 (r, c) 是否在网格内且未访问</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">rows</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">cols</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span>
+
+<span class="c1"># 四方向移动</span>
+<span class="n">directions</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dc</span> <span class="ow">in</span> <span class="n">directions</span><span class="p">:</span>
+    <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="n">dc</span>
+    <span class="k">if</span> <span class="n">is_valid</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"可以移动到 (</span><span class="si">{</span><span class="n">nr</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nc</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+</pre></div>
+<h3 id="44">4.4 记忆口诀<a class="anchor-link" href="#44">¶</a></h3><blockquote>
+<p><strong>"<code>and</code> 全真才能真，<code>or</code> 有真就为真，<code>not</code> 一翻天地变；短路求值省时间。"</strong></p>
+</blockquote>
+<hr/>
+<h2 id="">五、位运算符<a class="anchor-link" href="#">¶</a></h2><p>位运算是算法竞赛的重要工具，直接操作整数的<strong>二进制表示</strong>，速度极快。掌握位运算是进阶竞赛的必要条件。</p>
+<h3 id="51">5.1 二进制基础<a class="anchor-link" href="#51">¶</a></h3><p>每个整数在计算机内部以二进制形式存储。例如：</p>
+<pre><code>十进制  →  二进制（8位）
+  5    →  00000101
+  6    →  00000110
+ 12    →  00001100
+</code></pre>
+<p>位运算就是对这些二进制位<strong>逐位</strong>进行操作。</p>
+<hr/>
+<h3 id="52">5.2 六种位运算符详解<a class="anchor-link" href="#52">¶</a></h3><h4 id="bitwise-and"><code>&amp;</code> 按位与（Bitwise AND）<a class="anchor-link" href="#bitwise-and">¶</a></h4><p><strong>规则</strong>：对应位<strong>全为 1</strong> 才得 1，否则得 0。</p>
+<pre><code>  5  =  0101
+  6  =  0110
+-------
+5&amp;6 =  0100  =  4
+</code></pre>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">&amp;</span> <span class="mi">6</span><span class="p">)</span>   <span class="c1"># 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 1  ← 判断奇偶的核心操作</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">4</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 0</span>
+</pre></div>
+<blockquote>
+<p><strong>核心应用</strong>：判断奇偶 <code>n &amp; 1</code>、取出某一位 <code>(n &gt;&gt; k) &amp; 1</code>、清零某一位。</p>
+</blockquote>
+<hr/>
+<h4 id="bitwise-or"><code>|</code> 按位或（Bitwise OR）<a class="anchor-link" href="#bitwise-or">¶</a></h4><p><strong>规则</strong>：对应位<strong>至少一个为 1</strong> 就得 1，全为 0 才得 0。</p>
+<pre><code>  5  =  0101
+  6  =  0110
+-------
+5|6 =  0111  =  7
+</code></pre>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">|</span> <span class="mi">6</span><span class="p">)</span>   <span class="c1"># 7</span>
+</pre></div>
+<blockquote>
+<p><strong>核心应用</strong>：将某一位强制置为 1（<code>n | (1 &lt;&lt; k)</code> 将第 k 位置 1）。</p>
+</blockquote>
+<hr/>
+<h4 id="bitwise-xor"><code>^</code> 按位异或（Bitwise XOR）<a class="anchor-link" href="#bitwise-xor">¶</a></h4><p><strong>规则</strong>：对应位<strong>不同得 1，相同得 0</strong>。</p>
+<pre><code>  5  =  0101
+  6  =  0110
+-------
+5^6 =  0011  =  3
+</code></pre>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">^</span> <span class="mi">6</span><span class="p">)</span>   <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">^</span> <span class="mi">5</span><span class="p">)</span>   <span class="c1"># 0  ← 任何数与自身异或得 0（自我消除）</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="o">^</span> <span class="mi">5</span><span class="p">)</span>   <span class="c1"># 5  ← 任何数与 0 异或得自身</span>
+</pre></div>
+<p><strong>重要性质</strong>：</p>
+<ul>
+<li><code>a ^ a = 0</code>（自我消除）</li>
+<li><code>a ^ 0 = a</code>（与 0 异或不变）</li>
+<li>异或满足交换律与结合律</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># 经典竞赛题：找出数组中只出现一次的数（其他数出现两次）</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">^=</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># 3  ← 1^2^3^2^1 = 3</span>
+</pre></div>
+<blockquote>
+<p><strong>核心应用</strong>：查找单一元素、交换两数（无需临时变量，但可读性差，竞赛中了解即可）、状态压缩翻转位。</p>
+</blockquote>
+<hr/>
+<h4 id="bitwise-not"><code>~</code> 按位取反（Bitwise NOT）<a class="anchor-link" href="#bitwise-not">¶</a></h4><p><strong>规则</strong>：每一位取反（0 变 1，1 变 0）。Python 中 <code>~n = -(n+1)</code>。</p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="mi">5</span><span class="p">)</span>    <span class="c1"># -6    ← ~n = -(n+1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># -1</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># 0</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：<code>~i</code> 常用于某些位掩码技巧，但初学者在 Python 中需注意其结果恒为负数（Python 整数是无限精度有符号数）。</p>
+</blockquote>
+<hr/>
+<h4 id="left-shift"><code>&lt;&lt;</code> 左移（Left Shift）<a class="anchor-link" href="#left-shift">¶</a></h4><p><strong>规则</strong>：将所有位向左移动 k 位，右侧补 0。等价于<strong>乘以 $2^k$</strong>。</p>
+<pre><code>5 = 0000 0101
+5 &lt;&lt; 1 = 0000 1010 = 10   （× 2）
+5 &lt;&lt; 2 = 0001 0100 = 20   （× 4）
+</code></pre>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 10   ← 5 × 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1"># 40   ← 5 × 8</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 1024 ← 2^10，竞赛常用</span>
+</pre></div>
+<blockquote>
+<p><strong>核心应用</strong>：生成 2 的幂次 <code>1 &lt;&lt; k</code>；状态压缩 DP 中表示第 k 个元素是否被选 <code>mask | (1 &lt;&lt; k)</code>。</p>
+</blockquote>
+<hr/>
+<h4 id="right-shift"><code>&gt;&gt;</code> 右移（Right Shift）<a class="anchor-link" href="#right-shift">¶</a></h4><p><strong>规则</strong>：将所有位向右移动 k 位，左侧补符号位。等价于<strong>整除 $2^k$（向下取整）</strong>。</p>
+<pre><code>20 = 0001 0100
+20 &gt;&gt; 1 = 0000 1010 = 10  （÷ 2）
+20 &gt;&gt; 2 = 0000 0101 = 5   （÷ 4）
+</code></pre>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">20</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 10   ← 20 // 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">20</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 5    ← 20 // 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 3    ← 7 // 2（向下取整）</span>
+</pre></div>
+<blockquote>
+<p><strong>核心应用</strong>：二分法中快速求中点 <code>mid = (lo + hi) &gt;&gt; 1</code>（效果等同于 <code>// 2</code>，但更接近底层习惯）；提取第 k 位 <code>(n &gt;&gt; k) &amp; 1</code>。</p>
+</blockquote>
+<hr/>
+<h3 id="53-n-1">5.3 核心技巧：<code>n &amp; 1</code> 判断奇偶<a class="anchor-link" href="#53-n-1">¶</a></h3><p><strong>为什么 <code>n &amp; 1</code> 可以判断奇偶？</strong></p>
+<p>任意整数的二进制表示中，<strong>最低位（第 0 位）决定奇偶性</strong>：</p>
+<ul>
+<li>偶数最低位为 <code>0</code>（因为偶数是 2 的倍数，即 $\ldots \times 2 + 0$）</li>
+<li>奇数最低位为 <code>1</code>（因为奇数除以 2 余 1，即 $\ldots \times 2 + 1$）</li>
+</ul>
+<p><code>n &amp; 1</code> 用掩码 <code>000...001</code> 与 <code>n</code> 按位与，结果就是 <code>n</code> 的最低位：</p>
+<pre><code>n =  6  =  ...0110
+1  =       ...0001
+-----------
+6&amp;1=       ...0000  = 0  → 偶数
+
+n =  7  =  ...0111
+1  =       ...0001
+-----------
+7&amp;1=       ...0001  = 1  → 奇数
+</code></pre>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">]:</span>
+    <span class="n">parity</span> <span class="o">=</span> <span class="s2">"奇数"</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">"偶数"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">parity</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+<blockquote>
+<p><strong>对比 <code>n % 2</code></strong>：两者效果完全等价，<code>n &amp; 1</code> 在底层更直接，但在 Python 中性能差异可忽略。竞赛中两种写法均可接受。</p>
+</blockquote>
+<hr/>
+<h3 id="54-state-compression">5.4 综合示例：状态压缩（State Compression）<a class="anchor-link" href="#54-state-compression">¶</a></h3><p>用一个整数的若干二进制位表示一个集合的选取状态，是竞赛 DP 的常见技巧：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 用 mask 表示 4 个元素 [A, B, C, D] 的选取情况</span>
+<span class="c1"># mask 的第 i 位为 1 表示第 i 个元素被选中</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="mb">0b1010</span>   <span class="c1"># 十进制 10，表示选了 B（位1）和 D（位3）</span>
+
+<span class="c1"># 检查第 i 个元素是否被选中</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_selected</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">mask</span> <span class="o">&gt;&gt;</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="c1"># 选中第 i 个元素</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mask</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="c1"># 取消选中第 i 个元素</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deselect</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mask</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_selected</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># True（第 1 位为 1）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_selected</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># False（第 0 位为 0）</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>  <span class="c1"># 0b1011（增加 A）</span>
+</pre></div>
+<hr/>
+<h3 id="55">5.5 记忆口诀<a class="anchor-link" href="#55">¶</a></h3><blockquote>
+<p><strong>"与 AND 全 1 得 1，或 OR 有 1 得 1，异或 XOR 不同得 1；</strong><br/>
+<strong>左移乘 2 的幂，右移整除 2 的幂；</strong><br/>
+<strong><code>n &amp; 1</code> 看末位，末位 1 奇 0 偶。"</strong></p>
+</blockquote>
+<hr/>
+<h2 id="">六、竞赛常用数学函数<a class="anchor-link" href="#">¶</a></h2><h3 id="61">6.1 内置函数（无需导入）<a class="anchor-link" href="#61">¶</a></h3><h4 id="absx"><code>abs(x)</code> — 绝对值<a class="anchor-link" href="#absx">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">))</span>    <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="mf">3.14</span><span class="p">))</span>  <span class="c1"># 3.14</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：曼哈顿距离 <code>abs(x1-x2) + abs(y1-y2)</code>；误差判断 <code>abs(a - b) &lt; 1e-9</code>。</p>
+</blockquote>
+<hr/>
+<h4 id="powa-b-powa-b-mod"><code>pow(a, b)</code> 与 <code>pow(a, b, mod)</code> — 幂运算与快速幂<a class="anchor-link" href="#powa-b-powa-b-mod">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>           <span class="c1"># 1024（等同于 2**10）</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000000007</span><span class="p">))</span>  <span class="c1"># 1024（快速幂取模）</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>        <span class="c1"># 4（模逆元，Python 3.8+）</span>
+</pre></div>
+<p><strong><code>pow(a, b, mod)</code> 是竞赛必用函数</strong>，原因如下：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>时间复杂度</th>
+<th>中间值大小</th>
+<th>推荐度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a**b % mod</code></td>
+<td>$O(b)$（Python 内部优化）</td>
+<td>极大</td>
+<td>❌ 不推荐</td>
+</tr>
+<tr>
+<td><code>pow(a, b, mod)</code></td>
+<td>$O(\log b)$</td>
+<td>始终 $&lt; mod^2$</td>
+<td>✅ 强烈推荐</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h4 id="roundx-n"><code>round(x, n)</code> — 四舍五入<a class="anchor-link" href="#roundx-n">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">3.567</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># 3.57</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">))</span>        <span class="c1"># 2（Python 3 使用银行家舍入）</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：浮点精度问题处理（但竞赛中一般避免浮点，转为整数运算）。</p>
+</blockquote>
+<hr/>
+<h3 id="62-math-import-math">6.2 <code>math</code> 模块函数（需要 <code>import math</code>）<a class="anchor-link" href="#62-math-import-math">¶</a></h3><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</pre></div>
+<h4 id="mathsqrtx"><code>math.sqrt(x)</code> — 平方根<a class="anchor-link" href="#mathsqrtx">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>   <span class="c1"># 4.0（返回浮点数）</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">)))</span>  <span class="c1"># 4</span>
+
+<span class="c1"># 竞赛中判断完全平方数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_perfect_square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="n">s</span> <span class="o">==</span> <span class="n">n</span>   <span class="c1"># 注意浮点误差，用整数验证</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_perfect_square</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_perfect_square</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>  <span class="c1"># False</span>
+</pre></div>
+<blockquote>
+<p><strong>注意</strong>：<code>math.sqrt()</code> 返回浮点数，存在精度风险。判断完全平方数时务必用整数回验。</p>
+</blockquote>
+<hr/>
+<h4 id="mathfloorx-mathceilx"><code>math.floor(x)</code> 与 <code>math.ceil(x)</code> — 向下/向上取整<a class="anchor-link" href="#mathfloorx-mathceilx">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mf">3.9</span><span class="p">))</span>   <span class="c1"># 3（向下取整，等同于 //）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">3.1</span><span class="p">))</span>    <span class="c1"># 4（向上取整）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="o">-</span><span class="mf">3.1</span><span class="p">))</span>  <span class="c1"># -4（向负无穷）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="o">-</span><span class="mf">3.9</span><span class="p">))</span>   <span class="c1"># -3（向正无穷）</span>
+
+<span class="c1"># 向上取整等价形式（整数场景，避免浮点）</span>
+<span class="c1"># ceil(a / b) = (a + b - 1) // b</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 3，等同于 math.ceil(7/3)</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛技巧</strong>：<code>⌈a / b⌉ = (a + b - 1) // b</code> 是整数向上取整的标准替代方案，避免引入浮点数。</p>
+</blockquote>
+<hr/>
+<h4 id="mathgcda-b"><code>math.gcd(a, b)</code> — 最大公约数<a class="anchor-link" href="#mathgcda-b">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>   <span class="c1"># 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">75</span><span class="p">))</span> <span class="c1"># 25</span>
+
+<span class="c1"># 最小公倍数（LCM）= a * b / gcd(a, b)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lcm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">//</span> <span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span>  <span class="c1"># 先除后乘，避免溢出</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lcm</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># 12</span>
+</pre></div>
+<blockquote>
+<p><strong>Python 3.9+</strong>：<code>math.gcd()</code> 支持多参数 <code>math.gcd(a, b, c)</code>；<code>math.lcm(a, b)</code> 也已内置。</p>
+</blockquote>
+<hr/>
+<h4 id="mathlogx-base"><code>math.log(x, base)</code> — 对数<a class="anchor-link" href="#mathlogx-base">¶</a></h4><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>    <span class="c1"># 3.0  ← log₂(8) = 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># 3.0 ← log₁₀(1000) = 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>      <span class="c1"># 3.0（精度更高）</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>  <span class="c1"># 3.0（精度更高）</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛场景</strong>：估算算法复杂度、树的高度；判断 n 是否为 2 的幂：<code>n &gt; 0 and (n &amp; (n-1)) == 0</code>（位运算更精确）。</p>
+</blockquote>
+<hr/>
+<h3 id="63">6.3 函数功能分类速查<a class="anchor-link" href="#63">¶</a></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>用途分类</th>
+<th>竞赛典型场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pow(a, b, mod)</code></td>
+<td>防溢出 + 优化</td>
+<td>快速幂、模逆元</td>
+</tr>
+<tr>
+<td><code>math.gcd()</code></td>
+<td>数学优化</td>
+<td>最大公约数、最小公倍数</td>
+</tr>
+<tr>
+<td><code>abs()</code></td>
+<td>常规计算</td>
+<td>距离、误差</td>
+</tr>
+<tr>
+<td><code>math.sqrt()</code></td>
+<td>几何计算</td>
+<td>欧氏距离（注意精度）</td>
+</tr>
+<tr>
+<td><code>math.floor()</code> / <code>math.ceil()</code></td>
+<td>取整</td>
+<td>分组、上界估算</td>
+</tr>
+<tr>
+<td><code>math.log2()</code></td>
+<td>算法分析</td>
+<td>树高、二进制位数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="64">6.4 记忆口诀<a class="anchor-link" href="#64">¶</a></h3><blockquote>
+<p><strong>"快速幂用 <code>pow(a,b,mod)</code>，最大公约数用 <code>gcd</code>；开根号小心浮点陷阱，向上取整用 <code>(a+b-1)//b</code>。"</strong></p>
+</blockquote>
+<hr/>
+<h2 id="">七、运算符优先级<a class="anchor-link" href="#">¶</a></h2><h3 id="71">7.1 优先级表（从高到低）<a class="anchor-link" href="#71">¶</a></h3><table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1（最高）</td>
+<td><code>**</code></td>
+<td>幂运算（右结合）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>+x</code>, <code>-x</code>, <code>~x</code></td>
+<td>一元正、负、按位取反</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>*</code>, <code>/</code>, <code>//</code>, <code>%</code></td>
+<td>乘、除、整除、取余</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>+</code>, <code>-</code></td>
+<td>加、减</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>&lt;&lt;</code>, <code>&gt;&gt;</code></td>
+<td>位移运算</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>^</code></td>
+<td>按位异或</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>\|</code></td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></td>
+<td>比较运算</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>not</code></td>
+<td>逻辑非</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>and</code></td>
+<td>逻辑与</td>
+</tr>
+<tr>
+<td>12（最低）</td>
+<td><code>or</code></td>
+<td>逻辑或</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-3-2-4-20">7.2 经典示例：<code>3 + 2 * 4</code> 为什么不是 20？<a class="anchor-link" href="#72-3-2-4-20">¶</a></h3><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># 11，不是 20</span>
+</pre></div>
+<p><strong>原因</strong>：<code>*</code> 的优先级高于 <code>+</code>，因此先计算 <code>2 * 4 = 8</code>，再计算 <code>3 + 8 = 11</code>。若要强制先加后乘，需使用括号：</p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">((</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 20</span>
+</pre></div>
+<h3 id="73">7.3 常见优先级陷阱<a class="anchor-link" href="#73">¶</a></h3><p>**陷阱 1：<code>**</code> 是右结合的**</p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># 512，不是 64</span>
+<span class="c1"># 解析为 2 ** (3 ** 2) = 2 ** 9 = 512</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 64</span>
+</pre></div>
+<p><strong>陷阱 2：位运算优先级低于比较运算符（常见错误）</strong></p>
+<div class="highlight"><pre><span></span><span class="c1"># 错误：以为先计算 n &amp; 1 == 1</span>
+<span class="k">if</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>   <span class="c1"># 实际解析为 n &amp; (1 == 1) = n &amp; True = n &amp; 1（恰好正确，但理解有误）</span>
+    <span class="k">pass</span>
+
+<span class="c1"># 更清晰的写法（竞赛推荐）：</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>   <span class="c1"># 加括号，意图明确</span>
+    <span class="k">pass</span>
+</pre></div>
+<blockquote>
+<p><strong>竞赛建议</strong>：凡是混合使用位运算与比较运算的表达式，<strong>务必加括号</strong>，消除歧义。</p>
+</blockquote>
+<p><strong>陷阱 3：<code>not</code> 的优先级高于 <code>and</code>/<code>or</code></strong></p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">)</span>   <span class="c1"># False，解析为 (not True) or False = False or False</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">))</span>  <span class="c1"># False，但含义完全不同</span>
+</pre></div>
+<p><strong>陷阱 4：<code>%</code> 与 <code>+/-</code> 的组合</strong></p>
+<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>   <span class="c1"># 2（Python：结果符号与除数相同）</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>   <span class="c1"># -2（结果符号与除数相同）</span>
+<span class="c1"># 与 C++ 不同，竞赛跨语言移植需注意</span>
+</pre></div>
+<h3 id="74">7.4 记忆口诀<a class="anchor-link" href="#74">¶</a></h3><blockquote>
+<p><strong>"幂最高，乘除余，加减次，移位随；</strong><br/>
+<strong>位与 XOR 或，比较在后面；</strong><br/>
+<strong><code>not</code> 先 <code>and</code> 后 <code>or</code> 最末；</strong><br/>
+<strong>混用加括号，清晰无隐患。"</strong></p>
+</blockquote>
+<hr/>
+<h2 id="">附录：竞赛场景速查表<a class="anchor-link" href="#">¶</a></h2><table>
+<thead>
+<tr>
+<th>竞赛场景</th>
+<th>推荐写法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>快速幂取模</td>
+<td><code>pow(a, b, MOD)</code></td>
+<td>内置，$O(\log b)$</td>
+</tr>
+<tr>
+<td>判断奇偶</td>
+<td><code>n &amp; 1</code> 或 <code>n % 2</code></td>
+<td>等价，前者更底层</td>
+</tr>
+<tr>
+<td>循环数组下标</td>
+<td><code>(i + 1) % n</code></td>
+<td>自动回绕</td>
+</tr>
+<tr>
+<td>大数取模防溢出</td>
+<td><code>result = result * x % MOD</code></td>
+<td>每步取模</td>
+</tr>
+<tr>
+<td>字符串哈希</td>
+<td><code>h = (h * BASE + ord(c)) % MOD</code></td>
+<td>多项式滚动哈希</td>
+</tr>
+<tr>
+<td>二分中点</td>
+<td><code>mid = (lo + hi) // 2</code></td>
+<td>避免浮点，防止 C++ 溢出惯例 <code>lo + (hi-lo)//2</code></td>
+</tr>
+<tr>
+<td>向上取整（整数）</td>
+<td><code>(a + b - 1) // b</code></td>
+<td>等价于 $\lceil a/b \rceil$，无浮点</td>
+</tr>
+<tr>
+<td>最大公约数</td>
+<td><code>math.gcd(a, b)</code></td>
+<td>内置，高效</td>
+</tr>
+<tr>
+<td>选中集合中第 k 位</td>
+<td><code>(mask &gt;&gt; k) &amp; 1</code></td>
+<td>状态压缩 DP</td>
+</tr>
+<tr>
+<td>将第 k 位置 1</td>
+<td><code>mask \| (1 &lt;&lt; k)</code></td>
+<td>状态压缩 DP</td>
+</tr>
+<tr>
+<td>判断 2 的幂</td>
+<td><code>n &gt; 0 and (n &amp; (n-1)) == 0</code></td>
+<td>位运算技巧</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<blockquote>
+<p><strong>学习建议</strong>：建议在 OJ 上针对每个运算符分别练习 2-3 道相关题目，重点掌握取模（第二节）和位运算（第五节）的实际应用，它们是竞赛进阶题的高频考点。</p>
+</blockquote>
 </div>
 </div>
 </div>
