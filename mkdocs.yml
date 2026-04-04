@@ -16,11 +16,19 @@ theme:
     - navigation.top
     - content.code.copy
     - content.code.annotate
-
   palette:
     - scheme: default
       primary: indigo
       accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
 
 # =====================
 # 插件
@@ -41,7 +49,14 @@ markdown_extensions:
       generic: true
   - toc:
       permalink: true
+      toc_depth: 2 # 核心：只显示到二级标题
   - md_in_html
+
+# =====================
+# 自定义样式
+# =====================
+extra_css:
+  - stylesheets/extra.css
 
 # =====================
 # 数学公式支持
@@ -77,6 +92,7 @@ nav:
           - 图: notebooks/算法刷题/算法/图论.ipynb
       - 补充知识:
           - 排序: notebooks/算法刷题/排序.ipynb
+          - 算法思维: notebooks/算法刷题/算法思维.md
           - 归纳总结: notebooks/算法刷题/Hot100归纳与题型对比.ipynb
 
   - 数据结构:
@@ -99,5 +115,7 @@ nav:
       - 4. 数据加载与梯度管理: notebooks/python基础和pytorch基础/pytorch-4.数据加载和梯度管理.ipynb
       - 5. 基础知识总结: notebooks/python基础和pytorch基础/pytorch-5.基础知识总结.ipynb
       - 6. 各类库梳理: notebooks/python基础和pytorch基础/pytorch-6.architecture-tutorial.ipynb
+      
   - 机器学习基础知识:
-      - 梯度计算和优化算法: notebooks/机器学习/优化算法/优化算法总结.ipynb
+      - 梯度计算: notebooks/机器学习/优化算法/梯度计算总结.ipynb
+      - 优化算法: notebooks/机器学习/优化算法/优化算法总结.ipynb

@@ -1,0 +1,4 @@
+/* 右侧 TOC 只显示到二级标题（##），隐藏 ### 及更深层级 */
+.md-nav--secondary .md-nav__item .md-nav {
+    display: none;
+}
