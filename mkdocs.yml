@@ -119,3 +119,9 @@ nav:
   - 机器学习基础知识:
       - 梯度计算: notebooks/机器学习/优化算法/梯度计算总结.ipynb
       - 优化算法: notebooks/机器学习/优化算法/优化算法总结.ipynb
+
+  - Agent:
+      - openclaw: notebooks/agent/openclaw介绍.md
+
+  - 计算机基础知识: 
+      - 计算机底层: notebooks/计算机基础知识/计算机硬件.md

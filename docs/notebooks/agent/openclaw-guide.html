@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw 技术文档</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+SC:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #0e1117;
+    --surface: #161b27;
+    --surface2: #1e2535;
+    --border: #2a3348;
+    --accent: #4f9eff;
+    --accent2: #7c3aed;
+    --green: #34d399;
+    --orange: #fb923c;
+    --text: #e2e8f0;
+    --text-muted: #8b9ab3;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans SC', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0e1117 0%, #161b27 50%, #1a1f35 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 0 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(79,158,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(79,158,255,0.12);
+    border: 1px solid rgba(79,158,255,0.3);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .header h1 span { color: var(--accent); }
+  .header p {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* Layout */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .content { padding: 56px 0; }
+
+  /* Sections */
+  .section { margin-bottom: 60px; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .section p { color: var(--text-muted); margin-bottom: 12px; }
+  .section p strong { color: var(--text); font-weight: 500; }
+
+  /* Callout */
+  .callout {
+    background: rgba(79,158,255,0.07);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .callout strong { color: var(--accent); }
+
+  /* Architecture Diagram */
+  .arch-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px 32px;
+    margin: 28px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .arch-diagram::before {
+    content: 'SYSTEM ARCHITECTURE';
+    position: absolute;
+    top: 16px; right: 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--border);
+    letter-spacing: 0.1em;
+  }
+
+  .arch-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  .arch-box {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .arch-box.accent-blue { border-color: rgba(79,158,255,0.4); background: rgba(79,158,255,0.06); }
+  .arch-box.accent-purple { border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.06); }
+  .arch-box.accent-green { border-color: rgba(52,211,153,0.4); background: rgba(52,211,153,0.06); }
+  .arch-box.accent-orange { border-color: rgba(251,146,60,0.4); background: rgba(251,146,60,0.06); }
+
+  .arch-box .icon { font-size: 20px; margin-bottom: 6px; }
+  .arch-box .title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+  .arch-box .subtitle {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    color: var(--text-muted);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .arch-down {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    color: var(--text-muted);
+    font-size: 20px;
+    letter-spacing: -4px;
+  }
+
+  .arch-cols {
+    display: grid;
+    grid-template-columns: 1fr 24px 1fr;
+    gap: 0;
+    align-items: center;
+  }
+
+  /* Concept Table */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .concept-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    transition: border-color 0.2s;
+  }
+  .concept-card:hover { border-color: var(--accent); }
+  .concept-card .c-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .concept-card .c-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .concept-card .c-name { font-weight: 600; font-size: 14px; }
+  .concept-card .c-en {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+  .concept-card .c-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .bg-blue { background: rgba(79,158,255,0.15); }
+  .bg-purple { background: rgba(124,58,237,0.15); }
+  .bg-green { background: rgba(52,211,153,0.15); }
+  .bg-orange { background: rgba(251,146,60,0.15); }
+  .bg-pink { background: rgba(244,114,182,0.15); }
+
+  /* Workflow */
+  .workflow { margin: 28px 0; }
+  .flow-step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 40px;
+    bottom: -12px;
+    width: 2px;
+    background: var(--border);
+  }
+  .flow-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .flow-content {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    flex: 1;
+    margin-bottom: 12px;
+  }
+  .flow-content .f-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .flow-content .f-desc { font-size: 13px; color: var(--text-muted); }
+  .flow-content .f-code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--bg);
+    color: var(--green);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 8px;
+  }
+
+  /* MCP Diagram */
+  .mcp-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 24px 0;
+  }
+  .mcp-diagram h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .mcp-layout {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: center;
+  }
+  .mcp-side {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .mcp-side .side-title {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mcp-side .side-item {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 4px 0;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+  }
+  .mcp-mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 11px;
+    text-align: center;
+  }
+  .mcp-mid .arr { font-size: 22px; color: var(--accent); }
+  .mcp-mid span { font-family: var(--mono); font-size: 10px; color: var(--text-muted); }
+
+  /* Config block */
+  .code-block {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+  .code-block .cm { color: #6b7a99; }
+  .code-block .ck { color: var(--accent); }
+  .code-block .cv { color: var(--green); }
+  .code-block .cs { color: var(--orange); }
+
+  /* Table */
+  .table-wrap { margin: 20px 0; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 14px;
+    background: var(--surface);
+    text-transform: uppercase;
+  }
+  td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+  td:first-child { color: var(--text); font-weight: 500; font-family: var(--mono); font-size: 12px; }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--surface); }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 640px) {
+    .concept-grid { grid-template-columns: 1fr; }
+    .arch-cols { grid-template-columns: 1fr; }
+    .mcp-layout { grid-template-columns: 1fr; }
+    .header h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">Technical Overview</div>
+  <h1><span>OpenClaw</span> 系统全解</h1>
+  <p>概念 · 架构 · 工作流 · 节点配置</p>
+</div>
+
+<div class="container">
+<div class="content">
+
+  <!-- 什么是 OpenClaw -->
+  <div class="section">
+    <div class="section-label">01 / 定义</div>
+    <h2>OpenClaw 是什么</h2>
+    <p>OpenClaw 是一个开源的本地 AI 智能体框架。它以<strong>消息平台（如 Telegram、微信）为交互入口</strong>，以<strong>大语言模型为决策大脑</strong>，以<strong>工具和 MCP Server 为执行双手</strong>，让 AI 能够在你的本地设备上自主完成真实世界的任务。</p>
+
+    <div class="callout">
+      <strong>一句话定义：</strong>OpenClaw 是"以聊天窗口为遥控器、以 AI 为大脑、以工具为双手"的本地任务调度系统。
+    </div>
+  </div>
+
+  <!-- 核心概念 -->
+  <div class="section">
+    <div class="section-label">02 / 核心概念</div>
+    <h2>五个核心组成部分</h2>
+    <p>理解 OpenClaw 只需掌握以下五个概念，它们共同构成完整的执行链路。</p>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="c-header">
+          <div class="c-icon bg-blue">💬</div>
+          <div>
+            <div class="c-name">Channel（频道）</div>
+            <div class="c-en">交互入口</div>
+          </div>
+        </div>
+        <div class="c-desc">用户与系统交互的入口。支持 Telegram、WhatsApp、微信等十余种平台。频道适配器将不同平台的消息格式统一标准化后交给 Gateway。</div>
+      </div>
+
+      <div class="concept-card">
+        <div class="c-header">
+          <div class="c-icon bg-purple">⚡</div>
+          <div>
+            <div class="c-name">Gateway（网关）</div>
+            <div class="c-en">系统神经中枢</div>
+          </div>
+        </div>
+        <div class="c-desc">整个系统的核心进程，运行在你的本地机器上。负责消息路由、维护对话上下文（记忆）、调度工具调用、管理 Agent 生命周期，所有流量都流经此处。</div>
+      </div>
+
+      <div class="concept-card">
+        <div class="c-header">
+          <div class="c-icon bg-green">🤖</div>
+          <div>
+            <div class="c-name">Agent（智能体）</div>
+            <div class="c-en">决策与执行核心</div>
+          </div>
+        </div>
+        <div class="c-desc">绑定大语言模型（Claude / GPT / DeepSeek）的执行单元。通过 SOUL.md 定义身份和行为规则，通过 Skills 加载专项能力，执行"推理 → 调用工具 → 整合结果"的循环。</div>
+      </div>
+
+      <div class="concept-card">
+        <div class="c-header">
+          <div class="c-icon bg-orange">🔧</div>
+          <div>
+            <div class="c-name">Tools（工具）</div>
+            <div class="c-en">本地执行函数</div>
+          </div>
+        </div>
+        <div class="c-desc">Agent 可直接调用的功能函数，运行在 Gateway 所在机器上。常见工具包括 shell（执行命令）、browser（控制浏览器）、web_search（联网搜索）、read/write_file 等。</div>
+      </div>
+
+      <div class="concept-card" style="grid-column: 1 / -1;">
+        <div class="c-header">
+          <div class="c-icon bg-pink">🔌</div>
+          <div>
+            <div class="c-name">MCP Server（节点代理）</div>
+            <div class="c-en">远端节点连接层</div>
+          </div>
+        </div>
+        <div class="c-desc">运行在 Gateway 本机的代理进程，负责连接并控制远端设备或服务（手机、服务器、云 API 等）。每个需要被控制的外部节点，都需要在 Gateway 机器上配置一个对应的 MCP Server。MCP Server 封装了访问该节点所需的连接方式和权限凭证，让 Agent 可以像调用本地工具一样操控远端设备。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 系统架构 -->
+  <div class="section">
+    <div class="section-label">03 / 架构</div>
+    <h2>系统整体架构</h2>
+    <p>以下展示各组件在系统中的层次关系与数据流向。</p>
+
+    <div class="arch-diagram">
+      <div class="arch-row">
+        <div class="arch-box accent-blue">
+          <div class="icon">👤</div>
+          <div class="title">用户</div>
+          <div class="subtitle">发送自然语言指令</div>
+        </div>
+      </div>
+
+      <div class="arch-down">↓</div>
+
+      <div class="arch-row">
+        <div class="arch-box accent-blue">
+          <div class="icon">💬</div>
+          <div class="title">Channel 频道适配器</div>
+          <div class="subtitle">Telegram / WhatsApp / 微信 / Slack<br>统一消息格式</div>
+        </div>
+      </div>
+
+      <div class="arch-down">↓</div>
+
+      <div class="arch-row">
+        <div class="arch-box accent-purple">
+          <div class="icon">⚡</div>
+          <div class="title">Gateway 网关</div>
+          <div class="subtitle">消息路由 · 上下文管理 · 工具调度 · 权限检查<br><em style="color:#6b7a99;font-size:11px;">运行在你的本地机器</em></div>
+        </div>
+      </div>
+
+      <div class="arch-down">↓</div>
+
+      <div class="arch-row">
+        <div class="arch-box accent-green">
+          <div class="icon">🤖</div>
+          <div class="title">Agent 智能体</div>
+          <div class="subtitle">Claude / GPT / DeepSeek<br>SOUL.md · Skills · Memory</div>
+        </div>
+      </div>
+
+      <div class="arch-down">↓</div>
+
+      <div class="arch-cols">
+        <div class="arch-box accent-orange">
+          <div class="icon">🔧</div>
+          <div class="title">Tools 工具</div>
+          <div class="subtitle">shell · browser<br>web_search · file I/O</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;color:#2a3348;font-size:22px;">|</div>
+
+        <div class="arch-box" style="border-color:rgba(244,114,182,0.4);background:rgba(244,114,182,0.06);">
+          <div class="icon">🔌</div>
+          <div class="title">MCP Servers 节点代理</div>
+          <div class="subtitle">手机(ADB) · 服务器(SSH)<br>云服务 API · 其他设备</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MCP 工作原理 -->
+  <div class="section">
+    <div class="section-label">04 / MCP 节点连接</div>
+    <h2>MCP Server 如何工作</h2>
+    <p>MCP（Model Context Protocol）是连接 Agent 与外部节点的标准协议。理解它的关键在于：<strong>MCP Server 始终运行在 Gateway 所在的机器上</strong>，而不是运行在被控设备上。</p>
+
+    <div class="mcp-diagram">
+      <h4>MCP 连接模型</h4>
+      <div class="mcp-layout">
+        <div class="mcp-side">
+          <div class="side-title">🖥️ <span>你的电脑（Gateway 机器）</span></div>
+          <div class="side-item">Gateway 进程</div>
+          <div class="side-item">手机 MCP Server</div>
+          <div class="side-item">服务器 MCP Server</div>
+          <div class="side-item">文件系统 MCP Server</div>
+        </div>
+
+        <div class="mcp-mid">
+          <div class="arr">⇄</div>
+          <span>USB / WiFi / SSH / API</span>
+        </div>
+
+        <div class="mcp-side">
+          <div class="side-title">📱 <span>被控节点（远端设备）</span></div>
+          <div class="side-item">手机（ADB 接入）</div>
+          <div class="side-item">远程服务器（SSH）</div>
+          <div class="side-item">云服务（API Key）</div>
+          <div class="side-item">其他智能设备</div>
+        </div>
+      </div>
+    </div>
+
+    <p>配置多节点时，每个需要控制的设备或服务，都在 Gateway 机器上独立配置一个 MCP Server 条目。以下是一个典型的 YAML 配置示例：</p>
+
+    <div class="code-block">
+<span class="cm"># config.yaml — MCP Server 配置示例</span>
+<span class="ck">mcp_servers</span>:
+  - <span class="ck">name</span>: <span class="cv">my-phone</span>          <span class="cm"># 手机节点</span>
+    <span class="ck">transport</span>: <span class="cs">stdio</span>
+    <span class="ck">command</span>: <span class="cs">npx</span>
+    <span class="ck">args</span>: [<span class="cv">"adb-mcp-server"</span>]   <span class="cm"># 通过 ADB 连接安卓手机</span>
+
+  - <span class="ck">name</span>: <span class="cv">my-server</span>         <span class="cm"># 远程服务器节点</span>
+    <span class="ck">transport</span>: <span class="cs">stdio</span>
+    <span class="ck">command</span>: <span class="cs">npx</span>
+    <span class="ck">args</span>: [<span class="cv">"ssh-mcp-server"</span>, <span class="cv">"--host"</span>, <span class="cv">"192.168.1.100"</span>]
+
+  - <span class="ck">name</span>: <span class="cv">local-files</span>       <span class="cm"># 本地文件系统节点</span>
+    <span class="ck">transport</span>: <span class="cs">stdio</span>
+    <span class="ck">command</span>: <span class="cs">npx</span>
+    <span class="ck">args</span>: [<span class="cv">"filesystem-mcp"</span>, <span class="cv">"--root"</span>, <span class="cv">"/Users/me"</span>]
+    </div>
+
+    <p>配置完成后，Agent 会自动感知"我有哪些节点可用"，并在执行任务时自主决定调用哪个 MCP Server。</p>
+  </div>
+
+  <!-- 完整工作流 -->
+  <div class="section">
+    <div class="section-label">05 / 工作流</div>
+    <h2>完整执行流程</h2>
+    <p>以"把手机最后一张照片传到电脑"为例，完整流程如下：</p>
+
+    <div class="workflow">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <div class="f-title">用户发送指令</div>
+          <div class="f-desc">通过 Telegram 发送："把手机最后一张照片发到电脑"</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <div class="f-title">Channel 标准化消息</div>
+          <div class="f-desc">Telegram 适配器将消息格式统一，传递给 Gateway</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <div class="f-title">Gateway 路由与上下文装配</div>
+          <div class="f-desc">Gateway 选定处理该请求的 Agent，将对话历史、记忆、可用工具列表一并打包传入</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <div class="f-title">Agent 推理与任务规划</div>
+          <div class="f-desc">Claude 分析指令，制定计划：Step 1 访问手机节点取图 → Step 2 写入电脑本地目录</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-content">
+          <div class="f-title">调用手机 MCP Server</div>
+          <div class="f-desc">Gateway 机器上的手机 MCP Server 通过 ADB 从手机拉取最新照片到本地临时目录</div>
+          <div class="f-code">adb pull /sdcard/DCIM/Camera/IMG_last.jpg ./tmp/</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-num">6</div>
+        <div class="flow-content">
+          <div class="f-title">调用本地文件系统工具</div>
+          <div class="f-desc">将照片从临时目录移动至电脑目标文件夹，任务完成</div>
+          <div class="f-code">mv ./tmp/IMG_last.jpg ~/Downloads/from_phone/</div>
+        </div>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-num">7</div>
+        <div class="flow-content">
+          <div class="f-title">Agent 回复用户</div>
+          <div class="f-desc">通过 Telegram 回复："已将最新照片传至 ~/Downloads/from_phone/"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agent 配置文件 -->
+  <div class="section">
+    <div class="section-label">06 / Agent 配置</div>
+    <h2>Agent 的关键配置文件</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>文件</th>
+            <th>作用</th>
+            <th>示例内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SOUL.md</td>
+            <td>定义 Agent 的身份、性格、行为规则</td>
+            <td>你是一个专业的文件管理助手，执行操作前必须确认...</td>
+          </tr>
+          <tr>
+            <td>Skills/</td>
+            <td>按需加载的专项能力模块</td>
+            <td>照片整理 Skill、代码审查 Skill、日程管理 Skill...</td>
+          </tr>
+          <tr>
+            <td>config.yaml</td>
+            <td>绑定模型、配置 MCP Server、设置频道</td>
+            <td>model: claude-3-5-sonnet, channels: [telegram]...</td>
+          </tr>
+          <tr>
+            <td>MEMORY.md</td>
+            <td>跨会话持久记忆</td>
+            <td>用户偏好、历史任务记录、常用路径...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 概念速查 -->
+  <div class="section">
+    <div class="section-label">07 / 速查</div>
+    <h2>核心概念一览</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>概念</th>
+            <th>运行位置</th>
+            <th>一句话说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Channel</td>
+            <td>消息平台</td>
+            <td>你和 AI 说话的入口，负责标准化消息格式</td>
+          </tr>
+          <tr>
+            <td>Gateway</td>
+            <td>本地机器</td>
+            <td>系统神经中枢，调度所有组件协同工作</td>
+          </tr>
+          <tr>
+            <td>Agent</td>
+            <td>本地机器（调用云端 LLM）</td>
+            <td>有身份、有记忆、会规划的 AI 执行单元</td>
+          </tr>
+          <tr>
+            <td>Tools</td>
+            <td>本地机器</td>
+            <td>Agent 可直接调用的本地功能函数</td>
+          </tr>
+          <tr>
+            <td>MCP Server</td>
+            <td>本地机器（代理远端节点）</td>
+            <td>远端设备/服务的本地代理，封装连接与权限</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="footer">
+  OpenClaw Technical Overview · 2026
+</div>
+
+</body>
+</html>
