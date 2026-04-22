@@ -634,7 +634,7 @@
   <span class="md-ellipsis">
     
   
-    链表
+    链表专题（Hot100 · 模块化重构）
   
 
     
@@ -3921,7 +3921,18 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">quick_sort_3way</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># 如果你忘记了这个代码的原理，请看下面的代码演示，能迅速帮助你回忆</span>
+<span class="sd">"""</span>
+<span class="sd">不变式把数组划成四段：[low, lt-1] 小于 pivot, [lt, i-1] 等于 pivot,[i, gt] 尚未处理，[gt+1, high] 大于 pivot。</span>
+<span class="sd">整个循环的唯一任务是让未处理段 [i, gt] 不断收缩，直至消失，同时保证前述四段始终成立。由不变式直接推出循环体的三种情形。</span>
+<span class="sd">当前元素小于 pivot 时，把它塞入左侧小于区的尾部，并前推 lt 与 i 两个指针。大于 pivot 时，塞入右侧大于区的头部，i 不前进，因为换过来的元素尚未检验。</span>
+<span class="sd">等于 pivot 时,直接扩大等于区, i 前进一步。算法的全部逻辑就此闭合。</span>
+
+<span class="sd">回到基准选择的问题。基准必须位于 low 的原因仅来自初始化:lt = low 且 i = low + 1 意味着 nums[low] 在循环中永远不会被指针 i 访问，</span>
+<span class="sd">同时它又被默认划入等于区。若 nums[low] 的真实值与 pivot 不符，等于区从第一步起就被污染，不变式随之失效。</span>
+<span class="sd">随机选基准与此并不冲突，只是随机得到的位置必须通过一次交换回到 low, 才能让初始化自洽。那一行 swap 的本质是将随机化与模板之间的接口对齐。</span>
+<span class="sd">"""</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">quick_sort_3way</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
         <span class="c1"># 区间长度小于等于1时，结束递归</span>
@@ -3957,7 +3968,18 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="n">quick_sort_3way</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
 <span class="n">nums</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">def quick_sort_3way(nums):
+<div class="clipboard-copy-txt" id="cell-1"># 如果你忘记了这个代码的原理，请看下面的代码演示，能迅速帮助你回忆
+"""
+不变式把数组划成四段：[low, lt-1] 小于 pivot, [lt, i-1] 等于 pivot,[i, gt] 尚未处理，[gt+1, high] 大于 pivot。
+整个循环的唯一任务是让未处理段 [i, gt] 不断收缩，直至消失，同时保证前述四段始终成立。由不变式直接推出循环体的三种情形。
+当前元素小于 pivot 时，把它塞入左侧小于区的尾部，并前推 lt 与 i 两个指针。大于 pivot 时，塞入右侧大于区的头部，i 不前进，因为换过来的元素尚未检验。
+等于 pivot 时,直接扩大等于区, i 前进一步。算法的全部逻辑就此闭合。
+
+回到基准选择的问题。基准必须位于 low 的原因仅来自初始化:lt = low 且 i = low + 1 意味着 nums[low] 在循环中永远不会被指针 i 访问，
+同时它又被默认划入等于区。若 nums[low] 的真实值与 pivot 不符，等于区从第一步起就被污染，不变式随之失效。
+随机选基准与此并不冲突，只是随机得到的位置必须通过一次交换回到 low, 才能让初始化自洽。那一行 swap 的本质是将随机化与模板之间的接口对齐。
+"""
+def quick_sort_3way(nums):
 
     def sort(low, high):
         # 区间长度小于等于1时，结束递归
@@ -3992,6 +4014,108 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 nums = [200, 100 ,6, 10, 4, 10]
 quick_sort_3way(nums)
 nums</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[4, 6, 10, 10, 100, 200]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">quick_fast</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">high</span> <span class="o">&lt;=</span> <span class="n">low</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">pivot_idx</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>   <span class="c1"># 从当前子区间随机选索引</span>
+        <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot_idx</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">]</span>  <span class="c1"># 交换</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">]</span>
+
+        <span class="n">lt</span> <span class="o">=</span> <span class="n">low</span>
+        <span class="n">gt</span> <span class="o">=</span> <span class="n">high</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">gt</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
+                <span class="n">nums</span><span class="p">[</span><span class="n">lt</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">lt</span><span class="p">]</span>
+                <span class="n">lt</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+                <span class="n">nums</span><span class="p">[</span><span class="n">gt</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">gt</span><span class="p">]</span>
+                <span class="n">gt</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="n">sort</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">lt</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sort</span><span class="p">(</span><span class="n">gt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+    <span class="n">sort</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span> <span class="p">,</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">quick_fast</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="n">nums</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-2">import random
+def quick_fast(nums):
+    def sort(low, high):
+        if high &lt;= low:
+            return
+        
+        pivot_idx = random.randint(low, high)   # 从当前子区间随机选索引
+        nums[low], nums[pivot_idx] = nums[pivot_idx], nums[low]  # 交换
+        pivot = nums[low]
+
+        lt = low
+        gt = high
+        i = low + 1
+
+        while i &lt;= gt:
+            if nums[i] &lt; pivot:
+                nums[lt], nums[i] = nums[i], nums[lt]
+                lt += 1
+                i += 1
+            elif nums[i] &gt; pivot:
+                nums[gt], nums[i] = nums[i], nums[gt]
+                gt -= 1
+            else:
+                i += 1
+        
+        sort(low, lt-1)
+        sort(gt+1, high)
+    sort(0, len(nums)-1)
+
+nums = [200, 100 ,6, 10, 4, 10]
+quick_fast(nums)
+nums
+</div>
 </div>
 </div>
 </div>
@@ -4125,10 +4249,10 @@ i=3: 10 == 10 → i=4
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4154,7 +4278,7 @@ i=3: 10 == 10 → i=4
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"原始数组: </span><span class="si">{</span><span class="n">arr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"排序后数组: </span><span class="si">{</span><span class="n">sorted_arr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">import random
+<div class="clipboard-copy-txt" id="cell-3">import random
 def quick_sort(nums):
     if len(nums) &lt;= 1:
         return nums
@@ -5105,7 +5229,7 @@ pdqsort
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -5154,7 +5278,7 @@ pdqsort
         <span class="c1"># nums[low..lt-1] &lt; pivot，共 lt - low 个</span>
         <span class="c1"># nums[lt..gt]   == pivot，共 gt - lt + 1 个</span>
         <span class="c1"># nums[gt+1..high] &gt; pivot</span>
-        <span class="c1"># 注意这里的第k大，按照升序，应该是k-1</span>
+        <span class="c1"># 第1小的元素，按照升序排列，索引应该为0；因此k-1表示我们想要的元素在已经排好的序列中的索引</span>
         <span class="k">if</span> <span class="n">k</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">lt</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="c1"># 第 k 小在小于区</span>
             <span class="k">return</span> <span class="n">select</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">lt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
@@ -5175,7 +5299,7 @@ pdqsort
 <span class="nb">print</span><span class="p">(</span><span class="n">quick_select</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 输出 2，第 2 小</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">quick_select</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># 输出 5，第 5 小</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">import random
+<div class="clipboard-copy-txt" id="cell-4">import random
 
 def quick_select(nums, k):
     """
@@ -5214,7 +5338,7 @@ def quick_select(nums, k):
         # nums[low..lt-1] &lt; pivot，共 lt - low 个
         # nums[lt..gt]   == pivot，共 gt - lt + 1 个
         # nums[gt+1..high] &gt; pivot
-        # 注意这里的第k大，按照升序，应该是k-1
+        # 第1小的元素，按照升序排列，索引应该为0；因此k-1表示我们想要的元素在已经排好的序列中的索引
         if k-1 &lt;= lt-1:
             # 第 k 小在小于区
             return select(low, lt - 1, k)
@@ -5247,6 +5371,143 @@ print(quick_select(nums, 5))  # 输出 5，第 5 小</div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>2
 5
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>面试题 17.14. 最小K个数</p>
+<p>设计一个算法，找出数组中最小的k个数。以任意顺序返回这k个数均可。</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">smallestK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">nums</span><span class="p">[:]</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">low</span> <span class="o">&gt;=</span> <span class="n">high</span><span class="p">:</span>
+                <span class="k">return</span>
+
+            <span class="c1"># 随机基准并交换到左端，保持三路划分的初始不变式</span>
+            <span class="n">pivot_index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+            <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot_index</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">]</span>
+            <span class="n">pivot</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">]</span>
+
+            <span class="n">lt</span><span class="p">,</span> <span class="n">gt</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">gt</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
+                    <span class="n">nums</span><span class="p">[</span><span class="n">lt</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">lt</span><span class="p">]</span>
+                    <span class="n">lt</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+                    <span class="n">nums</span><span class="p">[</span><span class="n">gt</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">gt</span><span class="p">]</span>
+                    <span class="n">gt</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="c1"># 区间此时三分为：[low, lt-1] &lt; pivot,  [lt, gt] == pivot,  [gt+1, high] &gt; pivot</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">lt</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">select</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">lt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="n">gt</span><span class="p">:</span>
+                <span class="n">select</span><span class="p">(</span><span class="n">gt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+            <span class="c1"># 若 lt-1 &lt;= k-1 &lt;= gt，前 k 个位置已是最小 k 个元素，无需再递归</span>
+
+        <span class="n">select</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nums</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Solution</span><span class="p">()</span><span class="o">.</span><span class="n">smallestK</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-5">import random
+from typing import List
+
+class Solution:
+    def smallestK(self, nums: List[int], k: int) -&gt; List[int]:
+        if k == 0:
+            return []
+        if k &gt;= len(nums):
+            return nums[:]
+
+        def select(low, high):
+            if low &gt;= high:
+                return
+
+            # 随机基准并交换到左端，保持三路划分的初始不变式
+            pivot_index = random.randint(low, high)
+            nums[low], nums[pivot_index] = nums[pivot_index], nums[low]
+            pivot = nums[low]
+
+            lt, gt, i = low, high, low + 1
+            while i &lt;= gt:
+                if nums[i] &lt; pivot:
+                    nums[lt], nums[i] = nums[i], nums[lt]
+                    lt += 1
+                    i += 1
+                elif nums[i] &gt; pivot:
+                    nums[gt], nums[i] = nums[i], nums[gt]
+                    gt -= 1
+                else:
+                    i += 1
+
+            # 区间此时三分为：[low, lt-1] &lt; pivot,  [lt, gt] == pivot,  [gt+1, high] &gt; pivot
+            if k - 1 &lt; lt-1:
+                select(low, lt - 1)
+            elif k - 1 &gt; gt:
+                select(gt + 1, high)
+            # 若 lt-1 &lt;= k-1 &lt;= gt，前 k 个位置已是最小 k 个元素，无需再递归
+
+        select(0, len(nums) - 1)
+        return nums[:k]
+nums = [3, 2, 1, 5, 6, 4]
+k = 5
+print(Solution().smallestK(nums, k))
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[1, 2, 3, 4, 5]
 </pre>
 </div>
 </div>
@@ -5555,7 +5816,7 @@ LC23（合并K个升序链表）= 分治两两调用 LC21
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -5623,7 +5884,7 @@ LC23（合并K个升序链表）= 分治两两调用 LC21
     <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">" -&gt; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vals</span><span class="p">))</span>  <span class="c1"># 1 -&gt; 2 -&gt; 3 -&gt; 4</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">from typing import Optional
+<div class="clipboard-copy-txt" id="cell-6">from typing import Optional
 
 class ListNode:
     def __init__(self, val: int = 0, next: 'ListNode | None' = None):
