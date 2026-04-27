@@ -1,5 +1,5 @@
-site_name: 推荐算法学习笔记
-site_description: 《推荐算法学习笔记》系统整理
+site_name: AI 算法与工程学习笔记
+site_description: 算法基础、机器学习、推荐搜索广告、大模型、多模态与工程实践
 site_author: GlenTT
 site_url: https://GRITJW.github.io/hot100/
 
@@ -70,58 +70,101 @@ extra_javascript:
 nav:
   - 首页: index.md
 
-  - 算法 Hot100:
-      - 总览 (交互地图): notebooks/算法刷题/overview.md
-      - 数据结构类:
-          - 数组: notebooks/算法刷题/数据结构/数组.ipynb
-          - 链表: notebooks/算法刷题/数据结构/链表.ipynb
-          - 栈与队列: notebooks/算法刷题/数据结构/栈与队列.ipynb
-          - 哈希表: notebooks/算法刷题/数据结构/哈希表.ipynb
-          - 二叉树: notebooks/算法刷题/数据结构/二叉树.ipynb
-          - 堆: notebooks/算法刷题/数据结构/堆.ipynb
-      - 算法思想类:
-          - 前缀和: notebooks/算法刷题/算法/前缀和.ipynb
-          - 差分: notebooks/算法刷题/算法/差分.ipynb
-          - 双指针: notebooks/算法刷题/算法/双指针.ipynb
-          - 滑动窗口: notebooks/算法刷题/算法/滑动窗口.ipynb
-          - 二分查找: notebooks/算法刷题/算法/二分查找.ipynb
-          - 一维 DP: notebooks/算法刷题/算法/动态规划.ipynb
-          - 多维 DP: notebooks/算法刷题/算法/多维动态规划.ipynb
-          - 贪心: notebooks/算法刷题/算法/贪心算法.ipynb
-          - 回溯: notebooks/算法刷题/算法/回溯.ipynb
-          - 图: notebooks/算法刷题/算法/图论.ipynb
-      - 补充知识:
-          - 排序: notebooks/算法刷题/排序.ipynb
-          - 算法思维: notebooks/算法刷题/算法思维.md
-          - 归纳总结: notebooks/算法刷题/Hot100归纳与题型对比.ipynb
+  - 00 知识地图:
+      - 板块定位: notebooks/00_知识地图/README.md
 
-  - 数据结构:
-      - 数据结构: notebooks/数据结构基础/数据结构.ipynb
+  - 01 计算机系统基础:
+      - 板块定位: notebooks/01_计算机系统基础/README.md
+      - 硬件:
+          - 计算机硬件: notebooks/01_计算机系统基础/01_硬件/计算机硬件.md
+      - 操作系统:
+          - 系统三大核心模块: notebooks/01_计算机系统基础/02_操作系统/计算机系统三大核心模块学习笔记.md
 
-  - 搜广推&LLM业务题:
-      - 常见面试题: notebooks/搜广推&llm业务和训练/搜广推常见面试题目.ipynb
-      - 手撕题: notebooks/搜广推&llm业务和训练/面试手撕题.ipynb
-  
-  - 论文理解:
-      - OneRec: notebooks/搜广推&llm业务和训练/论文理解/onerec.md
-      - OneTrans: notebooks/搜广推&llm业务和训练/论文理解/onetrans.md
-      - RankMixer: notebooks/搜广推&llm业务和训练/论文理解/rankmixer.md
-      
-  - Python & PyTorch语法:
-      - Python 语法: notebooks/python基础和pytorch基础/python语法.ipynb
-      - 1. 数学运算: notebooks/python基础和pytorch基础/pytorch-1.数学运算.ipynb
-      - 2. 张量操作: notebooks/python基础和pytorch基础/pytorch-2.张量操作.ipynb
-      - 3. 网络层与损失函数: notebooks/python基础和pytorch基础/pytorch-3.网络层.ipynb
-      - 4. 数据加载与梯度管理: notebooks/python基础和pytorch基础/pytorch-4.数据加载和梯度管理.ipynb
-      - 5. 基础知识总结: notebooks/python基础和pytorch基础/pytorch-5.基础知识总结.ipynb
-      - 6. 各类库梳理: notebooks/python基础和pytorch基础/pytorch-6.architecture-tutorial.ipynb
-      
-  - 机器学习基础知识:
-      - 梯度计算: notebooks/机器学习/优化算法/梯度计算总结.ipynb
-      - 优化算法: notebooks/机器学习/优化算法/优化算法总结.ipynb
+  - 02 数学统计优化:
+      - 板块定位: notebooks/02_数学统计优化/README.md
+      - 优化算法:
+          - 优化算法总结: notebooks/02_数学统计优化/05_优化算法/优化算法总结.ipynb
+          - 梯度计算总结: notebooks/02_数学统计优化/05_优化算法/梯度计算总结.ipynb
 
-  - Agent:
-      - openclaw: notebooks/agent/openclaw介绍.md
+  - 03 编程与工程能力:
+      - 板块定位: notebooks/03_编程与工程能力/README.md
+      - Python:
+          - Python 语法: notebooks/03_编程与工程能力/01_Python/python语法.ipynb
 
-  - 计算机基础知识: 
-      - 计算机底层: notebooks/计算机基础知识/计算机硬件.md
+  - 04 数据结构与算法:
+      - 板块定位: notebooks/04_数据结构与算法/README.md
+      - 数据结构:
+          - 数据结构总览: notebooks/04_数据结构与算法/01_数据结构/数据结构总览.ipynb
+          - 数组: notebooks/04_数据结构与算法/01_数据结构/数组.ipynb
+          - 链表: notebooks/04_数据结构与算法/01_数据结构/链表.ipynb
+          - 栈与队列: notebooks/04_数据结构与算法/01_数据结构/栈与队列.ipynb
+          - 哈希表: notebooks/04_数据结构与算法/01_数据结构/哈希表.ipynb
+          - 二叉树: notebooks/04_数据结构与算法/01_数据结构/二叉树.ipynb
+          - 堆: notebooks/04_数据结构与算法/01_数据结构/堆.ipynb
+      - 算法思想:
+          - 双指针: notebooks/04_数据结构与算法/02_算法思想/双指针.ipynb
+          - 滑动窗口: notebooks/04_数据结构与算法/02_算法思想/滑动窗口.ipynb
+          - 二分查找: notebooks/04_数据结构与算法/02_算法思想/二分查找.ipynb
+          - 前缀和: notebooks/04_数据结构与算法/02_算法思想/前缀和.ipynb
+          - 差分: notebooks/04_数据结构与算法/02_算法思想/差分.ipynb
+          - 动态规划: notebooks/04_数据结构与算法/02_算法思想/动态规划.ipynb
+          - 贪心算法: notebooks/04_数据结构与算法/02_算法思想/贪心算法.ipynb
+          - 回溯: notebooks/04_数据结构与算法/02_算法思想/回溯.ipynb
+          - 图论: notebooks/04_数据结构与算法/02_算法思想/图论.ipynb
+      - 算法工具:
+          - 排序: notebooks/04_数据结构与算法/03_算法工具/排序.ipynb
+      - 题型归纳:
+          - 总览交互地图: notebooks/04_数据结构与算法/04_题型归纳/overview.md
+          - 算法思维: notebooks/04_数据结构与算法/04_题型归纳/算法思维.md
+          - 解题切入点: notebooks/04_数据结构与算法/04_题型归纳/解题切入点.md
+          - Hot100 归纳与题型对比: notebooks/04_数据结构与算法/04_题型归纳/Hot100归纳与题型对比.ipynb
+
+  - 05 机器学习基础:
+      - 板块定位: notebooks/05_机器学习基础/README.md
+      - 可学习标量的设计: notebooks/05_机器学习基础/可学习标量的设计.md
+
+  - 06 深度学习与 PyTorch:
+      - 板块定位: notebooks/06_深度学习与PyTorch/README.md
+      - PyTorch 工程:
+          - 1. 数学运算: notebooks/06_深度学习与PyTorch/03_PyTorch工程/pytorch-1.数学运算.ipynb
+          - 2. 张量操作: notebooks/06_深度学习与PyTorch/03_PyTorch工程/pytorch-2.张量操作.ipynb
+          - 3. 网络层与损失函数: notebooks/06_深度学习与PyTorch/03_PyTorch工程/pytorch-3.网络层.ipynb
+          - 4. 数据加载与梯度管理: notebooks/06_深度学习与PyTorch/03_PyTorch工程/pytorch-4.数据加载和梯度管理.ipynb
+          - 5. 基础知识总结: notebooks/06_深度学习与PyTorch/03_PyTorch工程/pytorch-5.基础知识总结.ipynb
+          - 6. 各类库梳理: notebooks/06_深度学习与PyTorch/03_PyTorch工程/pytorch-6.architecture-tutorial.ipynb
+
+  - 07 推荐搜索广告:
+      - 板块定位: notebooks/07_推荐搜索广告/README.md
+      - 业务系统:
+          - 数据稀疏与样本穿越: notebooks/07_推荐搜索广告/05_业务系统/数据稀疏和样本穿越.md
+
+  - 08 大模型:
+      - 板块定位: notebooks/08_大模型/README.md
+      - 大模型核心算法层:
+          - 层级定位: notebooks/08_大模型/02_大模型核心算法/README.md
+      - 大模型系统层:
+          - 层级定位: notebooks/08_大模型/03_大模型系统层/README.md
+      - 大模型应用层:
+          - 层级定位: notebooks/08_大模型/04_大模型应用层/README.md
+          - MCP 与工具生态:
+              - openclaw 介绍: notebooks/08_大模型/04_大模型应用层/03_ToolCalling与MCP/openclaw介绍.md
+
+  - 09 多模态:
+      - 板块定位: notebooks/09_多模态/README.md
+      - VLM:
+          - 多模态专题: notebooks/09_多模态/03_VLM/多模态专题.md
+          - 多模态框架: notebooks/09_多模态/03_VLM/多模态框架.md
+
+  - 10 项目实验与面试:
+      - 板块定位: notebooks/10_项目实验与面试/README.md
+      - 面试题:
+          - 搜广推常见面试题目: notebooks/10_项目实验与面试/01_面试题/搜广推常见面试题目.ipynb
+      - 手撕题:
+          - 面试手撕题: notebooks/10_项目实验与面试/02_手撕题/面试手撕题.ipynb
+
+  - 11 论文精读:
+      - 板块定位: notebooks/11_论文精读/README.md
+      - 推荐系统:
+          - OneRec: notebooks/11_论文精读/推荐系统/onerec.md
+          - OneTrans: notebooks/11_论文精读/推荐系统/onetrans.md
+          - RankMixer: notebooks/11_论文精读/推荐系统/rankmixer.md
