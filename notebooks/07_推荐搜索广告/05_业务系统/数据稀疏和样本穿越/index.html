@@ -12,25 +12,31 @@
         <meta name="author" content="GlenTT">
       
       
+        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/07_%E6%8E%A8%E8%8D%90%E6%90%9C%E7%B4%A2%E5%B9%BF%E5%91%8A/05_%E4%B8%9A%E5%8A%A1%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E7%A8%80%E7%96%8F%E5%92%8C%E6%A0%B7%E6%9C%AC%E7%A9%BF%E8%B6%8A/">
       
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
       
       
         
       
       
-      <link rel="icon" href="/hot100/assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>AI 算法与工程学习笔记</title>
+        <title>数据稀疏与样本穿越 - AI 算法与工程学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="/hot100/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/hot100/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="/hot100/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/hot100/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -75,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -85,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="/hot100/." title="AI 算法与工程学习笔记" class="md-header__button md-logo" aria-label="AI 算法与工程学习笔记" data-md-component="logo">
+    <a href="../../../.." title="AI 算法与工程学习笔记" class="md-header__button md-logo" aria-label="AI 算法与工程学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -105,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              数据稀疏与样本穿越
             
           </span>
         </div>
@@ -204,7 +215,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/hot100/." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -225,7 +236,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/00_%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE/" class="md-tabs__link">
+        <a href="../../../00_%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE/" class="md-tabs__link">
           
   
   
@@ -245,7 +256,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="md-tabs__link">
+        <a href="../../../01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="md-tabs__link">
           
   
   
@@ -265,7 +276,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/" class="md-tabs__link">
+        <a href="../../../02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/" class="md-tabs__link">
           
   
   
@@ -285,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/" class="md-tabs__link">
+        <a href="../../../03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/" class="md-tabs__link">
           
   
   
@@ -305,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-tabs__link">
+        <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-tabs__link">
           
   
   
@@ -325,7 +336,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-tabs__link">
+        <a href="../../../05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-tabs__link">
           
   
   
@@ -345,7 +356,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/" class="md-tabs__link">
+        <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/" class="md-tabs__link">
           
   
   
@@ -361,11 +372,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/hot100/notebooks/07_%E6%8E%A8%E8%8D%90%E6%90%9C%E7%B4%A2%E5%B9%BF%E5%91%8A/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -385,7 +398,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-tabs__link">
+        <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-tabs__link">
           
   
   
@@ -405,7 +418,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/09_%E5%A4%9A%E6%A8%A1%E6%80%81/" class="md-tabs__link">
+        <a href="../../../09_%E5%A4%9A%E6%A8%A1%E6%80%81/" class="md-tabs__link">
           
   
   
@@ -425,7 +438,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-tabs__link">
+        <a href="../../../10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-tabs__link">
           
   
   
@@ -445,7 +458,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/hot100/notebooks/11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="md-tabs__link">
+        <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="md-tabs__link">
           
   
   
@@ -479,7 +492,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/hot100/." title="AI 算法与工程学习笔记" class="md-nav__button md-logo" aria-label="AI 算法与工程学习笔记" data-md-component="logo">
+    <a href="../../../.." title="AI 算法与工程学习笔记" class="md-nav__button md-logo" aria-label="AI 算法与工程学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -497,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -578,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/00_%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE/" class="md-nav__link">
+      <a href="../../../00_%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE/" class="md-nav__link">
         
   
   
@@ -667,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../../../01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="md-nav__link">
         
   
   
@@ -749,7 +762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/01_%E7%A1%AC%E4%BB%B6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6/" class="md-nav__link">
+      <a href="../../../01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/01_%E7%A1%AC%E4%BB%B6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6/" class="md-nav__link">
         
   
   
@@ -839,7 +852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/02_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+      <a href="../../../01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/02_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="md-nav__link">
         
   
   
@@ -936,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/" class="md-nav__link">
+      <a href="../../../02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/" class="md-nav__link">
         
   
   
@@ -1018,7 +1031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/05_%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" class="md-nav__link">
+      <a href="../../../02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/05_%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" class="md-nav__link">
         
   
   
@@ -1046,7 +1059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/05_%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%80%BB%E7%BB%93/" class="md-nav__link">
+      <a href="../../../02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/05_%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%80%BB%E7%BB%93/" class="md-nav__link">
         
   
   
@@ -1143,7 +1156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/" class="md-nav__link">
+      <a href="../../../03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/" class="md-nav__link">
         
   
   
@@ -1225,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/01_Python/python%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+      <a href="../../../03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/01_Python/python%E8%AF%AD%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -1322,7 +1335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -1404,7 +1417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" class="md-nav__link">
         
   
   
@@ -1432,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/" class="md-nav__link">
         
   
   
@@ -1460,7 +1473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -1488,7 +1501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="md-nav__link">
         
   
   
@@ -1516,7 +1529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="md-nav__link">
         
   
   
@@ -1544,7 +1557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
         
   
   
@@ -1572,7 +1585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/" class="md-nav__link">
         
   
   
@@ -1662,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
         
   
   
@@ -1690,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="md-nav__link">
         
   
   
@@ -1718,7 +1731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
         
   
   
@@ -1746,7 +1759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%89%8D%E7%BC%80%E5%92%8C/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%89%8D%E7%BC%80%E5%92%8C/" class="md-nav__link">
         
   
   
@@ -1774,7 +1787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%B7%AE%E5%88%86/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%B7%AE%E5%88%86/" class="md-nav__link">
         
   
   
@@ -1802,7 +1815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
         
   
   
@@ -1830,7 +1843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -1858,7 +1871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
         
   
   
@@ -1886,7 +1899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
         
   
   
@@ -1976,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/03_%E7%AE%97%E6%B3%95%E5%B7%A5%E5%85%B7/%E6%8E%92%E5%BA%8F/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/03_%E7%AE%97%E6%B3%95%E5%B7%A5%E5%85%B7/%E6%8E%92%E5%BA%8F/" class="md-nav__link">
         
   
   
@@ -2066,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/overview/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/overview/" class="md-nav__link">
         
   
   
@@ -2094,7 +2107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/%E7%AE%97%E6%B3%95%E6%80%9D%E7%BB%B4/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/%E7%AE%97%E6%B3%95%E6%80%9D%E7%BB%B4/" class="md-nav__link">
         
   
   
@@ -2122,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/%E8%A7%A3%E9%A2%98%E5%88%87%E5%85%A5%E7%82%B9/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/%E8%A7%A3%E9%A2%98%E5%88%87%E5%85%A5%E7%82%B9/" class="md-nav__link">
         
   
   
@@ -2150,7 +2163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/Hot100%E5%BD%92%E7%BA%B3%E4%B8%8E%E9%A2%98%E5%9E%8B%E5%AF%B9%E6%AF%94/" class="md-nav__link">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/Hot100%E5%BD%92%E7%BA%B3%E4%B8%8E%E9%A2%98%E5%9E%8B%E5%AF%B9%E6%AF%94/" class="md-nav__link">
         
   
   
@@ -2247,7 +2260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../../../05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
         
   
   
@@ -2275,7 +2288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%8F%AF%E5%AD%A6%E4%B9%A0%E6%A0%87%E9%87%8F%E7%9A%84%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+      <a href="../../../05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%8F%AF%E5%AD%A6%E4%B9%A0%E6%A0%87%E9%87%8F%E7%9A%84%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
         
   
   
@@ -2364,7 +2377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/" class="md-nav__link">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/" class="md-nav__link">
         
   
   
@@ -2446,7 +2459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-1.%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/" class="md-nav__link">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-1.%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/" class="md-nav__link">
         
   
   
@@ -2474,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-2.%E5%BC%A0%E9%87%8F%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-2.%E5%BC%A0%E9%87%8F%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   
@@ -2502,7 +2515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-3.%E7%BD%91%E7%BB%9C%E5%B1%82/" class="md-nav__link">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-3.%E7%BD%91%E7%BB%9C%E5%B1%82/" class="md-nav__link">
         
   
   
@@ -2530,7 +2543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/" class="md-nav__link">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/" class="md-nav__link">
         
   
   
@@ -2558,7 +2571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-5.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="md-nav__link">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-5.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="md-nav__link">
         
   
   
@@ -2586,7 +2599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-6.architecture-tutorial/" class="md-nav__link">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-6.architecture-tutorial/" class="md-nav__link">
         
   
   
@@ -2626,28 +2639,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
             
   
   
@@ -2665,7 +2681,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2683,7 +2699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/07_%E6%8E%A8%E8%8D%90%E6%90%9C%E7%B4%A2%E5%B9%BF%E5%91%8A/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -2708,28 +2724,31 @@
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
         
           
+          
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2" >
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="">
             
   
   
@@ -2747,7 +2766,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2762,10 +2781,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/hot100/notebooks/07_%E6%8E%A8%E8%8D%90%E6%90%9C%E7%B4%A2%E5%B9%BF%E5%91%8A/05_%E4%B8%9A%E5%8A%A1%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E7%A8%80%E7%96%8F%E5%92%8C%E6%A0%B7%E6%9C%AC%E7%A9%BF%E8%B6%8A/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据稀疏与样本穿越
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2781,6 +2825,46 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样本稀疏：系统性专题讲解
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样本穿越
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2862,7 +2946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
         
   
   
@@ -2944,7 +3028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/02_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/02_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -3034,7 +3118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/03_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%B3%BB%E7%BB%9F%E5%B1%82/" class="md-nav__link">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/03_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%B3%BB%E7%BB%9F%E5%B1%82/" class="md-nav__link">
         
   
   
@@ -3124,7 +3208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/04_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82/" class="md-nav__link">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/04_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82/" class="md-nav__link">
         
   
   
@@ -3206,7 +3290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/04_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82/03_ToolCalling%E4%B8%8EMCP/openclaw%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/04_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82/03_ToolCalling%E4%B8%8EMCP/openclaw%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
         
   
   
@@ -3311,7 +3395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/09_%E5%A4%9A%E6%A8%A1%E6%80%81/" class="md-nav__link">
+      <a href="../../../09_%E5%A4%9A%E6%A8%A1%E6%80%81/" class="md-nav__link">
         
   
   
@@ -3393,7 +3477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/09_%E5%A4%9A%E6%A8%A1%E6%80%81/03_VLM/%E5%A4%9A%E6%A8%A1%E6%80%81%E4%B8%93%E9%A2%98/" class="md-nav__link">
+      <a href="../../../09_%E5%A4%9A%E6%A8%A1%E6%80%81/03_VLM/%E5%A4%9A%E6%A8%A1%E6%80%81%E4%B8%93%E9%A2%98/" class="md-nav__link">
         
   
   
@@ -3421,7 +3505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/09_%E5%A4%9A%E6%A8%A1%E6%80%81/03_VLM/%E5%A4%9A%E6%A8%A1%E6%80%81%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+      <a href="../../../09_%E5%A4%9A%E6%A8%A1%E6%80%81/03_VLM/%E5%A4%9A%E6%A8%A1%E6%80%81%E6%A1%86%E6%9E%B6/" class="md-nav__link">
         
   
   
@@ -3518,7 +3602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-nav__link">
+      <a href="../../../10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-nav__link">
         
   
   
@@ -3600,7 +3684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/01_%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%90%9C%E5%B9%BF%E6%8E%A8%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/" class="md-nav__link">
+      <a href="../../../10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/01_%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%90%9C%E5%B9%BF%E6%8E%A8%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/" class="md-nav__link">
         
   
   
@@ -3690,7 +3774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/02_%E6%89%8B%E6%92%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
+      <a href="../../../10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/02_%E6%89%8B%E6%92%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
         
   
   
@@ -3787,7 +3871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="md-nav__link">
+      <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="md-nav__link">
         
   
   
@@ -3869,7 +3953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/onerec/" class="md-nav__link">
+      <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/onerec/" class="md-nav__link">
         
   
   
@@ -3897,7 +3981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/onetrans/" class="md-nav__link">
+      <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/onetrans/" class="md-nav__link">
         
   
   
@@ -3925,7 +4009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hot100/notebooks/11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/rankmixer/" class="md-nav__link">
+      <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/rankmixer/" class="md-nav__link">
         
   
   
@@ -3979,6 +4063,36 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样本稀疏：系统性专题讲解
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样本穿越
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3990,8 +4104,93 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+  <h1>数据稀疏与样本穿越</h1>
+
+<h2 id="_1">样本稀疏：系统性专题讲解<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">一、什么是样本稀疏，为什么会发生<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>样本稀疏（Data Sparsity，DS）是指在训练某个目标任务时，正样本的绝对数量或相对比例严重不足，导致模型无法从数据中学到足够可靠的规律。</p>
+<p>在推荐系统中，用户的行为本身就呈现出漏斗状的稀疏结构：</p>
+<div class="arithmatex">\[\text{曝光量} \gg \text{点击量} \gg \text{转化量} \gg \text{深度转化量}\]</div>
+<p>以 CVR（转化率）预估任务为例，模型只能在"点击样本"中训练，但点击样本本身已经是曝光的一小部分，转化样本则更是点击中的少数。越往漏斗深处走，正样本就越稀少。ESMM 论文中正是在这个场景下明确提出了 DS 问题。</p>
+<h3 id="_3">二、如何判断当前场景存在样本稀疏<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>判断的核心指标是<strong>正样本率</strong>，即正样本数量占总训练样本的比例：</p>
+<div class="arithmatex">\[r = \frac{N_{\text{正样本}}}{N_{\text{正样本}} + N_{\text{负样本}}}\]</div>
+<p>工业界通常以如下经验范围作为参考：</p>
+<p><span class="arithmatex">\(r &gt; 10\%\)</span> 时，正负样本基本均衡，样本稀疏问题不突出。<span class="arithmatex">\(r\)</span> 在 <span class="arithmatex">\(1\%\)</span> 到 <span class="arithmatex">\(10\%\)</span> 之间时，存在轻度不均衡，模型有一定学习压力，但通常不会严重影响效果。<span class="arithmatex">\(r\)</span> 在 <span class="arithmatex">\(0.1\%\)</span> 到 <span class="arithmatex">\(1\%\)</span> 之间时，属于中度稀疏，模型在该任务上的收敛质量会明显下降，需要专项处理。<span class="arithmatex">\(r &lt; 0.1\%\)</span> 时，属于严重稀疏，模型几乎无法从正样本中学到有效信号，任何不加干预的训练结果都不可信。</p>
+<p>除了看比例，还需要看<strong>正样本的绝对数量</strong>。即使正样本率看起来还好，若正样本的绝对量只有几百或几千条，模型同样无法泛化。两个条件需要同时满足：比例合理，且绝对量足够（通常建议单任务正样本不低于数万量级）。</p>
+<p>实践中，以下现象往往是样本稀疏的外在信号：模型在训练集上 Loss 下降缓慢或震荡；验证集 AUC-PR 显著低于 ROC-AUC；模型对几乎所有样本输出接近于 0 的概率值；线上上线后该任务塔对整体排序的贡献极弱。</p>
+<h3 id="_4">三、解决样本稀疏的方案体系<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>解决思路可以沿两条主线展开：一是<strong>在数据层面干预</strong>，直接调整样本的分布；二是<strong>在模型与训练层面干预</strong>，让模型在不改变数据的情况下更好地利用稀疏信号。</p>
+<p><strong>第一类：采样策略——在数据层面调整比例</strong></p>
+<p>最直接的方式是人为调整正负样本的比例。负样本欠采样（Undersampling）是从负样本中随机丢弃一部分，使比例接近均衡。这个方法实现简单，但代价是主动丢失了真实存在的数据信息，且会使模型学到的概率分布偏离真实世界，预测值需要事后通过校准修正。正样本过采样（Oversampling）则是将现有正样本复制多份以扩充数量，但复制不产生新知识，容易导致模型对这部分样本过拟合，泛化能力反而下降。</p>
+<p>这两种方法是传统做法，ESMM 论文将其列为 DS 问题的对比基线，正是因为它们都只是在有限的样本空间内部做调整，没有从根本上解决信息不足的问题。</p>
+<p><strong>第二类：损失函数调整——让稀疏信号得到更多关注</strong></p>
+<p>不改变数据，而是改变模型对不同样本的学习权重。正样本加权 BCE（Weighted Binary Cross-Entropy）是最简单可控的方式，直接对正样本的损失乘以一个权重系数 <span class="arithmatex">\(w^+\)</span>：</p>
+<div class="arithmatex">\[\mathcal{L} = -\left[ w^+ \cdot y \log \hat{y} + (1-y) \log(1-\hat{y}) \right]\]</div>
+<p><span class="arithmatex">\(w^+\)</span> 越大，模型预测错误一个正样本所受到的惩罚越重，从而迫使模型认真对待稀少的正样本。这是工程上应该优先尝试的手段，因为它几乎没有副作用，且调参直觉清晰。</p>
+<p>Focal Loss 在此基础上更进一步，它不是固定地对正样本加权，而是根据预测置信度动态调整权重：预测越确定的样本（无论正负）权重越低，难分类的样本权重越高。这使模型把更多精力集中在真正难以区分的样本上，在正样本率低于 <span class="arithmatex">\(1\%\)</span> 的极端稀疏场景下效果突出，但训练稳定性略弱于简单加权。</p>
+<p><strong>第三类：扩大训练空间——ESMM 的核心思路</strong></p>
+<p>前两类方法的共同局限在于：它们都局限在原有的训练样本空间内做文章。ESMM 提出了一条根本不同的路径——<strong>不在小空间内调比例，而是直接把训练空间扩大</strong>。</p>
+<p>ESMM 将 CTR 预估塔的训练从"点击样本空间"扩展到"全量曝光样本空间"。全量曝光样本的规模远大于点击样本，正负样本的绝对数量都大幅增加，模型可以从中学到更丰富的用户行为规律。CVR 塔则通过 CTCVR 联合概率的监督信号间接受益于这个扩大的空间，绕开了"只有点击样本才有 CVR 标签"的限制。</p>
+<p>这个思路的本质是：与其在稀缺的数据里反复挖掘，不如从架构层面找到更丰富的监督来源。</p>
+<p><strong>第四类：知识迁移与辅助任务——借助相关任务的信号</strong></p>
+<p>当某个任务的正样本实在太少，无法单独有效训练时，可以借助相关任务的监督信号进行迁移。在 MTL 框架中，这体现为设计辅助任务（Auxiliary Task）：用样本更丰富的上层目标（如点击）为样本稀疏的下层目标（如深度转化）提供梯度信号，通过共享底层表征，使下层目标的特征提取质量得到间接提升。这本质上是一种弱监督学习：目标任务的信号虽少，但可以借助结构上相关的任务来填补信息缺口。</p>
+<h3 id="_5">四、方案选择的优先级建议<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>面对具体的样本稀疏问题，建议按照从低成本到高成本的顺序逐步尝试。首先确认正样本率和绝对数量，判断稀疏的严重程度。若属于轻中度稀疏，优先尝试正样本加权 BCE，成本最低且效果稳定。若属于严重稀疏且正样本绝对量也不足，则需要考虑扩大训练空间（如 ESMM 的思路）或引入辅助任务。Focal Loss 和采样策略可作为补充手段，在前述方法效果有限时配合使用。</p>
+<p>你们当前的延迟消费任务（<code>delay_click</code>、<code>delay_dur</code>），正样本率大约落在哪个区间？这将直接决定哪条路径最值得优先投入。</p>
+<h2 id="_6">样本穿越<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>这是一个在工业推荐系统中极其重要、却又容易被忽视的问题。我们从最根本的直觉出发，一层一层建立起完整的理解。</p>
+<h3 id="_7">一、核心直觉：时间的单向性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>在现实世界中，时间只能向前流动。用户在 <span class="arithmatex">\(t\)</span> 时刻做出的决策，只能依赖他在 <span class="arithmatex">\(t\)</span> 时刻之前所掌握的信息，绝不可能"看到未来"。</p>
+<p>推荐系统的模型，本质上是在模拟这个决策过程。它在训练时学到的规律，应该完全基于"在预测那一刻之前已经发生的事情"。<strong>样本穿越的定义就是：在构造训练样本时，不小心把"未来的信息"混入了当前时刻的特征或标签中，导致模型在训练时见过了它在推理时本不该知道的东西。</strong></p>
+<p>这就造成了训练与推理之间的根本性不一致：训练时模型"开了天眼"，推理时它却只能看到正常的信息，于是离线指标虚高，上线后效果大幅跳水。</p>
+<h3 id="_8">二、样本穿越的两种类型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><strong>第一类：特征穿越（Feature Leakage）。</strong></p>
+<p>设某条训练样本的请求发生时刻为 <span class="arithmatex">\(t_0\)</span>。正确的做法是，该样本所使用的一切特征，必须只能依赖 <span class="arithmatex">\((-\infty,\ t_0)\)</span> 范围内的数据。</p>
+<p>特征穿越的发生，就是特征的计算实际上使用了 <span class="arithmatex">\(t_0\)</span> 之后的数据。用一个直接的例子说明：</p>
+<div class="arithmatex">\[f_{\text{正确}} = \text{用户过去7天点击次数，统计截止时间} &lt; t_0\]</div>
+<div class="arithmatex">\[f_{\text{错误}} = \text{用户过去7天点击次数，统计截止时间} = t_0 + \Delta t\]</div>
+<p>两者的差别只是统计截止时间不同，但后者把 <span class="arithmatex">\([t_0,\ t_0+\Delta t]\)</span> 这段时间内发生的点击行为也算进去了。模型训练时用了这个"含有未来信息的特征"，而推理时 <span class="arithmatex">\(t_0\)</span> 时刻根本不存在这段数据——这就是特征穿越。</p>
+<p><strong>第二类：标签穿越（Label Leakage）。</strong></p>
+<p>这是特征与标签在时间轴上发生了重叠污染。以延迟消费任务为例，定义如下：</p>
+<div class="arithmatex">\[\text{标签窗口}：[t_0,\ t_0 + 7\text{days}]\]</div>
+<div class="arithmatex">\[\text{标签}：y = \mathbf{1}[\text{用户在此窗口内发生消费}]\]</div>
+<p>这个设定本身是合理的，问题出在特征上。如果某个特征的定义是"用户最近7天的消费时长"，且其计算范围恰好也覆盖了 <span class="arithmatex">\([t_0,\ t_0+7\text{days}]\)</span>，那么这个特征就把标签窗口内发生的行为吸收进来了——模型通过特征间接"看到"了标签，泄露就此发生。</p>
+<p>正确的约束非常简单，一句话即可表达：</p>
+<div class="arithmatex">\[\text{所有特征的计算截止时间} \leq t_0\]</div>
+<p>只要这条约束被严格执行，标签穿越就不会发生。</p>
+<h3 id="_9">三、如何判断某个场景是否存在样本穿越<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>判断的核心工具只有一个：<strong>在脑海中严格还原"请求发生那一刻"，逐一审问每一个特征和标签。</strong></p>
+<p>具体来说，可以按照以下三个追问来检验。</p>
+<p><strong>第一个追问：这个特征的统计时间窗口，有没有跨越样本的发生时刻？</strong> 比如"过去N天的行为统计"，这个"过去"的基准时间点是什么？是样本发生时刻，还是数据处理时刻？如果是数据处理时刻，而数据处理发生在样本发生之后，就存在穿越风险。</p>
+<p><strong>第二个追问：这个特征在推理时能不能实时拿到？</strong> 有些特征在离线构造样本时很容易计算，但在线上推理时根本不存在。比如"这篇文章最终的总点击量"，离线可以统计，但在线上请求到来时，文章还没有经历那么多点击，这个特征本质上是一个来自未来的全局统计量。</p>
+<p><strong>第三个追问：标签的时间窗口与特征的时间窗口是否存在重叠？</strong> 这是延迟标签任务中最容易踩的坑。你需要在时间轴上把两个窗口画出来，肉眼检查是否有交叉。</p>
+<h3 id="_10">四、几个高频的易错场景<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><strong>场景一：实时特征的"未来均值"问题。</strong> 在大规模推荐中，Item 侧的统计特征（如点击率、转化率）通常是滚动计算的。如果使用的是全量历史数据计算出来的"全局 CTR"，而不是"截至请求时刻的历史 CTR"，就发生了穿越，因为全局 CTR 包含了请求之后发生的点击行为。</p>
+<p><strong>场景二：Join 操作的时间戳不对齐。</strong> 在构造训练样本时，经常需要把用户行为日志和用户画像表做 Join。如果用户画像表没有时间版本管理，使用的是"当前最新的画像"而不是"样本发生时刻的画像"，就会引入穿越。一个用户可能在样本发生后才修改了兴趣标签，但训练时你已经用了修改后的版本。</p>
+<p><strong>场景三：你们正在做的延迟目标任务。</strong> <code>delay_click</code> 这类目标，标签本身就是在请求发生之后的一段时间窗口内回填的。这是合理的。但要特别注意：用于训练的任何特征，都不能包含标签窗口内发生的信息。换句话说，如果标签窗口是 <span class="arithmatex">\([t_0,\ t_0+7\text{days}]\)</span>，那么所有特征的计算截止时间必须严格 <span class="arithmatex">\(\leq t_0\)</span>。</p>
+<h3 id="_11">五、如何在实践中系统地防御<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>最有效的防御机制是建立一套<strong>基于事件时间（Event Time）而非处理时间（Processing Time）的特征生成体系</strong>。</p>
+<p>具体来说，每一条训练样本都应该携带一个严格的"特征截止时间戳"，特征平台在计算任何统计特征时，都以这个时间戳为上界，绝不使用这个时间戳之后的数据。这在工业界通常被称为 Point-in-Time Correct Feature Engineering，是防止样本穿越的工程基石。</p>
+<p>除此之外，有一个非常实用的诊断手段：<strong>如果你的模型离线指标异常地好，好得让人不敢相信，这往往是样本穿越的强烈信号。</strong> 真实世界的推荐任务通常很难，AUC 能到 0.75 已经不错。如果突然出现 0.95 的 AUC，第一反应不应该是庆祝，而应该是立刻去检查数据管道。</p>
+<p>你们目前在做的延迟消费任务，有没有做过特征截止时间戳的对齐检查？这是我最想先确认的一个点。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -4034,10 +4233,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/hot100/", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "content.code.annotate"], "search": "/hot100/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="/hot100/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
