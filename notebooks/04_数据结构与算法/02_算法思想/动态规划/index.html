@@ -12,7 +12,7 @@
         <meta name="author" content="GlenTT">
       
       
-        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+        <link rel="canonical" href="https://gritjw.github.io/hot_100/notebooks/04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
       
       
         <link rel="prev" href="../%E5%B7%AE%E5%88%86/">
@@ -7828,7 +7828,7 @@ print(Solution().longestValidParentheses(""))         # 0
 <div class="highlight"><pre><span></span>当前状态的最优值
 = max(所有能够到达当前状态的“前一状态最优值 + 动作收益”)
 </pre></div>
-<p><img alt="股票状态机的基本转移与冷冻期状态拆分" src="assets/dp-state-machine.svg"/></p>
+<p><img alt="股票状态机的基本转移与冷冻期状态拆分" src="../assets/dp-state-machine.svg"/></p>
 <p>上图需要观察两点：基本股票模型只有“持股／未持股”两个状态；冷冻期使两种未持股历史的后续权限不同，所以必须拆成“当天刚卖出”和“可买入的空仓”。图中的每条箭头就是转移公式中的一个候选来源。</p>
 <p>解题时按以下顺序检查：</p>
 <ol>
@@ -8687,7 +8687,7 @@ print(Solution().maxProfit([1, 4, 8, 16], fee=2))       # 13</div>
 </pre></div>
 <p>两个来源都在上一行，因为当前物品只能使用一次。若每种物品可以无限使用，选了当前物品后，剩余目标仍然可以使用它，第二个来源会变成当前行 <code>dp[i][j-w]</code>。</p>
 <p>一维压缩只是让新旧两行共用数组 <code>dp[j]</code>。公式右侧需要的是旧值还是本轮新值，决定容量遍历方向：</p>
-<p><img alt="一维背包中容量遍历方向的含义" src="assets/dp-knapsack-direction.svg"/></p>
+<p><img alt="一维背包中容量遍历方向的含义" src="../assets/dp-knapsack-direction.svg"/></p>
 <ul>
 <li>0/1 背包读取上一行：容量倒序，使较小的 <code>dp[j-w]</code> 尚未在本轮更新。</li>
 <li>完全背包读取当前行：容量正序，使较小的 <code>dp[j-w]</code> 已经包含当前物品。</li>
@@ -9666,7 +9666,7 @@ print(count_combinations([1, 2, 3], target=4))  # 4</div>
 </pre></div>
 <p>因此 i 的范围为 <code>0..m</code>，j 的范围为 <code>0..n</code>，数组大小为 <code>(m+1)×(n+1)</code>。第 0 行和第 0 列分别表示其中一个前缀为空；访问当前实际元素时使用 <code>s1[i-1]</code> 和 <code>s2[j-1]</code>。</p>
 <p>从 <code>dp[i][j]</code> 反看最后一步，常见候选来自三个方向：</p>
-<p><img alt="双序列 DP 的三个依赖方向" src="assets/dp-two-sequence-directions.svg"/></p>
+<p><img alt="双序列 DP 的三个依赖方向" src="../assets/dp-two-sequence-directions.svg"/></p>
 <table>
 <thead>
 <tr>
@@ -10404,7 +10404,7 @@ print(Solution().numDistinct('', ''))               # 1</div>
 <li>前驱结果应当相加、取最小值，还是取最大值？</li>
 <li>障碍、边界和起点分别代表不可达、单一来源，还是一个计数种子？</li>
 </ol>
-<p><img alt="网格 DP 的路径依赖与局部形状依赖" src="assets/dp-grid-dependencies.svg"/></p>
+<p><img alt="网格 DP 的路径依赖与局部形状依赖" src="../assets/dp-grid-dependencies.svg"/></p>
 <table>
 <thead>
 <tr>
@@ -10956,7 +10956,7 @@ print(Solution().maximalSquare([
 <div class="highlight"><pre><span></span>dp[i][j] = 原序列闭区间 [i,j] 上的某种性质或最优值
 </pre></div>
 <p>当最后一次决策会去掉左端、去掉右端、同时去掉两端，或把区间从某处切开时，前缀状态无法直接表达这些变化，区间才是自然的最小子问题。</p>
-<p><img alt="区间 DP 的依赖顺序与回文状态对比" src="assets/dp-interval-order.svg"/></p>
+<p><img alt="区间 DP 的依赖顺序与回文状态对比" src="../assets/dp-interval-order.svg"/></p>
 <h4 id="">两类常见区间转移<a class="anchor-link" href="#">¶</a></h4><table>
 <thead>
 <tr>
