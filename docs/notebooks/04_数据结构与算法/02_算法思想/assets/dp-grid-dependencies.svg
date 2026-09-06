@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">网格动态规划的两类依赖</title>
+  <desc id="desc">左侧展示路径类问题由允许移动方向反推出上方和左方两个前驱；右侧展示最大正方形由上方、左方和左上方三个局部状态共同决定。</desc>
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+    </marker>
+    <marker id="arrow-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+    <style>
+      .title{font:700 31px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .panel-title{font:700 23px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .text{font:17px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#334155}
+      .strong{font:700 18px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .small{font:15px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#475569}
+      .code{font:16px Consolas,monospace;fill:#0f172a}
+      .panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}
+      .cell{fill:#fff;stroke:#94a3b8;stroke-width:1.5}
+      .current{fill:#fff7ed;stroke:#ea580c;stroke-width:3}
+      .blue{fill:#eff6ff;stroke:#2563eb;stroke-width:2.5}
+      .teal{fill:#f0fdfa;stroke:#0f766e;stroke-width:2.5}
+      .violet{fill:#f5f3ff;stroke:#7c3aed;stroke-width:2.5}
+      .formula{fill:#fff;stroke:#cbd5e1;stroke-width:1.5}
+      .blue-line{fill:none;stroke:#2563eb;stroke-width:3;marker-end:url(#arrow-blue)}
+      .teal-line{fill:none;stroke:#0f766e;stroke-width:3;marker-end:url(#arrow-teal)}
+      .violet-line{fill:none;stroke:#7c3aed;stroke-width:3;marker-end:url(#arrow-violet)}
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#fff"/>
+  <text x="600" y="47" text-anchor="middle" class="title">网格 DP：先由移动规则确定前驱，再决定怎样聚合</text>
+
+  <rect x="35" y="72" width="555" height="575" rx="18" class="panel"/>
+  <text x="65" y="112" class="panel-title">A. 路径类：当前格从哪里到达？</text>
+  <text x="65" y="145" class="text">若只能向右或向下，进入当前格只可能来自上方或左方。</text>
+
+  <g transform="translate(142,185)">
+    <rect x="0" y="0" width="95" height="82" class="cell"/>
+    <rect x="95" y="0" width="95" height="82" class="blue"/>
+    <rect x="190" y="0" width="95" height="82" class="cell"/>
+    <rect x="0" y="82" width="95" height="82" class="teal"/>
+    <rect x="95" y="82" width="95" height="82" class="current"/>
+    <rect x="190" y="82" width="95" height="82" class="cell"/>
+    <rect x="0" y="164" width="95" height="82" class="cell"/>
+    <rect x="95" y="164" width="95" height="82" class="cell"/>
+    <rect x="190" y="164" width="95" height="82" class="cell"/>
+    <text x="142" y="34" text-anchor="middle" class="small">上方</text>
+    <text x="142" y="56" text-anchor="middle" class="code">dp[i-1][j]</text>
+    <text x="47" y="117" text-anchor="middle" class="small">左方</text>
+    <text x="47" y="139" text-anchor="middle" class="code">dp[i][j-1]</text>
+    <text x="142" y="116" text-anchor="middle" class="strong">当前格</text>
+    <text x="142" y="140" text-anchor="middle" class="code">dp[i][j]</text>
+    <path d="M142,82 L142,103" class="blue-line"/>
+    <path d="M95,123 L119,123" class="teal-line"/>
+  </g>
+
+  <rect x="70" y="465" width="485" height="68" rx="12" class="formula"/>
+  <text x="92" y="492" class="strong">统计路径：</text>
+  <text x="206" y="492" class="code">上方 + 左方</text>
+  <text x="92" y="518" class="strong">最小代价：</text>
+  <text x="206" y="518" class="code">min(上方, 左方) + 当前格代价</text>
+  <text x="70" y="571" class="text">同一张依赖图，目标不同，聚合规则才不同。</text>
+  <text x="70" y="603" class="text">障碍格不是特殊方向，而是把该状态的流量截断为 0。</text>
+
+  <rect x="610" y="72" width="555" height="575" rx="18" class="panel"/>
+  <text x="640" y="112" class="panel-title">B. 局部形状：当前格能扩成多大的正方形？</text>
+  <text x="640" y="145" class="text">这里不在统计路径，而是在描述“以当前格为右下角”的形状。</text>
+
+  <g transform="translate(745,185)">
+    <rect x="0" y="0" width="105" height="88" class="violet"/>
+    <rect x="105" y="0" width="105" height="88" class="blue"/>
+    <rect x="210" y="0" width="105" height="88" class="cell"/>
+    <rect x="0" y="88" width="105" height="88" class="teal"/>
+    <rect x="105" y="88" width="105" height="88" class="current"/>
+    <rect x="210" y="88" width="105" height="88" class="cell"/>
+    <rect x="0" y="176" width="105" height="88" class="cell"/>
+    <rect x="105" y="176" width="105" height="88" class="cell"/>
+    <rect x="210" y="176" width="105" height="88" class="cell"/>
+    <text x="52" y="38" text-anchor="middle" class="small">左上</text>
+    <text x="52" y="61" text-anchor="middle" class="code">diag</text>
+    <text x="157" y="38" text-anchor="middle" class="small">上方</text>
+    <text x="157" y="61" text-anchor="middle" class="code">up</text>
+    <text x="52" y="126" text-anchor="middle" class="small">左方</text>
+    <text x="52" y="149" text-anchor="middle" class="code">left</text>
+    <text x="157" y="123" text-anchor="middle" class="strong">右下角</text>
+    <text x="157" y="148" text-anchor="middle" class="code">dp[i][j]</text>
+    <path d="M157,88 L157,111" class="blue-line"/>
+    <path d="M105,132 L130,132" class="teal-line"/>
+    <path d="M84,67 L133,112" class="violet-line"/>
+  </g>
+
+  <rect x="645" y="476" width="485" height="64" rx="12" class="formula"/>
+  <text x="675" y="515" class="code">dp[i][j] = min(up, left, diag) + 1</text>
+  <text x="645" y="573" class="text">三处任何一处较短，都会成为新正方形的瓶颈。</text>
+  <text x="645" y="605" class="text">“+1”表示把当前这个值为 1 的格子扩进边长。</text>
+</svg>

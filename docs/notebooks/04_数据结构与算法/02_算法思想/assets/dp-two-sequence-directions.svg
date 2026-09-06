@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">双序列动态规划的三个依赖方向</title>
+  <desc id="desc">展示状态 dp[i][j] 从上方、左方和左上方转移时，两个序列的前缀进度如何变化，并对比这些方向在最长公共子序列和编辑距离中的含义。</desc>
+  <defs>
+    <marker id="blue-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="orange-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/>
+    </marker>
+    <marker id="teal-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .title{font:700 31px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .panel-title{font:700 23px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .text{font:17px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#334155}
+      .strong{font:700 18px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .code{font:17px Consolas,monospace;fill:#0f172a}
+      .small{font:15px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#475569}
+      .panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}
+      .grid{fill:#fff;stroke:#94a3b8;stroke-width:1.7}
+      .current{fill:#fff7ed;stroke:#ea580c;stroke-width:3}
+      .up-cell{fill:#eff6ff;stroke:#2563eb;stroke-width:2.5}
+      .left-cell{fill:#f0fdfa;stroke:#0f766e;stroke-width:2.5}
+      .diag-cell{fill:#f5f3ff;stroke:#7c3aed;stroke-width:2.5}
+      .blue-line{fill:none;stroke:#2563eb;stroke-width:3;marker-end:url(#blue-arrow)}
+      .orange-line{fill:none;stroke:#ea580c;stroke-width:3;marker-end:url(#orange-arrow)}
+      .teal-line{fill:none;stroke:#0f766e;stroke-width:3;marker-end:url(#teal-arrow)}
+      .blue-label{font:700 16px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#1d4ed8}
+      .orange-label{font:700 16px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#c2410c}
+      .teal-label{font:700 16px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f766e}
+      .table-head{fill:#e2e8f0;stroke:#94a3b8;stroke-width:1.5}
+      .table-cell{fill:#fff;stroke:#cbd5e1;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#fff"/>
+  <text x="600" y="47" text-anchor="middle" class="title">双序列 DP：三个方向代表怎样的进度变化？</text>
+
+  <rect x="35" y="72" width="570" height="585" rx="18" class="panel"/>
+  <text x="65" y="112" class="panel-title">A. 状态坐标：两个前缀长度独立变化</text>
+  <text x="85" y="158" class="text">横轴：第二个序列前缀长度 j</text>
+  <text x="85" y="188" class="text">纵轴：第一个序列前缀长度 i</text>
+
+  <g transform="translate(115,235)">
+    <rect x="0" y="0" width="120" height="90" class="diag-cell"/>
+    <rect x="120" y="0" width="120" height="90" class="up-cell"/>
+    <rect x="240" y="0" width="120" height="90" class="grid"/>
+    <rect x="0" y="90" width="120" height="90" class="left-cell"/>
+    <rect x="120" y="90" width="120" height="90" class="current"/>
+    <rect x="240" y="90" width="120" height="90" class="grid"/>
+    <rect x="0" y="180" width="120" height="90" class="grid"/>
+    <rect x="120" y="180" width="120" height="90" class="grid"/>
+    <rect x="240" y="180" width="120" height="90" class="grid"/>
+
+    <text x="60" y="42" text-anchor="middle" class="small">dp[i-1][j-1]</text>
+    <text x="180" y="42" text-anchor="middle" class="small">dp[i-1][j]</text>
+    <text x="60" y="132" text-anchor="middle" class="small">dp[i][j-1]</text>
+    <text x="180" y="132" text-anchor="middle" class="code">dp[i][j]</text>
+
+    <path d="M180,90 L180,113" class="blue-line"/>
+    <path d="M120,135 L148,135" class="teal-line"/>
+    <path d="M102,72 L150,114" class="orange-line"/>
+
+    <text x="-18" y="142" text-anchor="middle" class="code">i</text>
+    <text x="180" y="-15" text-anchor="middle" class="code">j</text>
+  </g>
+
+  <rect x="82" y="548" width="475" height="83" rx="12" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="105" y="576" class="blue-label">上方：</text>
+  <text x="180" y="576" class="text">只推进第一个序列</text>
+  <text x="105" y="602" class="teal-label">左方：</text>
+  <text x="180" y="602" class="text">只推进第二个序列</text>
+  <text x="355" y="576" class="orange-label">左上：</text>
+  <text x="425" y="576" class="text">同时推进两个序列</text>
+
+  <rect x="625" y="72" width="540" height="585" rx="18" class="panel"/>
+  <text x="655" y="112" class="panel-title">B. 同一方向，在不同题目中含义不同</text>
+
+  <g transform="translate(655,145)">
+    <rect x="0" y="0" width="105" height="52" class="table-head"/>
+    <rect x="105" y="0" width="185" height="52" class="table-head"/>
+    <rect x="290" y="0" width="220" height="52" class="table-head"/>
+    <text x="52" y="33" text-anchor="middle" class="strong">来源</text>
+    <text x="197" y="33" text-anchor="middle" class="strong">最长公共子序列</text>
+    <text x="400" y="33" text-anchor="middle" class="strong">编辑距离</text>
+
+    <rect x="0" y="52" width="105" height="105" class="table-cell"/>
+    <rect x="105" y="52" width="185" height="105" class="table-cell"/>
+    <rect x="290" y="52" width="220" height="105" class="table-cell"/>
+    <text x="52" y="87" text-anchor="middle" class="code">左上</text>
+    <text x="52" y="115" text-anchor="middle" class="code">i-1,j-1</text>
+    <text x="197" y="88" text-anchor="middle" class="small">末尾相等：</text>
+    <text x="197" y="115" text-anchor="middle" class="small">共同使用，长度 +1</text>
+    <text x="400" y="80" text-anchor="middle" class="small">相等：无需操作</text>
+    <text x="400" y="108" text-anchor="middle" class="small">不等：替换末尾，操作 +1</text>
+
+    <rect x="0" y="157" width="105" height="105" class="table-cell"/>
+    <rect x="105" y="157" width="185" height="105" class="table-cell"/>
+    <rect x="290" y="157" width="220" height="105" class="table-cell"/>
+    <text x="52" y="192" text-anchor="middle" class="code">上方</text>
+    <text x="52" y="220" text-anchor="middle" class="code">i-1,j</text>
+    <text x="197" y="193" text-anchor="middle" class="small">跳过第一个序列</text>
+    <text x="197" y="220" text-anchor="middle" class="small">当前末尾</text>
+    <text x="400" y="193" text-anchor="middle" class="small">删除第一个序列</text>
+    <text x="400" y="220" text-anchor="middle" class="small">当前末尾，操作 +1</text>
+
+    <rect x="0" y="262" width="105" height="105" class="table-cell"/>
+    <rect x="105" y="262" width="185" height="105" class="table-cell"/>
+    <rect x="290" y="262" width="220" height="105" class="table-cell"/>
+    <text x="52" y="297" text-anchor="middle" class="code">左方</text>
+    <text x="52" y="325" text-anchor="middle" class="code">i,j-1</text>
+    <text x="197" y="298" text-anchor="middle" class="small">跳过第二个序列</text>
+    <text x="197" y="325" text-anchor="middle" class="small">当前末尾</text>
+    <text x="400" y="298" text-anchor="middle" class="small">向第一个序列插入</text>
+    <text x="400" y="325" text-anchor="middle" class="small">目标末尾，操作 +1</text>
+  </g>
+
+  <text x="895" y="563" text-anchor="middle" class="strong">方向只表示“哪个前缀减少了”。</text>
+  <text x="895" y="594" text-anchor="middle" class="text">状态含义决定它代表跳过、编辑、匹配还是计数。</text>
+  <text x="600" y="694" text-anchor="middle" class="strong">先写完整状态，再把每个候选来源翻译成题目中的最后一步。</text>
+</svg>

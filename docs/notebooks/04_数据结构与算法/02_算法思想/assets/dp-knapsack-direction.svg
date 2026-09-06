@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">一维背包中容量遍历方向的含义</title>
+  <desc id="desc">以当前物品重量二为例，倒序更新时来源位置仍是旧值，当前物品最多使用一次；正序更新时来源位置已经是新值，当前物品可以重复使用。</desc>
+  <defs>
+    <marker id="blue-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="orange-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/>
+    </marker>
+    <style>
+      .title{font:700 31px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .panel-title{font:700 23px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .text{font:18px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#334155}
+      .strong{font:700 18px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .code{font:18px Consolas,monospace;fill:#334155}
+      .index{font:16px Consolas,monospace;fill:#64748b}
+      .cell-text{font:700 18px Consolas,monospace;fill:#0f172a}
+      .blue{fill:#eff6ff;stroke:#2563eb;stroke-width:2.5}
+      .orange{fill:#fff7ed;stroke:#ea580c;stroke-width:2.5}
+      .neutral{fill:#fff;stroke:#94a3b8;stroke-width:2}
+      .panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}
+      .blue-line{fill:none;stroke:#2563eb;stroke-width:3;marker-end:url(#blue-arrow)}
+      .orange-line{fill:none;stroke:#ea580c;stroke-width:3;marker-end:url(#orange-arrow)}
+      .blue-label{font:700 17px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#1d4ed8}
+      .orange-label{font:700 17px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#c2410c}
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#fff"/>
+  <text x="600" y="47" text-anchor="middle" class="title">一维背包：遍历方向决定读旧值还是新值</text>
+
+  <rect x="35" y="72" width="1130" height="270" rx="18" class="panel"/>
+  <text x="65" y="112" class="panel-title">0/1 背包：容量倒序，当前物品最多使用一次</text>
+  <text x="65" y="148" class="text">当前处理物品重量 w=2；示例计算 j=4</text>
+  <text x="65" y="187" class="code">二维来源：dp[i-1][j-w]</text>
+  <text x="65" y="215" class="text">要求读取上一轮物品的结果</text>
+
+  <text x="455" y="148" class="strong">更新顺序：</text>
+  <text x="565" y="148" class="code">5 ← 4 ← 3 ← 2</text>
+  <g transform="translate(445,185)">
+    <rect x="0" y="0" width="105" height="62" rx="8" class="neutral"/>
+    <rect x="105" y="0" width="105" height="62" rx="8" class="neutral"/>
+    <rect x="210" y="0" width="105" height="62" rx="8" class="blue"/>
+    <rect x="315" y="0" width="105" height="62" rx="8" class="neutral"/>
+    <rect x="420" y="0" width="105" height="62" rx="8" class="orange"/>
+    <rect x="525" y="0" width="105" height="62" rx="8" class="neutral"/>
+    <text x="52" y="-8" text-anchor="middle" class="index">j=0</text>
+    <text x="157" y="-8" text-anchor="middle" class="index">j=1</text>
+    <text x="262" y="-8" text-anchor="middle" class="index">j=2</text>
+    <text x="367" y="-8" text-anchor="middle" class="index">j=3</text>
+    <text x="472" y="-8" text-anchor="middle" class="index">j=4</text>
+    <text x="577" y="-8" text-anchor="middle" class="index">j=5</text>
+    <text x="262" y="38" text-anchor="middle" class="cell-text">旧 dp[2]</text>
+    <text x="472" y="38" text-anchor="middle" class="cell-text">更新 dp[4]</text>
+    <path d="M280,65 C330,105 405,105 455,65" class="blue-line"/>
+  </g>
+  <text x="865" y="305" text-anchor="middle" class="blue-label">dp[2] 尚未在本轮更新 → 不含当前物品</text>
+
+  <rect x="35" y="365" width="1130" height="270" rx="18" class="panel"/>
+  <text x="65" y="405" class="panel-title">完全背包：容量正序，当前物品可以重复使用</text>
+  <text x="65" y="441" class="text">当前处理物品重量 w=2；示例计算 j=4</text>
+  <text x="65" y="480" class="code">二维来源：dp[i][j-w]</text>
+  <text x="65" y="508" class="text">允许读取当前轮已经更新的结果</text>
+
+  <text x="455" y="441" class="strong">更新顺序：</text>
+  <text x="565" y="441" class="code">2 → 3 → 4 → 5</text>
+  <g transform="translate(445,478)">
+    <rect x="0" y="0" width="105" height="62" rx="8" class="neutral"/>
+    <rect x="105" y="0" width="105" height="62" rx="8" class="neutral"/>
+    <rect x="210" y="0" width="105" height="62" rx="8" class="blue"/>
+    <rect x="315" y="0" width="105" height="62" rx="8" class="neutral"/>
+    <rect x="420" y="0" width="105" height="62" rx="8" class="orange"/>
+    <rect x="525" y="0" width="105" height="62" rx="8" class="neutral"/>
+    <text x="52" y="-8" text-anchor="middle" class="index">j=0</text>
+    <text x="157" y="-8" text-anchor="middle" class="index">j=1</text>
+    <text x="262" y="-8" text-anchor="middle" class="index">j=2</text>
+    <text x="367" y="-8" text-anchor="middle" class="index">j=3</text>
+    <text x="472" y="-8" text-anchor="middle" class="index">j=4</text>
+    <text x="577" y="-8" text-anchor="middle" class="index">j=5</text>
+    <text x="262" y="38" text-anchor="middle" class="cell-text">新 dp[2]</text>
+    <text x="472" y="38" text-anchor="middle" class="cell-text">更新 dp[4]</text>
+    <path d="M280,65 C330,105 405,105 455,65" class="orange-line"/>
+  </g>
+  <text x="865" y="598" text-anchor="middle" class="orange-label">dp[2] 已在本轮更新 → 可以再次加入当前物品</text>
+
+  <text x="600" y="677" text-anchor="middle" class="strong">先确定二维转移读取上一行还是当前行，再决定一维数组的遍历方向。</text>
+</svg>
