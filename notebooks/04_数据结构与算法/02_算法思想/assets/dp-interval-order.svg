@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">区间动态规划的依赖顺序与两种回文状态</title>
+  <desc id="desc">左侧展示区间状态依赖三个更短区间，因此需要按区间长度递增计算；右侧对比回文子串的精确区间真假状态和回文子序列的区间最优状态。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .title{font:700 31px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .panel-title{font:700 23px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .text{font:17px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#334155}
+      .strong{font:700 18px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#0f172a}
+      .small{font:15px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#475569}
+      .code{font:16px Consolas,monospace;fill:#0f172a}
+      .panel{fill:#f8fafc;stroke:#cbd5e1;stroke-width:2}
+      .unused{fill:#f1f5f9;stroke:#cbd5e1;stroke-width:1.2}
+      .cell{fill:#fff;stroke:#94a3b8;stroke-width:1.3}
+      .source{fill:#eff6ff;stroke:#2563eb;stroke-width:2.5}
+      .current{fill:#fff7ed;stroke:#ea580c;stroke-width:3}
+      .formula{fill:#fff;stroke:#cbd5e1;stroke-width:1.5}
+      .arrow{fill:none;stroke:#2563eb;stroke-width:3;marker-end:url(#arrow)}
+      .tag-blue{fill:#dbeafe;stroke:#93c5fd;stroke-width:1.3}
+      .tag-violet{fill:#ede9fe;stroke:#c4b5fd;stroke-width:1.3}
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#fff"/>
+  <text x="600" y="47" text-anchor="middle" class="title">区间 DP：两个端点定义状态，区间长度决定计算顺序</text>
+
+  <rect x="35" y="72" width="555" height="575" rx="18" class="panel"/>
+  <text x="65" y="112" class="panel-title">A. 为什么必须先算短区间？</text>
+  <text x="65" y="145" class="text">dp[i][j] 对应同一序列的闭区间 [i, j]，只使用 i ≤ j 的上三角。</text>
+
+  <g transform="translate(126,190)">
+    <text x="-28" y="36" class="code">i=0</text>
+    <text x="-28" y="96" class="code">i=1</text>
+    <text x="-28" y="156" class="code">i=2</text>
+    <text x="-28" y="216" class="code">i=3</text>
+    <text x="-28" y="276" class="code">i=4</text>
+    <text x="29" y="-12" text-anchor="middle" class="code">j=0</text>
+    <text x="89" y="-12" text-anchor="middle" class="code">j=1</text>
+    <text x="149" y="-12" text-anchor="middle" class="code">j=2</text>
+    <text x="209" y="-12" text-anchor="middle" class="code">j=3</text>
+    <text x="269" y="-12" text-anchor="middle" class="code">j=4</text>
+
+    <rect x="0" y="0" width="58" height="58" class="cell"/><rect x="60" y="0" width="58" height="58" class="cell"/><rect x="120" y="0" width="58" height="58" class="cell"/><rect x="180" y="0" width="58" height="58" class="source"/><rect x="240" y="0" width="58" height="58" class="current"/>
+    <rect x="0" y="60" width="58" height="58" class="unused"/><rect x="60" y="60" width="58" height="58" class="cell"/><rect x="120" y="60" width="58" height="58" class="cell"/><rect x="180" y="60" width="58" height="58" class="source"/><rect x="240" y="60" width="58" height="58" class="source"/>
+    <rect x="0" y="120" width="58" height="58" class="unused"/><rect x="60" y="120" width="58" height="58" class="unused"/><rect x="120" y="120" width="58" height="58" class="cell"/><rect x="180" y="120" width="58" height="58" class="cell"/><rect x="240" y="120" width="58" height="58" class="cell"/>
+    <rect x="0" y="180" width="58" height="58" class="unused"/><rect x="60" y="180" width="58" height="58" class="unused"/><rect x="120" y="180" width="58" height="58" class="unused"/><rect x="180" y="180" width="58" height="58" class="cell"/><rect x="240" y="180" width="58" height="58" class="cell"/>
+    <rect x="0" y="240" width="58" height="58" class="unused"/><rect x="60" y="240" width="58" height="58" class="unused"/><rect x="120" y="240" width="58" height="58" class="unused"/><rect x="180" y="240" width="58" height="58" class="unused"/><rect x="240" y="240" width="58" height="58" class="cell"/>
+
+    <text x="269" y="34" text-anchor="middle" class="small">dp[i][j]</text>
+    <text x="209" y="34" text-anchor="middle" class="small">去右端</text>
+    <text x="269" y="94" text-anchor="middle" class="small">去左端</text>
+    <text x="209" y="94" text-anchor="middle" class="small">去两端</text>
+    <path d="M237,30 L253,30" class="arrow"/>
+    <path d="M269,60 L269,45" class="arrow"/>
+    <path d="M231,72 L255,46" class="arrow"/>
+  </g>
+
+  <rect x="70" y="512" width="485" height="80" rx="12" class="formula"/>
+  <text x="94" y="543" class="strong">填表顺序：</text>
+  <text x="205" y="543" class="code">length = 1, 2, ..., n</text>
+  <text x="94" y="572" class="text">三个来源都比 [i,j] 更短，所以一定已经算好。</text>
+
+  <rect x="610" y="72" width="555" height="575" rx="18" class="panel"/>
+  <text x="640" y="112" class="panel-title">B. “子串”与“子序列”为什么转移不同？</text>
+
+  <rect x="645" y="150" width="485" height="190" rx="14" class="formula"/>
+  <rect x="668" y="172" width="102" height="34" rx="17" class="tag-blue"/>
+  <text x="719" y="195" text-anchor="middle" class="strong">回文子串</text>
+  <text x="668" y="237" class="text">状态：整个 s[i..j] 是否回文（精确区间）</text>
+  <text x="668" y="271" class="code">s[i] == s[j] 且内部为回文</text>
+  <text x="668" y="306" class="text">端点不等，整个区间立刻为 False；答案要扫描所有区间。</text>
+
+  <rect x="645" y="365" width="485" height="215" rx="14" class="formula"/>
+  <rect x="668" y="387" width="120" height="34" rx="17" class="tag-violet"/>
+  <text x="728" y="410" text-anchor="middle" class="strong">回文子序列</text>
+  <text x="668" y="452" class="text">状态：s[i..j] 内的最长回文子序列（区间最优）</text>
+  <text x="668" y="487" class="code">端点相等：内部最优 + 2</text>
+  <text x="668" y="521" class="code">端点不等：max(去左端, 去右端)</text>
+  <text x="668" y="555" class="text">允许跳过字符，所以不等时仍可从较小区间继承答案。</text>
+
+  <text x="640" y="615" class="text">“+2”不是下标补偿，而是把左右两个相等端点同时加入答案。</text>
+</svg>

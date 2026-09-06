@@ -1,0 +1,5521 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="算法基础、机器学习、推荐搜索广告、大模型、多模态与工程实践">
+      
+      
+        <meta name="author" content="GlenTT">
+      
+      
+        <link rel="canonical" href="https://GRITJW.github.io/hot100/notebooks/01_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/01_%E7%A1%AC%E4%BB%B6/DL%E7%A1%AC%E4%BB%B6%E7%AC%94%E8%AE%B0-%E5%86%99%E4%BD%9CPlanning/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>《面向深度学习的计算机硬件架构笔记》写作 Planning - AI 算法与工程学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#planning" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="AI 算法与工程学习笔记" class="md-header__button md-logo" aria-label="AI 算法与工程学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI 算法与工程学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              《面向深度学习的计算机硬件架构笔记》写作 Planning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../00_%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE/" class="md-tabs__link">
+          
+  
+  
+  00 知识地图
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  01 计算机系统基础
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/" class="md-tabs__link">
+          
+  
+  
+  02 数学统计优化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/" class="md-tabs__link">
+          
+  
+  
+  03 编程与工程能力
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-tabs__link">
+          
+  
+  
+  04 数据结构与算法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-tabs__link">
+          
+  
+  
+  05 机器学习基础
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/" class="md-tabs__link">
+          
+  
+  
+  06 深度学习与 PyTorch
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../07_%E6%8E%A8%E8%8D%90%E6%90%9C%E7%B4%A2%E5%B9%BF%E5%91%8A/" class="md-tabs__link">
+          
+  
+  
+  07 推荐搜索广告
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-tabs__link">
+          
+  
+  
+  08 大模型
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../09_%E5%A4%9A%E6%A8%A1%E6%80%81/" class="md-tabs__link">
+          
+  
+  
+  09 多模态
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-tabs__link">
+          
+  
+  
+  10 项目实验与面试
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="md-tabs__link">
+          
+  
+  
+  11 论文精读
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="AI 算法与工程学习笔记" class="md-nav__button md-logo" aria-label="AI 算法与工程学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI 算法与工程学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 知识地图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00 知识地图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 计算机系统基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 计算机系统基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    硬件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    操作系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统三大核心模块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 数学统计优化
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 数学统计优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    优化算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    优化算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/05_%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    优化算法总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_%E6%95%B0%E5%AD%A6%E7%BB%9F%E8%AE%A1%E4%BC%98%E5%8C%96/05_%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/%E6%A2%AF%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    梯度计算总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 编程与工程能力
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03 编程与工程能力
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/01_Python/python%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 运算符专题讲解：面向算法竞赛初学者
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 数据结构与算法
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 数据结构与算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数组
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    链表专题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    栈与队列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    哈希表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二叉树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    堆
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法思想
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法思想
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    双指针
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    滑动窗口
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二分查找
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%89%8D%E7%BC%80%E5%92%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    前缀和
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%B7%AE%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    差分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    动态规划专题：从状态含义推导解法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    贪心算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%9B%9E%E6%BA%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回溯
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/02_%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    算法工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/03_%E7%AE%97%E6%B3%95%E5%B7%A5%E5%85%B7/%E6%8E%92%E5%BA%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    排序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    题型归纳
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    题型归纳
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览交互地图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/%E7%AE%97%E6%B3%95%E6%80%9D%E7%BB%B4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法思维
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/%E8%A7%A3%E9%A2%98%E5%88%87%E5%85%A5%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    解题切入点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/04_%E9%A2%98%E5%9E%8B%E5%BD%92%E7%BA%B3/Hot100%E5%BD%92%E7%BA%B3%E4%B8%8E%E9%A2%98%E5%9E%8B%E5%AF%B9%E6%AF%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hot100 归纳与题型对比
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 机器学习基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 机器学习基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05_%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/%E5%8F%AF%E5%AD%A6%E4%B9%A0%E6%A0%87%E9%87%8F%E7%9A%84%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可学习标量的设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 深度学习与 PyTorch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    06 深度学习与 PyTorch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PyTorch 工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PyTorch 工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-1.%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. 数学运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-2.%E5%BC%A0%E9%87%8F%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. 张量操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-3.%E7%BD%91%E7%BB%9C%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 网络层与损失函数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-4.%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%A2%AF%E5%BA%A6%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. 数据加载与梯度管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-5.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 基础知识总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8EPyTorch/03_PyTorch%E5%B7%A5%E7%A8%8B/pytorch-6.architecture-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 各类库梳理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 推荐搜索广告
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    07 推荐搜索广告
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07_%E6%8E%A8%E8%8D%90%E6%90%9C%E7%B4%A2%E5%B9%BF%E5%91%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业务系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    业务系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07_%E6%8E%A8%E8%8D%90%E6%90%9C%E7%B4%A2%E5%B9%BF%E5%91%8A/05_%E4%B8%9A%E5%8A%A1%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E7%A8%80%E7%96%8F%E5%92%8C%E6%A0%B7%E6%9C%AC%E7%A9%BF%E8%B6%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据稀疏与样本穿越
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 大模型
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    08 大模型
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型核心算法层
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    大模型核心算法层
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/02_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    层级定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型系统层
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    大模型系统层
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/03_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%B3%BB%E7%BB%9F%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    层级定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4" id="__nav_10_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型应用层
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    大模型应用层
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/04_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    层级定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2" id="__nav_10_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP 与工具生态
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MCP 与工具生态
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08_%E5%A4%A7%E6%A8%A1%E5%9E%8B/04_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%B1%82/03_ToolCalling%E4%B8%8EMCP/openclaw%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    openclaw 介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 多模态
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    09 多模态
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_%E5%A4%9A%E6%A8%A1%E6%80%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_2" id="__nav_11_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VLM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_%E5%A4%9A%E6%A8%A1%E6%80%81/03_VLM/%E5%A4%9A%E6%A8%A1%E6%80%81%E4%B8%93%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多模态专题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_%E5%A4%9A%E6%A8%A1%E6%80%81/03_VLM/%E5%A4%9A%E6%A8%A1%E6%80%81%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多模态框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 项目实验与面试
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    10 项目实验与面试
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_12_2" id="__nav_12_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面试题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    面试题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/01_%E9%9D%A2%E8%AF%95%E9%A2%98/%E6%90%9C%E5%B9%BF%E6%8E%A8%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    搜广推常见面试题目
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_12_3" id="__nav_12_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    手撕题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    手撕题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../10_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E4%B8%8E%E9%9D%A2%E8%AF%95/02_%E6%89%8B%E6%92%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    面试手撕题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 论文精读
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    11 论文精读
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    板块定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_13_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_13_2" id="__nav_13_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推荐系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    推荐系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/onerec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OneRec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/onetrans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OneTrans
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../11_%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/rankmixer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RankMixer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 如何使用本文档
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 背景与定位
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 写作约束（硬约束总表）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 全文骨架与设计哲学
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 章节细化
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 配图总清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 术语表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 原稿素材处理映射
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 关键误区清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 执行流程建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 参考书目
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 给执行者的最后说明
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planning_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录：本 Planning 的版本与变更
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="planning">《面向深度学习的计算机硬件架构笔记》写作 Planning<a class="headerlink" href="#planning" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>本文档是一份<strong>写作执行规范</strong>，目标读者是接手具体写作工作的 Claude Code（或其他执行型 AI Agent）。文档目的是让执行者在不依赖前置对话上下文的情况下，独立、完整、准确地产出全书内容。</p>
+<p>文档作者（Wei Jin，下称"作者"）已与上游 Claude 完成了三轮需求对齐，所有关键决策已固化在本文档中。执行者应将本文档视为契约，凡涉及结构、风格、术语、配图等已规定事项，<strong>不应自行偏离</strong>；遇到本文档未覆盖的细节，应在保守范围内做与全书风格一致的判断。</p>
+</blockquote>
+<hr />
+<h2 id="0">0. 如何使用本文档<a class="headerlink" href="#0" title="Permanent link">&para;</a></h2>
+<p>本文档分为以下几个部分：</p>
+<ol>
+<li><strong>背景与定位</strong>：交代作者画像、写作动机、读者画像、原稿素材</li>
+<li><strong>写作约束</strong>：所有已固化的硬约束（篇幅、语言、风格、术语、配图、编号）</li>
+<li><strong>全文骨架与设计哲学</strong>：五视角递进的总体结构与推理依据</li>
+<li><strong>章节细化</strong>：每章的子节列表、字数估算、配图清单、收束方向、与前后章节的连接</li>
+<li><strong>配图总清单</strong>：全书所有 SVG 配图的统一索引</li>
+<li><strong>术语表</strong>：首次出现规范与缩写约定</li>
+<li><strong>原稿素材处理映射</strong>：原稿每一节如何被新结构吸收</li>
+<li><strong>关键误区清单</strong>：必须修正的概念性错误</li>
+<li><strong>执行流程建议</strong>：按什么顺序写、何时停下供作者审阅</li>
+<li><strong>参考书目</strong>：每章对应的权威参考来源</li>
+</ol>
+<p>执行者应在开始写作前<strong>完整阅读本文档一次</strong>，写作过程中按章节回查相关段落，避免边写边偏离。</p>
+<hr />
+<h2 id="1">1. 背景与定位<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 作者画像<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>华中科技大学博士研究生，研究方向横跨推荐系统（搜广推）、机器学习、计量经济学、地理空间统计</li>
+<li>有百度 Feed 排序算法实习经历，正在准备进入互联网算法岗或 AI/LLM 公司</li>
+<li>熟悉推荐系统术语体系（MMoE、CTR/CVR、双塔、InfoNCE、知识蒸馏、生成式检索等）</li>
+<li>对推荐系统、LLM、Agent 框架有持续关注</li>
+<li>学习风格：重视"为什么"胜于"怎么做"，倾向于从第一性原理理解，对逻辑不严密的解释会主动回推</li>
+</ul>
+<h3 id="12">1.2 写作动机<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<p>作者在大模型与推荐算法研究中反复遇到硬件相关概念（显存、PCIe、NVLink、Tensor Core、KV Cache、PCIe 瓶颈等），但市面上的资料要么停留在硬件百科层面、要么深陷电子工程细节，缺少一份<strong>以深度学习训练/推理效率为锚点、面向研究者重新组织硬件知识体系</strong>的笔记。本笔记即填补这一空白。</p>
+<h3 id="13">1.3 目标读者画像<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
+<ul>
+<li>深度学习、大模型、推荐算法领域的硕士/博士研究生与工业界算法工程师</li>
+<li>已经会写 PyTorch 训练代码，但对硬件层只有零散认知</li>
+<li>希望理解"为什么我的训练慢"而不仅仅是"如何让训练快"</li>
+<li>不需要电子工程级别的电路细节，但需要足够深入的硬件层级以解释性能现象</li>
+</ul>
+<h3 id="14">1.4 原稿素材<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<p>作者已撰写一份初稿《计算机硬件.md》（约 6500 字、12 节），覆盖存储层级、CPU、内存、磁盘、GPU、显存、数据流动路径、参数量与存储换算、模型加载链路等内容。原稿质量良好但<strong>结构上是组件目录式的</strong>，缺少主线连接，因此本笔记需要<strong>重组而非重写</strong>：原稿的核心论述要在新结构中找到归属位置（详见第 7 节"原稿素材处理映射"）。</p>
+<h3 id="15">1.5 本笔记不做什么<a class="headerlink" href="#15" title="Permanent link">&para;</a></h3>
+<p>为避免边界蔓延，明确以下内容<strong>不在写作范围内</strong>：</p>
+<ul>
+<li>电子工程细节：电容、供电相数、主板电路、电源管理</li>
+<li>操作系统级别的内核调度、虚拟内存细节（仅在必要处简提）</li>
+<li>编译原理、指令集架构的底层（如 x86 微码、寄存器重命名的具体实现）</li>
+<li>非 NVIDIA 平台的深度细节（仅在第 7 章插入一个 Apple Silicon 对照 box）</li>
+<li>硬件采购建议、性价比分析、机器学习入门内容</li>
+</ul>
+<hr />
+<h2 id="2">2. 写作约束（硬约束总表）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>决策</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总篇幅</td>
+<td>4–6 万字</td>
+<td>上限不硬，下限以"讲清楚"为准</td>
+</tr>
+<tr>
+<td>单章篇幅</td>
+<td>通常 3000–5000 字</td>
+<td>Part 收束章可短至 1500 字，Roofline 章可长至 6000 字</td>
+</tr>
+<tr>
+<td>写作语言</td>
+<td>简体中文</td>
+<td>正式书面语，学术笔记风格</td>
+</tr>
+<tr>
+<td>训练/推理</td>
+<td>并重</td>
+<td>推理侧重 LLM 场景：KV Cache、长上下文、batched decoding</td>
+</tr>
+<tr>
+<td>分布式训练</td>
+<td>单独成章</td>
+<td>置于 Part IV 末尾（第 17 章）</td>
+</tr>
+<tr>
+<td>平台聚焦</td>
+<td>NVIDIA + x86 + Linux 为主线</td>
+<td>第 7 章插入 Apple Silicon UMA 对照 box（300–500 字）</td>
+</tr>
+<tr>
+<td>配图形式</td>
+<td>SVG 矢量图直接嵌入 Markdown</td>
+<td>不使用位图、不外链</td>
+</tr>
+<tr>
+<td>术语规范</td>
+<td>首次出现"中文译名（English Original, ABBR）"</td>
+<td>后续可使用缩写</td>
+</tr>
+<tr>
+<td>章节编号</td>
+<td>Part I / 1 / 1.1 / 1.1.1</td>
+<td>Part 用罗马数字，章节用阿拉伯数字</td>
+</tr>
+<tr>
+<td>章末收束</td>
+<td>每章末尾一句"该硬件单元如何成为深度学习效率的边界"</td>
+<td>不是简单复述，要建立与下一章的连接</td>
+</tr>
+<tr>
+<td>代码示例</td>
+<td>PyTorch 为主，必要时给伪代码</td>
+<td>注释用中文</td>
+</tr>
+<tr>
+<td>数据可信度</td>
+<td>性能数字（带宽、容量、延迟）需可追溯</td>
+<td>引用 NVIDIA 官方白皮书或权威基准</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21">2.1 风格细则<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>不堆砌术语</strong>：每个术语首次出现必须解释它在训练/推理中的作用，而不是只给定义</li>
+<li><strong>不要"总分总"陈词滥调</strong>：不要用"首先""其次""最后"作为段落开头模板</li>
+<li><strong>不要 ChatGPT 式装饰</strong>：避免"让我们一起探索""非常重要的是"等口语化套话</li>
+<li><strong>结论前置但不简化</strong>：每章开头给一段 100–200 字的引子，点明本章要回答什么问题，但不预先剧透结论</li>
+<li><strong>段落保持密度</strong>：每段 4–8 句中文，避免单句成段</li>
+<li><strong>示例优先于定义</strong>：抽象概念尽量用具体例子先建立直觉，再上升为定义</li>
+<li><strong>代码块前后必须有解释</strong>：不允许出现"上代码"式的甩代码</li>
+</ul>
+<h3 id="22">2.2 不允许的失误<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<ul>
+<li>错把 HBM 当作 GPU-GPU 通信方式（HBM 是 GPU 本地显存技术）</li>
+<li>错说"CUDA 把 Python 翻译成 GPU 程序"（CUDA 是承接具体张量算子的运行时与库）</li>
+<li>错说大块数据从 CPU Cache/Register 传到 VRAM（实际是 RAM → PCIe → VRAM）</li>
+<li>错说 PCH/芯片组是计算单元（它是外围 I/O 管理中心）</li>
+<li>错把 NVLink 描述为"更快的 PCIe"（它是不同协议、不同拓扑的独立互联）</li>
+</ul>
+<p>详见第 8 节"关键误区清单"。</p>
+<hr />
+<h2 id="3">3. 全文骨架与设计哲学<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 五视角递进<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>本笔记的组织原则不是"按硬件组件切片"，而是<strong>按视角递进</strong>。每一个 Part 是对前一个 Part 的纵深化，而不是平行内容。这条主线是本笔记区别于普通硬件百科的关键。</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>视角</th>
+<th>核心问题</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I</td>
+<td>空间视角</td>
+<td>硬件长什么样？在哪里？怎么物理连接？</td>
+<td>看一张城市卫星图</td>
+</tr>
+<tr>
+<td>II</td>
+<td>单元视角</td>
+<td>每个建筑物里面有什么？各自擅长什么？</td>
+<td>走进每栋楼内部</td>
+</tr>
+<tr>
+<td>III</td>
+<td>执行视角</td>
+<td>一段代码运行时，数据如何在城市里流动？</td>
+<td>跟踪一辆车的轨迹</td>
+</tr>
+<tr>
+<td>IV</td>
+<td>性能视角</td>
+<td>哪条路最容易堵？为什么堵？</td>
+<td>交通流量分析</td>
+</tr>
+<tr>
+<td>V</td>
+<td>实践视角</td>
+<td>如何调度才能让车跑得最快？</td>
+<td>路线规划</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32">3.2 主线一以贯之的两条隐线<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p>除了视角递进，全书还有两条隐线，要求执行者在写作时持续意识到：</p>
+<p><strong>隐线 A：所有性能问题都是互联问题。</strong> 计算单元从来不是瓶颈本身，而是"喂不饱计算单元"造成了瓶颈。CPU↔Cache、CPU↔RAM、GPU↔HBM、CPU↔GPU、GPU↔GPU、节点↔节点，每一层互联都可能成为木桶的最短板。这条隐线在 Part I 第 4 章建立，在 Part II 第 8 章深化，在 Part IV 几乎每一章都被复用。</p>
+<p><strong>隐线 B：控制流与数据流的分工。</strong> CPU 是控制流的统帅，GPU 是数据流的劳工。这条对照在第 5 章和第 6 章首次建立，在第 9 章（软件栈）和第 10 章（执行旅程）中被反复引用。它解释了为什么 CUDA 不是把整段 Python 翻译成 GPU 程序——因为控制流仍然由 CPU 主导，GPU 只承接被分派下来的数据流任务。</p>
+<h3 id="33">3.3 全书章节总览<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Part I  硬件全景：从主板到拓扑（空间视角）
+  1  主板是连接平台，不是计算单元
+  2  计算单元的物理形态：CPU 与 GPU 的封装
+  3  存储介质的物理形态与归属
+  4  互联通道的全景
+  PI 收束：一张完整的数据流通拓扑图
+
+Part II  单元内部：每个硬件做了什么（单元视角）
+  5  CPU：控制流的统帅
+  6  GPU：数据流的劳工
+  7  存储层级：贯穿 CPU 与 GPU 的统一金字塔
+  8  互联深入：把通道变成性能模型
+
+Part III  从代码到硬件：执行流（执行视角）
+  9   软件栈分层：从 Python 到 GPU 指令
+  10  一次训练迭代的完整旅程
+
+Part IV  瓶颈：硬件如何成为性能边界（性能视角）
+  11  Roofline：统一的性能分析框架
+  12  显存容量瓶颈
+  13  显存带宽瓶颈与 KV Cache
+  14  计算瓶颈与 Tensor Core 利用率
+  15  主机—设备路径瓶颈：PCIe 与 DataLoader
+  16  多卡通信瓶颈
+  17  分布式训练的硬件视角
+
+Part V  代码优化专题（实践视角）
+  18.1  为什么不要频繁 .cpu() 和 .item()
+  18.2  pin_memory 与 non_blocking 的真正含义
+  18.3  batch size 如何影响 GPU 利用率
+  18.4  混合精度：FP16/BF16 与 Tensor Core
+  18.5  Fused Kernel 与 FlashAttention
+  18.6  DataLoader 慢导致 GPU 利用率低
+  18.7  多卡训练为何不是线性加速
+</code></pre></div>
+<p>字数预算（含图注但不含目录）：</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>章节数</th>
+<th>字数预估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引言 + 阅读地图</td>
+<td>—</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>Part I</td>
+<td>4 章 + 收束</td>
+<td>12000</td>
+</tr>
+<tr>
+<td>Part II</td>
+<td>4 章</td>
+<td>16000</td>
+</tr>
+<tr>
+<td>Part III</td>
+<td>2 章</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>Part IV</td>
+<td>7 章</td>
+<td>17000</td>
+</tr>
+<tr>
+<td>Part V</td>
+<td>7 专题</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>结语 + 术语索引</td>
+<td>—</td>
+<td>2000</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>24 节</strong></td>
+<td><strong>约 62500</strong></td>
+</tr>
+</tbody>
+</table>
+<p>如果实际写作中某章过长，优先压缩重复内容，不为字数硬撑。</p>
+<hr />
+<h2 id="4">4. 章节细化<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="40">4.0 引言：本笔记的写作主线<a class="headerlink" href="#40" title="Permanent link">&para;</a></h3>
+<p><strong>篇幅</strong>：1500 字</p>
+<p><strong>任务</strong>：用一段实际场景（例如"我的 8B 模型推理速度突然下降一半，问题可能在哪？"）开篇，引出"硬件是性能的底层语言"的论点，然后说明本笔记的五视角递进结构与两条隐线，给出阅读地图。</p>
+<p><strong>收束</strong>：明确告诉读者，这本笔记的目标不是让你记住硬件参数，而是让你<strong>在面对一个性能问题时，能在脑中重建出数据的流动路径</strong>。</p>
+<hr />
+<h3 id="part-i">Part I  硬件全景：从主板到拓扑<a class="headerlink" href="#part-i" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">1  主板是连接平台，不是计算单元<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：3500 字</p>
+<p><strong>章节定位</strong>：本章是全书第一块承重砖。它要让读者从"打开机箱看到的那块大板子"建立对计算机硬件的物理直觉，这个直觉将贯穿后续所有章节。</p>
+<p><strong>子节</strong>：
+- 1.1 主板的角色：连接而非计算
+- 1.2 主板上的关键插槽与接口
+  - 1.2.1 CPU Socket
+  - 1.2.2 DIMM 内存插槽
+  - 1.2.3 PCIe x16 插槽
+  - 1.2.4 M.2 / NVMe SSD 插槽
+  - 1.2.5 SATA、USB、网卡接口（Rear I/O）
+- 1.3 PCH（Platform Controller Hub）：传统南桥的现代形态
+- 1.4 现代主板的"北桥消失"：内存控制器与 PCIe Root Complex 迁入 CPU 封装
+- 1.5 BIOS/UEFI 与开机启动链
+  - 1.5.1 上电、POST、固件初始化
+  - 1.5.2 Bootloader 加载内核
+  - 1.5.3 内核初始化与用户态启动
+- 1.6 GPU 在主板上的位置：显卡是 PCIe 设备
+- 1.7 章末收束：主板告诉我们，"算力"不是单点而是拓扑</p>
+<p><strong>配图</strong>：
+- 图 1-A：真实主板标注图（SVG 简化版，标注 CPU Socket、DIMM、PCIe x16、M.2、PCH、Rear I/O、24-pin 供电）
+- 图 1-B：开机启动链时序图（横向时间轴，标注上电→POST→UEFI→Bootloader→Kernel→Userspace）</p>
+<p><strong>核心术语</strong>：主板（Motherboard）、Socket、DIMM（Dual In-line Memory Module）、PCIe（Peripheral Component Interconnect Express）、PCH（Platform Controller Hub）、Root Complex、BIOS（Basic Input/Output System）、UEFI（Unified Extensible Firmware Interface）、POST（Power-On Self-Test）</p>
+<p><strong>与原稿的关系</strong>：原稿"补充节：计算机硬件的整体拓扑关系"是本章的种子，但需要扩写约 3 倍。原稿中关于"CPU 和 GPU 各自有片内私有缓存"的论述移至第 5、6、7 章。</p>
+<p><strong>与下一章的连接</strong>：本章末段引出"既然主板只是连接平台，那么真正的计算发生在哪里？"——下一章开始走进 CPU 和 GPU 的封装。</p>
+<hr />
+<h4 id="2-cpu-gpu">2  计算单元的物理形态：CPU 与 GPU 的封装<a class="headerlink" href="#2-cpu-gpu" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：3000 字</p>
+<p><strong>章节定位</strong>：本章承接第 1 章，把视角从主板平面收缩到两块芯片的封装层面。<strong>仅讲物理形态与封装</strong>，不讲微架构（留给 Part II）。这一区分是关键：先建立"在哪里"，再讲"里面有什么"。</p>
+<p><strong>子节</strong>：
+- 2.1 CPU 封装
+  - 2.1.1 单芯片（Monolithic）与 Chiplet 的对比
+  - 2.1.2 CCD / CCX（以 AMD Ryzen 为例）
+  - 2.1.3 CPU 与主板的接触：LGA 与 PGA 封装
+  - 2.1.4 散热器、IHS、TIM
+- 2.2 GPU 显卡的物理构成
+  - 2.2.1 GPU die 在显卡 PCB 上的位置
+  - 2.2.2 显存颗粒：HBM 堆叠 vs GDDR 颗粒分布
+  - 2.2.3 PCIe 金手指、供电接口、显示输出口
+  - 2.2.4 数据中心 GPU 与桌面显卡的形态差异（SXM 模块 vs PCIe 卡）
+- 2.3 为什么要区分"封装内"与"封装外"
+  - 2.3.1 封装内通信：硅穿孔、Interposer、Chiplet 互联
+  - 2.3.2 封装外通信：内存总线、PCIe、NVLink
+  - 2.3.3 封装边界等于带宽断崖
+- 2.4 章末收束：物理封装的边界，决定了数据搬运的成本梯度</p>
+<p><strong>配图</strong>：
+- 图 2-A：CPU 封装俯视图（Monolithic vs Chiplet 对照，AMD Ryzen 和 Intel 风格各一）
+- 图 2-B：H100 SXM 模块结构剖面图（标注 GPU die、HBM3 堆叠、Interposer、基板）</p>
+<p><strong>核心术语</strong>：Chiplet、CCD（Core Complex Die）、IHS（Integrated Heat Spreader）、SXM（Server PCI Express Module）、Interposer、HBM（High Bandwidth Memory）、GDDR（Graphics Double Data Rate）</p>
+<p><strong>与原稿的关系</strong>：原稿对 CPU 和 GPU 的封装形态几乎没讲，本章基本是新写。</p>
+<p><strong>与下一章的连接</strong>：现在我们知道 CPU 和 GPU 在哪里、长什么样，接下来要看"它们各自带着什么样的存储"——这就引出第 3 章的存储介质。</p>
+<hr />
+<h4 id="3_1">3  存储介质的物理形态与归属<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：2500 字</p>
+<p><strong>章节定位</strong>：本章只回答"存储介质在哪里、归谁管"，<strong>不讲存储层级的速度/容量金字塔</strong>（留给第 7 章）。这一拆分要严格执行，否则第 7 章会失去重心。</p>
+<p><strong>子节</strong>：
+- 3.1 寄存器：在 CPU/GPU die 内部
+- 3.2 Cache：紧贴计算核心的片内 SRAM
+- 3.3 系统内存：DIMM 插槽上的 DDR 内存条
+- 3.4 显存：焊接在显卡 PCB 上的 HBM/GDDR
+- 3.5 NVMe SSD：M.2 插槽或 U.2 接口的固态存储
+- 3.6 HDD 与外置存储：通过 SATA 或网络接入
+- 3.7 归属关系总结表（介质 → 物理位置 → 归属硬件 → 谁能直接访问）
+- 3.8 章末收束：存储介质的物理归属，决定了数据传输的"必经之路"</p>
+<p><strong>配图</strong>：
+- 图 3-A：存储介质归属示意图（CPU 侧与 GPU 侧并列，标注每种介质的物理位置与归属）</p>
+<p><strong>核心术语</strong>：SRAM（Static RAM）、DRAM（Dynamic RAM）、DDR（Double Data Rate）、NVMe（Non-Volatile Memory Express）</p>
+<p><strong>与原稿的关系</strong>：原稿第一节"存储层级的基本结构"被拆分：物理形态归本章，速度/容量金字塔归第 7 章。</p>
+<p><strong>与下一章的连接</strong>：知道了硬件单元和存储介质的物理位置，接下来要看"它们之间用什么互联"——这就引出第 4 章。</p>
+<hr />
+<h4 id="4_1">4  互联通道的全景<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：3000 字</p>
+<p><strong>章节定位</strong>：本章是 Part I 的最后一块基础砖。<strong>只建立全景</strong>，每条通道的细节深挖留给第 8 章。本章相当于"先认识地图上有哪些路，再讨论每条路的载重和限速"。</p>
+<p><strong>子节</strong>：
+- 4.1 内存总线：CPU↔DIMM
+- 4.2 PCIe：CPU↔GPU、CPU↔NVMe、CPU↔NIC
+  - 4.2.1 PCIe 的代次与 lane 概念（仅介绍，不展开）
+  - 4.2.2 PCIe Root Complex 与 PCIe Switch
+- 4.3 NVLink：GPU↔GPU 与 GPU↔CPU 的高速互联
+- 4.4 NVSwitch：多 GPU 系统的高速交换芯片
+- 4.5 DMI：CPU↔PCH 的内部链路
+- 4.6 SATA：低速外存接口
+- 4.7 网络互联：以太网、InfiniBand、RoCE
+- 4.8 章末收束：互联通道是隐藏的瓶颈源——所有性能问题最终都是互联问题</p>
+<p><strong>配图</strong>：
+- 图 4-A：全景互联拓扑图（一张大图，把 CPU、内存、GPU、NVMe、PCH、网卡用对应的互联线连起来，每条线标注协议名）</p>
+<p><strong>核心术语</strong>：PCIe（Peripheral Component Interconnect Express）、NVLink、NVSwitch、DMI（Direct Media Interface）、SATA（Serial ATA）、InfiniBand（IB）、RDMA（Remote Direct Memory Access）、RoCE（RDMA over Converged Ethernet）</p>
+<p><strong>与原稿的关系</strong>：原稿"第七节：各硬件之间的数据流动"是本章的种子，需要扩展约 4 倍并补充 NVLink、NVSwitch、IB 等内容。</p>
+<p><strong>与收束章的连接</strong>：所有元素都已认识完毕，下一节把它们汇成一张完整的拓扑图。</p>
+<hr />
+<h4 id="part-i_1">Part I 收束：一张完整的数据流通拓扑图<a class="headerlink" href="#part-i_1" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：1500 字</p>
+<p><strong>任务</strong>：把第 1–4 章所有元素汇总到一张大图，作为后续所有章节的参照系。这一节是 Part I → Part II 的桥梁。</p>
+<p><strong>子节</strong>：
+- 用一张主图把 CPU、Cache、RAM、PCH、PCIe Root Complex、GPU、VRAM、NVMe、NIC 全部画出
+- 用三种颜色标注三类互联：封装内、板载总线、机箱外
+- 一段约 800 字的"图导览"文字，引导读者沿数据流方向阅读这张图
+- 提示：这张图会在后续章节反复回引，建议读者收藏</p>
+<p><strong>配图</strong>：
+- 图 PI-A：完整数据流通拓扑图（本书的"地图"，最重要的一张图）</p>
+<hr />
+<h3 id="part-ii">Part II  单元内部：每个硬件做了什么<a class="headerlink" href="#part-ii" title="Permanent link">&para;</a></h3>
+<h4 id="5-cpu">5  CPU：控制流的统帅<a class="headerlink" href="#5-cpu" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：4500 字</p>
+<p><strong>章节定位</strong>：本章对 CPU 做"内部解剖"。注意写作的语义重心——不是把 CPU 教科书内容搬过来，而是要回答"CPU 在深度学习训练/推理中扮演什么角色，它的内部结构如何支持这些角色"。</p>
+<p><strong>子节</strong>：
+- 5.1 CPU 在深度学习系统中的真实角色（先建立角色，再讲结构）
+  - 5.1.1 Python 解释器与训练循环驱动
+  - 5.1.2 DataLoader 与数据预处理
+  - 5.1.3 CUDA Kernel 启动与控制流
+  - 5.1.4 Checkpoint、日志、I/O
+- 5.2 CPU 内部结构纵览
+  - 5.2.1 控制路径：取指、译码、调度、分支预测、乱序执行
+  - 5.2.2 执行路径：整数 ALU、浮点 FPU、SIMD/向量单元、Load/Store Unit
+  - 5.2.3 存储路径：寄存器文件、L1/L2/L3 Cache、内存控制器
+- 5.3 为什么 CPU 适合不规则任务，不适合大规模矩阵并行
+  - 5.3.1 单线程性能与大量晶体管投入控制逻辑
+  - 5.3.2 SIMD 的并行边界
+  - 5.3.3 与 GPU 的对比预告（不深入，留给第 6 章）
+- 5.4 现代 CPU 的关键特性对深度学习的影响
+  - 5.4.1 NUMA 与多 socket 服务器
+  - 5.4.2 AVX-512 与 AMX：CPU 的张量加速尝试
+  - 5.4.3 PCIe Root Complex 集成对 GPU 通信的影响
+- 5.5 章末收束：CPU 是数据流的"调度员"，不是"搬运工"</p>
+<p><strong>配图</strong>：
+- 图 5-A：CPU 内部结构图（控制/执行/存储三大路径，重点突出 L1/L2/L3 Cache 与内存控制器）
+- 图 5-B：单核流水线示意图（取指→译码→执行→访存→写回，标注分支预测与乱序执行的位置）</p>
+<p><strong>核心术语</strong>：ALU（Arithmetic Logic Unit）、FPU（Floating-Point Unit）、SIMD（Single Instruction Multiple Data）、AVX（Advanced Vector Extensions）、AMX（Advanced Matrix Extensions）、Branch Predictor、Out-of-Order Execution、NUMA（Non-Uniform Memory Access）</p>
+<p><strong>与原稿的关系</strong>：原稿第二节"CPU 的角色与特点"是种子，但需要重写并扩展约 3 倍。原稿提到的"3 GHz 至 5 GHz""8 至 24 个核心"等数字保留，但要重新组织在新框架中。</p>
+<p><strong>与下一章的连接</strong>：CPU 适合不规则任务，但深度学习的核心计算（矩阵乘）是高度规则的——这正是 GPU 的舞台。</p>
+<hr />
+<h4 id="6-gpu">6  GPU：数据流的劳工<a class="headerlink" href="#6-gpu" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：5000 字</p>
+<p><strong>章节定位</strong>：全书最核心章节之一。<strong>写作开篇必须按作者要求处理</strong>：不要用"GPU 不是更强的 CPU"作为开篇。先讲历史脉络（图形渲染→GPGPU→深度学习），再讲内部结构。</p>
+<p><strong>子节</strong>：
+- 6.1 GPU 的历史脉络
+  - 6.1.1 图形渲染时代：像素、顶点、纹理、光照
+  - 6.1.2 GPGPU 转向：从图形管线到通用并行
+  - 6.1.3 深度学习时代：Tensor Core 与专用加速
+- 6.2 GPU 适合什么样的计算
+  - 6.2.1 大量相似子任务的并行：矩阵乘、卷积、Attention
+  - 6.2.2 SIMT 模型：相同指令在不同数据上同时执行
+  - 6.2.3 为什么不适合复杂分支与强串行逻辑
+- 6.3 GPU 内部结构
+  - 6.3.1 SM（Streaming Multiprocessor）：GPU 的"核心"单位
+  - 6.3.2 CUDA Core：通用浮点/整数运算单元
+  - 6.3.3 Tensor Core：矩阵乘加专用单元
+  - 6.3.4 寄存器文件、Shared Memory、L1/L2 Cache
+  - 6.3.5 Warp Scheduler 与 Warp 调度模型
+  - 6.3.6 显存控制器与 HBM/GDDR
+- 6.4 CUDA Core 与 Tensor Core 的分工
+  - 6.4.1 CUDA Core 的精度与适用场景
+  - 6.4.2 Tensor Core 的输入输出格式与精度模式（FP16/BF16/TF32/FP8）
+  - 6.4.3 哪些 PyTorch 算子会触发 Tensor Core
+- 6.5 GPU 算力指标的解读
+  - 6.5.1 FP32 / FP16 / BF16 / FP8 / INT8 峰值算力
+  - 6.5.2 为什么实际利用率往往达不到峰值
+- 6.6 章末收束：GPU 把硅片几乎全部投给了"计算"，代价是几乎不能"思考"</p>
+<p><strong>配图</strong>：
+- 图 6-A：显卡实体结构图（H100 SXM 模块剖面，标注 GPU die、HBM、Interposer）
+- 图 6-B：GPU 内部计算结构图（SM 内部：CUDA Core、Tensor Core、Register File、Shared Memory、Warp Scheduler）
+- 图 6-C：CUDA Core 与 Tensor Core 工作模式对照图（一个做向量运算，一个做矩阵块运算）</p>
+<p><strong>核心术语</strong>：SM（Streaming Multiprocessor）、CUDA Core、Tensor Core、SIMT（Single Instruction Multiple Threads）、Warp、Warp Scheduler、Register File、Shared Memory、HBM（High Bandwidth Memory）、GDDR（Graphics Double Data Rate）、TF32（TensorFloat-32）、FP8（8-bit Floating Point）</p>
+<p><strong>与原稿的关系</strong>：原稿第五节"GPU 的角色与特点"是种子，需要彻底重写并扩展约 5 倍。原稿对 GPU 内部结构几乎没展开，本章基本是新写。</p>
+<p><strong>与下一章的连接</strong>：CPU 和 GPU 的内部结构都包含存储层级，要把它们的存储统一起来看——这就引出第 7 章。</p>
+<hr />
+<h4 id="7-cpu-gpu">7  存储层级：贯穿 CPU 与 GPU 的统一金字塔<a class="headerlink" href="#7-cpu-gpu" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：4500 字</p>
+<p><strong>章节定位</strong>：本章是关键改动点。原稿把存储讲在三处（第一节金字塔、第三节内存、第六节显存），本章<strong>统一合并</strong>，建立一个跨 CPU 与 GPU 的统一存储金字塔。</p>
+<p><strong>子节</strong>：
+- 7.1 为什么要看"统一金字塔"
+  - 7.1.1 速度-容量-成本的三角约束（局部性原理的工程解）
+  - 7.1.2 数据搬运成本随层级跳跃指数级上升
+- 7.2 CPU 侧存储层级
+  - 7.2.1 寄存器（≈1 ns，几百字节）
+  - 7.2.2 L1/L2/L3 Cache（5–40 ns，KB–MB 级）
+  - 7.2.3 系统内存 RAM（≈100 ns，10–100 GB）
+  - 7.2.4 NVMe SSD（≈100 μs，TB 级）
+- 7.3 GPU 侧存储层级
+  - 7.3.1 GPU Register（线程私有，最快）
+  - 7.3.2 Shared Memory / L1 Cache（块内共享）
+  - 7.3.3 L2 Cache（GPU 全局）
+  - 7.3.4 VRAM / HBM（GPU 主内存）
+- 7.4 跨域存储：从 SSD 到 VRAM 的完整路径
+  - 7.4.1 模型加载链路：SSD → RAM → VRAM
+  - 7.4.2 Pageable Memory vs Pinned Memory
+  - 7.4.3 DMA（Direct Memory Access）的角色
+  - 7.4.4 PyTorch 中 <code>pin_memory=True</code> 的实际意义
+- 7.5 速度-容量对照总表（CPU 侧 + GPU 侧并列）
+- 7.6 <strong>对照 Box</strong>：Apple Silicon 的统一内存架构（300–500 字）
+  - 描述 UMA 如何让 CPU 与 GPU 共享同一物理内存
+  - 解释为什么这取消了"RAM→PCIe→VRAM"的搬运步骤
+  - 通过反例理解正例：标准架构的 RAM 与 VRAM 物理分离，正是 PCIe 瓶颈的根源
+- 7.7 章末收束：金字塔的"形状"决定了优化空间——你能做的就是让数据尽量待在塔顶</p>
+<p><strong>配图</strong>：
+- 图 7-A：CPU 侧与 GPU 侧并列的统一存储金字塔（横向并列，纵向按速度降序，标注容量、延迟、带宽）
+- 图 7-B：模型加载数据流图（SSD → 系统内存 → 显存的完整路径，标注每段的带宽）
+- 图 7-C：UMA 架构对照图（在 Apple Silicon Box 里使用，对比标准架构的双内存与 UMA 的单内存）</p>
+<p><strong>核心术语</strong>：DRAM、SRAM、Pageable Memory、Pinned Memory（Page-Locked Memory）、DMA（Direct Memory Access）、UMA（Unified Memory Architecture）、HBM3、GDDR6X、Memory Hierarchy、Locality of Reference</p>
+<p><strong>与原稿的关系</strong>：原稿第一节、第三节、第四节、第六节、第七节均被吸收并重组到本章。原稿中具体性能数字（如 RTX 4090 的 24GB、A100 的 80GB、PCIe 4.0 的 32GB/s 双向带宽）保留，但需要更新到 2025–2026 主流型号（如 H100/H200、PCIe 5.0）。</p>
+<p><strong>与下一章的连接</strong>：金字塔讲清了存储的层级，但层级之间是怎样"连接"的？这就回到互联——第 4 章只看了拓扑，第 8 章要建立性能模型。</p>
+<hr />
+<h4 id="8">8  互联深入：把通道变成性能模型<a class="headerlink" href="#8" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：4000 字</p>
+<p><strong>章节定位</strong>：第 4 章讲了"有哪些通道"，本章讲"每条通道能跑多快、为什么这么快、如何成为瓶颈"。本章是 Part IV 多卡通信瓶颈与分布式章节的理论基础。</p>
+<p><strong>子节</strong>：
+- 8.1 PCIe 的性能模型
+  - 8.1.1 代次与 lane 数（PCIe 3.0/4.0/5.0/6.0 的有效带宽对照）
+  - 8.1.2 编码开销与有效带宽
+  - 8.1.3 PCIe Switch 与拓扑分叉
+- 8.2 NVLink 的性能模型
+  - 8.2.1 NVLink 各代次的带宽（NVLink 3.0/4.0/5.0）
+  - 8.2.2 NVLink 与 PCIe 的并存关系（不是替代）
+  - 8.2.3 NVLink 的拓扑形态：直连、Switch、Mesh
+- 8.3 NVSwitch 与 Fabric
+  - 8.3.1 多 GPU 系统中的全互联诉求
+  - 8.3.2 DGX H100 的 NVSwitch 拓扑
+  - 8.3.3 GH200 / GB200 时代的拓扑变化
+- 8.4 多 GPU 通信原语的硬件实现
+  - 8.4.1 All-Reduce、All-Gather、Reduce-Scatter 的语义
+  - 8.4.2 Ring、Tree、Halving-Doubling 的算法选择
+  - 8.4.3 NCCL 如何选择实现路径
+- 8.5 节点间互联：InfiniBand 与 RoCE
+  - 8.5.1 IB 的带宽与延迟
+  - 8.5.2 RDMA 的零拷贝语义
+  - 8.5.3 GPUDirect RDMA：让 GPU 直接收发网络数据
+- 8.6 章末收束：通道决定上限——任何分布式训练的扩展性，最终都受限于通道的拓扑与协议</p>
+<p><strong>配图</strong>：
+- 图 8-A：CPU-GPU-SSD-PCH 拓扑图（带宽标注版，与第 4 章的全景图形成"无标注 vs 有标注"的对照）
+- 图 8-B：DGX H100 多 GPU 互联图（8 GPU + 4 NVSwitch 的全连接拓扑）
+- 图 8-C：All-Reduce 在 Ring 拓扑下的执行示意图（分阶段动画式静帧）</p>
+<p><strong>核心术语</strong>：NVLink、NVSwitch、Fabric、All-Reduce、All-Gather、Reduce-Scatter、NCCL（NVIDIA Collective Communications Library）、InfiniBand（IB）、RDMA、GPUDirect、RoCE</p>
+<p><strong>与原稿的关系</strong>：原稿对 NVLink/NVSwitch/IB/RDMA 几乎没讲，本章基本是新写。原稿第七节关于 PCIe 带宽的数字保留并扩展。</p>
+<p><strong>与下一章的连接</strong>：硬件全部认识完了，下面的问题是：一段 PyTorch 代码运行时，这些硬件是如何被调度起来的？</p>
+<hr />
+<h3 id="part-iii">Part III  从代码到硬件：执行流<a class="headerlink" href="#part-iii" title="Permanent link">&para;</a></h3>
+<h4 id="9-python-gpu">9  软件栈分层：从 Python 到 GPU 指令<a class="headerlink" href="#9-python-gpu" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：3500 字</p>
+<p><strong>章节定位</strong>：本章是连接前后两半的枢纽。<strong>严格区分</strong> Python、PyTorch、CUDA、Driver、GPU 五个层级各自的职责，澄清"CUDA 不是把整段 Python 翻译成 GPU 程序"这一关键概念。</p>
+<p><strong>子节</strong>：
+- 9.1 软件栈纵览：五个层级
+- 9.2 Python 层
+  - 9.2.1 解释器与全局解释器锁（GIL）
+  - 9.2.2 模型结构定义、训练循环、loss/optimizer 调用
+  - 9.2.3 与 C++ 后端的边界
+- 9.3 PyTorch 层
+  - 9.3.1 Tensor 抽象与设备管理
+  - 9.3.2 Autograd 计算图
+  - 9.3.3 ATen / Dispatcher：算子如何被分派到具体后端
+  - 9.3.4 Eager Mode vs <code>torch.compile</code>
+- 9.4 CUDA 层
+  - 9.4.1 CUDA Runtime API：显存分配、数据传输、kernel 启动
+  - 9.4.2 CUDA Driver API：与 NVIDIA Driver 的接口
+  - 9.4.3 上层库：cuBLAS、cuDNN、NCCL、FlashAttention
+  - 9.4.4 关键澄清：CUDA 不翻译整段 Python，它承接的是被分派下来的张量算子
+- 9.5 Driver 与 GPU 层
+  - 9.5.1 NVIDIA Kernel Driver
+  - 9.5.2 GPU 内部的指令调度与执行
+- 9.6 章末收束：每一层都在做翻译，但翻译的对象不是程序，而是算子</p>
+<p><strong>配图</strong>：
+- 图 9-A：PyTorch/CUDA 软件栈图（自上而下五层，每层标注职责与示例 API）</p>
+<p><strong>核心术语</strong>：GIL（Global Interpreter Lock）、ATen、Dispatcher、Eager Mode、TorchScript、torch.compile、CUDA Runtime、CUDA Driver、cuBLAS、cuDNN、NCCL、FlashAttention</p>
+<p><strong>与原稿的关系</strong>：原稿无对应内容，本章全部新写。</p>
+<p><strong>与下一章的连接</strong>：分层讲清楚了每层做什么，下一章用一段实际代码把所有层串起来。</p>
+<hr />
+<h4 id="10">10  一次训练迭代的完整旅程<a class="headerlink" href="#10" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：3500 字</p>
+<p><strong>章节定位</strong>：本章是 Part III 的高潮。<strong>用一段 6 行代码作为锚</strong>，逐行展开 CPU、PyTorch、CUDA、GPU 各自做了什么。这是全书最具体、最贴近读者日常经验的一章。</p>
+<p><strong>子节</strong>：
+- 10.1 锚定代码：六行 PyTorch 训练片段
+  <div class="highlight"><pre><span></span><code><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</code></pre></div>
+- 10.2 第 1 行：<code>torch.device("cuda")</code> 的含义（CPU 侧创建一个设备句柄，无 GPU 通信）
+- 10.3 第 2 行：<code>model.to(device)</code>（参数从 RAM 经 PCIe 拷贝到 VRAM，触发 cudaMalloc 与 cudaMemcpy）
+- 10.4 第 3 行：<code>inputs.to(device)</code>（Pinned Memory 与 non_blocking 的真实作用预告）
+- 10.5 第 4 行：<code>model(inputs)</code>（forward 触发的 kernel launch 链）
+- 10.6 第 5 行：<code>criterion(outputs, labels.to(device))</code>（loss 计算与一次小型 host-device 同步）
+- 10.7 第 6 行：<code>loss.backward()</code>（反向传播的算子分派与 grad 累加）
+- 10.8 第 7 行：<code>optimizer.step()</code>（参数更新：weights、grads、optimizer states 的内存读写）
+- 10.9 异步执行模型
+  - 10.9.1 CUDA Stream：默认流与多流
+  - 10.9.2 Kernel launch 是非阻塞的
+  - 10.9.3 同步点：<code>.cpu()</code>、<code>.item()</code>、<code>torch.cuda.synchronize()</code>
+  - 10.9.4 为什么"代码已经返回但 GPU 还在算"是常态
+- 10.10 章末收束：你写的每一行代码，背后都是一连串跨设备的握手——理解这条链路是优化的起点</p>
+<p><strong>配图</strong>：
+- 图 10-A：六行代码的执行时序图（横向时间轴，纵向四道泳道：Python、PyTorch、CUDA、GPU，标注每行代码触发的活动）
+- 图 10-B：CUDA Stream 异步执行示意图（默认流的串行 vs 多流的并发）</p>
+<p><strong>核心术语</strong>：CUDA Stream、cudaMalloc、cudaMemcpy、Kernel Launch、Synchronization、Asynchronous Execution</p>
+<p><strong>与原稿的关系</strong>：原稿无对应内容，本章全部新写。</p>
+<p><strong>与下一章的连接</strong>：现在我们能看清一次迭代的旅程了，但旅程中哪些环节会成为瓶颈？这就是 Part IV 要回答的问题。</p>
+<hr />
+<h3 id="part-iv">Part IV  瓶颈：硬件如何成为性能边界<a class="headerlink" href="#part-iv" title="Permanent link">&para;</a></h3>
+<h4 id="11-roofline">11  Roofline：统一的性能分析框架<a class="headerlink" href="#11-roofline" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：5000 字</p>
+<p><strong>章节定位</strong>：Part IV 的总纲。Roofline 模型是把所有后续瓶颈讨论统一起来的分析工具。<strong>这一章的篇幅可以略长</strong>，因为它会被后续每一章引用。</p>
+<p><strong>子节</strong>：
+- 11.1 性能分析的三种朴素视角及其局限
+  - 11.1.1 仅看算力（峰值 FLOPS）
+  - 11.1.2 仅看带宽（峰值 GB/s）
+  - 11.1.3 为什么单看一项都不够
+- 11.2 Roofline 模型的核心概念
+  - 11.2.1 算术强度（Arithmetic Intensity）
+  - 11.2.2 屋顶线：算力顶 + 带宽顶
+  - 11.2.3 计算受限（Compute-Bound）vs 访存受限（Memory-Bound）
+- 11.3 在 GPU 上画一张 Roofline 图
+  - 11.3.1 H100 的 FP16 / BF16 / FP8 屋顶线
+  - 11.3.2 常见算子的算术强度估算
+    - GEMM：算术强度随矩阵规模上升
+    - 元素级算子（add、mul、relu）：极低算术强度
+    - LayerNorm、Softmax：中低算术强度
+    - Attention：依赖 sequence length 与是否融合
+- 11.4 第三类瓶颈：Overhead-Bound
+  - 11.4.1 Kernel launch 开销
+  - 11.4.2 Python/PyTorch 调度开销
+  - 11.4.3 主机-设备同步开销
+- 11.5 用 Roofline 诊断真实场景
+  - 11.5.1 小 batch 推理为什么常常 Memory-Bound
+  - 11.5.2 大模型预训练为什么有机会 Compute-Bound
+  - 11.5.3 多卡通信加入后，屋顶线如何被拉低
+- 11.6 工具链
+  - 11.6.1 Nsight Compute / Nsight Systems
+  - 11.6.2 PyTorch Profiler
+  - 11.6.3 简单估算法：用 nvidia-smi 看 GPU 利用率与显存读写
+- 11.7 章末收束：所有后续瓶颈讨论，都是 Roofline 的局部展开</p>
+<p><strong>配图</strong>：
+- 图 11-A：经典 Roofline 图（双 log 坐标，斜线带宽顶 + 水平算力顶 + 拐点）
+- 图 11-B：H100 上常见算子在 Roofline 图上的位置分布（标注 GEMM、Attention、Element-wise、Softmax 等）
+- 图 11-C：三类瓶颈分类图（Compute-Bound / Memory-Bound / Overhead-Bound 三块区域）</p>
+<p><strong>核心术语</strong>：Roofline Model、Arithmetic Intensity、FLOPS（Floating-Point Operations Per Second）、Compute-Bound、Memory-Bound、Overhead-Bound、Kernel Launch Overhead</p>
+<p><strong>关键参考</strong>：Williams et al., "Roofline: An Insightful Visual Performance Model"（CACM 2009）；Horace He, "Making Deep Learning Go Brrrr From First Principles"</p>
+<p><strong>与原稿的关系</strong>：原稿无对应内容，本章全部新写。这一章是新结构最重要的增量。</p>
+<hr />
+<h4 id="12_1">12  显存容量瓶颈<a class="headerlink" href="#12_1" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：3000 字</p>
+<p><strong>子节</strong>：
+- 12.1 推理时的显存构成
+  - 12.1.1 模型权重
+  - 12.1.2 KV Cache
+  - 12.1.3 Activation 与临时缓冲
+- 12.2 训练时的显存构成
+  - 12.2.1 权重 + 梯度 + Optimizer States（Adam 的 4× 系数从何而来）
+  - 12.2.2 Activation 占用与 Activation Checkpointing
+  - 12.2.3 通信缓冲与 NCCL 内存
+- 12.3 真实案例：8B 模型的显存账本
+  - 12.3.1 推理：FP16 / INT8 / INT4 的显存占用
+  - 12.3.2 训练：FP32 / 混合精度 / ZeRO-1/2/3 的对比
+- 12.4 显存超限的逃生路径
+  - 12.4.1 量化
+  - 12.4.2 梯度检查点
+  - 12.4.3 CPU Offload
+  - 12.4.4 模型并行
+- 12.5 章末收束：容量决定"能不能跑"，是最硬的边界</p>
+<p><strong>配图</strong>：
+- 图 12-A：训练 vs 推理显存构成对比（堆叠柱状图）
+- 图 12-B：8B 模型在不同精度/优化方案下的显存占用对比</p>
+<p><strong>与原稿的关系</strong>：原稿第八、九、十、十一节的参数量与存储讨论被吸收到本章 12.3 节。</p>
+<hr />
+<h4 id="13-kv-cache">13  显存带宽瓶颈与 KV Cache<a class="headerlink" href="#13-kv-cache" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：3000 字</p>
+<p><strong>子节</strong>：
+- 13.1 为什么显存带宽常常比算力先成为瓶颈
+- 13.2 元素级算子的访存压力
+- 13.3 Attention 的访存模式
+  - 13.3.1 标准 Attention 的中间张量爆炸
+  - 13.3.2 KV Cache 的访存特征：随 sequence 增长的线性扫描
+- 13.4 Embedding 表的不规则访存
+- 13.5 LLM 推理的特殊性：Decode 阶段几乎完全 Memory-Bound
+- 13.6 章末收束：带宽决定"跑多快"，是最常被低估的边界</p>
+<p><strong>配图</strong>：
+- 图 13-A：标准 Attention vs FlashAttention 的访存对比（中间张量是否落到 HBM）
+- 图 13-B：LLM Prefill vs Decode 的算术强度对比</p>
+<hr />
+<h4 id="14-tensor-core">14  计算瓶颈与 Tensor Core 利用率<a class="headerlink" href="#14-tensor-core" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：2500 字</p>
+<p><strong>子节</strong>：
+- 14.1 什么场景才能触及计算瓶颈：大 GEMM、大 batch、长序列
+- 14.2 Tensor Core 的触发条件
+  - 14.2.1 数据类型（FP16/BF16/TF32/FP8）
+  - 14.2.2 张量形状对齐（8 的倍数 / 16 的倍数）
+  - 14.2.3 Layout（行主序 vs 列主序）
+- 14.3 实际利用率为何低于峰值
+  - 14.3.1 算子链中的非 GEMM 部分稀释了 GEMM 占比
+  - 14.3.2 形状不对齐导致 fallback 到 CUDA Core
+  - 14.3.3 内存带宽喂不饱 Tensor Core
+- 14.4 章末收束：算力是天花板，但很少有人摸到</p>
+<p><strong>配图</strong>：
+- 图 14-A：Tensor Core 触发条件检查清单（流程图）</p>
+<hr />
+<h4 id="15-pcie-dataloader">15  主机—设备路径瓶颈：PCIe 与 DataLoader<a class="headerlink" href="#15-pcie-dataloader" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：2500 字</p>
+<p><strong>子节</strong>：
+- 15.1 PCIe 路径上的常见踩坑
+  - 15.1.1 频繁 <code>.cpu()</code> / <code>.item()</code>
+  - 15.1.2 在 GPU tensor 上 print
+  - 15.1.3 host-device 来回搬运小 tensor
+- 15.2 DataLoader 的瓶颈
+  - 15.2.1 num_workers 的真实作用
+  - 15.2.2 数据解码、增强、负采样的 CPU 开销
+  - 15.2.3 prefetch_factor 与 persistent_workers
+- 15.3 推荐系统场景的特殊挑战
+  - 15.3.1 大规模 Embedding 表的 lookup
+  - 15.3.2 稀疏特征的预处理
+- 15.4 章末收束：再快的 GPU，也跑不过一个慢吞吞的 DataLoader</p>
+<p><strong>配图</strong>：
+- 图 15-A：训练时 GPU 利用率波形图（理想满载 vs 被 DataLoader 拖累的锯齿状）</p>
+<hr />
+<h4 id="16">16  多卡通信瓶颈<a class="headerlink" href="#16" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：3000 字</p>
+<p><strong>子节</strong>：
+- 16.1 单机多卡的通信路径
+  - 16.1.1 NVLink 全连接：DGX-class
+  - 16.1.2 NVLink 部分连接：消费级双卡
+  - 16.1.3 仅 PCIe：通过 CPU 中转
+- 16.2 通信原语的开销模型
+  - 16.2.1 All-Reduce 的时间复杂度
+  - 16.2.2 通信与计算的重叠
+- 16.3 多机多卡的额外开销
+  - 16.3.1 节点内 NVLink + 节点间 IB 的混合拓扑
+  - 16.3.2 GPUDirect RDMA 的关键作用
+- 16.4 章末收束：通信成本是分布式训练的隐形税</p>
+<p><strong>配图</strong>：
+- 图 16-A：单机 8 卡 vs 多机多卡的通信路径对比</p>
+<hr />
+<h4 id="17">17  分布式训练的硬件视角<a class="headerlink" href="#17" title="Permanent link">&para;</a></h4>
+<p><strong>篇幅</strong>：4000 字</p>
+<p><strong>章节定位</strong>：本章是 Part IV 的压轴。重点不是"DDP/FSDP/ZeRO 分别是什么"（这些可以在很多地方读到），而是<strong>它们各自对硬件资源的不同压力</strong>。</p>
+<p><strong>子节</strong>：
+- 17.1 分布式训练的资源约束三角：算力、显存、通信
+- 17.2 数据并行（Data Parallel）
+  - 17.2.1 DDP 的梯度同步：All-Reduce 通信量
+  - 17.2.2 显存重复存储的浪费
+- 17.3 ZeRO 系列：以通信换显存
+  - 17.3.1 ZeRO-1：Optimizer States 切分
+  - 17.3.2 ZeRO-2：+ Gradients 切分
+  - 17.3.3 ZeRO-3 / FSDP：+ Parameters 切分
+  - 17.3.4 三个阶段对通信量与显存的不同影响
+- 17.4 张量并行（Tensor Parallel, TP）
+  - 17.4.1 切分矩阵的两种方式（Column / Row）
+  - 17.4.2 通信开销与 NVLink 依赖
+  - 17.4.3 为什么 TP 通常不跨节点
+- 17.5 流水线并行（Pipeline Parallel, PP）
+  - 17.5.1 模型按层切分
+  - 17.5.2 Bubble 与微批次
+- 17.6 专家并行（Expert Parallel, EP）
+  - 17.6.1 MoE 模型的特殊需求
+  - 17.6.2 All-to-All 通信的硬件压力
+- 17.7 3D 并行：TP + PP + DP 的组合
+- 17.8 章末收束：选哪种并行不是软件问题，是硬件拓扑问题</p>
+<p><strong>配图</strong>：
+- 图 17-A：四种并行策略的切分示意图（一张大图，DP/TP/PP/EP 并列）
+- 图 17-B：ZeRO 三阶段的通信量与显存对比表（图表混排）</p>
+<hr />
+<h3 id="part-v">Part V  代码优化专题<a class="headerlink" href="#part-v" title="Permanent link">&para;</a></h3>
+<p>每个专题约 1000 字，前半解释"为什么"，后半给具体代码与建议。<strong>每个专题必须显式回引 Part IV 的对应章节</strong>，做到不孤立。</p>
+<h4 id="181-cpu-item">18.1 为什么不要频繁 <code>.cpu()</code> 和 <code>.item()</code><a class="headerlink" href="#181-cpu-item" title="Permanent link">&para;</a></h4>
+<ul>
+<li>触发同步点：所有未完成的 GPU 操作必须等待</li>
+<li>跨 PCIe 拷贝小数据，开销远大于数据量本身</li>
+<li>回引：第 10.9 节、第 15.1 节</li>
+<li>代码示例：训练循环中正确累积 loss 的方式（用 <code>loss.detach()</code> + 末尾 <code>.item()</code>）</li>
+</ul>
+<h4 id="182-pin_memory-non_blocking">18.2 <code>pin_memory</code> 与 <code>non_blocking</code> 的真正含义<a class="headerlink" href="#182-pin_memory-non_blocking" title="Permanent link">&para;</a></h4>
+<ul>
+<li>pageable memory 必须先 stage 到 pinned，才能被 DMA 异步搬运</li>
+<li>non_blocking=True 让 host-device 拷贝与 CPU 计算重叠</li>
+<li>回引：第 7.4 节、第 10.4 节、第 15 章</li>
+<li>代码示例：DataLoader 配置与 <code>inputs.to(device, non_blocking=True)</code></li>
+</ul>
+<h4 id="183-batch-size-gpu">18.3 batch size 如何影响 GPU 利用率<a class="headerlink" href="#183-batch-size-gpu" title="Permanent link">&para;</a></h4>
+<ul>
+<li>小 batch：算术强度低，Memory-Bound</li>
+<li>大 batch：算术强度高，逼近 Compute-Bound</li>
+<li>显存约束：与梯度检查点、混合精度的权衡</li>
+<li>回引：第 11 章、第 14 章</li>
+<li>代码示例：梯度累积模拟大 batch</li>
+</ul>
+<h4 id="184-fp16bf16-tensor-core">18.4 混合精度：FP16/BF16 与 Tensor Core<a class="headerlink" href="#184-fp16bf16-tensor-core" title="Permanent link">&para;</a></h4>
+<ul>
+<li>显存占用减半</li>
+<li>Tensor Core 加速</li>
+<li>BF16 vs FP16 的稳定性差异</li>
+<li>回引：第 6.4 节、第 14.2 节</li>
+<li>代码示例：<code>torch.autocast</code> 与 <code>GradScaler</code></li>
+</ul>
+<h4 id="185-fused-kernel-flashattention">18.5 Fused Kernel 与 FlashAttention<a class="headerlink" href="#185-fused-kernel-flashattention" title="Permanent link">&para;</a></h4>
+<ul>
+<li>减少中间张量落 HBM 的次数</li>
+<li>Kernel launch 开销减少</li>
+<li>FlashAttention 为什么是带宽优化而不是算力优化</li>
+<li>回引：第 13.3 节</li>
+<li>代码示例：<code>F.scaled_dot_product_attention</code> 的使用</li>
+</ul>
+<h4 id="186-dataloader-gpu">18.6 DataLoader 慢导致 GPU 利用率低<a class="headerlink" href="#186-dataloader-gpu" title="Permanent link">&para;</a></h4>
+<ul>
+<li>数据预处理的 CPU 瓶颈</li>
+<li>num_workers、prefetch、persistent_workers 的调参</li>
+<li>大规模场景下的 webdataset / FFCV 等替代方案</li>
+<li>回引：第 15.2 节</li>
+<li>代码示例：DataLoader 优化配置</li>
+</ul>
+<h4 id="187">18.7 多卡训练为何不是线性加速<a class="headerlink" href="#187" title="Permanent link">&para;</a></h4>
+<ul>
+<li>通信开销随卡数增长</li>
+<li>拓扑（NVLink 全连接 vs PCIe）的影响</li>
+<li>Strong Scaling vs Weak Scaling</li>
+<li>回引：第 16 章、第 17 章</li>
+<li>代码示例：DDP 与 FSDP 的最小可运行例子</li>
+</ul>
+<hr />
+<h3 id="_1">结语：硬件视角下的研究者方法论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><strong>篇幅</strong>：1500 字</p>
+<p><strong>任务</strong>：不要简单复述结论。从研究者视角出发，谈谈"建立硬件直觉"对算法研究的长期价值——例如，为什么算法创新越来越多地发生在硬件感知的边界（FlashAttention、PagedAttention、量化推理），以及作为研究者应如何把硬件视角内化为日常思维习惯。</p>
+<hr />
+<h2 id="5">5. 配图总清单<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>图编号</th>
+<th>所在章节</th>
+<th>图意</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-A</td>
+<td>1.2</td>
+<td>真实主板标注图</td>
+<td>全局空间感建立</td>
+</tr>
+<tr>
+<td>1-B</td>
+<td>1.5</td>
+<td>开机启动链时序图</td>
+<td>时间维度的启动流程</td>
+</tr>
+<tr>
+<td>2-A</td>
+<td>2.1</td>
+<td>CPU 封装俯视图（Monolithic vs Chiplet）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2-B</td>
+<td>2.2</td>
+<td>H100 SXM 模块剖面图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3-A</td>
+<td>3.7</td>
+<td>存储介质归属示意图</td>
+<td>物理位置与归属</td>
+</tr>
+<tr>
+<td>4-A</td>
+<td>4.7</td>
+<td>全景互联拓扑图（无带宽标注）</td>
+<td>Part I 中段地图</td>
+</tr>
+<tr>
+<td>PI-A</td>
+<td>PI 收束</td>
+<td>完整数据流通拓扑图</td>
+<td><strong>本书最重要的一张</strong></td>
+</tr>
+<tr>
+<td>5-A</td>
+<td>5.2</td>
+<td>CPU 内部结构图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5-B</td>
+<td>5.2</td>
+<td>单核流水线示意图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6-A</td>
+<td>6.3</td>
+<td>显卡实体结构图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6-B</td>
+<td>6.3</td>
+<td>GPU 内部计算结构图（SM 内部）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6-C</td>
+<td>6.4</td>
+<td>CUDA Core 与 Tensor Core 工作模式对照</td>
+<td>—</td>
+</tr>
+<tr>
+<td>7-A</td>
+<td>7.5</td>
+<td>统一存储金字塔（CPU 侧 + GPU 侧）</td>
+<td><strong>本书最重要的一张</strong></td>
+</tr>
+<tr>
+<td>7-B</td>
+<td>7.4</td>
+<td>模型加载数据流图</td>
+<td>带宽标注</td>
+</tr>
+<tr>
+<td>7-C</td>
+<td>7.6</td>
+<td>UMA 架构对照图</td>
+<td>Apple Silicon Box 内</td>
+</tr>
+<tr>
+<td>8-A</td>
+<td>8.1</td>
+<td>CPU-GPU-SSD-PCH 拓扑图（带带宽标注）</td>
+<td>与 4-A 形成对照</td>
+</tr>
+<tr>
+<td>8-B</td>
+<td>8.3</td>
+<td>DGX H100 多 GPU 互联图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>8-C</td>
+<td>8.4</td>
+<td>All-Reduce 在 Ring 拓扑下的执行</td>
+<td>—</td>
+</tr>
+<tr>
+<td>9-A</td>
+<td>9.1</td>
+<td>PyTorch/CUDA 软件栈图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>10-A</td>
+<td>10</td>
+<td>六行代码的执行时序图</td>
+<td>四道泳道</td>
+</tr>
+<tr>
+<td>10-B</td>
+<td>10.9</td>
+<td>CUDA Stream 异步执行示意</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11-A</td>
+<td>11.2</td>
+<td>经典 Roofline 图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11-B</td>
+<td>11.3</td>
+<td>H100 上算子的 Roofline 分布</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11-C</td>
+<td>11.4</td>
+<td>三类瓶颈分类图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>12-A</td>
+<td>12</td>
+<td>训练 vs 推理显存构成</td>
+<td>—</td>
+</tr>
+<tr>
+<td>12-B</td>
+<td>12.3</td>
+<td>8B 模型显存占用对比</td>
+<td>—</td>
+</tr>
+<tr>
+<td>13-A</td>
+<td>13.3</td>
+<td>Attention vs FlashAttention 访存对比</td>
+<td>—</td>
+</tr>
+<tr>
+<td>13-B</td>
+<td>13.5</td>
+<td>Prefill vs Decode 算术强度对比</td>
+<td>—</td>
+</tr>
+<tr>
+<td>14-A</td>
+<td>14.2</td>
+<td>Tensor Core 触发条件流程图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>15-A</td>
+<td>15.1</td>
+<td>GPU 利用率波形图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>16-A</td>
+<td>16.1</td>
+<td>单机多卡 vs 多机多卡通信路径</td>
+<td>—</td>
+</tr>
+<tr>
+<td>17-A</td>
+<td>17.7</td>
+<td>四种并行策略切分示意图</td>
+<td>—</td>
+</tr>
+<tr>
+<td>17-B</td>
+<td>17.3</td>
+<td>ZeRO 三阶段通信量与显存对比</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SVG 绘制规范</strong>：</p>
+<ul>
+<li>颜色统一调色板：CPU 相关（蓝色系 #3B82F6 / #1E3A8A）、GPU 相关（绿色系 #10B981 / #065F46）、存储相关（橙色系 #F59E0B）、互联通道（灰色系 #6B7280）、瓶颈/警告（红色系 #EF4444）</li>
+<li>字体：sans-serif，中文 14px，英文 12px，标题 16px</li>
+<li>不使用渐变（保持矢量清晰）、不使用阴影</li>
+<li>所有图必须有图编号、图题、图注（在图下方）</li>
+<li>必要时图内文字使用中英对照（首次出现术语时）</li>
+<li>单张图 viewBox 建议 800x500 或 600x400，确保在 Markdown 渲染中可读</li>
+</ul>
+<hr />
+<h2 id="6">6. 术语表<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 首次出现规范<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<p>每个术语在全书中<strong>首次出现</strong>时，使用以下格式：</p>
+<blockquote>
+<p>中文译名（English Original, ABBR）</p>
+</blockquote>
+<p>例如：</p>
+<ul>
+<li>流式多处理器（Streaming Multiprocessor, SM）</li>
+<li>高带宽内存（High Bandwidth Memory, HBM）</li>
+<li>主机直接内存访问（Direct Memory Access, DMA）</li>
+</ul>
+<p>后续出现可使用缩写或中文译名，但建议在每章首次出现时再次使用全称（章内若读者跳读不至于失去上下文）。</p>
+<h3 id="62">6.2 全书术语索引（按英文字母排序）<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<p>执行者写完全文后，需要回头补一份完整的术语索引表，作为附录。索引表至少包含：英文全称、英文缩写、中文译名、首次出现章节。</p>
+<p>以下列出本书必然涉及的术语（执行者可在此基础上扩充）：</p>
+<p>ALU, AMX, ATen, Attention, AVX, BF16, BIOS, CCD, CCX, CPU, CUDA, CUDA Core, cuBLAS, cuDNN, DDP, DDR, Dispatcher, DMA, DMI, DRAM, DDR, EP, FlashAttention, FP8, FP16, FP32, FPU, FSDP, GDDR, GIL, GPU, GPUDirect, HBM, HDD, IB (InfiniBand), IHS, INT4, INT8, KV Cache, L1/L2/L3 Cache, LGA, MoE, NCCL, NIC, NUMA, NVLink, NVMe, NVSwitch, PCH, PCIe, PCIe Switch, PGA, PP, RAM, RDMA, RoCE, Roofline, Root Complex, SATA, SIMD, SIMT, SM, SRAM, SSD, SXM, TF32, TP, UEFI, UMA, VRAM, Warp, ZeRO</p>
+<hr />
+<h2 id="7">7. 原稿素材处理映射<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>下表说明原稿《计算机硬件.md》中每一节的内容如何被新结构吸收。执行者写作时应回查原稿对应段落，<strong>保留作者的具体数字、案例、口诀</strong>，但表达方式应配合新章节的语境重写。</p>
+<table>
+<thead>
+<tr>
+<th>原稿章节</th>
+<th>原稿主要内容</th>
+<th>新结构归属</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引言</td>
+<td>7B/14GB 的认知问题</td>
+<td>引言</td>
+<td>重写为新引言开篇案例</td>
+</tr>
+<tr>
+<td>补充节：整体拓扑</td>
+<td>CPU/GPU/PCIe 整体关系</td>
+<td>第 1 章 + Part I 收束</td>
+<td>拆分扩写，PI 收束保留全景图思想</td>
+</tr>
+<tr>
+<td>第一节：存储层级</td>
+<td>五级金字塔</td>
+<td>第 3 章（物理）+ 第 7 章（速度容量）</td>
+<td>拆分到两章</td>
+</tr>
+<tr>
+<td>第二节：CPU 角色</td>
+<td>核心数、频率、单核性能</td>
+<td>第 5 章</td>
+<td>数字保留，叙述重写</td>
+</tr>
+<tr>
+<td>第三节：内存作用</td>
+<td>RAM 的中转站角色</td>
+<td>第 7.4 节</td>
+<td>融入加载链路</td>
+</tr>
+<tr>
+<td>第四节：磁盘作用</td>
+<td>SSD/HDD 速度对比</td>
+<td>第 3.5 节 + 第 7.4 节</td>
+<td>数字保留</td>
+</tr>
+<tr>
+<td>第五节：GPU 角色</td>
+<td>核心数对比、矩阵乘并行</td>
+<td>第 6 章</td>
+<td>重写并扩展 5 倍</td>
+</tr>
+<tr>
+<td>第六节：显存与内存区别</td>
+<td>VRAM vs RAM、A100 显存</td>
+<td>第 3.4 节 + 第 7.3 节</td>
+<td>拆分</td>
+</tr>
+<tr>
+<td>第七节：数据流动</td>
+<td>SSD→RAM→VRAM、PCIe 瓶颈</td>
+<td>第 7.4 节 + 第 8.1 节</td>
+<td>拆分扩展</td>
+</tr>
+<tr>
+<td>第八节：参数计数单位</td>
+<td>K/M/B 的含义</td>
+<td>第 12.3 节</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>第九节：参数存储大小</td>
+<td>FP32/FP16/INT8/INT4</td>
+<td>第 12.3 节</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>第十节：参数→文件大小</td>
+<td>换算口诀</td>
+<td>第 12.3 节</td>
+<td>保留口诀</td>
+</tr>
+<tr>
+<td>第十一节：8B 案例</td>
+<td>完整存储分析</td>
+<td>第 12.3 节</td>
+<td>作为 12.3 的核心案例</td>
+</tr>
+<tr>
+<td>第十二节：加载链路</td>
+<td>三阶段时序</td>
+<td>第 7.4 节 + 第 10.3 节</td>
+<td>拆分</td>
+</tr>
+<tr>
+<td>结语</td>
+<td>五条核心结论</td>
+<td>结语</td>
+<td>在新视角下重写</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li>原稿的具体性能数字大多在 2024 年前后语境下，执行者应在保留教学意义的前提下，<strong>更新为 2025–2026 主流硬件</strong>：</li>
+<li>默认 GPU 从 A100 → H100/H200</li>
+<li>默认 PCIe 从 4.0 → 5.0</li>
+<li>默认 LLM 规模从 7B/8B → 7B–70B 区间，并补充 Llama 3 / Qwen 系列等当前主流模型</li>
+<li>原稿配图引用（如 <code>QQ_xxx.png</code>）全部废弃，按本文档第 5 节的 SVG 配图清单重新生成。</li>
+</ol>
+<hr />
+<h2 id="8_1">8. 关键误区清单<a class="headerlink" href="#8_1" title="Permanent link">&para;</a></h2>
+<p>执行者在写作过程中<strong>必须显式避免</strong>以下五个常见误区。建议在写到相关章节时，回查本清单。</p>
+<h3 id="81-hbm-gpu-gpu">8.1 HBM 不是 GPU-GPU 通信方式<a class="headerlink" href="#81-hbm-gpu-gpu" title="Permanent link">&para;</a></h3>
+<p>HBM（High Bandwidth Memory）是一种 GPU 本地显存技术，特点是堆叠式封装、宽位宽、低能耗。它是 GPU↔自身显存 的通道，<strong>不</strong>是 GPU↔GPU 的通信方式。</p>
+<p>GPU↔GPU 通信靠的是 NVLink、NVSwitch、PCIe、或网络互联。</p>
+<p>涉及章节：第 3 章、第 6 章、第 7 章、第 8 章。</p>
+<h3 id="82-cuda-python-gpu">8.2 CUDA 不是把整段 Python 翻译成 GPU 程序<a class="headerlink" href="#82-cuda-python-gpu" title="Permanent link">&para;</a></h3>
+<p>CUDA 是一套包含运行时（Runtime）、驱动（Driver）、库（cuBLAS、cuDNN、NCCL）的软件栈。它的工作是<strong>承接被分派下来的具体张量算子</strong>，把这些算子的执行交给 NVIDIA GPU。</p>
+<p>Python 解释器、训练循环控制流、模型结构定义这些都仍然由 CPU 执行。</p>
+<p>涉及章节：第 9 章、第 10 章。</p>
+<h3 id="83-cpu-cacheregister-vram">8.3 大块数据不是从 CPU Cache/Register 传到 VRAM<a class="headerlink" href="#83-cpu-cacheregister-vram" title="Permanent link">&para;</a></h3>
+<p>CPU 到 GPU 的大块数据传输路径是：<strong>系统内存 RAM → PCIe → 显存 VRAM</strong>。</p>
+<p>CPU Cache 和 Register 是 CPU 访问内存时的高速缓冲，容量极小（KB–MB 级），<strong>不是</strong>模型权重等大块数据的存储与中转地点。</p>
+<p>涉及章节：第 7 章、第 10 章。</p>
+<h3 id="84-pch">8.4 PCH 不是计算单元<a class="headerlink" href="#84-pch" title="Permanent link">&para;</a></h3>
+<p>PCH（Platform Controller Hub）是主板上的外围 I/O 管理芯片，负责 USB、SATA、音频、低速网卡等接口。它<strong>不</strong>进行任何深度学习相关的计算，也<strong>不</strong>是 GPU 训练算力的瓶颈来源。</p>
+<p>PCH 可能影响的是：磁盘 I/O 速度、外设访问延迟。</p>
+<p>涉及章节：第 1 章、第 4 章。</p>
+<h3 id="85-nvlink-pcie">8.5 NVLink 不是"更快的 PCIe"<a class="headerlink" href="#85-nvlink-pcie" title="Permanent link">&para;</a></h3>
+<p>NVLink 是 NVIDIA 自有的高速互联协议，与 PCIe 是<strong>不同协议、不同拓扑、不同物理层</strong>。NVLink 与 PCIe 在系统中<strong>并存而非替代</strong>：GPU 仍然通过 PCIe 与 CPU/系统内存通信，NVLink 主要用于 GPU↔GPU（部分场景下 GPU↔CPU）。</p>
+<p>涉及章节：第 4 章、第 8 章。</p>
+<hr />
+<h2 id="9">9. 执行流程建议<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h3 id="91">9.1 推荐的写作节奏<a class="headerlink" href="#91" title="Permanent link">&para;</a></h3>
+<p>执行者应按 Part 推进，每个 Part 完成后<strong>主动停下</strong>，等待作者审阅后再进入下一 Part。每个 Part 的产物建议放在独立的 Markdown 文件中，便于阅读与审稿。</p>
+<div class="highlight"><pre><span></span><code>output/
+  00-引言.md
+  Part-I-硬件全景/
+    01-主板.md
+    02-计算单元封装.md
+    03-存储介质.md
+    04-互联通道.md
+    PI-收束.md
+  Part-II-单元内部/
+    ...
+  ...
+  Part-V-代码优化专题/
+    18.1-cpu-item.md
+    ...
+  附录-术语索引.md
+</code></pre></div>
+<p>最终可以合并为单一 Markdown 文件作为发布版本。</p>
+<h3 id="92">9.2 每章交付前的自检清单<a class="headerlink" href="#92" title="Permanent link">&para;</a></h3>
+<p>写完每章后，执行者应在章末附一段<strong>自检备注（不进入正文）</strong>，回答以下问题：</p>
+<ol>
+<li>本章是否回答了"它在哪里、和谁相连、数据如何经过它、为什么影响训练/推理速度、代码层面如何触发或避开"这五个核心问题？</li>
+<li>本章末尾是否有一句"该硬件单元如何成为深度学习效率的边界"的收束？</li>
+<li>本章是否显式与前一章、后一章建立了连接？</li>
+<li>本章中所有术语首次出现是否使用了"中文（English, ABBR）"格式？</li>
+<li>本章是否触碰了第 8 节列出的任一关键误区？如果触碰，是否正确处理？</li>
+<li>配图是否按第 5 节配图清单完成？SVG 是否符合规范？</li>
+<li>字数是否在预算范围内？是否存在为字数硬撑的段落？</li>
+</ol>
+<p>自检备注在终稿合并时移除。</p>
+<h3 id="93">9.3 跨章引用的处理<a class="headerlink" href="#93" title="Permanent link">&para;</a></h3>
+<p>全书有大量跨章引用（如 Part V 专题回引 Part IV）。执行者写作时应使用<strong>章节编号</strong>而非"前文""后文"等模糊指代。例如：</p>
+<ul>
+<li>✅ "如第 11.4 节所述，Kernel launch 开销属于 Overhead-Bound 类型"</li>
+<li>❌ "如前文所述，Kernel launch 开销是一种瓶颈"</li>
+</ul>
+<h3 id="94">9.4 终稿合并时的检查<a class="headerlink" href="#94" title="Permanent link">&para;</a></h3>
+<p>全书写完后，执行者应做以下检查：</p>
+<ol>
+<li><strong>跨章引用检查</strong>：搜索所有"第 X 章""第 X.Y 节"的引用，验证目标存在</li>
+<li><strong>术语一致性检查</strong>：同一术语在全书中的中文译名是否一致（例如，"Streaming Multiprocessor" 不要在第 6 章译为"流式多处理器"，在第 11 章译为"流处理器"）</li>
+<li><strong>配图编号检查</strong>：图编号是否连续且与文中引用一致</li>
+<li><strong>数据时效性检查</strong>：性能数字是否统一为 2025–2026 主流硬件</li>
+<li><strong>风格一致性检查</strong>：是否存在某些章节明显比其他章节口语化或学术化</li>
+</ol>
+<hr />
+<h2 id="10_1">10. 参考书目<a class="headerlink" href="#10_1" title="Permanent link">&para;</a></h2>
+<p>执行者写作时遇到概念性疑问应优先回查以下权威来源，而不是依赖记忆。中文术语翻译以这些书的中译版为准。</p>
+<h3 id="101">10.1 体系结构基础<a class="headerlink" href="#101" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Patterson &amp; Hennessy, <em>Computer Organization and Design: The Hardware/Software Interface</em>, 6th Edition. 本科级标准教材，Part I（主板、CPU、存储）的概念底层。</li>
+<li>Hennessy &amp; Patterson, <em>Computer Architecture: A Quantitative Approach</em>, 6th Edition. 研究生级，"Memory Hierarchy" 与 "Domain-Specific Architectures" 两章对应第 7 章与第 6 章。</li>
+<li>Bryant &amp; O'Hallaron, <em>Computer Systems: A Programmer's Perspective</em>, 3rd Edition. 程序员视角看系统，叙事风格可作为模板。</li>
+</ul>
+<h3 id="102-gpu-cuda">10.2 GPU 与 CUDA<a class="headerlink" href="#102-gpu-cuda" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Kirk &amp; Hwu, <em>Programming Massively Parallel Processors: A Hands-on Approach</em>, 4th Edition. GPU 编程标准教材，第 6 章、第 9 章、第 10 章的主要参考。</li>
+<li>NVIDIA, <em>CUDA C++ Programming Guide</em>（最新版）。Memory Hierarchy 与 Stream/Event 部分。</li>
+<li>NVIDIA 各代 GPU 架构白皮书（Volta / Ampere / Hopper / Blackwell）。第 6 章、第 8 章 Tensor Core 与 NVLink 数字的权威来源。</li>
+</ul>
+<h3 id="103">10.3 性能分析<a class="headerlink" href="#103" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Williams, Waterman &amp; Patterson, "Roofline: An Insightful Visual Performance Model for Multicore Architectures", <em>CACM</em> 2009. 第 11 章的原始文献。</li>
+<li>NVIDIA, <em>Deep Learning Performance Guide</em>. 第 14 章 Tensor Core 触发条件的权威说明。</li>
+<li>Horace He, "Making Deep Learning Go Brrrr From First Principles". 第 11 章三类瓶颈现代化补充。</li>
+</ul>
+<h3 id="104">10.4 深度学习系统<a class="headerlink" href="#104" title="Permanent link">&para;</a></h3>
+<ul>
+<li>陈天奇等, <em>Machine Learning Compilation</em>（公开课讲义）。第 9 章软件栈与第 18 章优化专题的现代视角。</li>
+<li>PyTorch 官方 <em>Performance Tuning Guide</em>。Part V 各专题的直接来源。</li>
+<li>Rajbhandari et al., "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models", <em>SC20</em>. 第 17 章 ZeRO 部分。</li>
+<li>Dao et al., "FlashAttention" 系列论文。第 13 章、第 18.5 节。</li>
+</ul>
+<h3 id="105">10.5 硬件白皮书与官方文档<a class="headerlink" href="#105" title="Permanent link">&para;</a></h3>
+<p>执行者写性能数字时，<strong>优先引用以下来源</strong>：</p>
+<ul>
+<li>NVIDIA H100 / H200 / B100 / B200 White Paper</li>
+<li>NVIDIA NVLink / NVSwitch Technical Brief</li>
+<li>PCI-SIG PCIe 5.0 / 6.0 Specification（涉及带宽数字时）</li>
+<li>Intel / AMD 服务器 CPU 数据表（涉及内存带宽时）</li>
+</ul>
+<hr />
+<h2 id="11_1">11. 给执行者的最后说明<a class="headerlink" href="#11_1" title="Permanent link">&para;</a></h2>
+<h3 id="111">11.1 关于"讲清楚"的标准<a class="headerlink" href="#111" title="Permanent link">&para;</a></h3>
+<p>作者多次强调"以讲清楚为终极标准，不为字数硬撑"。判断"讲清楚"的标准是：<strong>一个具备 PyTorch 基础、但对硬件层只有零散认知的研究者，读完本章后能否独立解释这一硬件单元在训练/推理中的作用</strong>。</p>
+<p>如果某段内容读起来像"硬件百科条目"而非"为什么这件事影响训练"，应该重写。</p>
+<h3 id="112">11.2 关于不确定性的处理<a class="headerlink" href="#112" title="Permanent link">&para;</a></h3>
+<p>写作中遇到以下情况，应<strong>主动停下并询问作者</strong>：</p>
+<ul>
+<li>涉及非 NVIDIA 平台的细节（除第 7 章 UMA Box 外）</li>
+<li>涉及具体的硬件采购建议或品牌对比</li>
+<li>涉及超出本文档第 1.5 节定义的边界（电子工程、操作系统内核等）</li>
+<li>涉及作者提供的原稿与本文档结构存在冲突的部分</li>
+<li>配图设计上有多种合理表达，难以选择</li>
+</ul>
+<p>不要为了完整性而强行展开本文档未明确要求的内容。<strong>少而精胜于多而散</strong>。</p>
+<h3 id="113">11.3 关于风格的最后提醒<a class="headerlink" href="#113" title="Permanent link">&para;</a></h3>
+<p>本笔记的目标读者是研究者，不是初学者。这意味着：</p>
+<ul>
+<li>可以使用一定密度的术语，但每个术语首次出现必须解释</li>
+<li>可以引用原始论文，但不要让段落变成文献综述</li>
+<li>可以使用数学表达，但不要让笔记变成教科书</li>
+<li>可以幽默，但不要油滑</li>
+</ul>
+<p>作者希望这份笔记<strong>读起来像一位前辈在给你讲他工作中真实积累的硬件直觉</strong>，而不是一份从教科书摘录的 cheatsheet。</p>
+<hr />
+<h2 id="planning_1">附录：本 Planning 的版本与变更<a class="headerlink" href="#planning_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>v1.0 (2026-04-28)：初版，基于作者与上游 Claude 三轮对话的需求对齐</li>
+<li>后续如有结构调整，应在本附录追加变更记录</li>
+</ul>
+<hr />
+<p><strong>执行者请阅读完本文档后，开始第一阶段：撰写引言与 Part I（第 1 章），完成后停下供作者审阅。</strong>
+需要进行任务的切分，也就是说，不要一次性生成，而是分成多个任务来生成（4-5次）</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
